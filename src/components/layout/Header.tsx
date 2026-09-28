@@ -152,7 +152,10 @@ export function Header() {
             light={overHero}
           />
 
-          <Button href="/apply" className="ml-3 rounded-full px-5">
+          <Button
+            href="/apply"
+            className="ml-3 !h-10 !min-h-10 !rounded-full !px-4 !text-sm md:!h-10 md:!min-h-10 md:!px-5 md:!text-sm"
+          >
             Apply Now
           </Button>
         </nav>
@@ -160,7 +163,7 @@ export function Header() {
         <div className="flex items-center gap-2 lg:hidden">
           <Button
             href="/apply"
-            className="hidden h-10 rounded-full px-4 text-sm sm:inline-flex"
+            className="hidden !h-9 !min-h-9 !rounded-full !px-3.5 !text-sm md:!h-9 md:!min-h-9 md:!px-3.5 md:!text-sm sm:inline-flex"
           >
             Apply
           </Button>
