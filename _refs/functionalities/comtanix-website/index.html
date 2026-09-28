@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Comtanix | BPO and IT Careers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+ <div class="wrap bar">
+  <a class="logo" href="#/home" aria-label="Comtanix home"><img src="assets/logo.png" alt="Comtanix" width="202" height="45" style="display:block;height:38px;width:auto"></a>
+  <button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Main">
+   <a data-p="home" href="#/home">Home</a>
+   <div class="dd"><a data-p="services" href="#/services">Services ▾</a><div class="sub" id="svcMenu"></div></div>
+   <div class="dd"><a data-p="about" href="#/about/story">About ▾</a><div class="sub"><a href="#/about/story">Our Story</a><a href="#/about/values">Core Values</a><a href="#/about/learning">Learning and Development</a></div></div>
+   <a data-p="careers" href="#/careers">Careers</a><a data-p="team" href="#/team">Life at Comtanix</a><a data-p="contact" href="#/contact">Contact</a>
+   <a class="btn" href="#/apply">Apply Now</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+<!-- HOME -->
+<div class="page" id="home">
+ <div class="hero"><div class="wrap">
+  <div>
+   <h1>Build your career on a team that works with the US.</h1>
+   <p>Comtanix is a BPO and IT company. We train, support and promote people who deliver reliable work for American businesses, every day.</p>
+   <div class="row"><a class="btn white" href="#/apply">Apply Now</a><a class="btn ghost" href="#/about/story">Who We Are</a></div>
+  </div>
+  <aside class="clock" aria-label="Live time comparison">
+   <h3>Working hours that match the US</h3><small>Live time right now</small>
+   <div class="tz"><span>New York</span><b data-tz="America/New_York">--:--</b></div>
+   <div class="tz"><span>Los Angeles</span><b data-tz="America/Los_Angeles">--:--</b></div>
+   <div class="tz"><span>Comtanix office</span><b data-tz="OFFICE">--:--</b></div>
+   <div class="status"><i class="dot" id="dot"></i><span id="stat">Checking US business hours</span></div>
+  </aside>
+ </div></div>
+
+ <section class="band" style="padding:40px 0"><div class="wrap">
+  <h2 style="font-size:22px;margin-bottom:20px">Our footprint in numbers</h2>
+  <div class="stats big">
+   <div><b><span class="num" data-n="250" data-s="+">250+</span></b><span>Team members</span></div>
+   <div><b><span class="num" data-n="6" data-s="">6</span></b><span>Service lines</span></div>
+   <div><b><span class="num" data-n="4" data-s="">4</span></b><span>US time zones covered</span></div>
+   <div><b><span class="num" data-n="95" data-s="%">95%</span></b><span>Quality score target</span></div>
+  </div>
+ </div></section>
+ <section><div class="wrap">
+  <div class="sec-h"><h2>We deliver excellence</h2><p>Seven service lines, staffed by trained teams who work to your standards.</p></div>
+  <div class="grid" id="svcHome"></div>
+ </div></section>
+
+ <section class="band"><div class="wrap two">
+  <div>
+   <div class="sec-h" style="margin-bottom:16px"><h2>A home for careers in BPO and IT</h2><p>Comtanix teams adjust to each client's tools, processes and standards. We train our people to match, and we grow them into the next role.</p></div>
+   <div class="row"><a class="btn" href="#/about/story">Read our story</a><a class="btn ghost-d" href="#/about/values">Our core values</a></div>
+  </div>
+  <figure class="photo" style="margin:0">
+   <div class="office-slot"></div>
+   <figcaption>Comtanix office</figcaption>
+  </figure>
+ </div></section>
+
+ <section class="tint"><div class="wrap">
+  <div class="sec-h"><h2>Our goals</h2><p class="mission" style="color:var(--ink);margin-top:14px">To build strong careers by delivering dependable BPO and IT work for US businesses.</p></div>
+  <div class="grid">
+   <div class="card goal"><b>Quality</b><p>Reach and hold a 95% or higher quality score on every US process.</p></div>
+   <div class="card goal"><b>People</b><p>Give every new hire paid training and a clear path to their next role.</p></div>
+   <div class="card goal"><b>Growth</b><p>Fill leadership roles from within our own team first.</p></div>
+   <div class="card goal"><b>Trust</b><p>Keep long-term partnerships with clients through on-time delivery.</p></div>
+  </div>
+ </div></section>
+
+ <section><div class="wrap">
+  <div class="sec-h"><h2>What makes us Comtanix</h2><p>We work to give you the work-life balance you deserve.</p></div>
+  <div class="collage" id="collage"></div>
+  <div class="row" style="margin-top:24px"><a class="btn" href="#/team">Life at Comtanix</a><a class="btn ghost-d" href="#/careers">We are hiring</a></div>
+ </div></section>
+ <section class="tint"><div class="wrap">
+  <div class="sec-h"><h2>What our team says</h2><p>Real stories from people building their careers here.</p></div>
+  <div class="tslider" id="tSlide" tabindex="0" aria-label="Testimonials"></div>
+  <div class="row" style="margin-top:16px"><button class="btn ghost-d" id="tPrev" type="button">Previous</button><button class="btn ghost-d" id="tNext" type="button">Next</button><a class="btn" href="#/team" style="margin-left:auto">More stories</a></div>
+ </div></section>
+ <section><div class="wrap" style="text-align:center;max-width:680px">
+  <h2 style="font-size:clamp(26px,3.6vw,38px);letter-spacing:-.8px">Ready to join Comtanix?</h2>
+  <p class="note" style="font-size:17px;margin:12px 0 24px">Send your details in two minutes. Our hiring team replies on WhatsApp.</p>
+  <a class="btn" href="#/apply">Apply Now</a>
+ </div></section>
+</div>
+
+<!-- SERVICES -->
+<div class="page" id="services"><section><div class="wrap">
+ <div class="sec-h"><h2>Services</h2><p>What our teams deliver. Every team is trained on your tools and processes.</p></div>
+ <div class="grid" style="grid-template-columns:1fr" id="svcList"></div>
+ <p class="note" style="margin-top:28px">Want to work on these teams? <a href="#/careers">See open roles</a>.</p>
+</div></section></div>
+
+<!-- ABOUT -->
+<div class="page" id="about">
+ <section id="s-story"><div class="wrap two">
+  <div class="sec-h" style="margin:0"><h2>Our story</h2><p>Comtanix is a BPO and IT company. We help businesses in the US get dependable work done, and we help people build careers while doing it.</p><p>We adjust to each client's work processes, tools and quality standards, and we train our people to match. That is why teams stay with us and clients stay with us.</p><div class="row" style="margin-top:20px"><a class="btn" href="#/apply">Apply Now</a></div></div>
+  <figure class="photo" style="margin:0"><div class="office-slot"></div><figcaption>Comtanix office</figcaption></figure>
+ </div></section>
+ <section class="tint" id="s-values"><div class="wrap">
+  <div class="sec-h"><h2>Core values</h2><p>Four promises we keep to our people and our clients.</p></div>
+  <div class="grid">
+   <div class="card goal"><b>Recruit well</b><p>We hire for attitude and potential, then teach the rest.</p></div>
+   <div class="card goal"><b>Train fully</b><p>Every hire gets paid training before their first live shift.</p></div>
+   <div class="card goal"><b>Retain with care</b><p>Fair reviews, recognition and a clear path to promotion.</p></div>
+   <div class="card goal"><b>Deliver results</b><p>On-time, accurate work that clients can count on.</p></div>
+  </div>
+ </div></section>
+ <section id="s-learning"><div class="wrap">
+  <div class="sec-h"><h2>Learning and development</h2><p>You keep learning long after your first day.</p></div>
+  <div class="grid">
+   <div class="card"><div class="ico">🎓</div><h3>Paid induction</h3><p>Learn the process, tools and quality standards before going live.</p></div>
+   <div class="card"><div class="ico">🗣️</div><h3>Communication skills</h3><p>Clear speaking and writing for US customers and colleagues.</p></div>
+   <div class="card"><div class="ico">📜</div><h3>Tool training</h3><p>Hands-on sessions on the software your process uses.</p></div>
+   <div class="card"><div class="ico">🧭</div><h3>Leadership programme</h3><p>Coaching for agents ready to become team leaders.</p></div>
+  </div>
+ </div></section>
+</div>
+
+<!-- CAREERS -->
+<div class="page" id="careers">
+ <section><div class="wrap">
+  <div class="sec-h"><h2>Careers at Comtanix</h2><p>Open roles for freshers and experienced people. Pick a role and apply in one step.</p></div>
+  <div class="grid" style="grid-template-columns:1fr">
+   <div class="card role"><div><h3>Customer Support Agent (US Process)</h3><p class="note">Handle calls and chats for US customers.</p><span class="tag">Night shift</span><span class="tag">Fresh graduates welcome</span></div><a class="btn" href="#/apply" data-role="Customer Support Agent (US Process)">Apply Now</a></div>
+   <div class="card role"><div><h3>Technical Support Representative</h3><p class="note">Solve software and device issues step by step.</p><span class="tag">Night shift</span><span class="tag">Technical skills</span></div><a class="btn" href="#/apply" data-role="Technical Support Representative">Apply Now</a></div>
+   <div class="card role"><div><h3>Data Entry and Back Office Executive</h3><p class="note">Accurate, fast processing of documents and records.</p><span class="tag">Day or night</span></div><a class="btn" href="#/apply" data-role="Data Entry and Back Office Executive">Apply Now</a></div>
+   <div class="card role"><div><h3>Web Developer</h3><p class="note">Build and maintain websites and web apps.</p><span class="tag">IT team</span><span class="tag">HTML, CSS, JavaScript</span></div><a class="btn" href="#/apply" data-role="Web Developer">Apply Now</a></div>
+   <div class="card role"><div><h3>Team Leader</h3><p class="note">Lead an agent team and coach them to hit targets.</p><span class="tag">Leadership</span><span class="tag">Experience needed</span></div><a class="btn" href="#/apply" data-role="Team Leader">Apply Now</a></div>
+  </div>
+ </div></section>
+ <section class="band"><div class="wrap">
+  <div class="sec-h"><h2>Why people stay</h2></div>
+  <div class="grid">
+   <div class="card"><h3>Paid training</h3><p>Learn the process, tools and US communication before you start.</p></div>
+   <div class="card"><h3>Growth path</h3><p>Agent to senior agent to team leader to manager, with reviews that are clear.</p></div>
+   <div class="card"><h3>Performance rewards</h3><p>Incentives and recognition for results.</p></div>
+   <div class="card"><h3>Safe, modern office</h3><p>Good equipment, stable internet and a comfortable workplace.</p></div>
+  </div>
+ </div></section>
+</div>
+
+<!-- TEAM -->
+<div class="page" id="team">
+ <section><div class="wrap">
+  <div class="sec-h"><h2>Life at Comtanix</h2><p>Work matters, and so does the team around you. Here is how we spend time together.</p></div>
+  <div class="grid">
+   <div class="card"><div class="ico">🍽️</div><h3>Monthly team lunch</h3><p>Every team sits down together once a month, on us.</p></div>
+   <div class="card"><div class="ico">🏏</div><h3>Sports day</h3><p>Cricket, football and indoor games between departments.</p></div>
+   <div class="card"><div class="ico">🏆</div><h3>Star of the month</h3><p>We recognise the agent and the developer who went above and beyond.</p></div>
+   <div class="card"><div class="ico">🎓</div><h3>Skill sessions</h3><p>Weekly workshops on communication, tools and career growth.</p></div>
+   <div class="card"><div class="ico">🎉</div><h3>Festivals and birthdays</h3><p>Eid, Independence Day and birthdays are celebrated in the office.</p></div>
+   <div class="card"><div class="ico">🎮</div><h3>Game nights</h3><p>Friendly tournaments to relax after a busy shift.</p></div>
+  </div>
+ </div></section>
+ <section class="tint"><div class="wrap">
+  <div class="sec-h"><h2>What our team says</h2><p>Real stories from people building their careers here.</p></div>
+  <div class="grid" id="tGrid"></div>
+ </div></section>
+ <section><div class="wrap" style="text-align:center;max-width:680px">
+  <h2 style="font-size:clamp(26px,3.6vw,38px);letter-spacing:-.8px">Join the team</h2>
+  <p class="note" style="font-size:17px;margin:12px 0 24px">Your next role is one message away.</p>
+  <a class="btn" href="#/apply">Apply Now</a>
+ </div></section>
+</div>
+
+<!-- APPLY -->
+<div class="page" id="apply"><section><div class="wrap two" style="align-items:start">
+ <div>
+  <div class="sec-h"><h2>Apply Now</h2><p>Fill in your details. The Send button opens WhatsApp with your application ready to send to our hiring team.</p></div>
+  <form id="form">
+   <label>Full name<input name="name" required autocomplete="name"></label>
+   <label>Phone number<input name="phone" type="tel" required autocomplete="tel" placeholder="03xx xxxxxxx"></label>
+   <label>Position<select name="role" id="role" required>
+    <option value="">Choose a role</option>
+    <option>Customer Support Agent (US Process)</option><option>Technical Support Representative</option><option>Data Entry and Back Office Executive</option><option>Web Developer</option><option>Team Leader</option><option>Other</option>
+   </select></label>
+   <label>Experience<select name="exp" required><option value="">Choose</option><option>Fresher</option><option>Less than 1 year</option><option>1 to 3 years</option><option>3 or more years</option></select></label>
+   <label>Upload your CV (optional)<input type="file" name="cv" id="cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"><span class="note">PDF or Word file, up to 5 MB.</span></label>
+   <p class="note err" id="cvErr" role="alert"></p>
+   <label>Anything else (optional)<textarea name="msg" rows="3"></textarea></label>
+   <button class="btn" type="submit">Send application on WhatsApp</button>
+   <p class="note" id="sent" role="status"></p>
+  </form>
+ </div>
+ <div class="card">
+  <h3>What happens next</h3>
+  <ul class="info" style="margin-top:14px">
+   <li><span>1.</span><span>You send your details and CV on WhatsApp.</span></li>
+   <li><span>2.</span><span>Our team contacts you to schedule an interview.</span></li>
+   <li><span>3.</span><span>Selected candidates start paid training.</span></li>
+  </ul>
+  <p class="note">Prefer to talk first? <a data-wa href="#">Message us on WhatsApp</a>.</p>
+ </div>
+</div></section></div>
+
+<!-- CONTACT -->
+<div class="page" id="contact"><section><div class="wrap two" style="align-items:start">
+ <div>
+  <div class="sec-h"><h2>Contact and location</h2><p>Visit our office or message us directly.</p></div>
+  <ul class="info">
+   <li><span>📍</span><span><b>Office address</b><span id="addr"></span></span></li>
+   <li><span>💬</span><span><b>WhatsApp</b><a data-wa href="#" id="waNum"></a></span></li>
+   <li><span>🕘</span><span><b>Interview hours</b><span id="hours"></span></span></li>
+  </ul>
+  <div class="row"><a class="btn" data-wa href="#">Chat on WhatsApp</a><a class="btn ghost" id="dir" target="_blank" rel="noopener" href="#">Get directions</a></div>
+  <p style="margin:26px 0 10px;font-weight:600">Follow us</p><div class="social" id="soc2"></div>
+ </div>
+ <figure class="photo" style="margin:0"><div class="office-slot"></div><figcaption>Comtanix office</figcaption></figure>
+</div></section></div>
+</main>
+
+<section class="tint" id="touch"><div class="wrap">
+ <div class="sec-h"><h2>Get in touch with us</h2></div>
+ <div class="grid">
+  <div class="card"><div class="ico">📞</div><h3>Call us</h3><p><a id="tPhone"></a></p></div>
+  <div class="card"><div class="ico">✉️</div><h3>Email us</h3><p><a id="tMail"></a></p></div>
+  <div class="card"><div class="ico">📍</div><h3>Visit us</h3><p id="tAddr"></p></div>
+ </div>
+ <p style="margin:26px 0 10px;font-weight:600">Follow us</p><div class="social" id="soc3"></div>
+</div></section>
+<footer><div class="wrap fgrid">
+ <div><b class="fb">Comtanix</b><p>BPO and IT company building careers and delivering dependable work for US businesses.</p><div class="soc" id="soc"></div></div>
+ <div><h4>Services</h4><div id="fSvc"></div></div>
+ <div><h4>Company</h4><a href="#/about/story">Our Story</a><a href="#/about/values">Core Values</a><a href="#/team">Life at Comtanix</a><a href="#/contact">Contact</a></div>
+ <div><h4>Careers</h4><a href="#/careers">Open roles</a><a href="#/apply">Apply Now</a><a id="fCar"></a></div>
+</div><div class="wrap copy">© <span id="yr"></span> Comtanix. All rights reserved. <a id="fMail" style="display:inline"></a></div></footer>
+<a class="wa" data-wa href="#" aria-label="Chat on WhatsApp">💬 WhatsApp</a>
+
+<template id="officeSvg">
+<svg viewBox="0 0 600 360" role="img" aria-label="Illustration of the Comtanix office">
+ <rect width="600" height="360" fill="#E6F3F5"/>
+ <rect y="270" width="600" height="90" fill="#CFE7EA"/>
+ <g fill="#fff"><rect x="40" y="40" width="120" height="150" rx="6"/><rect x="180" y="40" width="120" height="150" rx="6"/><rect x="320" y="40" width="120" height="150" rx="6"/><rect x="460" y="40" width="100" height="150" rx="6"/></g>
+ <g fill="#49A4AE" opacity=".55"><rect x="55" y="55" width="90" height="55"/><rect x="195" y="55" width="90" height="55"/><rect x="335" y="55" width="90" height="55"/><rect x="475" y="55" width="70" height="55"/></g>
+ <g fill="#49A4AE"><rect x="50" y="230" width="150" height="14" rx="4"/><rect x="225" y="230" width="150" height="14" rx="4"/><rect x="400" y="230" width="150" height="14" rx="4"/></g>
+ <g fill="#2A7A85"><rect x="85" y="196" width="60" height="34" rx="3"/><rect x="260" y="196" width="60" height="34" rx="3"/><rect x="435" y="196" width="60" height="34" rx="3"/></g>
+ <text x="300" y="330" text-anchor="middle" font-family="Sora,Arial" font-weight="800" font-size="26" fill="#2A7A85">Comtanix</text>
+</svg>
+</template>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

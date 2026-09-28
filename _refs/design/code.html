@@ -1,0 +1,1900 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Comtanix — Enterprise BPO &amp; IT Solutions</title>
+<!-- Google Fonts: Sora (Headings) & Public Sans (Body) -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Sora:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "error": "#ba1a1a",
+            "primary-fixed-dim": "#7cd4de",
+            "secondary-fixed": "#a4effb",
+            "surface-tint": "#006971",
+            "on-surface-variant": "#3e494a",
+            "outline": "#6e797a",
+            "tertiary-container": "#8d9a9c",
+            "surface-dim": "#c1dfe5",
+            "on-secondary-fixed": "#001f24",
+            "on-primary-fixed-variant": "#004f56",
+            "primary-fixed": "#98f1fb",
+            "secondary-fixed-dim": "#88d2de",
+            "surface-container-highest": "#cae8ee",
+            "primary": "#006971",
+            "secondary": "#0c6873",
+            "surface-variant": "#cae8ee",
+            "on-tertiary-fixed-variant": "#3d494b",
+            "secondary-container": "#a4effb",
+            "tertiary-fixed-dim": "#bcc9cb",
+            "on-primary-fixed": "#001f23",
+            "surface-container-lowest": "#ffffff",
+            "surface": "#eefcff",
+            "on-background": "#011f24",
+            "on-primary-container": "#00363a",
+            "tertiary-fixed": "#d8e5e7",
+            "surface-container-high": "#cfeef4",
+            "on-secondary-fixed-variant": "#004f57",
+            "on-secondary-container": "#196e79",
+            "on-secondary": "#ffffff",
+            "inverse-surface": "#183439",
+            "on-error": "#ffffff",
+            "surface-container-low": "#dbf9ff",
+            "error-container": "#ffdad6",
+            "background": "#eefcff",
+            "outline-variant": "#bdc9ca",
+            "surface-container": "#d5f3f9",
+            "on-surface": "#011f24",
+            "primary-container": "#49a4ae",
+            "on-error-container": "#93000a",
+            "inverse-primary": "#7cd4de",
+            "on-primary": "#ffffff",
+            "inverse-on-surface": "#d8f6fc",
+            "on-tertiary-fixed": "#121d1f",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#546162",
+            "on-tertiary-container": "#263234",
+            "surface-bright": "#eefcff"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2.5rem",
+            "margin-mobile": "1.25rem",
+            "gutter-lg": "2rem",
+            "gutter": "1.5rem",
+            "space-sm": "0.5rem",
+            "gutter-sm": "1rem",
+            "margin": "2rem",
+            "space-md": "1rem"
+          },
+          fontFamily: {
+            "headline-md": ["Sora"],
+            "label-lg": ["Public Sans"],
+            "display": ["Sora"],
+            "headline-lg-mobile": ["Sora"],
+            "title-lg": ["Sora"],
+            "body-md": ["Public Sans"],
+            "body-lg": ["Public Sans"],
+            "headline-lg": ["Sora"],
+            "display-mobile": ["Sora"],
+            "headline-sm": ["Sora"],
+            "label-md": ["Public Sans"],
+            "label-sm": ["Public Sans"],
+            "title-md": ["Public Sans"],
+            "body-sm": ["Public Sans"]
+          },
+          fontSize: {
+            "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "display": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-lg-mobile": ["26px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "title-lg": ["18px", { lineHeight: "24px", fontWeight: "600" }],
+            "body-md": ["15px", { lineHeight: "22px", fontWeight: "400" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "headline-lg": ["36px", { lineHeight: "44px", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "display-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }],
+            "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+            "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }],
+            "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "600" }],
+            "title-md": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+            "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Strict light mode, zero pitch-black rule */
+    body {
+      background-color: #F3F9FA;
+      color: #1E3A3F;
+      font-family: 'Public Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Sora', sans-serif;
+      color: #1E3A3F;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    .shadow-soft {
+      box-shadow: 0 2px 8px -2px rgba(30, 58, 63, 0.05), 0 1px 3px rgba(73, 164, 174, 0.08);
+    }
+    .shadow-hover {
+      box-shadow: 0 12px 24px -6px rgba(30, 58, 63, 0.08), 0 4px 12px -2px rgba(73, 164, 174, 0.12);
+    }
+    .geometric-grid {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body class="bg-[#F3F9FA] text-[#1E3A3F] flex flex-col min-h-screen">
+<!-- TOP APP BAR / NAVBAR -->
+<header class="bg-surface-container-lowest docked full-width top-0 sticky z-50 shadow-sm border-b border-outline-variant/30">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin flex items-center justify-between h-20">
+<!-- Brand Logo Anchor -->
+<a class="flex items-center gap-3 group focus:outline-none" href="#/home">
+<img alt="Comtanix Logo" class="h-10 w-auto object-contain transition-transform group-hover:scale-105 duration-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrc24bt5LbBxlVCTBoub6Stre4hRXi78tWFUDDsBnT1XwnxK-DR2xaYuJ7gT-_TrOUQ9Dd9sfA210r95erhv5tayumfVf64VMb_jDbjuwpemxU4WhQo38P0gfWwav4VBOm1PPGEXqiXQh1cws4cLdHF1DlP9zcw_MQbTRUv3xQzf8IiviECQBnZ7GhzMv6ZpogQ8P6i5JSzGhjVvlU0NPi0Xeah0LW_JymINawolYcOYAyFbR_VDoI4hQfHpJ1H5aVkJw">
+</a>
+<!-- Desktop Nav Cluster -->
+<nav class="hidden lg:flex items-center space-x-6 xl:space-x-8" id="desktop-nav">
+<a class="nav-item text-primary font-title-md border-b-2 border-primary pb-1 transition-all duration-200" data-nav="Home" href="#/home">Home</a>
+<!-- Services with Dropdown -->
+<div class="relative group py-2">
+<a class="nav-item text-on-surface-variant font-title-md hover:text-primary transition-colors duration-200" data-nav="Services" href="#/services">
+            Services
+            <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</a>
+<div class="absolute left-0 top-full hidden group-hover:block w-72 bg-white rounded-xl shadow-xl border border-[#49A4AE]/20 py-2.5 z-50">
+<a class="block px-4 py-2 text-sm text-[#1E3A3F] hover:bg-[#E6F3F5] hover:text-[#006971] font-medium" href="#/services">Software Development</a>
+<a class="block px-4 py-2 text-sm text-[#1E3A3F] hover:bg-[#E6F3F5] hover:text-[#006971] font-medium" href="#/services">Software Quality &amp; Testing</a>
+<a class="block px-4 py-2 text-sm text-[#1E3A3F] hover:bg-[#E6F3F5] hover:text-[#006971] font-medium" href="#/services">IT Support &amp; Administration</a>
+<a class="block px-4 py-2 text-sm text-[#1E3A3F] hover:bg-[#E6F3F5] hover:text-[#006971] font-medium" href="#/services">Customer Care</a>
+<a class="block px-4 py-2 text-sm text-[#1E3A3F] hover:bg-[#E6F3F5] hover:text-[#006971] font-medium" href="#/services">Back Office &amp; Data Processing</a>
+<a class="block px-4 py-2 text-sm text-[#1E3A3F] hover:bg-[#E6F3F5] hover:text-[#006971] font-medium" href="#/services">Finance &amp; Accounting</a>
+<a class="block px-4 py-2 text-sm text-[#1E3A3F] hover:bg-[#E6F3F5] hover:text-[#006971] font-medium" href="#/services">Sales &amp; Marketing Support</a>
+</div>
+</div>
+<!-- About with Dropdown -->
+<div class="relative group py-2">
+<a class="nav-item text-on-surface-variant font-title-md hover:text-primary transition-colors duration-200" data-nav="About" href="#/about">
+            About
+            <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</a>
+<div class="absolute left-0 top-full hidden group-hover:block w-60 bg-white rounded-xl shadow-xl border border-[#49A4AE]/20 py-2.5 z-50">
+<a class="block px-4 py-2 text-sm text-[#1E3A3F] hover:bg-[#E6F3F5] hover:text-[#006971] font-medium" href="#/about">Our Story</a>
+<a class="block px-4 py-2 text-sm text-[#1E3A3F] hover:bg-[#E6F3F5] hover:text-[#006971] font-medium" href="#/about">Core Values</a>
+<a class="block px-4 py-2 text-sm text-[#1E3A3F] hover:bg-[#E6F3F5] hover:text-[#006971] font-medium" href="#/about">Learning &amp; Development</a>
+</div>
+</div>
+<a class="nav-item text-on-surface-variant font-title-md hover:text-primary transition-colors duration-200" data-nav="Careers" href="#/careers">Careers</a>
+<a class="nav-item text-on-surface-variant font-title-md hover:text-primary transition-colors duration-200" data-nav="Life at Comtanix" href="#/life">Life at Comtanix</a>
+<a class="nav-item text-on-surface-variant font-title-md hover:text-primary transition-colors duration-200" data-nav="Contact" href="#/contact">Contact</a>
+</nav>
+<!-- Primary Action CTA & Mobile Hamburger -->
+<div class="flex items-center gap-4">
+<a class="hidden sm:inline-flex items-center gap-2 bg-[#49A4AE] hover:bg-[#2A7A85] text-white font-title-md text-sm px-6 py-2.5 rounded-lg shadow-sm hover:shadow transition-all duration-200 focus:ring-2 focus:ring-[#49A4AE] focus:ring-offset-2" href="#/apply">
+<span class="">Apply Now</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+<!-- Mobile Drawer Toggle -->
+<button aria-label="Toggle Navigation Menu" class="lg:hidden p-2 text-[#1E3A3F] hover:text-primary focus:outline-none rounded-lg bg-[#E6F3F5]" id="mobile-menu-btn">
+<span class="material-symbols-outlined text-2xl" id="menu-icon">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- MOBILE SLIDE-OVER DRAWER -->
+<aside class="fixed inset-y-0 right-0 w-80 bg-white z-50 shadow-2xl border-l border-[#49A4AE]/20 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden flex flex-col justify-between p-6" id="side-drawer">
+<div>
+<div class="flex items-center justify-between pb-6 border-b border-[#E6F3F5]">
+<img alt="Comtanix Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2aEncmmPUX4oIX337Iu2dPYldCFtfmnp9ZyVehFKhRw9xe6DA9dICDzzG2hME007rCfcewPqJ1KHp_uaaBCAWY8QpLP5Cjs5ryWZbI-7gmnQifflyGtf0Fea1xCqETVVVo2rfMMJGtDHGdlIoF_FwByWIomBwvjsJ9Y5rGW-MG7Fx3Qw5ZxwIHFL7_Cc_Z9BLGtZSpY_-G58c-V4m0Kxe-U7_t9OHI09WkSNLxmBICGNPOuVq5UCz35AABLl3ru716F4">
+<button class="p-2 text-[#1E3A3F] hover:bg-[#E6F3F5] rounded-lg" id="close-drawer-btn">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+</div>
+<div class="mt-2 text-xs font-medium text-[#2A7A85] tracking-wider uppercase">Enterprise BPO &amp; IT Solutions</div>
+<nav class="mt-6 flex flex-col space-y-1" id="drawer-nav">
+<a class="drawer-item flex items-center gap-3 px-4 py-3 rounded-lg text-[#1E3A3F] font-semibold hover:bg-[#E6F3F5] hover:text-primary transition-colors" href="#/home">
+<span class="material-symbols-outlined text-[#49A4AE]">home</span> Home
+        </a>
+<a class="drawer-item flex items-center gap-3 px-4 py-3 rounded-lg text-[#1E3A3F] font-semibold hover:bg-[#E6F3F5] hover:text-primary transition-colors" href="#/services">
+<span class="material-symbols-outlined text-[#49A4AE]">business_center</span> Services
+        </a>
+<a class="drawer-item flex items-center gap-3 px-4 py-3 rounded-lg text-[#1E3A3F] font-semibold hover:bg-[#E6F3F5] hover:text-primary transition-colors" href="#/about">
+<span class="material-symbols-outlined text-[#49A4AE]">corporate_fare</span> About
+        </a>
+<a class="drawer-item flex items-center gap-3 px-4 py-3 rounded-lg text-[#1E3A3F] font-semibold hover:bg-[#E6F3F5] hover:text-primary transition-colors" href="#/careers">
+<span class="material-symbols-outlined text-[#49A4AE]">work</span> Careers
+        </a>
+<a class="drawer-item flex items-center gap-3 px-4 py-3 rounded-lg text-[#1E3A3F] font-semibold hover:bg-[#E6F3F5] hover:text-primary transition-colors" href="#/life">
+<span class="material-symbols-outlined text-[#49A4AE]">groups</span> Life at Comtanix
+        </a>
+<a class="drawer-item flex items-center gap-3 px-4 py-3 rounded-lg text-[#1E3A3F] font-semibold hover:bg-[#E6F3F5] hover:text-primary transition-colors" href="#/contact">
+<span class="material-symbols-outlined text-[#49A4AE]">mail</span> Contact
+        </a>
+</nav>
+</div>
+<div class="pt-6 border-t border-[#E6F3F5]">
+<a class="w-full flex items-center justify-center gap-2 bg-[#49A4AE] hover:bg-[#2A7A85] text-white font-title-md py-3 rounded-lg shadow transition" href="#/apply">
+<span class="">Apply Now</span>
+<span class="material-symbols-outlined">send</span>
+</a>
+<p class="text-center text-xs text-[#557A80] mt-3">US Operations • Active Hiring 2025</p>
+</div>
+</aside>
+<div class="fixed inset-0 bg-[#1E3A3F]/30 backdrop-blur-sm z-40 hidden lg:hidden" id="drawer-backdrop"></div>
+<!-- MAIN VIEW CONTAINER (SPA Tab Switcher) -->
+<main class="flex-grow">
+<!-- ============================================== -->
+<!-- 1. HOME VIEW (#/home) -->
+<!-- ============================================== -->
+<div class="page-view" id="view-home">
+<!-- HERO SECTION -->
+<section class="relative bg-[#2A7A85] text-white py-16 lg:py-24 geometric-grid overflow-hidden border-b border-[#49A4AE]/30">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<div class="lg:col-span-7 space-y-6">
+<div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 text-xs font-medium tracking-wide">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="">Active 24/7 US Enterprise Operations</span>
+</div>
+<h1 class="text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                Build your career on a team that works with the US.
+              </h1>
+<p class="text-[#E6F3F5] text-base lg:text-lg leading-relaxed max-w-2xl font-light">
+                Join an agile international workforce delivering enterprise software engineering, IT infrastructure, and premium BPO operations to leading US enterprises.
+              </p>
+<div class="flex flex-wrap items-center gap-4 pt-2">
+<a class="px-7 py-3.5 bg-white text-[#2A7A85] hover:bg-[#E6F3F5] font-semibold rounded-lg shadow-md hover:shadow-lg transition-all flex items-center gap-2" href="#/apply">
+<span class="">Apply Now</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</a>
+<a class="px-7 py-3.5 bg-transparent border-2 border-white/80 hover:bg-white/10 text-white font-semibold rounded-lg transition-all" href="#/about">
+                  Who We Are
+                </a>
+</div>
+<!-- Quick Client Trust Metrics -->
+<div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/15 max-w-lg">
+<div>
+<div class="text-2xl font-bold font-headline-md text-white">99.8%</div>
+<div class="text-xs text-[#E6F3F5]/80">SLA Adherence</div>
+</div>
+<div>
+<div class="text-2xl font-bold font-headline-md text-white">100%</div>
+<div class="text-xs text-[#E6F3F5]/80">US Client Base</div>
+</div>
+<div>
+<div class="text-2xl font-bold font-headline-md text-white">Top 2%</div>
+<div class="text-xs text-[#E6F3F5]/80">Talent Acceptance</div>
+</div>
+</div>
+</div>
+<!-- LIVE WORLD CLOCKS CARD -->
+<div class="lg:col-span-5">
+<div class="bg-white rounded-2xl p-6 sm:p-7 shadow-2xl border border-[#49A4AE]/30 text-[#1E3A3F]">
+<div class="flex items-center justify-between pb-4 border-b border-[#E6F3F5]">
+<div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Global Operations Hub</h3>
+<p class="text-xs text-[#557A80]">Real-time synchronization</p>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85] border border-[#49A4AE]/20">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    US Hours Active
+                  </span>
+</div>
+<!-- Clock Items -->
+<div class="mt-5 space-y-4">
+<!-- New York EST -->
+<div class="p-3.5 rounded-xl bg-[#F3F9FA] border border-[#49A4AE]/15 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">schedule</span>
+</div>
+<div>
+<div class="text-sm font-bold text-[#1E3A3F]">New York, US (EST)</div>
+<div class="text-xs text-[#557A80]" id="date-ny">Wed, Sep 23</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-base font-extrabold text-[#2A7A85] font-headline-md" id="clock-ny">07:04:14 PM</div>
+<div class="text-[10px] text-[#2A7A85] font-medium uppercase tracking-wider">East Coast Shift</div>
+</div>
+</div>
+<!-- Los Angeles PST -->
+<div class="p-3.5 rounded-xl bg-[#F3F9FA] border border-[#49A4AE]/15 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">public</span>
+</div>
+<div>
+<div class="text-sm font-bold text-[#1E3A3F]">Los Angeles, US (PST)</div>
+<div class="text-xs text-[#557A80]" id="date-la">Wed, Sep 23</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-base font-extrabold text-[#2A7A85] font-headline-md" id="clock-la">04:04:14 PM</div>
+<div class="text-[10px] text-[#2A7A85] font-medium uppercase tracking-wider">West Coast Shift</div>
+</div>
+</div>
+<!-- Comtanix Global HQ -->
+<div class="p-3.5 rounded-xl bg-[#E6F3F5] border border-[#49A4AE]/30 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#49A4AE] text-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-lg">domain</span>
+</div>
+<div>
+<div class="text-sm font-bold text-[#006971]">Comtanix HQ Floor</div>
+<div class="text-xs text-[#2A7A85]">Main Operational Centre</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-base font-extrabold text-[#006971] font-headline-md" id="clock-hq">04:04:14 AM</div>
+<div class="text-[10px] text-emerald-600 font-semibold uppercase">Floor 100% Active</div>
+</div>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-[#E6F3F5] flex items-center justify-between text-xs text-[#557A80]">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-[#49A4AE]">verified</span> SOC 2 Type II Compliant
+                  </span>
+<a class="text-[#2A7A85] font-semibold hover:underline" href="#/careers">Explore US Shift Roles →</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- OUR FOOTPRINT IN NUMBERS -->
+<section class="py-12 bg-white border-b border-[#49A4AE]/15">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+<div class="bg-[#E6F3F5] p-6 rounded-xl border border-[#49A4AE]/20 hover:border-[#49A4AE] transition-all">
+<div class="w-10 h-10 rounded-lg bg-white text-[#2A7A85] flex items-center justify-center mb-3 shadow-sm">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div class="text-3xl lg:text-4xl font-extrabold text-[#2A7A85] font-headline-md">250+</div>
+<div class="text-sm font-semibold text-[#1E3A3F] mt-1">Team members</div>
+<div class="text-xs text-[#557A80] mt-0.5">Engineers &amp; BPO Specialists</div>
+</div>
+<div class="bg-[#E6F3F5] p-6 rounded-xl border border-[#49A4AE]/20 hover:border-[#49A4AE] transition-all">
+<div class="w-10 h-10 rounded-lg bg-white text-[#2A7A85] flex items-center justify-center mb-3 shadow-sm">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<div class="text-3xl lg:text-4xl font-extrabold text-[#2A7A85] font-headline-md">6</div>
+<div class="text-sm font-semibold text-[#1E3A3F] mt-1">Service lines</div>
+<div class="text-xs text-[#557A80] mt-0.5">Specialized enterprise hubs</div>
+</div>
+<div class="bg-[#E6F3F5] p-6 rounded-xl border border-[#49A4AE]/20 hover:border-[#49A4AE] transition-all">
+<div class="w-10 h-10 rounded-lg bg-white text-[#2A7A85] flex items-center justify-center mb-3 shadow-sm">
+<span class="material-symbols-outlined">timer</span>
+</div>
+<div class="text-3xl lg:text-4xl font-extrabold text-[#2A7A85] font-headline-md">4</div>
+<div class="text-sm font-semibold text-[#1E3A3F] mt-1">US time zones</div>
+<div class="text-xs text-[#557A80] mt-0.5">Full EST, CST, MST, PST coverage</div>
+</div>
+<div class="bg-[#E6F3F5] p-6 rounded-xl border border-[#49A4AE]/20 hover:border-[#49A4AE] transition-all">
+<div class="w-10 h-10 rounded-lg bg-white text-[#2A7A85] flex items-center justify-center mb-3 shadow-sm">
+<span class="material-symbols-outlined">award_star</span>
+</div>
+<div class="text-3xl lg:text-4xl font-extrabold text-[#2A7A85] font-headline-md">95%</div>
+<div class="text-sm font-semibold text-[#1E3A3F] mt-1">Quality score target</div>
+<div class="text-xs text-[#557A80] mt-0.5">Consistently achieved benchmark</div>
+</div>
+</div>
+</div>
+</section>
+<!-- WE DELIVER EXCELLENCE (7 SERVICES PREVIEW) -->
+<section class="py-16 lg:py-24 bg-[#F3F9FA]">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="text-center max-w-3xl mx-auto mb-14">
+<span class="px-3.5 py-1 rounded-full bg-[#E6F3F5] text-[#2A7A85] text-xs font-semibold tracking-wider uppercase border border-[#49A4AE]/20">
+              End-To-End Capabilities
+            </span>
+<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-headline-md mt-3 text-[#1E3A3F]">
+              We Deliver Excellence
+            </h2>
+<p class="text-[#557A80] text-base mt-3">
+              Engineered for seamless collaboration with American organizations, providing round-the-clock technical depth and process excellence.
+            </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Service 1 -->
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/18 shadow-soft hover:shadow-hover hover:-translate-y-1 hover:border-[#49A4AE] transition-all duration-200 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl">code</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Software Development</h3>
+<p class="text-sm text-[#557A80] mt-2 leading-relaxed">
+                  Full-stack engineering teams delivering scalable React, Node, Python, and cloud-native microservices aligned with modern Agile pipelines.
+                </p>
+</div>
+<a class="mt-6 inline-flex items-center text-sm font-semibold text-[#2A7A85] hover:text-[#006971]" href="#/services">
+                Learn more <span class="material-symbols-outlined text-base ml-1">arrow_forward</span>
+</a>
+</div>
+<!-- Service 2 -->
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/18 shadow-soft hover:shadow-hover hover:-translate-y-1 hover:border-[#49A4AE] transition-all duration-200 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl">rule</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Software Quality &amp; Testing</h3>
+<p class="text-sm text-[#557A80] mt-2 leading-relaxed">
+                  Rigorous automated testing frameworks, manual regression suites, performance benchmarking, and cross-browser quality assurance.
+                </p>
+</div>
+<a class="mt-6 inline-flex items-center text-sm font-semibold text-[#2A7A85] hover:text-[#006971]" href="#/services">
+                Learn more <span class="material-symbols-outlined text-base ml-1">arrow_forward</span>
+</a>
+</div>
+<!-- Service 3 -->
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/18 shadow-soft hover:shadow-hover hover:-translate-y-1 hover:border-[#49A4AE] transition-all duration-200 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl">dns</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">IT Support &amp; Administration</h3>
+<p class="text-sm text-[#557A80] mt-2 leading-relaxed">
+                  24/7/365 Tier 1-3 helpdesk, enterprise Active Directory, Microsoft 365, AWS/Azure server maintenance, and remote endpoint security.
+                </p>
+</div>
+<a class="mt-6 inline-flex items-center text-sm font-semibold text-[#2A7A85] hover:text-[#006971]" href="#/services">
+                Learn more <span class="material-symbols-outlined text-base ml-1">arrow_forward</span>
+</a>
+</div>
+<!-- Service 4 -->
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/18 shadow-soft hover:shadow-hover hover:-translate-y-1 hover:border-[#49A4AE] transition-all duration-200 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl">support_agent</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Customer Care</h3>
+<p class="text-sm text-[#557A80] mt-2 leading-relaxed">
+                  Empathetic, native-level English customer experience professionals managing high-volume inbound calls, chats, and ticketing queues.
+                </p>
+</div>
+<a class="mt-6 inline-flex items-center text-sm font-semibold text-[#2A7A85] hover:text-[#006971]" href="#/services">
+                Learn more <span class="material-symbols-outlined text-base ml-1">arrow_forward</span>
+</a>
+</div>
+<!-- Service 5 -->
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/18 shadow-soft hover:shadow-hover hover:-translate-y-1 hover:border-[#49A4AE] transition-all duration-200 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl">description</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Back Office &amp; Data Processing</h3>
+<p class="text-sm text-[#557A80] mt-2 leading-relaxed">
+                  Accurate, confidential verification, medical/legal record processing, claims verification, and catalog management under SOC 2 standards.
+                </p>
+</div>
+<a class="mt-6 inline-flex items-center text-sm font-semibold text-[#2A7A85] hover:text-[#006971]" href="#/services">
+                Learn more <span class="material-symbols-outlined text-base ml-1">arrow_forward</span>
+</a>
+</div>
+<!-- Service 6 -->
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/18 shadow-soft hover:shadow-hover hover:-translate-y-1 hover:border-[#49A4AE] transition-all duration-200 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl">account_balance</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Finance &amp; Accounting</h3>
+<p class="text-sm text-[#557A80] mt-2 leading-relaxed">
+                  US GAAP-compliant bookkeeping, AP/AR reconciliation, payroll operations, and audit-ready monthly close reporting.
+                </p>
+</div>
+<a class="mt-6 inline-flex items-center text-sm font-semibold text-[#2A7A85] hover:text-[#006971]" href="#/services">
+                Learn more <span class="material-symbols-outlined text-base ml-1">arrow_forward</span>
+</a>
+</div>
+<!-- Service 7 (Wide Span on Large) -->
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/18 shadow-soft hover:shadow-hover hover:-translate-y-1 hover:border-[#49A4AE] transition-all duration-200 md:col-span-2 lg:col-span-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-start sm:items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">campaign</span>
+</div>
+<div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Sales &amp; Marketing Support</h3>
+<p class="text-sm text-[#557A80] mt-1 max-w-2xl">
+                    Dedicated SDRs, targeted B2B lead enrichment, CRM hygiene (Salesforce/HubSpot), and inbound qualification driving pipeline for US account executives.
+                  </p>
+</div>
+</div>
+<a class="shrink-0 px-5 py-2.5 rounded-lg bg-[#E6F3F5] text-[#2A7A85] hover:bg-[#49A4AE] hover:text-white font-semibold text-sm transition" href="#/services">
+                View All Capabilities →
+              </a>
+</div>
+</div>
+</div>
+</section>
+<!-- A HOME FOR CAREERS IN BPO AND IT (EDITORIAL SECTION) -->
+<section class="py-16 lg:py-24 bg-white border-y border-[#49A4AE]/15">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-6 space-y-6">
+<span class="px-3.5 py-1 rounded-full bg-[#E6F3F5] text-[#2A7A85] text-xs font-semibold tracking-wider uppercase border border-[#49A4AE]/20">
+                Career Philosophy
+              </span>
+<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-headline-md text-[#1E3A3F] leading-tight">
+                A home for sustainable, high-growth careers in BPO and IT.
+              </h2>
+<p class="text-[#557A80] text-base leading-relaxed">
+                At Comtanix, we do not view outsourcing as a transactional utility. We invest in people through intensive US cultural immersion, structured communication workshops, and verifiable certifications. Our team members don’t just take tickets—they consult, solve, and lead.
+              </p>
+<div class="space-y-3 pt-2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#49A4AE]">check_circle</span>
+<span class="text-sm text-[#1E3A3F] font-medium">100% Paid training and onboarding program</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#49A4AE]">check_circle</span>
+<span class="text-sm text-[#1E3A3F] font-medium">Direct mentorship with US account managers</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#49A4AE]">check_circle</span>
+<span class="text-sm text-[#1E3A3F] font-medium">Predictable shift schedules with premium night allowances</span>
+</div>
+</div>
+<div class="pt-4 flex flex-wrap gap-4">
+<a class="px-6 py-3 rounded-lg bg-[#2A7A85] text-white hover:bg-[#006971] text-sm font-semibold transition" href="#/about">
+                  Read Our Story
+                </a>
+<a class="px-6 py-3 rounded-lg bg-transparent border-2 border-[#2A7A85] text-[#2A7A85] hover:bg-[#E6F3F5] text-sm font-semibold transition" href="#/careers">
+                  Explore Openings
+                </a>
+</div>
+</div>
+<!-- Architectural Office Card & Stats Grid -->
+<div class="lg:col-span-6">
+<div class="relative bg-[#F3F9FA] rounded-2xl p-6 sm:p-8 border border-[#49A4AE]/25 shadow-soft">
+<!-- Atmospheric Graphic Accent -->
+<div class="absolute -top-3 -right-3 w-20 h-20 bg-[#49A4AE]/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white p-5 rounded-xl border border-[#49A4AE]/15 shadow-sm">
+<span class="material-symbols-outlined text-3xl text-[#2A7A85]">school</span>
+<h4 class="font-bold text-base mt-2 text-[#1E3A3F]">Skill Ladders</h4>
+<p class="text-xs text-[#557A80] mt-1">Bi-annual evaluations with merit-based career growth.</p>
+</div>
+<div class="bg-white p-5 rounded-xl border border-[#49A4AE]/15 shadow-sm">
+<span class="material-symbols-outlined text-3xl text-[#2A7A85]">shield</span>
+<h4 class="font-bold text-base mt-2 text-[#1E3A3F]">Secure Facility</h4>
+<p class="text-xs text-[#557A80] mt-1">Biometric access, redundant power, and quiet pods.</p>
+</div>
+<div class="bg-white p-5 rounded-xl border border-[#49A4AE]/15 shadow-sm">
+<span class="material-symbols-outlined text-3xl text-[#2A7A85]">health_and_safety</span>
+<h4 class="font-bold text-base mt-2 text-[#1E3A3F]">Health &amp; Well-being</h4>
+<p class="text-xs text-[#557A80] mt-1">Ergonomic seating, medical coverage, and sports events.</p>
+</div>
+<div class="bg-white p-5 rounded-xl border border-[#49A4AE]/15 shadow-sm">
+<span class="material-symbols-outlined text-3xl text-[#2A7A85]">commute</span>
+<h4 class="font-bold text-base mt-2 text-[#1E3A3F]">Safe Transit</h4>
+<p class="text-xs text-[#557A80] mt-1">Designated commute security for night shift colleagues.</p>
+</div>
+</div>
+<div class="mt-6 p-4 rounded-xl bg-[#E6F3F5] border border-[#49A4AE]/30 flex items-center justify-between">
+<div>
+<div class="text-xs font-bold text-[#2A7A85] uppercase">Staff Retention Benchmark</div>
+<div class="text-sm font-semibold text-[#1E3A3F]">3.2 Years Average Tenure</div>
+</div>
+<span class="px-3 py-1 rounded bg-white text-xs font-bold text-[#2A7A85] shadow-sm">2x Industry Average</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- OUR GOALS (QUALITY, PEOPLE, GROWTH, TRUST) -->
+<section class="py-16 bg-[#F3F9FA]">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<span class="px-3 py-1 rounded-full bg-[#E6F3F5] text-[#2A7A85] text-xs font-semibold uppercase tracking-wider">Strategic Pillars</span>
+<h2 class="text-2xl sm:text-3xl font-bold font-headline-md text-[#1E3A3F] mt-2">Our Goals as an Enterprise</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft">
+<div class="text-[#2A7A85] font-headline-md text-2xl font-black mb-1">01</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Quality First</h3>
+<p class="text-xs text-[#557A80] mt-2 leading-relaxed">
+                Zero tolerance for superficial metrics. We train our teams to resolve root problems on first touch.
+              </p>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft">
+<div class="text-[#2A7A85] font-headline-md text-2xl font-black mb-1">02</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">People Investment</h3>
+<p class="text-xs text-[#557A80] mt-2 leading-relaxed">
+                Creating an inclusive environment where skill development leads directly to salary progression.
+              </p>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft">
+<div class="text-[#2A7A85] font-headline-md text-2xl font-black mb-1">03</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Measured Growth</h3>
+<p class="text-xs text-[#557A80] mt-2 leading-relaxed">
+                Scaling sustainably with US accounts by maintaining rigorous talent selectivity and technical fit.
+              </p>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft">
+<div class="text-[#2A7A85] font-headline-md text-2xl font-black mb-1">04</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Absolute Trust</h3>
+<p class="text-xs text-[#557A80] mt-2 leading-relaxed">
+                Adhering to strict IP protection, NDA protocols, and secure network infrastructure on all accounts.
+              </p>
+</div>
+</div>
+</div>
+</section>
+<!-- WHAT MAKES US COMTANIX (Bento Grid) -->
+<section class="py-16 lg:py-24 bg-white border-y border-[#49A4AE]/15">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+<div>
+<span class="px-3.5 py-1 rounded-full bg-[#E6F3F5] text-[#2A7A85] text-xs font-semibold tracking-wider uppercase border border-[#49A4AE]/20">
+                Culture &amp; Community
+              </span>
+<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-headline-md mt-3 text-[#1E3A3F]">
+                What Makes Us Comtanix
+              </h2>
+</div>
+<div class="mt-4 md:mt-0 flex gap-3">
+<a class="px-5 py-2.5 rounded-lg bg-[#E6F3F5] text-[#2A7A85] hover:bg-[#49A4AE] hover:text-white font-semibold text-sm transition" href="#/life">
+                View Life at Comtanix
+              </a>
+<a class="px-5 py-2.5 rounded-lg bg-[#2A7A85] text-white hover:bg-[#006971] font-semibold text-sm transition" href="#/careers">
+                We Are Hiring
+              </a>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<div class="md:col-span-2 bg-[#F3F9FA] rounded-xl p-6 border border-[#49A4AE]/20 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-3xl text-[#2A7A85]">diversity_3</span>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F] mt-3">High-Impact Teamwork</h3>
+<p class="text-sm text-[#557A80] mt-2">
+                  Daily standups with US engineering teams, cross-departmental peer reviews, and an ego-free, collaborative culture.
+                </p>
+</div>
+<div class="mt-6 pt-4 border-t border-[#49A4AE]/15 text-xs text-[#2A7A85] font-semibold">
+                Daily Agile Collaboration &amp; Knowledge Transfer
+              </div>
+</div>
+<div class="bg-[#E6F3F5] rounded-xl p-6 border border-[#49A4AE]/25 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-3xl text-[#2A7A85]">sports_soccer</span>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F] mt-3">Annual Sports Day</h3>
+<p class="text-xs text-[#557A80] mt-2">
+                  Fierce badminton, cricket, and table tennis tournaments to unwind outside the terminal.
+                </p>
+</div>
+<div class="mt-4 text-xs font-bold text-[#2A7A85]">Company-wide tradition</div>
+</div>
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/25 shadow-soft flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-3xl text-[#2A7A85]">restaurant</span>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F] mt-3">Executive Lunches</h3>
+<p class="text-xs text-[#557A80] mt-2">
+                  Monthly town halls and team feasts celebrating sprint goals and anniversaries.
+                </p>
+</div>
+<div class="mt-4 text-xs font-bold text-[#2A7A85]">Catered recognition</div>
+</div>
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/25 shadow-soft flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-3xl text-[#2A7A85]">military_tech</span>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F] mt-3">Excellence Awards</h3>
+<p class="text-xs text-[#557A80] mt-2">
+                  Spot bonuses, 'Star of the Month', and US partner commendations.
+                </p>
+</div>
+<div class="mt-4 text-xs font-bold text-[#2A7A85]">Performance rewarded</div>
+</div>
+<div class="md:col-span-2 lg:col-span-3 bg-[#2A7A85] text-white rounded-xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+<div>
+<h3 class="text-xl font-bold font-headline-md">Continuous Learning &amp; Accent Neutralization</h3>
+<p class="text-sm text-[#E6F3F5] mt-1 max-w-xl">
+                  Dedicated corporate trainers coach weekly on American business idioms, client negotiations, and cloud architectural patterns.
+                </p>
+</div>
+<a class="shrink-0 px-6 py-3 rounded-lg bg-white text-[#2A7A85] font-semibold text-sm hover:bg-[#E6F3F5] transition" href="#/apply">
+                Start Your Journey
+              </a>
+</div>
+</div>
+</div>
+</section>
+<!-- TESTIMONIALS (WHAT OUR TEAM SAYS) -->
+<section class="py-16 bg-[#F3F9FA]">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<span class="px-3.5 py-1 rounded-full bg-[#E6F3F5] text-[#2A7A85] text-xs font-semibold tracking-wider uppercase border border-[#49A4AE]/20">
+              Voices of Comtanix
+            </span>
+<h2 class="text-2xl sm:text-3xl font-bold font-headline-md text-[#1E3A3F] mt-3">What Our Team Says</h2>
+<p class="text-[#557A80] text-sm mt-2">Real journeys from associates who transitioned into leadership roles.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft flex flex-col justify-between">
+<div>
+<div class="flex text-amber-500 mb-3">
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+</div>
+<p class="text-sm text-[#1E3A3F] italic leading-relaxed">
+                  "I joined as a junior CSR on the US healthcare process. Within 14 months, thanks to internal leadership coaching, I was promoted to Floor QA Lead. Comtanix values consistency over politics."
+                </p>
+</div>
+<div class="mt-6 pt-4 border-t border-[#E6F3F5] flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#2A7A85] text-white flex items-center justify-center font-bold text-sm">
+                  AR
+                </div>
+<div>
+<div class="text-sm font-bold text-[#1E3A3F]">Ali Raza</div>
+<div class="text-xs text-[#557A80]">QA Lead — US Healthcare</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft flex flex-col justify-between">
+<div>
+<div class="flex text-amber-500 mb-3">
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+</div>
+<p class="text-sm text-[#1E3A3F] italic leading-relaxed">
+                  "Working direct night shifts with California-based DevOps engineers expanded my systems engineering skills 10x compared to standard local firms. Compensation is always on time."
+                </p>
+</div>
+<div class="mt-6 pt-4 border-t border-[#E6F3F5] flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#49A4AE] text-white flex items-center justify-center font-bold text-sm">
+                  SM
+                </div>
+<div>
+<div class="text-sm font-bold text-[#1E3A3F]">Sara Malik</div>
+<div class="text-xs text-[#557A80]">Cloud Support Engineer</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft flex flex-col justify-between">
+<div>
+<div class="flex text-amber-500 mb-3">
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+<span class="material-symbols-outlined text-sm material-symbols-fill">star</span>
+</div>
+<p class="text-sm text-[#1E3A3F] italic leading-relaxed">
+                  "The work environment is modern, respectful, and safe. The management cares about ergonomics, mental health during overnight shifts, and real career progression."
+                </p>
+</div>
+<div class="mt-6 pt-4 border-t border-[#E6F3F5] flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#006971] text-white flex items-center justify-center font-bold text-sm">
+                  HB
+                </div>
+<div>
+<div class="text-sm font-bold text-[#1E3A3F]">Hamza Bilal</div>
+<div class="text-xs text-[#557A80]">Operations Supervisor</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CLOSING HOME CTA BANNER -->
+<section class="py-16 bg-[#2A7A85] text-white geometric-grid">
+<div class="max-w-5xl mx-auto px-margin-mobile text-center">
+<h2 class="text-3xl sm:text-4xl font-extrabold font-headline-md leading-tight">
+            Your next opportunity could start here.
+          </h2>
+<p class="text-[#E6F3F5] text-base sm:text-lg mt-4 max-w-2xl mx-auto">
+            Ready to represent premier US enterprise brands and collaborate with high-performing global peers?
+          </p>
+<div class="mt-8 flex flex-wrap justify-center gap-4">
+<a class="px-8 py-3.5 rounded-lg bg-white text-[#2A7A85] hover:bg-[#E6F3F5] font-bold text-base shadow-lg transition" href="#/apply">
+              Apply Now — Fast-Track
+            </a>
+<a class="px-8 py-3.5 rounded-lg bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold text-base transition" href="#/careers">
+              Browse Open Positions
+            </a>
+</div>
+</div>
+</section>
+</div>
+<!-- ============================================== -->
+<!-- 2. SERVICES VIEW (#/services) -->
+<!-- ============================================== -->
+<div class="page-view hidden" id="view-services">
+<!-- Services Header -->
+<section class="bg-[#2A7A85] text-white py-16 geometric-grid">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin text-center">
+<span class="px-3.5 py-1 rounded-full bg-white/10 backdrop-blur text-xs font-semibold uppercase tracking-wider border border-white/20">
+            Enterprise Architecture &amp; Process Excellence
+          </span>
+<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline-md mt-4">
+            Our Enterprise Services
+          </h1>
+<p class="text-[#E6F3F5] text-base lg:text-lg mt-3 max-w-3xl mx-auto font-light">
+            Comprehensive offshore capabilities tailored to the velocity, security standards, and operational demands of US enterprises.
+          </p>
+</div>
+</section>
+<!-- Services Deep Dive List -->
+<section class="py-16 bg-[#F3F9FA]">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin space-y-8">
+<!-- 01 Software Development -->
+<div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#49A4AE]/20 shadow-soft">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div class="flex items-start gap-4">
+<span class="text-2xl sm:text-3xl font-black text-[#2A7A85] font-headline-md">01</span>
+<div>
+<h2 class="text-xl sm:text-2xl font-bold font-headline-md text-[#1E3A3F]">Software Development</h2>
+<p class="text-sm text-[#557A80] mt-2 max-w-3xl leading-relaxed">
+                    Custom web and mobile solutions built by dedicated remote squads. We integrate seamlessly into your Jira, GitHub, and CI/CD pipelines, writing production-grade code in React, Vue, Next.js, Node.js, Python, and Go with test-driven discipline.
+                  </p>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Full-Stack Web</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Cloud-Native APIs</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Microservices Architecture</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">AWS &amp; Azure Integration</span>
+</div>
+</div>
+</div>
+<a class="shrink-0 px-5 py-2.5 rounded-lg bg-[#E6F3F5] text-[#2A7A85] hover:bg-[#49A4AE] hover:text-white font-semibold text-sm transition" href="#/apply">
+                Apply for Dev Roles →
+              </a>
+</div>
+</div>
+<!-- 02 Software QA -->
+<div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#49A4AE]/20 shadow-soft">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div class="flex items-start gap-4">
+<span class="text-2xl sm:text-3xl font-black text-[#2A7A85] font-headline-md">02</span>
+<div>
+<h2 class="text-xl sm:text-2xl font-bold font-headline-md text-[#1E3A3F]">Software Quality &amp; Testing</h2>
+<p class="text-sm text-[#557A80] mt-2 max-w-3xl leading-relaxed">
+                    Ensuring zero regression and rock-solid usability across all devices. Our QA engineers engineer Cypress, Playwright, and Selenium suites, conduct automated load tests, and perform rigorous usability checks before any sprint hits production.
+                  </p>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Automated Regression</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Performance &amp; Load Testing</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">API Validation (Postman)</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Cross-Browser Matrices</span>
+</div>
+</div>
+</div>
+<a class="shrink-0 px-5 py-2.5 rounded-lg bg-[#E6F3F5] text-[#2A7A85] hover:bg-[#49A4AE] hover:text-white font-semibold text-sm transition" href="#/apply">
+                Apply for QA Roles →
+              </a>
+</div>
+</div>
+<!-- 03 IT Support -->
+<div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#49A4AE]/20 shadow-soft">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div class="flex items-start gap-4">
+<span class="text-2xl sm:text-3xl font-black text-[#2A7A85] font-headline-md">03</span>
+<div>
+<h2 class="text-xl sm:text-2xl font-bold font-headline-md text-[#1E3A3F]">IT Support &amp; Administration</h2>
+<p class="text-sm text-[#557A80] mt-2 max-w-3xl leading-relaxed">
+                    24/7/365 Tier 1, Tier 2, and Tier 3 engineering desk for US distributed organizations. We monitor uptime, handle Active Directory provisioning, troubleshoot MDM (Intune/Jamf), and maintain cloud backup routines.
+                  </p>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">24/7 Help Desk</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Microsoft 365 &amp; Google Workspace</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Network &amp; VPN Troubleshooting</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Security Hardening</span>
+</div>
+</div>
+</div>
+<a class="shrink-0 px-5 py-2.5 rounded-lg bg-[#E6F3F5] text-[#2A7A85] hover:bg-[#49A4AE] hover:text-white font-semibold text-sm transition" href="#/apply">
+                Apply for IT Roles →
+              </a>
+</div>
+</div>
+<!-- 04 Customer Care -->
+<div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#49A4AE]/20 shadow-soft">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div class="flex items-start gap-4">
+<span class="text-2xl sm:text-3xl font-black text-[#2A7A85] font-headline-md">04</span>
+<div>
+<h2 class="text-xl sm:text-2xl font-bold font-headline-md text-[#1E3A3F]">Customer Care &amp; Experience</h2>
+<p class="text-sm text-[#557A80] mt-2 max-w-3xl leading-relaxed">
+                    Inbound and outbound omnichannel customer support delivering CSAT scores above 95%. Our reps are trained extensively on US cultural context, active listening, de-escalation, and Zendesk/Freshdesk workflows.
+                  </p>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">US Voice Support</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Real-Time Web Chat</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Email Ticket Resolution</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">High CSAT Focus</span>
+</div>
+</div>
+</div>
+<a class="shrink-0 px-5 py-2.5 rounded-lg bg-[#E6F3F5] text-[#2A7A85] hover:bg-[#49A4AE] hover:text-white font-semibold text-sm transition" href="#/apply">
+                Apply for Support Roles →
+              </a>
+</div>
+</div>
+<!-- 05 Back Office -->
+<div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#49A4AE]/20 shadow-soft">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div class="flex items-start gap-4">
+<span class="text-2xl sm:text-3xl font-black text-[#2A7A85] font-headline-md">05</span>
+<div>
+<h2 class="text-xl sm:text-2xl font-bold font-headline-md text-[#1E3A3F]">Back Office &amp; Data Processing</h2>
+<p class="text-sm text-[#557A80] mt-2 max-w-3xl leading-relaxed">
+                    High-accuracy operational processing for fintech, healthcare, and logistics companies. Stringent multi-tier QA audits ensure 99.5%+ field accuracy with full HIPAA and SOC 2 data protection safeguards.
+                  </p>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Document Digitization</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Claims Processing</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Content Moderation</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Catalog Management</span>
+</div>
+</div>
+</div>
+<a class="shrink-0 px-5 py-2.5 rounded-lg bg-[#E6F3F5] text-[#2A7A85] hover:bg-[#49A4AE] hover:text-white font-semibold text-sm transition" href="#/apply">
+                Apply for Data Roles →
+              </a>
+</div>
+</div>
+<!-- 06 Finance & Accounting -->
+<div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#49A4AE]/20 shadow-soft">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div class="flex items-start gap-4">
+<span class="text-2xl sm:text-3xl font-black text-[#2A7A85] font-headline-md">06</span>
+<div>
+<h2 class="text-xl sm:text-2xl font-bold font-headline-md text-[#1E3A3F]">Finance &amp; Accounting</h2>
+<p class="text-sm text-[#557A80] mt-2 max-w-3xl leading-relaxed">
+                    Skilled offshore accounting teams adept in QuickBooks, Xero, NetSuite, and Sage. We maintain accounts payable/receivable, conduct bank reconciliations, and produce accurate financial packets for US management.
+                  </p>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">US GAAP Compliance</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">AP / AR Automation</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Reconciliation &amp; Reporting</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Payroll Administration</span>
+</div>
+</div>
+</div>
+<a class="shrink-0 px-5 py-2.5 rounded-lg bg-[#E6F3F5] text-[#2A7A85] hover:bg-[#49A4AE] hover:text-white font-semibold text-sm transition" href="#/apply">
+                Apply for Finance Roles →
+              </a>
+</div>
+</div>
+<!-- 07 Sales & Marketing Support -->
+<div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#49A4AE]/20 shadow-soft">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div class="flex items-start gap-4">
+<span class="text-2xl sm:text-3xl font-black text-[#2A7A85] font-headline-md">07</span>
+<div>
+<h2 class="text-xl sm:text-2xl font-bold font-headline-md text-[#1E3A3F]">Sales &amp; Marketing Support</h2>
+<p class="text-sm text-[#557A80] mt-2 max-w-3xl leading-relaxed">
+                    Accelerating pipeline generation for US account executives. Our reps specialize in targeted prospect research, cold email sequence management, LinkedIn outreach, and inbound meeting scheduling.
+                  </p>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">B2B Lead Enrichment</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">SDR Cold Outreach</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Salesforce &amp; HubSpot CRM</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F3F5] text-[#2A7A85]">Meeting Qualification</span>
+</div>
+</div>
+</div>
+<a class="shrink-0 px-5 py-2.5 rounded-lg bg-[#E6F3F5] text-[#2A7A85] hover:bg-[#49A4AE] hover:text-white font-semibold text-sm transition" href="#/apply">
+                Apply for SDR Roles →
+              </a>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ============================================== -->
+<!-- 3. ABOUT VIEW (#/about) -->
+<!-- ============================================== -->
+<div class="page-view hidden" id="view-about">
+<!-- About Hero -->
+<section class="bg-[#2A7A85] text-white py-16 geometric-grid">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin text-center">
+<span class="px-3.5 py-1 rounded-full bg-white/10 text-xs font-semibold uppercase tracking-wider border border-white/20">
+            Institutional Clarity &amp; Trust
+          </span>
+<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline-md mt-4">
+            About Comtanix
+          </h1>
+<p class="text-[#E6F3F5] text-base lg:text-lg mt-3 max-w-2xl mx-auto font-light">
+            Connecting ambitious professionals with premier US businesses through architectural discipline and high ethical standards.
+          </p>
+</div>
+</section>
+<!-- Sub-section 1: Our Story -->
+<section class="py-16 bg-white border-b border-[#49A4AE]/15">
+<div class="max-w-5xl mx-auto px-margin-mobile">
+<div class="text-center mb-8">
+<span class="px-3 py-1 rounded-full bg-[#E6F3F5] text-[#2A7A85] text-xs font-semibold uppercase">The Journey</span>
+<h2 class="text-2xl sm:text-3xl font-bold font-headline-md mt-2 text-[#1E3A3F]">Our Story</h2>
+</div>
+<div class="prose max-w-none text-[#557A80] text-base leading-relaxed space-y-4">
+<p class="">
+              Comtanix was founded on a simple yet unyielding realization: top-tier American businesses don't need transactional call centers; they need integrated, strategic talent pods that think in sync with their core values and product deadlines.
+            </p>
+<p class="">
+              Beginning with a focused team of specialized software engineers and support analysts, we engineered our infrastructure to mirror North American work cultures. From our ergonomic floor design and dedicated gigabit fiber links to our specialized US holiday alignment and accent neutralization academies, every detail is crafted to make collaboration effortless.
+            </p>
+<p class="">
+              Today, Comtanix stands as a recognized leader in enterprise BPO and technology staffing, hosting more than 250 specialists across multiple departments. We have maintained enduring partnerships with US companies by keeping one promise: reliable outcomes delivered with dignity, transparency, and technical precision.
+            </p>
+</div>
+</div>
+</section>
+<!-- Sub-section 2: Core Values -->
+<section class="py-16 bg-[#F3F9FA] border-b border-[#49A4AE]/15">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<span class="px-3 py-1 rounded-full bg-[#E6F3F5] text-[#2A7A85] text-xs font-semibold uppercase">Our DNA</span>
+<h2 class="text-2xl sm:text-3xl font-bold font-headline-md mt-2 text-[#1E3A3F]">The 4 Core Values</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft">
+<div class="w-12 h-12 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center font-bold text-xl mb-4">
+                1
+              </div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Recruit Well</h3>
+<p class="text-sm text-[#557A80] mt-2 leading-relaxed">
+                We screen thoroughly for cognitive agility, communication clarity, and long-term ambition rather than mere keyword matches.
+              </p>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft">
+<div class="w-12 h-12 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center font-bold text-xl mb-4">
+                2
+              </div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Train Fully</h3>
+<p class="text-sm text-[#557A80] mt-2 leading-relaxed">
+                No associate goes on a live US queue unprepared. Our training includes simulated calls, tooling mastery, and deep cultural immersion.
+              </p>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft">
+<div class="w-12 h-12 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center font-bold text-xl mb-4">
+                3
+              </div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Retain with Care</h3>
+<p class="text-sm text-[#557A80] mt-2 leading-relaxed">
+                We believe in competitive salaries, timely bonuses, modern ergonomic offices, and respectful, human-centric management.
+              </p>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft">
+<div class="w-12 h-12 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center font-bold text-xl mb-4">
+                4
+              </div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Deliver Results</h3>
+<p class="text-sm text-[#557A80] mt-2 leading-relaxed">
+                Accountability is our cornerstone. We measure our success solely through our clients' bottom-line KPIs and retention scores.
+              </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Sub-section 3: Learning & Development (4-Step Progression) -->
+<section class="py-16 bg-white">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<span class="px-3 py-1 rounded-full bg-[#E6F3F5] text-[#2A7A85] text-xs font-semibold uppercase">Growth Architecture</span>
+<h2 class="text-2xl sm:text-3xl font-bold font-headline-md mt-2 text-[#1E3A3F]">Learning &amp; Development Roadmap</h2>
+<p class="text-[#557A80] text-sm mt-2">Every team member follows a structured pathway from onboarding to executive leadership.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+<div class="bg-[#F3F9FA] p-6 rounded-xl border border-[#49A4AE]/20">
+<div class="text-xs font-bold text-[#2A7A85] uppercase tracking-wider">Phase 01</div>
+<h3 class="text-base font-bold font-headline-md text-[#1E3A3F] mt-1">Paid Induction</h3>
+<p class="text-xs text-[#557A80] mt-2">
+                2 weeks of fully compensated company orientation, compliance certifications, and security protocols.
+              </p>
+</div>
+<div class="bg-[#F3F9FA] p-6 rounded-xl border border-[#49A4AE]/20">
+<div class="text-xs font-bold text-[#2A7A85] uppercase tracking-wider">Phase 02</div>
+<h3 class="text-base font-bold font-headline-md text-[#1E3A3F] mt-1">Communication Mastery</h3>
+<p class="text-xs text-[#557A80] mt-2">
+                Accent polishing, active listening modules, and executive written communication for US corporate standards.
+              </p>
+</div>
+<div class="bg-[#F3F9FA] p-6 rounded-xl border border-[#49A4AE]/20">
+<div class="text-xs font-bold text-[#2A7A85] uppercase tracking-wider">Phase 03</div>
+<h3 class="text-base font-bold font-headline-md text-[#1E3A3F] mt-1">Tooling Deep-Dive</h3>
+<p class="text-xs text-[#557A80] mt-2">
+                Hands-on simulated sandbox environments for Jira, Salesforce, Zendesk, AWS, and modern tech stacks.
+              </p>
+</div>
+<div class="bg-[#E6F3F5] p-6 rounded-xl border border-[#49A4AE]/30">
+<div class="text-xs font-bold text-[#006971] uppercase tracking-wider">Phase 04</div>
+<h3 class="text-base font-bold font-headline-md text-[#006971] mt-1">Leadership Track</h3>
+<p class="text-xs text-[#2A7A85] mt-2">
+                Mentorship for high-performers stepping into Team Leader, Floor QA, and Operations Manager roles.
+              </p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ============================================== -->
+<!-- 4. CAREERS VIEW (#/careers) -->
+<!-- ============================================== -->
+<div class="page-view hidden" id="view-careers">
+<!-- Careers Hero -->
+<section class="bg-[#2A7A85] text-white py-16 geometric-grid">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin text-center">
+<span class="px-3.5 py-1 rounded-full bg-white/10 text-xs font-semibold uppercase tracking-wider border border-white/20">
+            Open Hiring • Immediate Vacancies
+          </span>
+<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline-md mt-4">
+            Find Your Next Opportunity at Comtanix
+          </h1>
+<p class="text-[#E6F3F5] text-base lg:text-lg mt-3 max-w-2xl mx-auto font-light">
+            Competitive packages, respectful shift cultures, fast-track promotions, and exposure to elite US enterprise accounts.
+          </p>
+</div>
+</section>
+<!-- Why People Stay -->
+<section class="py-12 bg-white border-b border-[#49A4AE]/15">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="p-4 rounded-xl bg-[#E6F3F5] text-center">
+<span class="material-symbols-outlined text-2xl text-[#2A7A85]">payments</span>
+<div class="text-sm font-bold text-[#1E3A3F] mt-1">100% Paid Training</div>
+<div class="text-xs text-[#557A80]">Earn from your very first day</div>
+</div>
+<div class="p-4 rounded-xl bg-[#E6F3F5] text-center">
+<span class="material-symbols-outlined text-2xl text-[#2A7A85]">trending_up</span>
+<div class="text-sm font-bold text-[#1E3A3F] mt-1">Fast-Track Growth</div>
+<div class="text-xs text-[#557A80]">Promotions every 6 months</div>
+</div>
+<div class="p-4 rounded-xl bg-[#E6F3F5] text-center">
+<span class="material-symbols-outlined text-2xl text-[#2A7A85]">workspace_premium</span>
+<div class="text-sm font-bold text-[#1E3A3F] mt-1">Performance Rewards</div>
+<div class="text-xs text-[#557A80]">Monthly metric bonuses</div>
+</div>
+<div class="p-4 rounded-xl bg-[#E6F3F5] text-center">
+<span class="material-symbols-outlined text-2xl text-[#2A7A85]">corporate_fare</span>
+<div class="text-sm font-bold text-[#1E3A3F] mt-1">Safe Modern Office</div>
+<div class="text-xs text-[#557A80]">Central, secure facility</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5 Live Role Cards -->
+<section class="py-16 bg-[#F3F9FA]">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-xl sm:text-2xl font-bold font-headline-md text-[#1E3A3F]">5 Currently Active Positions</h2>
+<span class="text-xs font-semibold text-[#2A7A85] bg-white px-3 py-1 rounded-full border border-[#49A4AE]/20">Updated Today</span>
+</div>
+<!-- Role 1 -->
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/20 shadow-soft hover:shadow-hover hover:border-[#49A4AE] transition-all flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-[#E6F3F5] text-[#2A7A85]">US Process</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">Night Shift (EST)</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-[#F3F9FA] text-[#557A80]">Full-Time</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Customer Support Agent — US Process</h3>
+<p class="text-xs text-[#557A80] max-w-2xl">
+                Handle inbound customer calls, inquiries, and email tickets for leading American retail and logistics brands. Requires excellent English fluency and active problem-solving skills.
+              </p>
+<div class="text-xs text-[#2A7A85] font-semibold">Min. 6 months customer care experience preferred • Fresh graduates with strong spoken English welcome</div>
+</div>
+<a class="shrink-0 px-6 py-2.5 rounded-lg bg-[#49A4AE] hover:bg-[#2A7A85] text-white text-sm font-semibold transition text-center" href="#/apply?role=Customer%20Support%20Agent">
+              Apply for Role →
+            </a>
+</div>
+<!-- Role 2 -->
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/20 shadow-soft hover:shadow-hover hover:border-[#49A4AE] transition-all flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-[#E6F3F5] text-[#2A7A85]">IT Infrastructure</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">Rotational Shifts</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-[#F3F9FA] text-[#557A80]">Full-Time</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Technical Support Representative (Tier 1/2)</h3>
+<p class="text-xs text-[#557A80] max-w-2xl">
+                Deliver first-touch IT resolution for remote US staff. Diagnose network issues, reset enterprise credentials, administer Office 365 / Slack, and escalate complex server incidents.
+              </p>
+<div class="text-xs text-[#2A7A85] font-semibold">CCNA / CompTIA A+ preferred • 1+ year in technical helpdesk environments</div>
+</div>
+<a class="shrink-0 px-6 py-2.5 rounded-lg bg-[#49A4AE] hover:bg-[#2A7A85] text-white text-sm font-semibold transition text-center" href="#/apply?role=Technical%20Support%20Representative">
+              Apply for Role →
+            </a>
+</div>
+<!-- Role 3 -->
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/20 shadow-soft hover:shadow-hover hover:border-[#49A4AE] transition-all flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-[#E6F3F5] text-[#2A7A85]">Back Office</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">Evening Shift</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-[#F3F9FA] text-[#557A80]">Full-Time</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Data Entry &amp; Back Office Executive</h3>
+<p class="text-xs text-[#557A80] max-w-2xl">
+                Process medical billing claims, reconcile inventory logs, and perform secure catalog categorization for US clients with a high degree of speed and accuracy.
+              </p>
+<div class="text-xs text-[#2A7A85] font-semibold">Min 45 WPM typing speed • Exceptional attention to alphanumeric detail</div>
+</div>
+<a class="shrink-0 px-6 py-2.5 rounded-lg bg-[#49A4AE] hover:bg-[#2A7A85] text-white text-sm font-semibold transition text-center" href="#/apply?role=Data%20Entry%20Executive">
+              Apply for Role →
+            </a>
+</div>
+<!-- Role 4 -->
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/20 shadow-soft hover:shadow-hover hover:border-[#49A4AE] transition-all flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-[#E6F3F5] text-[#2A7A85]">Engineering</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-purple-50 text-purple-700 border border-purple-200">Flexible US Overlap</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-[#F3F9FA] text-[#557A80]">Full-Time</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Full Stack Web Developer (React / Node.js)</h3>
+<p class="text-xs text-[#557A80] max-w-2xl">
+                Build and maintain responsive client-facing web applications. Collaborate directly with US Product Managers to deliver clean, documented JavaScript/TypeScript microservices.
+              </p>
+<div class="text-xs text-[#2A7A85] font-semibold">2+ years production React &amp; Node.js • Experience with Git workflows and REST/GraphQL</div>
+</div>
+<a class="shrink-0 px-6 py-2.5 rounded-lg bg-[#49A4AE] hover:bg-[#2A7A85] text-white text-sm font-semibold transition text-center" href="#/apply?role=Web%20Developer">
+              Apply for Role →
+            </a>
+</div>
+<!-- Role 5 -->
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/20 shadow-soft hover:shadow-hover hover:border-[#49A4AE] transition-all flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-[#E6F3F5] text-[#2A7A85]">Management</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">Night Shift</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-[#F3F9FA] text-[#557A80]">Full-Time</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">BPO Team Leader / Shift Supervisor</h3>
+<p class="text-xs text-[#557A80] max-w-2xl">
+                Oversee floor operations of 15-20 support agents. Drive daily CSAT, AHT, and attendance metrics while mentoring junior staff and joining client review calls.
+              </p>
+<div class="text-xs text-[#2A7A85] font-semibold">2+ years supervisory experience in US BPO campaign • Proven coaching abilities</div>
+</div>
+<a class="shrink-0 px-6 py-2.5 rounded-lg bg-[#49A4AE] hover:bg-[#2A7A85] text-white text-sm font-semibold transition text-center" href="#/apply?role=Team%20Leader">
+              Apply for Role →
+            </a>
+</div>
+</div>
+</section>
+</div>
+<!-- ============================================== -->
+<!-- 5. LIFE AT COMTANIX VIEW (#/life) -->
+<!-- ============================================== -->
+<div class="page-view hidden" id="view-life">
+<!-- Life Hero -->
+<section class="bg-[#2A7A85] text-white py-16 geometric-grid">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin text-center">
+<span class="px-3.5 py-1 rounded-full bg-white/10 text-xs font-semibold uppercase tracking-wider border border-white/20">
+            Work Hard, Celebrate Together
+          </span>
+<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-headline-md mt-4">
+            Life at Comtanix
+          </h1>
+<p class="text-[#E6F3F5] text-base lg:text-lg mt-3 max-w-2xl mx-auto font-light">
+            We work demanding US hours, so we take our workplace comfort, team bonding, and celebration culture very seriously.
+          </p>
+</div>
+</section>
+<!-- Life Collage / Feature Grid -->
+<section class="py-16 bg-[#F3F9FA]">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/20 shadow-soft">
+<div class="w-10 h-10 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Monthly Team Lunches</h3>
+<p class="text-xs text-[#557A80] mt-2 leading-relaxed">
+                Every department gathers for company-funded team meals, celebrating sprint finishes, campaign wins, and welcoming new recruits.
+              </p>
+</div>
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/20 shadow-soft">
+<div class="w-10 h-10 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined">sports_tennis</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Annual Sports Gala</h3>
+<p class="text-xs text-[#557A80] mt-2 leading-relaxed">
+                Full-day inter-departmental tournaments featuring cricket, badminton, table tennis, and chess with commemorative trophies and prizes.
+              </p>
+</div>
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/20 shadow-soft">
+<div class="w-10 h-10 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined">star_rate</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Star of the Month</h3>
+<p class="text-xs text-[#557A80] mt-2 leading-relaxed">
+                Public recognition on our main wall of fame, gift vouchers, and cash bonuses for agents who exceed their monthly SLA targets.
+              </p>
+</div>
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/20 shadow-soft">
+<div class="w-10 h-10 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Skill Enrichment Sessions</h3>
+<p class="text-xs text-[#557A80] mt-2 leading-relaxed">
+                Interactive weekend sessions covering US pop culture idioms, conversational psychology, cloud certifications, and public speaking.
+              </p>
+</div>
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/20 shadow-soft">
+<div class="w-10 h-10 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined">celebration</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Festivals &amp; Birthdays</h3>
+<p class="text-xs text-[#557A80] mt-2 leading-relaxed">
+                Cake cutting on every birthday, festive holiday dinners (Eid, New Year, Thanksgiving themed socials), and cultural exchanges.
+              </p>
+</div>
+<div class="bg-white rounded-xl p-6 border border-[#49A4AE]/20 shadow-soft">
+<div class="w-10 h-10 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined">videogame_asset</span>
+</div>
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Breakroom &amp; Game Nights</h3>
+<p class="text-xs text-[#557A80] mt-2 leading-relaxed">
+                Recharge between calls with our PS5 console, foosball table, specialized quiet rest corners, and unlimited tea &amp; coffee bar.
+              </p>
+</div>
+</div>
+<!-- Workplace Snapshot Visual Feature -->
+<div class="mt-12 bg-white rounded-2xl p-8 border border-[#49A4AE]/20 shadow-soft text-center">
+<h3 class="text-xl font-bold font-headline-md text-[#1E3A3F]">A Glimpse Into Our Floor Culture</h3>
+<p class="text-sm text-[#557A80] max-w-xl mx-auto mt-2">
+              Modern sound-dampened workspaces, ergonomic high-back seating, dual-monitor workstations, and active climate control around the clock.
+            </p>
+<div class="mt-6 flex flex-wrap justify-center gap-3">
+<span class="px-4 py-2 rounded-lg bg-[#E6F3F5] text-[#2A7A85] font-semibold text-xs">Acoustically Treated Booths</span>
+<span class="px-4 py-2 rounded-lg bg-[#E6F3F5] text-[#2A7A85] font-semibold text-xs">Dual High-Speed Gigabit Fiber</span>
+<span class="px-4 py-2 rounded-lg bg-[#E6F3F5] text-[#2A7A85] font-semibold text-xs">Full Generator Backup</span>
+<span class="px-4 py-2 rounded-lg bg-[#E6F3F5] text-[#2A7A85] font-semibold text-xs">Dedicated Female Rest Lounge</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ============================================== -->
+<!-- 6. APPLY VIEW (#/apply) -->
+<!-- ============================================== -->
+<div class="page-view hidden" id="view-apply">
+<!-- Apply Hero -->
+<section class="bg-[#2A7A85] text-white py-14 geometric-grid">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin text-center">
+<span class="px-3.5 py-1 rounded-full bg-white/10 text-xs font-semibold uppercase tracking-wider border border-white/20">
+            Fast-Track Application
+          </span>
+<h1 class="text-3xl sm:text-4xl font-extrabold font-headline-md mt-3">
+            Join the Comtanix Team
+          </h1>
+<p class="text-[#E6F3F5] text-base mt-2 max-w-xl mx-auto font-light">
+            Fill in your details below. Our recruitment desk reviews every submission within 48 business hours.
+          </p>
+</div>
+</section>
+<!-- Application Form & Timeline Section -->
+<section class="py-16 bg-[#F3F9FA]">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- The Form -->
+<div class="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-[#49A4AE]/20 shadow-soft">
+<h2 class="text-xl font-bold font-headline-md text-[#1E3A3F] mb-6">Candidate Information</h2>
+<form class="space-y-4" id="apply-form" onsubmit="event.preventDefault(); window.handleApplySubmit();">
+<div>
+<label class="block text-xs font-bold text-[#1E3A3F] uppercase tracking-wider mb-1">Full Legal Name *</label>
+<input class="w-full bg-[#FFFFFF] border border-[#49A4AE]/30 rounded-lg px-4 py-2.5 text-sm text-[#1E3A3F] placeholder-[#557A80] focus:border-[#49A4AE] focus:ring-2 focus:ring-[#49A4AE]/20 focus:outline-none transition" id="apply-name" placeholder="e.g. Bilal Ahmed" required="" type="text">
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-[#1E3A3F] uppercase tracking-wider mb-1">Email Address *</label>
+<input class="w-full bg-[#FFFFFF] border border-[#49A4AE]/30 rounded-lg px-4 py-2.5 text-sm text-[#1E3A3F] placeholder-[#557A80] focus:border-[#49A4AE] focus:ring-2 focus:ring-[#49A4AE]/20 focus:outline-none transition" id="apply-email" placeholder="bilal@example.com" required="" type="email">
+</div>
+<div>
+<label class="block text-xs font-bold text-[#1E3A3F] uppercase tracking-wider mb-1">Phone / WhatsApp *</label>
+<input class="w-full bg-[#FFFFFF] border border-[#49A4AE]/30 rounded-lg px-4 py-2.5 text-sm text-[#1E3A3F] placeholder-[#557A80] focus:border-[#49A4AE] focus:ring-2 focus:ring-[#49A4AE]/20 focus:outline-none transition" id="apply-phone" placeholder="+92 300 1234567" required="" type="tel">
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-[#1E3A3F] uppercase tracking-wider mb-1">Position Applied For *</label>
+<select class="w-full bg-[#FFFFFF] border border-[#49A4AE]/30 rounded-lg px-4 py-2.5 text-sm text-[#1E3A3F] focus:border-[#49A4AE] focus:ring-2 focus:ring-[#49A4AE]/20 focus:outline-none transition" id="apply-position" required="">
+<option value="">Select a role...</option>
+<option value="Customer Support Agent">Customer Support Agent — US Process</option>
+<option value="Technical Support Representative">Technical Support Representative</option>
+<option value="Data Entry Executive">Data Entry and Back Office Executive</option>
+<option value="Web Developer">Web Developer (React / Node)</option>
+<option value="Team Leader">BPO Team Leader</option>
+<option value="General Consideration">General Talent Consideration</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-[#1E3A3F] uppercase tracking-wider mb-1">Years of Relevant Experience</label>
+<select class="w-full bg-[#FFFFFF] border border-[#49A4AE]/30 rounded-lg px-4 py-2.5 text-sm text-[#1E3A3F] focus:border-[#49A4AE] focus:ring-2 focus:ring-[#49A4AE]/20 focus:outline-none transition" id="apply-exp">
+<option value="Fresh">Fresh / Less than 6 months</option>
+<option value="1-2">1 - 2 Years</option>
+<option value="3-5">3 - 5 Years</option>
+<option value="5+">5+ Years</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-[#1E3A3F] uppercase tracking-wider mb-1">Shift Flexibility *</label>
+<div class="flex flex-wrap gap-4 mt-1 text-sm text-[#1E3A3F]">
+<label class="inline-flex items-center gap-2">
+<input checked="" class="text-[#2A7A85] focus:ring-[#49A4AE]" name="shift" type="radio" value="night">
+<span class="">US Night Shift (Primary)</span>
+</label>
+<label class="inline-flex items-center gap-2">
+<input class="text-[#2A7A85] focus:ring-[#49A4AE]" name="shift" type="radio" value="rotational">
+<span class="">Rotational Shifts</span>
+</label>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-[#1E3A3F] uppercase tracking-wider mb-1">Upload Resume (PDF, DOCX) *</label>
+<input accept=".pdf,.doc,.docx" class="w-full text-xs text-[#557A80] file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#E6F3F5] file:text-[#2A7A85] hover:file:bg-[#49A4AE] hover:file:text-white cursor-pointer transition" id="apply-cv" required="" type="file">
+</div>
+<div>
+<label class="block text-xs font-bold text-[#1E3A3F] uppercase tracking-wider mb-1">Brief Introduction / Motivation</label>
+<textarea class="w-full bg-[#FFFFFF] border border-[#49A4AE]/30 rounded-lg px-4 py-2 text-sm text-[#1E3A3F] placeholder-[#557A80] focus:border-[#49A4AE] focus:ring-2 focus:ring-[#49A4AE]/20 focus:outline-none transition" id="apply-message" placeholder="Tell us why you would be a great fit for our US campaign..." rows="3"></textarea>
+</div>
+<div class="hidden p-3 rounded-lg text-sm" id="apply-status"></div>
+<button class="w-full bg-[#49A4AE] hover:bg-[#2A7A85] text-white font-bold py-3.5 rounded-lg shadow transition flex items-center justify-center gap-2" type="submit">
+<span class="">Submit Application</span>
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</button>
+<p class="text-center text-[11px] text-[#557A80]">By submitting, you agree to our fair recruitment privacy practices.</p>
+</form>
+</div>
+<!-- Side Timeline Card: "What Happens Next" -->
+<div class="lg:col-span-5 space-y-6">
+<div class="bg-white rounded-2xl p-6 sm:p-7 border border-[#49A4AE]/20 shadow-soft">
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">What happens next?</h3>
+<p class="text-xs text-[#557A80] mt-1">Our recruitment pipeline is fast, respectful, and transparent.</p>
+<div class="mt-6 space-y-6 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-[#E6F3F5]">
+<div class="relative flex items-start gap-4">
+<div class="w-7 h-7 rounded-full bg-[#2A7A85] text-white flex items-center justify-center font-bold text-xs shrink-0 z-10">1</div>
+<div>
+<h4 class="text-sm font-bold text-[#1E3A3F]">Profile Screening</h4>
+<p class="text-xs text-[#557A80] mt-0.5">Our Talent Acquisition squad evaluates your background within 48 business hours.</p>
+</div>
+</div>
+<div class="relative flex items-start gap-4">
+<div class="w-7 h-7 rounded-full bg-[#49A4AE] text-white flex items-center justify-center font-bold text-xs shrink-0 z-10">2</div>
+<div>
+<h4 class="text-sm font-bold text-[#1E3A3F]">Communication Assessment</h4>
+<p class="text-xs text-[#557A80] mt-0.5">A 15-minute phone or in-person check focusing on spoken English and situational clarity.</p>
+</div>
+</div>
+<div class="relative flex items-start gap-4">
+<div class="w-7 h-7 rounded-full bg-[#006971] text-white flex items-center justify-center font-bold text-xs shrink-0 z-10">3</div>
+<div>
+<h4 class="text-sm font-bold text-[#1E3A3F]">Executive Interview &amp; Offer</h4>
+<p class="text-xs text-[#557A80] mt-0.5">Final panel with campaign supervisors, immediate job offer letter, and onboarding schedule.</p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-4 border-t border-[#E6F3F5] text-xs text-[#557A80] flex items-center justify-between">
+<span class="">Questions about recruitment?</span>
+<a class="text-[#2A7A85] font-bold hover:underline" href="#/contact">Contact HR Desk →</a>
+</div>
+</div>
+<!-- Quick Walk-in Callout -->
+<div class="bg-[#E6F3F5] rounded-xl p-5 border border-[#49A4AE]/25">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-2xl text-[#2A7A85]">pin_drop</span>
+<div>
+<div class="text-xs font-bold text-[#2A7A85] uppercase">Walk-in Interviews Open</div>
+<div class="text-sm font-bold text-[#1E3A3F]">Monday – Friday, 4:00 PM – 11:00 PM</div>
+</div>
+</div>
+<p class="text-xs text-[#557A80] mt-2">
+                  Bring an updated printed CV and CNIC for direct on-the-spot screening at our corporate facility.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ============================================== -->
+<!-- 7. CONTACT VIEW (#/contact) -->
+<!-- ============================================== -->
+<div class="page-view hidden" id="view-contact">
+<!-- Contact Hero -->
+<section class="bg-[#2A7A85] text-white py-14 geometric-grid">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin text-center">
+<span class="px-3.5 py-1 rounded-full bg-white/10 text-xs font-semibold uppercase tracking-wider border border-white/20">
+            Always Accessible
+          </span>
+<h1 class="text-3xl sm:text-4xl font-extrabold font-headline-md mt-3">
+            Contact Comtanix
+          </h1>
+<p class="text-[#E6F3F5] text-base mt-2 max-w-xl mx-auto font-light">
+            Whether inquiring about enterprise partnership or applying for a career opening, our team responds swiftly.
+          </p>
+</div>
+</section>
+<!-- Contact Info & Interactive Card Grid -->
+<section class="py-16 bg-[#F3F9FA]">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft">
+<div class="w-10 h-10 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined">call</span>
+</div>
+<h3 class="text-base font-bold font-headline-md text-[#1E3A3F]">Direct Phone Line</h3>
+<p class="text-xs text-[#557A80] mt-1">Available 24 hours during business days.</p>
+<div class="mt-4 text-sm font-bold text-[#2A7A85]">+1 (800) 555-COMTANIX</div>
+<div class="text-xs text-[#557A80]">Local HR: +92 300 0000000</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft">
+<div class="w-10 h-10 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined">email</span>
+</div>
+<h3 class="text-base font-bold font-headline-md text-[#1E3A3F]">Email Inquiries</h3>
+<p class="text-xs text-[#557A80] mt-1">Direct department inboxes.</p>
+<div class="mt-4 text-sm font-bold text-[#2A7A85]">careers@comtanix.com</div>
+<div class="text-xs text-[#557A80]">partners@comtanix.com</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#49A4AE]/20 shadow-soft">
+<div class="w-10 h-10 rounded-lg bg-[#E6F3F5] text-[#2A7A85] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<h3 class="text-base font-bold font-headline-md text-[#1E3A3F]">Interview Walk-In Hours</h3>
+<p class="text-xs text-[#557A80] mt-1">Recruitment floor open.</p>
+<div class="mt-4 text-sm font-bold text-[#2A7A85]">Mon - Fri: 4:00 PM – 11:00 PM</div>
+<div class="text-xs text-[#557A80]">Dedicated evening candidate desk</div>
+</div>
+</div>
+<!-- Headquarters Map Container and WhatsApp Fast Track -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+<div class="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-[#49A4AE]/20 shadow-soft flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-4 border-b border-[#E6F3F5]">
+<h3 class="text-lg font-bold font-headline-md text-[#1E3A3F]">Corporate Headquarters</h3>
+<span class="text-xs font-semibold text-[#2A7A85] bg-[#E6F3F5] px-3 py-1 rounded-full">Secure Enterprise Zone</span>
+</div>
+<p class="text-sm text-[#557A80] mt-3">
+                  Comtanix Corporate Centre, High-Tech Industrial Zone, Enterprise Boulevard, Operations Wing 4.
+                </p>
+<div class="mt-2 text-xs text-[#557A80]">
+                  Conveniently situated near main transit arterials with secure parking and round-the-clock facility escorts.
+                </div>
+</div>
+<!-- Interactive Simulated Map Container -->
+<div class="mt-6 h-64 rounded-xl bg-[#E6F3F5] border border-[#49A4AE]/25 relative overflow-hidden flex items-center justify-center text-center p-4" data-location="Enterprise Industrial Zone">
+<div class="space-y-2">
+<span class="material-symbols-outlined text-4xl text-[#2A7A85]">map</span>
+<div class="text-sm font-bold text-[#1E3A3F]">Interactive Campus Map</div>
+<p class="text-xs text-[#557A80] max-w-xs">Comtanix Towers — Gate 2 Candidate Reception</p>
+<a class="inline-block mt-2 px-4 py-1.5 rounded-lg bg-white text-[#2A7A85] text-xs font-bold shadow-sm hover:shadow" href="https://maps.google.com" rel="noopener noreferrer" target="_blank">
+                    Open in Google Maps ↗
+                  </a>
+</div>
+</div>
+</div>
+<!-- WhatsApp Direct Card -->
+<div class="lg:col-span-5 bg-[#2A7A85] text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between geometric-grid">
+<div>
+<div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-3xl text-emerald-300">chat</span>
+</div>
+<h3 class="text-2xl font-bold font-headline-md">Instant WhatsApp Recruiter</h3>
+<p class="text-[#E6F3F5] text-sm mt-3 leading-relaxed">
+                  Have a quick question regarding shift timings, required documentation, or our interview schedule? Connect directly with our on-duty Talent Acquisition coordinator.
+                </p>
+</div>
+<div class="mt-8 space-y-3">
+<a class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 px-6 rounded-lg text-center flex items-center justify-center gap-2 shadow-lg transition" href="https://wa.me/18005552668" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined">chat</span>
+<span class="">Chat on WhatsApp Now</span>
+</a>
+<div class="text-center text-xs text-[#E6F3F5]/80">Typical response time: Under 10 minutes</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- GLOBAL PRE-FOOTER (GET IN TOUCH WITH US) -->
+<section class="bg-white py-12 border-t border-[#49A4AE]/15">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6">
+<div>
+<h3 class="text-xl font-bold font-headline-md text-[#1E3A3F]">Ready to elevate your trajectory?</h3>
+<p class="text-sm text-[#557A80] mt-1">Our recruitment floor is actively reviewing applications for upcoming US onboarding batches.</p>
+</div>
+<div class="flex items-center gap-3">
+<a class="px-6 py-2.5 rounded-lg bg-[#49A4AE] hover:bg-[#2A7A85] text-white font-semibold text-sm transition" href="#/apply">
+            Apply Now
+          </a>
+<a class="px-6 py-2.5 rounded-lg bg-[#E6F3F5] text-[#2A7A85] hover:bg-[#49A4AE] hover:text-white font-semibold text-sm transition" href="#/contact">
+            Get in Touch
+          </a>
+</div>
+</div>
+</div>
+</section>
+<!-- GLOBAL FOOTER -->
+<footer class="bg-inverse-surface docked full-width bottom border-t border-outline-variant/10 text-inverse-on-surface">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin py-space-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-white/10">
+<!-- Brand Column -->
+<div class="lg:col-span-2 space-y-4">
+<div class="flex items-center gap-3">
+<div class="bg-white rounded-lg p-1.5 inline-flex items-center"><img alt="Comtanix Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9PiWIpTD0IbVMQXWS86Vq4HpbAf0pnGIsEJpN7WCRQfNQIY5BBg8xs_pQwF8Asms42e94WWeTTT9QZiCRV5uYZZT78ndKloLP1KdUmOU-urY6rBD3L9dXZhEHHPMitv4pUcOtyWZKNIUjKBg6Y2_c49z2ufqWUw-X4OP7sS6d5XkyYq8sn6-5URyixhu2LbrqGACqtT34NWm2UmnHam0ADW_W3jnaIoeGZ11fCZmz2PnX8r_Roc9ZuGpWFZx14pvgqmw"></div>
+</div>
+<p class="text-xs text-inverse-on-surface/80 max-w-sm leading-relaxed">
+            Enterprise Business Process Outsourcing and IT solutions providing dedicated global talent pipelines to premier American corporations under rigorous SOC 2 data security standards.
+          </p>
+<div class="text-xs text-primary-fixed font-medium">
+            Operating in Eastern (EST), Central (CST), Mountain (MST), and Pacific (PST) US Time Zones.
+          </div>
+</div>
+<!-- Navigation Links 1 -->
+<div>
+<h4 class="text-sm font-bold text-white font-headline-md mb-3">Capabilities</h4>
+<ul class="space-y-2 text-xs text-inverse-on-surface/80">
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/services">Software Engineering</a></li>
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/services">QA &amp; Test Automation</a></li>
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/services">24/7 IT Help Desk</a></li>
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/services">US Customer Care</a></li>
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/services">Back Office Operations</a></li>
+</ul>
+</div>
+<!-- Navigation Links 2 -->
+<div>
+<h4 class="text-sm font-bold text-white font-headline-md mb-3">Careers &amp; Life</h4>
+<ul class="space-y-2 text-xs text-inverse-on-surface/80">
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/careers">Open Positions</a></li>
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/apply">Apply Online</a></li>
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/life">Culture &amp; Sports</a></li>
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/about">Training Academy</a></li>
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/contact">Walk-In Hours</a></li>
+</ul>
+</div>
+<!-- Navigation Links 3 -->
+<div>
+<h4 class="text-sm font-bold text-white font-headline-md mb-3">Compliance &amp; Trust</h4>
+<ul class="space-y-2 text-xs text-inverse-on-surface/80">
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/about">Security Architecture</a></li>
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/about">Compliance &amp; SOC 2</a></li>
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/about">Privacy Policy</a></li>
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/about">Terms of Service</a></li>
+<li class=""><a class="hover:text-primary-fixed transition-colors duration-150" href="#/contact">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<!-- Copyright & Bottom Line -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-inverse-on-surface/60 gap-4">
+<div class="">© 2025 Comtanix Global Solutions LLC. All rights reserved.</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary-fixed transition" href="#/about">Privacy Policy</a>
+<a class="hover:text-primary-fixed transition" href="#/about">Terms of Service</a>
+<a class="hover:text-primary-fixed transition" href="#/about">Security Safeguards</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- FLOATING WHATSAPP CTA BUTTON (Docked at Bottom Right) -->
+<a aria-label="Chat with Comtanix Recruiter on WhatsApp" class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110 group focus:outline-none focus:ring-4 focus:ring-emerald-300" href="https://wa.me/18005552668" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-2xl">chat</span>
+<span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out px-0 group-hover:px-2 text-xs font-bold">Chat with HR</span>
+</a>
+<!-- INTERACTIVE CLIENT-SIDE ROUTER & CLOCKS SCRIPT -->
+<script>
+    (function() {
+      // 1. Live US and HQ Clocks Synchronization
+      function updateClocks() {
+        const now = new Date();
+
+        // New York (EST / EDT)
+        try {
+          const nyTime = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/New_York',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+          }).format(now);
+          const nyDate = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/New_York',
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric'
+          }).format(now);
+          const nyEl = document.getElementById('clock-ny');
+          const nyDateEl = document.getElementById('date-ny');
+          if (nyEl) nyEl.textContent = nyTime;
+          if (nyDateEl) nyDateEl.textContent = nyDate;
+        } catch(e) {}
+
+        // Los Angeles (PST / PDT)
+        try {
+          const laTime = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/Los_Angeles',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+          }).format(now);
+          const laDate = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/Los_Angeles',
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric'
+          }).format(now);
+          const laEl = document.getElementById('clock-la');
+          const laDateEl = document.getElementById('date-la');
+          if (laEl) laEl.textContent = laTime;
+          if (laDateEl) laDateEl.textContent = laDate;
+        } catch(e) {}
+
+        // Operations Floor / Local HQ
+        try {
+          const hqTime = new Intl.DateTimeFormat('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+          }).format(now);
+          const hqEl = document.getElementById('clock-hq');
+          if (hqEl) hqEl.textContent = hqTime;
+        } catch(e) {}
+      }
+
+      setInterval(updateClocks, 1000);
+      updateClocks();
+
+      // 2. Hash-based Single-Page View Switcher
+      const views = {
+        'home': document.getElementById('view-home'),
+        'services': document.getElementById('view-services'),
+        'about': document.getElementById('view-about'),
+        'careers': document.getElementById('view-careers'),
+        'life': document.getElementById('view-life'),
+        'apply': document.getElementById('view-apply'),
+        'contact': document.getElementById('view-contact')
+      };
+
+      const navMapping = {
+        'home': 'Home',
+        'services': 'Services',
+        'about': 'About',
+        'careers': 'Careers',
+        'life': 'Life at Comtanix',
+        'contact': 'Contact'
+      };
+
+      function handleRoute() {
+        const hash = window.location.hash || '#/home';
+        const cleanRoute = hash.replace('#/', '').split('?')[0].toLowerCase() || 'home';
+        const targetViewKey = views[cleanRoute] ? cleanRoute : 'home';
+
+        // Hide all views, display target view
+        Object.keys(views).forEach(key => {
+          if (views[key]) {
+            if (key === targetViewKey) {
+              views[key].classList.remove('hidden');
+            } else {
+              views[key].classList.add('hidden');
+            }
+          }
+        });
+
+        // Update Desktop Navbar Active State according to source of truth
+        const desktopNavLinks = document.querySelectorAll('#desktop-nav .nav-item');
+        const activeNavLabel = navMapping[targetViewKey] || '';
+
+        desktopNavLinks.forEach(link => {
+          const navText = link.getAttribute('data-nav');
+          if (navText && navText === activeNavLabel) {
+            link.className = "nav-item text-primary font-title-md border-b-2 border-primary pb-1 transition-all duration-200";
+          } else {
+            link.className = "nav-item text-on-surface-variant font-title-md hover:text-primary transition-colors duration-200";
+          }
+        });
+
+        // Handle URL parameters for role pre-fill in Apply view
+        if (targetViewKey === 'apply') {
+          const urlParams = new URLSearchParams(window.location.hash.includes('?') ? window.location.hash.split('?')[1] : '');
+          const roleParam = urlParams.get('role');
+          if (roleParam) {
+            const roleSelect = document.getElementById('apply-position');
+            if (roleSelect) {
+              for (let i = 0; i < roleSelect.options.length; i++) {
+                if (roleSelect.options[i].value.toLowerCase().includes(roleParam.toLowerCase())) {
+                  roleSelect.selectedIndex = i;
+                  break;
+                }
+              }
+            }
+          }
+        }
+
+        // Scroll to top of content
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Close mobile drawer if open
+        closeDrawer();
+      }
+
+      window.addEventListener('hashchange', handleRoute);
+      window.addEventListener('DOMContentLoaded', handleRoute);
+
+      // 3. Mobile Navigation Drawer Controls
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const closeBtn = document.getElementById('close-drawer-btn');
+      const drawer = document.getElementById('side-drawer');
+      const backdrop = document.getElementById('drawer-backdrop');
+
+      function openDrawer() {
+        if (drawer && backdrop) {
+          drawer.classList.remove('translate-x-full');
+          backdrop.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeDrawer() {
+        if (drawer && backdrop) {
+          drawer.classList.add('translate-x-full');
+          backdrop.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (menuBtn) menuBtn.addEventListener('click', openDrawer);
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+      // 4. Form Submission Handler
+      window.handleApplySubmit = function() {
+        const name = document.getElementById('apply-name').value;
+        const position = document.getElementById('apply-position').value;
+        const statusBox = document.getElementById('apply-status');
+
+        if (statusBox) {
+          statusBox.classList.remove('hidden');
+          statusBox.className = "p-4 rounded-lg text-sm bg-[#E6F3F5] text-[#006971] border border-[#49A4AE]/40";
+          statusBox.innerHTML = `<strong>Thank you, ${name}!</strong> Your application for the <strong>${position}</strong> role has been registered. Our HR coordinator will reach out via WhatsApp/Email within 48 business hours.`;
+          
+          // Clear inputs
+          document.getElementById('apply-form').reset();
+        }
+      };
+
+    })();
+  </script>
+
+
+</body></html>

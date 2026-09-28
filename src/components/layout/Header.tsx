@@ -1,0 +1,222 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { BrandLogo } from "@/components/ui/BrandLogo";
+import { Container } from "@/components/ui/Section";
+import { SITE } from "@/lib/config";
+
+const aboutLinks = [
+  { href: "/about#story", label: "Our Story" },
+  { href: "/about#values", label: "Core Values" },
+  { href: "/about#learning", label: "Learning & Development" },
+];
+
+function NavLink({
+  href,
+  label,
+  active,
+  onClick,
+  light,
+}: {
+  href: string;
+  label: string;
+  active?: boolean;
+  onClick?: () => void;
+  light?: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      aria-current={active ? "page" : undefined}
+      className={`relative px-3 py-2 text-lg font-semibold tracking-tight transition-colors xl:px-3.5 ${
+        light
+          ? active
+            ? "text-white after:absolute after:right-3 after:bottom-0 after:left-3 after:h-0.5 after:rounded-full after:bg-brand"
+            : "text-white/85 hover:text-white"
+          : active
+            ? "text-sea after:absolute after:right-3 after:bottom-0 after:left-3 after:h-0.5 after:rounded-full after:bg-sea"
+            : "text-ink/85 hover:text-sea"
+      }`}
+    >
+      {label}
+    </Link>
+  );
+}
+
+export function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [open, setOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    setOpen(false);
+    setAboutOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(false);
+      return;
+    }
+    const onScroll = () => setScrolled(window.scrollY > 48);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
+
+  const overHero = isHome && !scrolled && !open;
+  const dropLink =
+    "block rounded-md px-3 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-tint hover:text-sea";
+
+  const desktopLink = (active: boolean) =>
+    `${"relative inline-flex items-center gap-1 px-3 py-2 text-lg font-semibold tracking-tight transition-colors xl:px-3.5"} ${
+      overHero
+        ? active
+          ? "text-white after:absolute after:right-3 after:bottom-0 after:left-3 after:h-0.5 after:rounded-full after:bg-brand"
+          : "text-white/85 hover:text-white"
+        : active
+          ? "text-sea after:absolute after:right-3 after:bottom-0 after:left-3 after:h-0.5 after:rounded-full after:bg-sea"
+          : "text-ink/85 hover:text-sea"
+    }`;
+
+  return (
+    <header
+      className={`z-50 transition-all duration-300 ${
+        overHero
+          ? "absolute inset-x-0 top-0 border-transparent bg-transparent"
+          : "sticky top-0 border-b border-line bg-surface/95 shadow-soft backdrop-blur-md"
+      }`}
+    >
+      <div className="flex h-16 w-full items-center justify-between gap-4 px-3 sm:px-4 md:h-[4.75rem] md:px-5 lg:px-6">
+        <Link
+          href="/"
+          className="shrink-0 focus-visible:rounded-sm"
+          aria-label={`${SITE.name} home`}
+        >
+          <BrandLogo light={overHero} className="h-10 w-auto md:h-11" />
+        </Link>
+
+        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
+          <NavLink href="/" label="Home" active={pathname === "/"} light={overHero} />
+
+          <div className="relative group">
+            <Link
+              href="/about"
+              className={desktopLink(pathname.startsWith("/about"))}
+              aria-current={pathname.startsWith("/about") ? "page" : undefined}
+            >
+              About
+              <ChevronDown className="h-4 w-4 opacity-70" aria-hidden />
+            </Link>
+            <div className="invisible absolute left-0 top-full z-50 min-w-[240px] pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <div className="rounded-lg border border-line bg-surface p-2 shadow-[var(--shadow-overlay)]">
+                {aboutLinks.map((l) => (
+                  <Link key={l.href} href={l.href} className={dropLink}>
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <NavLink
+            href="/careers"
+            label="Careers"
+            active={pathname.startsWith("/careers")}
+            light={overHero}
+          />
+          <NavLink
+            href="/life"
+            label={`Life at ${SITE.name}`}
+            active={pathname.startsWith("/life")}
+            light={overHero}
+          />
+          <NavLink
+            href="/contact"
+            label="Contact"
+            active={pathname.startsWith("/contact")}
+            light={overHero}
+          />
+
+          <Button href="/apply" className="ml-3 rounded-full px-5">
+            Apply Now
+          </Button>
+        </nav>
+
+        <div className="flex items-center gap-2 lg:hidden">
+          <Button
+            href="/apply"
+            className="hidden h-10 rounded-full px-4 text-sm sm:inline-flex"
+          >
+            Apply
+          </Button>
+          <button
+            type="button"
+            className={`inline-flex h-11 items-center gap-2 rounded-full border px-3.5 text-sm font-semibold transition ${
+              overHero
+                ? "border-white/40 text-white hover:bg-white/10"
+                : "border-line text-ink hover:bg-tint"
+            }`}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            Menu
+          </button>
+        </div>
+      </div>
+
+      {open ? (
+        <div id="mobile-nav" className="border-t border-line bg-surface lg:hidden">
+          <Container className="flex max-h-[calc(100dvh-4rem)] flex-col gap-0.5 overflow-y-auto py-3 pb-6">
+            <NavLink href="/" label="Home" active={pathname === "/"} onClick={() => setOpen(false)} />
+
+            <button
+              type="button"
+              className="flex items-center justify-between px-3 py-3 text-left text-[15px] font-semibold text-ink"
+              onClick={() => setAboutOpen((v) => !v)}
+              aria-expanded={aboutOpen}
+            >
+              About
+              <ChevronDown className={`h-5 w-5 transition ${aboutOpen ? "rotate-180" : ""}`} />
+            </button>
+            {aboutOpen
+              ? aboutLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="px-5 py-2.5 text-sm text-muted hover:bg-tint hover:text-sea"
+                  >
+                    {l.label}
+                  </Link>
+                ))
+              : null}
+
+            <NavLink href="/careers" label="Careers" onClick={() => setOpen(false)} />
+            <NavLink href="/life" label={`Life at ${SITE.name}`} onClick={() => setOpen(false)} />
+            <NavLink href="/contact" label="Contact" onClick={() => setOpen(false)} />
+            <Button href="/apply" className="mt-4 w-full rounded-full">
+              Apply Now <ArrowRight className="h-4 w-4" aria-hidden />
+            </Button>
+          </Container>
+        </div>
+      ) : null}
+    </header>
+  );
+}

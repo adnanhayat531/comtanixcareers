@@ -1,0 +1,27 @@
+# Comtanix website: project rules
+
+This is a static, no-build website for Comtanix, a BPO and IT company that works with American clients. It is career-focused: the main goal is to attract job seekers and to impress US clients.
+
+## Stack and structure
+- Plain HTML, CSS and JavaScript. No framework, no build step. Must open by double-clicking index.html.
+- index.html: markup for all pages (Home, Services, About, Careers, Life at Comtanix, Apply, Contact).
+- css/style.css: all styles, driven by CSS variables in :root.
+- js/main.js: CONFIG object at the top (WhatsApp number, address, emails, socials, office photo, form endpoint), hash router (#/home, #/services/dev, #/about/story ...), services and testimonials data arrays, counters, apply form.
+- assets/logo.png: the Comtanix logo. Keep using it in the header.
+
+## Design rules
+- Color theme comes from the logo: teal #49A4AE (brand), deep teal #2A7A85, tint #E6F3F5, white cards, text #1E3A3F. Never use black. No dark mode.
+- Fonts: Sora (headings) and Public Sans (body).
+- Keep the site responsive (mobile first), accessible (visible focus, contrast, aria labels) and respect prefers-reduced-motion.
+- Copy: plain professional English, sentence case, active voice. Buttons say what they do.
+
+## Must always keep working
+- Prominent "Apply Now" button in the header and on key pages.
+- Apply form with CV upload (PDF or Word, max 5 MB). It sends the application through WhatsApp (wa.me) or to CONFIG.formEndpoint if set.
+- Floating WhatsApp button, office location with Get directions, one office photo, social media buttons, testimonials, team activities and goals.
+- Dropdown navigation and hash routing.
+
+## When editing
+- Change contact details only in the CONFIG object in js/main.js.
+- Testimonials (TESTI) and footprint numbers are sample data; replace them with real content when the user provides it.
+- Keep changes small and explain what you changed.

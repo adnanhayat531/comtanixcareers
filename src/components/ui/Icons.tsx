@@ -1,0 +1,79 @@
+import {
+  Code2,
+  ShieldCheck,
+  Wrench,
+  Headset,
+  FolderKanban,
+  ChartColumn,
+  Megaphone,
+  Utensils,
+  Trophy,
+  Star,
+  GraduationCap,
+  PartyPopper,
+  Gamepad2,
+  type LucideIcon,
+} from "lucide-react";
+import type { Service } from "@/lib/data/services";
+
+const serviceIcons: Record<Service["icon"], LucideIcon> = {
+  code: Code2,
+  shield: ShieldCheck,
+  wrench: Wrench,
+  headset: Headset,
+  folder: FolderKanban,
+  chart: ChartColumn,
+  megaphone: Megaphone,
+};
+
+export function ServiceIcon({
+  name,
+  className = "h-5 w-5",
+}: {
+  name: Service["icon"];
+  className?: string;
+}) {
+  const Icon = serviceIcons[name];
+  return <Icon className={className} aria-hidden />;
+}
+
+const lifeIcons = {
+  utensils: Utensils,
+  trophy: Trophy,
+  star: Star,
+  graduation: GraduationCap,
+  party: PartyPopper,
+  game: Gamepad2,
+} as const;
+
+export function LifeIcon({
+  name,
+  className = "h-5 w-5",
+}: {
+  name: keyof typeof lifeIcons;
+  className?: string;
+}) {
+  const Icon = lifeIcons[name];
+  return <Icon className={className} aria-hidden />;
+}
+
+export function IconBadge({
+  children,
+  tone = "sea",
+}: {
+  children: React.ReactNode;
+  tone?: "sea" | "brand" | "tint";
+}) {
+  const tones = {
+    sea: "bg-sea text-white",
+    brand: "bg-brand text-white",
+    tint: "bg-tint text-sea",
+  };
+  return (
+    <div
+      className={`mb-4 grid h-11 w-11 place-items-center rounded-md ${tones[tone]}`}
+    >
+      {children}
+    </div>
+  );
+}
