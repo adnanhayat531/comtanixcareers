@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import Image from "next/image";
 import { CONFIG, DEFAULT_WA_MESSAGE, waLink } from "@/lib/config";
 
 export function WhatsAppFloat() {
@@ -8,10 +8,15 @@ export function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] z-40 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 font-display text-sm font-bold text-[#053b1c] shadow-[0_8px_24px_rgba(30,58,63,0.18)] transition hover:brightness-105 md:right-6"
+      className="fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] z-40 transition hover:scale-105 hover:brightness-110 md:right-6"
     >
-      <MessageCircle className="h-5 w-5" aria-hidden />
-      <span className="hidden sm:inline">WhatsApp</span>
+      <Image
+        src="/whatsapp.png"
+        alt="WhatsApp"
+        width={64}
+        height={64}
+        className="h-14 w-14 rounded-[22%] object-cover drop-shadow-[0_6px_16px_rgba(0,0,0,0.28)] md:h-16 md:w-16"
+      />
       <span className="sr-only">{CONFIG.whatsappShow}</span>
     </a>
   );
