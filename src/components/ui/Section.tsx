@@ -12,7 +12,7 @@ export function Container({
 }) {
   return (
     <div
-      className={`w-full px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-20 ${className}`}
+      className={`w-full px-5 sm:px-7 md:px-9 lg:px-11 xl:px-14 2xl:px-16 ${className}`}
     >
       {children}
     </div>
@@ -29,7 +29,7 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={`py-16 md:py-20 lg:py-24 ${className}`}>
+    <section id={id} className={`py-12 md:py-14 lg:py-16 ${className}`}>
       {children}
     </section>
   );
@@ -54,7 +54,7 @@ export function SectionHeading({
 }) {
   return (
     <HeadingReveal
-      className={`${compact ? "mb-0" : "mb-8 md:mb-10"} max-w-2xl ${
+      className={`${compact ? "mb-0" : "mb-6 md:mb-8"} max-w-2xl ${
         align === "center" ? "mx-auto text-center" : ""
       } ${className}`}
       duration={1}
@@ -62,7 +62,7 @@ export function SectionHeading({
       {eyebrow ? (
         <p
           className={`mb-2.5 font-body text-[11px] font-semibold tracking-[0.12em] uppercase md:text-xs ${
-            light ? "text-white/65" : "text-sea"
+            light ? "text-white/65" : "text-brand"
           }`}
         >
           {eyebrow}
@@ -101,7 +101,7 @@ export function PageIntro({
   children?: ReactNode;
 }) {
   return (
-    <div className="border-b border-line bg-surface pt-12 pb-10 md:pt-16 md:pb-12">
+    <div className="border-b border-line bg-surface pt-10 pb-8 md:pt-12 md:pb-10">
       <Container>
         <SectionHeading
           eyebrow={eyebrow}

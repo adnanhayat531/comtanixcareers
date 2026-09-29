@@ -56,7 +56,7 @@ export default function AboutPage() {
           <ol className="grid gap-6 sm:gap-8 md:grid-cols-2">
             {VALUES.map((v, i) => (
               <li key={v.title} className="group">
-                <div className="relative mb-5 aspect-[4/3] overflow-hidden rounded-xl bg-[#dce8e8]">
+                <div className="relative mb-5 aspect-[4/3] overflow-hidden rounded-xl bg-on-sea">
                   <Image
                     src={v.image}
                     alt=""
@@ -65,7 +65,7 @@ export default function AboutPage() {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />
                   <div
-                    className="absolute inset-0 bg-gradient-to-t from-[#0a2222]/45 via-transparent to-transparent"
+                    className="absolute inset-0 bg-gradient-to-t from-brand/45 via-transparent to-transparent"
                     aria-hidden
                   />
                   <span className="absolute bottom-3 left-3 font-display text-xs font-bold tracking-[0.14em] text-white uppercase drop-shadow-sm">
@@ -95,7 +95,7 @@ export default function AboutPage() {
             {LEARNING.map((l, i) => (
               <div key={l.title} className="relative pb-10 last:pb-0">
                 <span
-                  className="absolute top-1.5 -left-[1.9rem] grid h-6 w-6 place-items-center rounded-full bg-sea text-[11px] font-bold text-white md:-left-[2.15rem]"
+                  className="absolute top-1.5 -left-[1.9rem] grid h-6 w-6 place-items-center rounded-full bg-brand text-[11px] font-bold text-white md:-left-[2.15rem]"
                   aria-hidden
                 >
                   {i + 1}

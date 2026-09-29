@@ -9,7 +9,7 @@ export function BrandLogo({
   /** White wordmark for dark hero / dark surfaces */
   light?: boolean;
 }) {
-  const text = light ? "#ffffff" : "#0b2c35";
+  const text = light ? "#ffffff" : "var(--ink)";
   return (
     <svg
       className={className}
@@ -21,12 +21,12 @@ export function BrandLogo({
       role="img"
       aria-label={SITE.name}
     >
-      {/* Teal hexagon with transparent diamond cutout */}
+      {/* Teal hexagon with transparent diamond cutout — logo brand */}
       <path
         fillRule="evenodd"
         clipRule="evenodd"
         d="M25 4 L42.5 14.5 L42.5 35.5 L25 46 L7.5 35.5 L7.5 14.5 Z M25 17 L31 25 L25 33 L19 25 Z"
-        fill="#49A4AE"
+        fill="var(--brand)"
       />
       {/* Wordmark */}
       <text

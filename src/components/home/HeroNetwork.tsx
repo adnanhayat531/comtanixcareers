@@ -8,14 +8,15 @@ export function HeroNetwork() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
+        poster="/hero-poster.jpg"
       >
         <source src="/hero-bg.mp4" type="video/mp4" />
       </video>
 
       {/* Light readability wash — video stays clearly visible */}
-      <div className="absolute inset-0 bg-[#0d2a2a]/35" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/45" />
+      <div className="absolute inset-0 bg-brand/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-brand/35 via-transparent to-brand/40" />
     </div>
   );
 }

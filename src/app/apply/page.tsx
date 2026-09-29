@@ -62,7 +62,7 @@ export default function ApplyPage() {
           <ol className="mt-6 space-y-5">
             {STEPS.map((s) => (
               <li key={s.n} className="flex gap-3">
-                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-tint font-display text-sm font-bold text-sea">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand font-display text-sm font-bold text-white">
                   {s.n}
                 </span>
                 <div>
@@ -78,7 +78,7 @@ export default function ApplyPage() {
               href={waLink(DEFAULT_WA_MESSAGE)}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-sea hover:underline"
+              className="font-semibold text-brand hover:underline"
             >
               Message us on WhatsApp
             </a>

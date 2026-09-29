@@ -29,7 +29,7 @@ export const CONFIG = {
   mapQuery: "Comtanix office",
   hours: "Monday to Friday, 4:00 PM to 11:00 PM",
   officeTz: "Asia/Karachi",
-  officePhoto: "/office.png",
+  officePhoto: "/office-hq.png",
 } as const;
 
 export function waLink(text?: string) {

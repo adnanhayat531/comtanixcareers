@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  /* Comtanix teal theme + Contour-like type rhythm */
-  --canvas: #ffffff;
-  --ink: #474747;
-  --muted: #6b7c82;
+  /* ONLY logo colors — hexagon #49A4AE + wordmark #0b2c35 (text) */
+  --canvas: #e8f5f6;
+  --ink: #0b2c35;
+  --muted: #3d7a82;
   --brand: #49a4ae;
-  --sea: #2d6a6a;
-  --sea-mid: #245858;
-  --deep: #1e4a4a;
-  --muted-on-deep: #a8c4c4;
-  --tint: #eef6f5;
-  --line: rgba(45, 106, 106, 0.14);
-  --line-strong: rgba(45, 106, 106, 0.28);
+  --sea: #49a4ae;
+  --sea-mid: #49a4ae;
+  --deep: #49a4ae;
+  --muted-on-deep: #e8f5f6;
+  --tint: #e8f5f6;
+  --line: rgba(73, 164, 174, 0.22);
+  --line-strong: rgba(73, 164, 174, 0.4);
   --surface: #ffffff;
-  --on-sea: #f3faf9;
-  --shadow-soft: 0 8px 28px rgba(15, 45, 45, 0.08);
-  --shadow-hover: 0 14px 36px rgba(15, 45, 45, 0.12);
-  --shadow-overlay: 0 20px 40px -8px rgba(26, 58, 60, 0.14);
+  --on-sea: #ffffff;
+  --shadow-soft: 0 8px 28px rgba(73, 164, 174, 0.14);
+  --shadow-hover: 0 14px 36px rgba(73, 164, 174, 0.2);
+  --shadow-overlay: 0 20px 40px -8px rgba(73, 164, 174, 0.22);
+  --shadow-brand: 0 10px 28px rgba(73, 164, 174, 0.35);
 
   /* Contour-like type scale (Montserrat, weight 800 headings) */
   --text-body: 16px;
@@ -132,6 +133,10 @@ p {
   box-shadow: var(--shadow-hover);
 }
 
+.shadow-brand {
+  box-shadow: var(--shadow-brand);
+}
+
 .card-lift {
   transition:
     transform 200ms ease,
@@ -208,7 +213,7 @@ p {
 }
 
 .list-row:hover {
-  background-color: rgba(238, 246, 245, 0.9);
+  background-color: rgba(232, 245, 246, 0.95);
 }
 
 .list-row:last-child {
