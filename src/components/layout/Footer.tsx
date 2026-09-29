@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
-import { ArrowRight, ArrowUp, Mail, Phone } from "lucide-react";
+import { ArrowRight, ArrowUp, Clock3, Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Section";
 import { BrandLogo } from "@/components/ui/BrandLogo";
-import { CONFIG, SITE } from "@/lib/config";
+import { CONFIG, SITE, mapsLink } from "@/lib/config";
 import { SocialLinks } from "@/components/layout/SocialLinks";
 
 const columns = [
@@ -70,13 +70,13 @@ function FooterColumn({
       <h3 className="font-display text-xs font-extrabold tracking-[0.14em] text-white uppercase">
         {title}
       </h3>
-      <span className="mt-2 block h-0.5 w-8 rounded-full bg-brand" aria-hidden />
+      <span className="mt-2 block h-0.5 w-8 rounded-full bg-white" aria-hidden />
       <ul className="mt-4 space-y-2.5">
         {links.map((l) => (
           <li key={`${title}-${l.label}`}>
             <Link
               href={l.href}
-              className="text-sm text-white/90 transition-colors hover:text-white"
+              className="text-sm text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
             >
               {l.label}
             </Link>
@@ -104,15 +104,18 @@ function SubscribeBox() {
   }
 
   return (
-    <div className="mt-8">
-      <h3 className="font-display text-xs font-extrabold tracking-[0.14em] text-white uppercase">
+    <div className="w-full">
+      <h3 className="font-display text-xs font-extrabold tracking-[0.14em] text-white uppercase sm:text-left">
         Subscribe
       </h3>
-      <span className="mt-2 block h-0.5 w-8 rounded-full bg-brand" aria-hidden />
-      <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/75">
+      <span className="mx-auto mt-2 block h-0.5 w-8 rounded-full bg-white sm:mx-0" aria-hidden />
+      <p className="mt-2 text-sm leading-snug text-white/80 sm:text-left">
         Get open roles and hiring updates from {SITE.name}.
       </p>
-      <form onSubmit={onSubmit} className="mt-4 flex max-w-sm overflow-hidden rounded-md shadow-soft">
+      <form
+        onSubmit={onSubmit}
+        className="mx-auto mt-3 flex max-w-md overflow-hidden rounded-md shadow-soft sm:mx-0"
+      >
         <label className="sr-only" htmlFor="footer-email">
           Email
         </label>
@@ -144,11 +147,10 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative text-white">
-      {/* Logo color only — #49A4AE */}
+    <footer className="relative shrink-0 text-white">
       <div className="bg-brand">
-        <Container className="pt-14 pb-10 md:pt-16 md:pb-12 lg:pt-20 lg:pb-14">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6 lg:gap-8 xl:gap-10">
+        <Container className="pt-12 pb-10 md:pt-14 md:pb-12 lg:pt-16 lg:pb-14">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6 lg:gap-8">
             <div className="sm:col-span-2 lg:col-span-2">
               <Link href="/" className="inline-flex" aria-label={`${SITE.name} home`}>
                 <BrandLogo light className="h-10 w-auto" />
@@ -157,10 +159,9 @@ export function Footer() {
                 Trusted IT careers partner for US enterprise teams — training,
                 mentoring, and dependable delivery every day.
               </p>
-              <div className="mt-6">
+              <div className="mt-5">
                 <SocialLinks light circle />
               </div>
-              <SubscribeBox />
             </div>
 
             {columns.map((col) => (
@@ -168,54 +169,102 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="mt-12 flex flex-col gap-6 border-t border-white/25 pt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end sm:gap-10 lg:gap-14">
-            <a
-              href={`tel:+${CONFIG.whatsapp}`}
-              className="group flex items-center gap-3"
-            >
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-brand shadow-soft">
-                <Phone className="h-4 w-4" aria-hidden />
-              </span>
-              <span>
-                <span className="block text-[10px] font-extrabold tracking-[0.14em] text-white/70 uppercase">
+          <div className="mt-8 border-t border-white/25 pt-8 md:mt-10 md:pt-9">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+              <a
+                href={`tel:+${CONFIG.whatsapp}`}
+                className="group flex flex-col items-center justify-center rounded-xl border border-white/20 bg-white/10 px-4 py-5 text-center transition hover:bg-white/15"
+              >
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-brand shadow-soft">
+                  <Phone className="h-4 w-4" aria-hidden />
+                </span>
+                <span className="mt-2.5 block text-[10px] font-extrabold tracking-[0.14em] text-white/70 uppercase">
                   Talk to hiring
                 </span>
-                <span className="font-display text-sm font-bold text-white transition group-hover:text-white/90 md:text-base">
+                <span className="mt-1 font-display text-[15px] font-bold text-white transition group-hover:text-white/90">
                   {CONFIG.whatsappShow}
                 </span>
-              </span>
-            </a>
-            <a
-              href={`mailto:${CONFIG.email}`}
-              className="group flex items-center gap-3"
-            >
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-brand shadow-soft">
-                <Mail className="h-4 w-4" aria-hidden />
-              </span>
-              <span>
-                <span className="block text-[10px] font-extrabold tracking-[0.14em] text-white/70 uppercase">
+              </a>
+
+              <a
+                href={`mailto:${CONFIG.email}`}
+                className="group flex flex-col items-center justify-center rounded-xl border border-white/20 bg-white/10 px-4 py-5 text-center transition hover:bg-white/15"
+              >
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-brand shadow-soft">
+                  <Mail className="h-4 w-4" aria-hidden />
+                </span>
+                <span className="mt-2.5 block text-[10px] font-extrabold tracking-[0.14em] text-white/70 uppercase">
                   Have any questions?
                 </span>
-                <span className="font-display text-sm font-bold text-white transition group-hover:text-white/90 md:text-base">
+                <span className="mt-1 break-all font-display text-[15px] font-bold text-white transition group-hover:text-white/90">
                   {CONFIG.email}
                 </span>
-              </span>
-            </a>
+              </a>
+
+              <div className="flex flex-col items-center justify-center rounded-xl border border-white/20 bg-white/10 px-4 py-5 text-center">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-brand shadow-soft">
+                  <MapPin className="h-4 w-4" aria-hidden />
+                </span>
+                <span className="mt-2.5 block text-[10px] font-extrabold tracking-[0.14em] text-white/70 uppercase">
+                  Office
+                </span>
+                <p className="mt-1 max-w-[220px] text-sm leading-snug text-white/90">
+                  {CONFIG.address}
+                </p>
+                <a
+                  href={mapsLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 text-sm font-semibold text-white underline-offset-4 hover:underline"
+                >
+                  View on map
+                </a>
+              </div>
+
+              <div className="flex flex-col items-center justify-center rounded-xl border border-white/20 bg-white/10 px-4 py-5 text-center">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-brand shadow-soft">
+                  <Clock3 className="h-4 w-4" aria-hidden />
+                </span>
+                <span className="mt-2.5 block text-[10px] font-extrabold tracking-[0.14em] text-white/70 uppercase">
+                  Working hours
+                </span>
+                <p className="mt-1 max-w-[220px] text-sm leading-snug text-white/90">
+                  {CONFIG.hours}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-4 flex flex-col items-center gap-4 rounded-xl border border-white/20 bg-white/10 px-5 py-6 text-center sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-6 sm:text-left lg:mt-5">
+              <div className="min-w-0 flex-1 sm:max-w-md sm:text-left">
+                <SubscribeBox />
+              </div>
+              <div className="shrink-0 text-center sm:text-right">
+                <p className="text-sm text-white/80">
+                  Ready to start your US-process career?
+                </p>
+                <Link
+                  href="/apply"
+                  className="mt-3 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-display text-sm font-bold text-brand transition hover:bg-white/90"
+                >
+                  Apply Now <ArrowRight className="h-4 w-4" aria-hidden />
+                </Link>
+              </div>
+            </div>
           </div>
         </Container>
       </div>
 
       <div className="border-t border-white/20 bg-brand">
-        <Container className="flex flex-col gap-3 py-4 text-xs text-white/80 sm:flex-row sm:items-center sm:justify-between md:text-sm">
+        <Container className="flex flex-col gap-2 py-3.5 text-xs text-white/80 sm:flex-row sm:items-center sm:justify-between md:text-sm">
           <p>
             © {year} {SITE.name}. All rights reserved.
           </p>
-          <nav className="flex flex-wrap gap-x-5 gap-y-2" aria-label="Legal">
+          <nav className="flex flex-wrap gap-x-5 gap-y-1" aria-label="Legal">
             {legalLinks.map((l) => (
               <Link
                 key={l.label}
                 href={l.href}
-                className="transition-colors hover:text-white"
+                className="underline-offset-4 transition-colors hover:text-white hover:underline"
               >
                 {l.label}
               </Link>
@@ -227,10 +276,10 @@ export function Footer() {
       <button
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="absolute right-4 bottom-20 z-10 grid h-11 w-11 place-items-center rounded-full border-2 border-white bg-brand text-white shadow-soft transition hover:bg-white hover:text-brand md:right-6 md:bottom-24"
+        className="absolute right-4 bottom-[4.5rem] z-10 grid h-10 w-10 place-items-center rounded-full border-2 border-white bg-brand text-white shadow-soft transition hover:bg-white hover:text-brand md:right-6"
         aria-label="Back to top"
       >
-        <ArrowUp className="h-5 w-5" aria-hidden />
+        <ArrowUp className="h-4 w-4" aria-hidden />
       </button>
     </footer>
   );
