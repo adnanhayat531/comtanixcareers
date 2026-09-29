@@ -82,7 +82,7 @@ export function CultureCard({ title, body, image, index }: CultureCardProps) {
   return (
     <article
       ref={cardRef}
-      className={`group flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_8px_30px_rgba(15,45,45,0.07)] transition-[opacity,transform] duration-[900ms] ease-out ${
+      className={`group flex flex-col overflow-hidden rounded-2xl bg-white shadow-soft transition-[opacity,transform] duration-[900ms] ease-out ${
         visible
           ? "translate-y-0 scale-100 opacity-100"
           : "translate-y-5 scale-[0.96] opacity-0"
@@ -112,7 +112,7 @@ export function CultureCard({ title, body, image, index }: CultureCardProps) {
       </div>
 
       <div className="flex flex-1 flex-col px-5 py-5 md:px-6 md:py-6">
-        <div className="mb-4 grid h-10 w-10 place-items-center rounded-xl bg-tint text-sea">
+        <div className="mb-4 grid h-10 w-10 place-items-center rounded-xl bg-brand text-white shadow-brand">
           <Icon className="h-5 w-5" aria-hidden />
         </div>
         <h3 className="font-display text-base font-bold tracking-tight text-ink md:text-lg">

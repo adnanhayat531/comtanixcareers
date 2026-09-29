@@ -38,7 +38,7 @@ export default function CareersPage() {
         title="Find Your Next Opportunity at Comtanix"
         description="Competitive packages, respectful shift cultures, fast-track promotions, and exposure to elite US enterprise accounts."
       >
-        <p className="mt-5 text-sm font-semibold text-sea">
+        <p className="mt-5 text-sm font-semibold text-brand">
           {ROLES.length} currently active positions
         </p>
       </PageIntro>
@@ -62,12 +62,12 @@ export default function CareersPage() {
                     </h2>
                     <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-muted">
                       <span className="inline-flex items-center gap-1.5">
-                        <MapPin className="h-3.5 w-3.5 text-sea" aria-hidden />
+                        <MapPin className="h-3.5 w-3.5 text-brand" aria-hidden />
                         {department}
                       </span>
                       {shift ? (
                         <span className="inline-flex items-center gap-1.5">
-                          <Clock className="h-3.5 w-3.5 text-sea" aria-hidden />
+                          <Clock className="h-3.5 w-3.5 text-brand" aria-hidden />
                           {shift}
                         </span>
                       ) : null}
@@ -79,7 +79,7 @@ export default function CareersPage() {
                       {role.tags.map((t) => (
                         <span
                           key={t}
-                          className="rounded-sm border border-line bg-tint/80 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-sea"
+                          className="rounded-sm border border-brand/25 bg-tint/80 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-brand"
                         >
                           {t}
                         </span>

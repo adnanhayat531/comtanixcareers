@@ -35,9 +35,9 @@ export function IconBadge({
   tone?: "sea" | "brand" | "tint";
 }) {
   const tones = {
-    sea: "bg-sea text-white",
-    brand: "bg-brand text-white",
-    tint: "bg-tint text-sea",
+    sea: "bg-brand text-white shadow-brand",
+    brand: "bg-brand text-white shadow-brand",
+    tint: "bg-tint text-brand",
   };
   return (
     <div

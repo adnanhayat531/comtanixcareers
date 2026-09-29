@@ -64,7 +64,7 @@ export function OfficeIllustration({
         transitionTimingFunction: "ease-out",
       }}
     >
-      <div className="relative aspect-[3/2] min-h-[260px] w-full overflow-hidden bg-[#0a2222] sm:min-h-[320px] lg:min-h-[380px] xl:min-h-[420px]">
+      <div className="relative aspect-[3/2] min-h-[260px] w-full overflow-hidden bg-brand sm:min-h-[320px] lg:min-h-[380px] xl:min-h-[420px]">
         <Image
           src="/office-hq.png"
           alt="Comtanix office exterior with illuminated company signage"
@@ -74,7 +74,7 @@ export function OfficeIllustration({
           priority={false}
         />
         <div
-          className="absolute inset-0 bg-gradient-to-t from-[#0a2222]/75 via-[#0a2222]/15 to-transparent"
+          className="absolute inset-0 bg-gradient-to-t from-brand/70 via-brand/10 to-transparent"
           aria-hidden
         />
         {caption ? (

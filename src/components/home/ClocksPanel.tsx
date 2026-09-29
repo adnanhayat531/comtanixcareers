@@ -52,7 +52,7 @@ function formatDay(date: Date, timeZone: string) {
 }
 
 function ZoneIcon({ name }: { name: Zone["icon"] }) {
-  const cls = "h-5 w-5 text-sea";
+  const cls = "h-5 w-5 text-brand";
   if (name === "globe") return <Globe2 className={cls} aria-hidden />;
   if (name === "building") return <Building2 className={cls} aria-hidden />;
   return <Clock className={cls} aria-hidden />;
@@ -92,7 +92,7 @@ export function ClocksPanel() {
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <h3 className="font-display text-xl font-bold text-sea md:text-2xl">
+          <h3 className="font-display text-xl font-bold text-brand md:text-2xl">
             Global Operations Hub
           </h3>
           <p className="mt-1 text-sm text-muted">Real-time synchronization</p>
@@ -100,8 +100,8 @@ export function ClocksPanel() {
         <span
           className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${
             open
-              ? "bg-emerald-50 text-emerald-700"
-              : "bg-tint text-sea"
+              ? "bg-brand/15 text-brand"
+              : "bg-tint text-brand"
           }`}
         >
           {open ? "US Hours Active" : "Night Shifts Live"}
@@ -114,10 +114,10 @@ export function ClocksPanel() {
           return (
             <div
               key={z.label}
-              className="flex items-center justify-between gap-3 rounded-lg bg-[#F3F9FA] px-3.5 py-3.5"
+              className="flex items-center justify-between gap-3 rounded-lg bg-tint px-3.5 py-3.5"
             >
               <div className="flex min-w-0 items-start gap-3">
-                <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-md bg-white text-sea shadow-soft">
+                <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-md bg-white text-brand shadow-soft">
                   <ZoneIcon name={z.icon} />
                 </span>
                 <div className="min-w-0">
@@ -133,7 +133,7 @@ export function ClocksPanel() {
               </div>
               <div className="shrink-0 text-right">
                 <b
-                  className="block font-display text-lg font-bold tabular-nums text-sea md:text-xl"
+                  className="block font-display text-lg font-bold tabular-nums text-brand md:text-xl"
                   data-tz={z.tz}
                 >
                   {now ? formatTime(now, tz) : "--:--:--"}
@@ -149,12 +149,12 @@ export function ClocksPanel() {
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
         <p className="inline-flex items-center gap-1.5 text-sm font-medium text-muted">
-          <CheckCircle2 className="h-4 w-4 text-sea" aria-hidden />
+          <CheckCircle2 className="h-4 w-4 text-brand" aria-hidden />
           SOC 2 Type II Compliant
         </p>
         <Link
           href="/careers"
-          className="inline-flex items-center gap-1 text-sm font-semibold text-sea hover:underline"
+          className="inline-flex items-center gap-1 text-sm font-semibold text-brand hover:underline"
         >
           Explore US Shift Roles <ArrowRight className="h-4 w-4" aria-hidden />
         </Link>
