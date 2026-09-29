@@ -16,7 +16,6 @@ Open [http://localhost:3000](http://localhost:3000).
 | Route | Page |
 |-------|------|
 | `/` | Home |
-| `/services` | Services |
 | `/about` | About (story, values, learning) |
 | `/careers` | Open roles |
 | `/life` | Life at Comtanix |
@@ -27,7 +26,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Edit `src/lib/config.ts` for WhatsApp, emails, address, hours, socials, and optional `formEndpoint`.
 
-Content data: `src/lib/data/` (services, roles, testimonials, goals).
+Content data: `src/lib/data/` (roles, testimonials, goals).
 
 Design tokens: `docs/DESIGN.md` and `src/app/globals.css`.
 

@@ -1,41 +1,11 @@
 import {
-  Code2,
-  ShieldCheck,
-  Wrench,
-  Headset,
-  FolderKanban,
-  ChartColumn,
-  Megaphone,
   Utensils,
   Trophy,
   Star,
   GraduationCap,
   PartyPopper,
   Gamepad2,
-  type LucideIcon,
 } from "lucide-react";
-import type { Service } from "@/lib/data/services";
-
-const serviceIcons: Record<Service["icon"], LucideIcon> = {
-  code: Code2,
-  shield: ShieldCheck,
-  wrench: Wrench,
-  headset: Headset,
-  folder: FolderKanban,
-  chart: ChartColumn,
-  megaphone: Megaphone,
-};
-
-export function ServiceIcon({
-  name,
-  className = "h-5 w-5",
-}: {
-  name: Service["icon"];
-  className?: string;
-}) {
-  const Icon = serviceIcons[name];
-  return <Icon className={className} aria-hidden />;
-}
 
 const lifeIcons = {
   utensils: Utensils,

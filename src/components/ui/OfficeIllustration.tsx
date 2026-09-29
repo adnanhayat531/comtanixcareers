@@ -69,7 +69,7 @@ export function OfficeIllustration({
           }}
         >
           <Image
-            src="/office.png"
+            src="/office-hq.png"
             alt="Comtanix office exterior with illuminated company signage"
             fill
             className="object-cover object-center"
