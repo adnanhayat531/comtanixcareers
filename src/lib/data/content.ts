@@ -108,14 +108,14 @@ export const LEARNING = [
 
 export const LIFE_ACTIVITIES = [
   {
-    title: "Monthly Team Lunches",
-    body: "Every department gathers for company-funded meals celebrating sprint finishes and welcoming new recruits.",
-    icon: "utensils" as const,
-    image: "/life/team-lunches.png",
+    title: "Gym Membership",
+    body: "Company-sponsored gym membership so you can stay fit, decompress after US shifts, and build healthy routines year-round.",
+    icon: "gym" as const,
+    image: "/life/gym-membership.png",
   },
   {
-    title: "Annual Sports Gala",
-    body: "Full-day inter-departmental tournaments featuring cricket, badminton, table tennis, and chess.",
+    title: "Weekend Sports",
+    body: "Weekend cricket, badminton, table tennis, and friendly matches to unwind with the team outside the terminal.",
     icon: "trophy" as const,
     image: "/life/sports-gala-cricket.png",
   },

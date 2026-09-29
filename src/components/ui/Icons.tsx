@@ -1,5 +1,5 @@
 import {
-  Utensils,
+  Dumbbell,
   Trophy,
   Star,
   GraduationCap,
@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 const lifeIcons = {
-  utensils: Utensils,
+  gym: Dumbbell,
   trophy: Trophy,
   star: Star,
   graduation: GraduationCap,
