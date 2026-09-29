@@ -63,9 +63,9 @@ export function SocialLinks({
           } ${
             light
               ? circle
-                ? "border border-white/50 text-white hover:border-white hover:bg-white/10"
-                : "border border-white/25 text-white hover:bg-white/10"
-              : "border border-line text-sea hover:bg-tint"
+                ? "border border-brand/50 text-white hover:border-brand hover:bg-brand"
+                : "border border-brand/40 text-white hover:bg-brand/20"
+              : "border border-line text-brand hover:border-brand hover:bg-tint hover:text-brand"
           }`}
         >
           <SocialGlyph name={name} />

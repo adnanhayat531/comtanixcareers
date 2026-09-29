@@ -22,12 +22,12 @@ export default function LifePage() {
         description="We work demanding US hours, so we take workplace comfort, team bonding, and celebration culture very seriously."
       />
 
-      <Section className="bg-[#f7fafA]">
+      <Section className="bg-tint">
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
             {LIFE_ACTIVITIES.map((a) => (
               <article key={a.title} className="group flex flex-col">
-                <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-2xl bg-[#dce8e8]">
+                <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-2xl bg-on-sea">
                   <Image
                     src={a.image}
                     alt=""
@@ -36,10 +36,10 @@ export default function LifePage() {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
                   <div
-                    className="absolute inset-0 bg-gradient-to-t from-[#0a2222]/50 via-transparent to-transparent"
+                    className="absolute inset-0 bg-gradient-to-t from-deep/50 via-transparent to-transparent"
                     aria-hidden
                   />
-                  <span className="absolute bottom-3 left-3 grid h-10 w-10 place-items-center rounded-xl bg-white/95 text-sea shadow-soft backdrop-blur-sm">
+                  <span className="absolute bottom-3 left-3 grid h-10 w-10 place-items-center rounded-xl bg-white/95 text-brand shadow-soft backdrop-blur-sm">
                     <LifeIcon name={a.icon} className="h-5 w-5" />
                   </span>
                 </div>
@@ -65,7 +65,7 @@ export default function LifePage() {
         </Container>
       </Section>
 
-      <Section className="relative overflow-hidden bg-[#0a2222]">
+      <Section className="relative overflow-hidden bg-deep">
         <div
           className="absolute inset-0 bg-gradient-to-br from-sea/40 via-transparent to-brand/30"
           aria-hidden

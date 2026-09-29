@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { CONFIG, SITE, waLink } from "@/lib/config";
 
 const fieldClass =
-  "w-full rounded-2xl border-0 bg-white px-5 py-4 text-[15px] text-ink shadow-[0_4px_24px_rgba(15,45,45,0.08)] outline-none ring-0 placeholder:text-muted/70 transition focus:shadow-[0_4px_28px_rgba(45,106,106,0.18)]";
+  "w-full rounded-2xl border-0 bg-white px-5 py-4 text-[15px] text-ink shadow-soft outline-none ring-0 placeholder:text-muted/70 transition focus:shadow-[var(--shadow-brand)] focus:ring-2 focus:ring-brand/30";
 
 export function ContactForm() {
   const [status, setStatus] = useState("");
@@ -105,7 +105,7 @@ export function ContactForm() {
 
       <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
         {status ? (
-          <p className="text-sm text-sea" role="status">
+          <p className="text-sm text-brand" role="status">
             {status}
           </p>
         ) : (

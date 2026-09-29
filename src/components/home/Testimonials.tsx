@@ -18,7 +18,7 @@ function QuoteCard({
   return (
     <article className="flex w-[min(100%,300px)] shrink-0 flex-col sm:w-[320px]">
       {/* Speech bubble */}
-      <div className="relative rounded-2xl bg-white px-6 py-6 shadow-[0_8px_30px_rgba(15,45,45,0.08)]">
+      <div className="relative rounded-2xl bg-white px-6 py-6 shadow-soft">
         <q className="block text-[15px] leading-relaxed text-ink/90 [quotes:none]">
           {quote}
         </q>
@@ -33,7 +33,7 @@ function QuoteCard({
         </div>
         {/* Bubble tail */}
         <span
-          className="absolute -bottom-2.5 left-8 h-5 w-5 rotate-45 bg-white shadow-[4px_4px_10px_rgba(15,45,45,0.04)]"
+          className="absolute -bottom-2.5 left-8 h-5 w-5 rotate-45 bg-white shadow-soft"
           aria-hidden
         />
       </div>
@@ -41,7 +41,7 @@ function QuoteCard({
       {/* Author */}
       <div className="mt-5 flex items-center gap-3 pl-2">
         <div
-          className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-sea font-display text-sm font-bold text-white"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sea to-brand font-display text-sm font-bold text-white shadow-brand"
           aria-hidden
         >
           {initials}
@@ -95,7 +95,7 @@ export function TestimonialsSlider() {
       {/* Left — heading + nav */}
       <div className="flex flex-col">
         <span
-          className="font-display text-6xl leading-none text-line select-none md:text-7xl"
+          className="font-display text-6xl leading-none text-brand/30 select-none md:text-7xl"
           aria-hidden
         >
           “
@@ -116,7 +116,7 @@ export function TestimonialsSlider() {
           </button>
           <div className="h-0.5 flex-1 max-w-[120px] overflow-hidden rounded-full bg-line">
             <div
-              className="h-full rounded-full bg-ink transition-all duration-300"
+              className="h-full rounded-full bg-brand transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>

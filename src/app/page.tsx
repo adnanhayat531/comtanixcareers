@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero + numbers in first viewport (no scroll needed) */}
-      <section className="relative flex min-h-svh flex-col overflow-hidden bg-[#1a4545]">
+      <section className="relative flex min-h-svh flex-col overflow-hidden bg-deep">
         <HeroNetwork />
         <div className="relative z-10 flex flex-1 flex-col justify-center">
           <HeroCopy />
@@ -30,17 +30,17 @@ export default function HomePage() {
       </section>
 
       {/* Careers split */}
-      <Section className="bg-[#f7fafa]">
+      <Section className="bg-tint">
         <Container className="grid items-center gap-6 lg:grid-cols-[1fr_1.2fr] lg:gap-8 xl:gap-10">
           <div className="order-2 lg:order-1">
             <HeadingReveal className="mb-5 max-w-xl md:mb-6" duration={1}>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-sea uppercase shadow-soft">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-brand uppercase shadow-soft">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden />
                 Careers at Comtanix
               </span>
               <h2 className="mt-3 font-display text-[clamp(1.75rem,3vw,2.65rem)] font-extrabold tracking-tight text-ink leading-[1.2] text-balance">
                 A home for sustainable,{" "}
-                <span className="text-sea">high-growth careers</span> in IT.
+                <span className="text-brand">high-growth careers</span> in IT.
               </h2>
               <p className="mt-2.5 max-w-prose text-base leading-[1.65] text-muted md:text-[17px]">
                 Comtanix teams adjust to each client&apos;s tools, processes and
@@ -59,7 +59,7 @@ export default function HomePage() {
                   key={item}
                   className="flex items-center gap-3 rounded-xl border border-transparent bg-white/80 px-3 py-2.5 transition-colors hover:border-line hover:bg-white"
                 >
-                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-tint text-sea">
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand">
                     <CheckCircle2 className="h-4 w-4" aria-hidden />
                   </span>
                   <span className="text-[15px] font-medium leading-snug text-ink">
@@ -81,16 +81,16 @@ export default function HomePage() {
       </Section>
 
       {/* Goals */}
-      <Section className="bg-[#f4f8f8]">
+      <Section className="bg-on-sea">
         <Container>
           <HeadingReveal className="mb-7 md:mb-8" duration={1}>
-            <span className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-sea uppercase shadow-soft">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-brand uppercase shadow-soft">
               <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden />
               Our philosophy
             </span>
             <h2 className="mt-3 max-w-2xl font-display text-[clamp(1.75rem,3vw,2.75rem)] font-extrabold tracking-tight text-ink leading-[1.2]">
               Our Goals as an{" "}
-              <span className="text-sea">Enterprise</span>
+              <span className="text-brand">Enterprise</span>
             </h2>
             <p className="mt-2.5 max-w-xl text-base leading-[1.65] text-muted md:text-[17px]">
               To build strong careers by delivering dependable IT work for US
@@ -117,8 +117,8 @@ export default function HomePage() {
       <Section className="bg-white">
         <Container>
           <HeadingReveal className="mb-7 md:mb-8" duration={1}>
-            <span className="inline-flex items-center gap-2 rounded-full bg-tint px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-sea uppercase">
-              <span className="h-1.5 w-1.5 rounded-full bg-sea" aria-hidden />
+            <span className="inline-flex items-center gap-2 rounded-full bg-tint px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-brand uppercase">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden />
               Life at Comtanix
             </span>
             <h2 className="mt-3 font-display text-[1.75rem] font-extrabold tracking-tight text-ink md:text-3xl lg:text-[2.35rem]">
@@ -141,7 +141,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="mt-6 flex flex-col items-start justify-between gap-6 rounded-2xl bg-gradient-to-r from-deep via-sea to-[#2a6e6e] px-7 py-8 sm:flex-row sm:items-center md:mt-8 md:px-10 md:py-9">
+          <div className="mt-6 flex flex-col items-start justify-between gap-6 rounded-2xl bg-gradient-to-r from-deep via-sea to-brand px-7 py-8 sm:flex-row sm:items-center md:mt-8 md:px-10 md:py-9">
             <div className="max-w-xl">
               <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/35 px-3 py-1 text-xs font-medium text-white">
                 <BookOpen className="h-3.5 w-3.5" aria-hidden />
@@ -162,13 +162,13 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="bg-[#f5f7f7]">
+      <Section className="bg-tint">
         <Container>
           <TestimonialsSlider />
         </Container>
       </Section>
 
-      <Section className="relative overflow-hidden bg-[#0a2222]">
+      <Section className="relative overflow-hidden bg-deep">
         <Image
           src="/cta-opportunity.jpg"
           alt=""
@@ -178,7 +178,7 @@ export default function HomePage() {
           aria-hidden
         />
         <div
-          className="absolute inset-0 bg-gradient-to-r from-[#0a2222]/92 via-[#163a3a]/82 to-[#0a2222]/70"
+          className="absolute inset-0 bg-gradient-to-r from-deep/92 via-sea-mid/82 to-deep/70"
           aria-hidden
         />
         <Container className="relative z-10">

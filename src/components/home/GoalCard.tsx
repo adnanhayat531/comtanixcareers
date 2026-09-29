@@ -129,10 +129,10 @@ export function GoalCard({ title, body, image, tag, index }: GoalCardProps) {
 
       <div className="flex flex-1 flex-col px-5 py-5 md:px-5 md:py-6">
         <div className="mb-3 flex items-center justify-between gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-sea text-white">
+          <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-sea to-brand text-white shadow-brand">
             <Icon className="h-[18px] w-[18px]" aria-hidden />
           </div>
-          <span className="font-display text-2xl font-extrabold text-[#e8eeee] md:text-3xl">
+          <span className="font-display text-2xl font-extrabold text-brand/25 md:text-3xl">
             0{index + 1}
           </span>
         </div>
@@ -142,7 +142,7 @@ export function GoalCard({ title, body, image, tag, index }: GoalCardProps) {
         </h3>
         <p className="mt-2 flex-1 text-sm leading-[1.65] text-muted">{body}</p>
 
-        <p className="mt-4 inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-[0.12em] text-sea uppercase">
+        <p className="mt-4 inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-[0.12em] text-brand uppercase">
           <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden />
           {tag}
           <ArrowRight className="h-3.5 w-3.5" aria-hidden />

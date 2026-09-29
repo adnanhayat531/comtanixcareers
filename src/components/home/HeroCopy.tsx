@@ -19,7 +19,7 @@ export function HeroCopy() {
       <WordFadeUp
         text={HERO_HEADING}
         stagger={WORD_STAGGER}
-        className="max-w-3xl font-display text-[clamp(2.1rem,4.5vw,3.5rem)] font-extrabold tracking-tight text-white text-balance leading-[1.15] drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]"
+        className="max-w-3xl font-display text-[clamp(2.1rem,4.5vw,3.5rem)] font-extrabold tracking-tight text-white text-balance leading-[1.15] drop-shadow-[0_2px_12px_rgba(11,44,53,0.45)]"
       />
 
       <FadeUp delay={PARA_DELAY} duration={0.7} className="mt-5 max-w-xl">

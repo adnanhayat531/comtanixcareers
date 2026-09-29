@@ -109,10 +109,10 @@ function SubscribeBox() {
         Subscribe
       </h3>
       <span className="mt-2 block h-0.5 w-8 rounded-full bg-brand" aria-hidden />
-      <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/70">
+      <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/75">
         Get open roles and hiring updates from {SITE.name}.
       </p>
-      <form onSubmit={onSubmit} className="mt-4 flex max-w-sm overflow-hidden rounded-md">
+      <form onSubmit={onSubmit} className="mt-4 flex max-w-sm overflow-hidden rounded-md shadow-soft">
         <label className="sr-only" htmlFor="footer-email">
           Email
         </label>
@@ -127,10 +127,10 @@ function SubscribeBox() {
         />
         <button
           type="submit"
-          className="inline-flex items-center gap-2 bg-sea px-3 py-2.5 text-xs font-extrabold tracking-wide text-white uppercase transition hover:brightness-110"
+          className="inline-flex items-center gap-2 bg-gradient-to-r from-sea to-brand px-3 py-2.5 text-xs font-extrabold tracking-wide text-white uppercase transition hover:brightness-110"
         >
           Subscribe
-          <span className="grid h-5 w-5 place-items-center rounded-sm bg-brand">
+          <span className="grid h-5 w-5 place-items-center rounded-sm bg-white/20">
             <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </span>
         </button>
@@ -145,15 +145,15 @@ export function Footer() {
 
   return (
     <footer className="relative text-white">
-      <div className="bg-deep">
+      {/* Logo palette: deep (#0b2c35) → sea → brand (#49A4AE) */}
+      <div className="bg-gradient-to-br from-deep via-sea to-sea-mid">
         <Container className="pt-14 pb-10 md:pt-16 md:pb-12 lg:pt-20 lg:pb-14">
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6 lg:gap-8 xl:gap-10">
-            {/* Brand column */}
             <div className="sm:col-span-2 lg:col-span-2">
               <Link href="/" className="inline-flex" aria-label={`${SITE.name} home`}>
                 <BrandLogo light className="h-10 w-auto" />
               </Link>
-              <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70">
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/75">
                 Trusted IT careers partner for US enterprise teams — training,
                 mentoring, and dependable delivery every day.
               </p>
@@ -168,17 +168,16 @@ export function Footer() {
             ))}
           </div>
 
-          {/* Contact strip */}
-          <div className="mt-12 flex flex-col gap-6 border-t border-white/10 pt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end sm:gap-10 lg:gap-14">
+          <div className="mt-12 flex flex-col gap-6 border-t border-brand/30 pt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end sm:gap-10 lg:gap-14">
             <a
               href={`tel:+${CONFIG.whatsapp}`}
               className="group flex items-center gap-3"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-brand text-white">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-brand text-white shadow-brand">
                 <Phone className="h-4 w-4" aria-hidden />
               </span>
               <span>
-                <span className="block text-[10px] font-extrabold tracking-[0.14em] text-white/55 uppercase">
+                <span className="block text-[10px] font-extrabold tracking-[0.14em] text-white/60 uppercase">
                   Talk to hiring
                 </span>
                 <span className="font-display text-sm font-bold text-white transition group-hover:text-brand md:text-base">
@@ -190,11 +189,11 @@ export function Footer() {
               href={`mailto:${CONFIG.email}`}
               className="group flex items-center gap-3"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-brand text-white">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-brand text-white shadow-brand">
                 <Mail className="h-4 w-4" aria-hidden />
               </span>
               <span>
-                <span className="block text-[10px] font-extrabold tracking-[0.14em] text-white/55 uppercase">
+                <span className="block text-[10px] font-extrabold tracking-[0.14em] text-white/60 uppercase">
                   Have any questions?
                 </span>
                 <span className="font-display text-sm font-bold text-white transition group-hover:text-brand md:text-base">
@@ -206,8 +205,7 @@ export function Footer() {
         </Container>
       </div>
 
-      {/* Bottom legal bar */}
-      <div className="bg-[#0b2222]">
+      <div className="border-t border-brand/25 bg-deep">
         <Container className="flex flex-col gap-3 py-4 text-xs text-white/65 sm:flex-row sm:items-center sm:justify-between md:text-sm">
           <p>
             © {year} {SITE.name}. All rights reserved.
@@ -229,7 +227,7 @@ export function Footer() {
       <button
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="absolute right-4 bottom-20 z-10 grid h-11 w-11 place-items-center rounded-full border-2 border-brand text-brand transition hover:bg-brand hover:text-white md:right-6 md:bottom-24"
+        className="absolute right-4 bottom-20 z-10 grid h-11 w-11 place-items-center rounded-full border-2 border-brand bg-deep text-brand shadow-soft transition hover:bg-brand hover:text-white md:right-6 md:bottom-24"
         aria-label="Back to top"
       >
         <ArrowUp className="h-5 w-5" aria-hidden />

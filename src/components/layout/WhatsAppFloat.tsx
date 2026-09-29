@@ -15,7 +15,7 @@ export function WhatsAppFloat() {
         alt="WhatsApp"
         width={64}
         height={64}
-        className="h-14 w-14 rounded-[22%] object-cover drop-shadow-[0_6px_16px_rgba(0,0,0,0.28)] md:h-16 md:w-16"
+        className="h-14 w-14 rounded-[22%] object-cover drop-shadow-[0_6px_16px_rgba(11,44,53,0.28)] md:h-16 md:w-16"
       />
       <span className="sr-only">{CONFIG.whatsappShow}</span>
     </a>

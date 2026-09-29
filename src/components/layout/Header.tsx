@@ -39,8 +39,8 @@ function NavLink({
             ? "text-white after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand"
             : "text-white/85 hover:text-white"
           : active
-            ? "text-sea after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-sea"
-            : "text-ink/85 hover:text-sea"
+            ? "text-brand after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand"
+            : "text-ink/85 hover:text-brand"
       }`}
     >
       {label}
@@ -80,7 +80,7 @@ export function Header() {
 
   const overHero = isHome && !scrolled && !open;
   const dropLink =
-    "block rounded-md px-3 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-tint hover:text-sea";
+    "block rounded-md px-3 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-tint hover:text-brand";
 
   const desktopLink = (active: boolean) =>
     `${"relative inline-flex items-center gap-1 px-2.5 py-1.5 text-base font-semibold tracking-tight transition-colors xl:px-3"} ${
@@ -89,8 +89,8 @@ export function Header() {
           ? "text-white after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand"
           : "text-white/85 hover:text-white"
         : active
-          ? "text-sea after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-sea"
-          : "text-ink/85 hover:text-sea"
+          ? "text-brand after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand"
+          : "text-ink/85 hover:text-brand"
     }`;
 
   return (
@@ -204,7 +204,7 @@ export function Header() {
                     key={l.href}
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="px-5 py-2.5 text-sm text-muted hover:bg-tint hover:text-sea"
+                    className="px-5 py-2.5 text-sm text-muted hover:bg-tint hover:text-brand"
                   >
                     {l.label}
                   </Link>
