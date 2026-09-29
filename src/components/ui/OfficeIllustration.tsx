@@ -51,48 +51,40 @@ export function OfficeIllustration({
   }, [reduced]);
 
   return (
-    <figure className="overflow-hidden rounded-2xl border border-line bg-surface shadow-soft">
-      <div
-        ref={frameRef}
-        className="group relative aspect-[16/10] w-full overflow-hidden"
-      >
+    <figure
+      ref={frameRef}
+      className={`group relative overflow-hidden rounded-[1.25rem] shadow-[var(--shadow-overlay)] ease-out motion-reduce:transition-none ${
+        visible
+          ? "translate-y-0 scale-100 opacity-100"
+          : "translate-y-[30px] scale-[0.94] opacity-0"
+      }`}
+      style={{
+        transitionProperty: "opacity, transform",
+        transitionDuration: visible ? "1800ms" : "0ms",
+        transitionTimingFunction: "ease-out",
+      }}
+    >
+      <div className="relative aspect-[3/2] min-h-[260px] w-full overflow-hidden bg-[#0a2222] sm:min-h-[320px] lg:min-h-[380px] xl:min-h-[420px]">
+        <Image
+          src="/office-hq.png"
+          alt="Comtanix office exterior with illuminated company signage"
+          fill
+          className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 55vw, 640px"
+          priority={false}
+        />
         <div
-          className={`absolute inset-0 will-change-transform ease-out motion-reduce:transition-none ${
-            visible
-              ? "translate-y-0 scale-100 opacity-100"
-              : "translate-y-[30px] scale-[0.94] opacity-0"
-          } group-hover:scale-[1.02]`}
-          style={{
-            transitionProperty: "opacity, transform",
-            transitionDuration: visible ? "1800ms" : "0ms",
-            transitionTimingFunction: "ease-out",
-          }}
-        >
-          <Image
-            src="/office-hq.png"
-            alt="Comtanix office exterior with illuminated company signage"
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority={false}
-          />
-        </div>
+          className="absolute inset-0 bg-gradient-to-t from-[#0a2222]/75 via-[#0a2222]/15 to-transparent"
+          aria-hidden
+        />
+        {caption ? (
+          <figcaption className="absolute inset-x-0 bottom-0 px-5 py-4 sm:px-6 sm:py-5">
+            <p className="text-sm font-medium leading-snug text-white/95 sm:text-[15px]">
+              {caption}
+            </p>
+          </figcaption>
+        ) : null}
       </div>
-      {caption ? (
-        <figcaption
-          className={`px-4 py-3 text-sm text-muted ease-out ${
-            visible ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            transitionProperty: "opacity",
-            transitionDuration: visible ? "1800ms" : "0ms",
-            transitionTimingFunction: "ease-out",
-            transitionDelay: visible ? "150ms" : "0ms",
-          }}
-        >
-          {caption}
-        </figcaption>
-      ) : null}
     </figure>
   );
 }

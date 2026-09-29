@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
-import { Container, Section, SectionHeading } from "@/components/ui/Section";
+import { Container, Section } from "@/components/ui/Section";
 import { OfficeIllustration } from "@/components/ui/OfficeIllustration";
 import { HeroNetwork } from "@/components/home/HeroNetwork";
 import { HeroCopy } from "@/components/home/HeroCopy";
@@ -30,30 +30,53 @@ export default function HomePage() {
       </section>
 
       {/* Careers split */}
-      <Section className="bg-surface">
-        <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <SectionHeading
-              compact
-              title="A home for sustainable, high-growth careers in IT."
-              description="Comtanix teams adjust to each client's tools, processes and standards. We train our people to match, and we grow them into the next role."
-              className="mb-8"
-            />
-            <ul className="mb-8 space-y-3.5">
+      <Section className="bg-[#f7fafa]">
+        <Container className="grid items-center gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-12 xl:gap-16">
+          <div className="order-2 lg:order-1">
+            <HeadingReveal className="mb-7 max-w-xl md:mb-8" duration={1}>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-sea uppercase shadow-soft">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden />
+                Careers at Comtanix
+              </span>
+              <h2 className="mt-4 font-display text-[clamp(1.75rem,3vw,2.65rem)] font-extrabold tracking-tight text-ink leading-[1.2] text-balance">
+                A home for sustainable,{" "}
+                <span className="text-sea">high-growth careers</span> in IT.
+              </h2>
+              <p className="mt-3.5 max-w-prose text-base leading-[1.7] text-muted md:text-[17px]">
+                Comtanix teams adjust to each client&apos;s tools, processes and
+                standards. We train our people to match, and we grow them into the
+                next role.
+              </p>
+            </HeadingReveal>
+
+            <ul className="mb-8 space-y-2.5">
               {[
                 "100% Paid training and onboarding program",
                 "Direct mentorship with US account managers",
                 "Predictable shift schedules with premium night allowances",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[15px] text-ink">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand" aria-hidden />
-                  <span>{item}</span>
+                <li
+                  key={item}
+                  className="flex items-center gap-3.5 rounded-xl border border-transparent bg-white/80 px-3.5 py-3 transition-colors hover:border-line hover:bg-white"
+                >
+                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-tint text-sea">
+                    <CheckCircle2 className="h-4 w-4" aria-hidden />
+                  </span>
+                  <span className="text-[15px] font-medium leading-snug text-ink">
+                    {item}
+                  </span>
                 </li>
               ))}
             </ul>
-            <Button href="/careers">Explore Openings</Button>
+
+            <Button href="/careers">
+              Explore Openings <ArrowRight className="h-4 w-4" aria-hidden />
+            </Button>
           </div>
-          <OfficeIllustration caption="Comtanix office — secure, modern floor" />
+
+          <div className="order-1 w-full lg:order-2 lg:-mr-2 xl:-mr-4">
+            <OfficeIllustration caption="Comtanix office — secure, modern floor" />
+          </div>
         </Container>
       </Section>
 
