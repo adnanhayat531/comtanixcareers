@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero + numbers in first viewport (no scroll needed) */}
-      <section className="relative flex min-h-svh flex-col overflow-hidden bg-brand">
+      <section className="relative flex min-h-[calc(100svh-3.5rem)] flex-col overflow-hidden bg-brand md:min-h-[calc(100svh-4rem)]">
         <HeroNetwork />
         <div className="relative z-10 flex flex-1 flex-col justify-center">
           <HeroCopy />

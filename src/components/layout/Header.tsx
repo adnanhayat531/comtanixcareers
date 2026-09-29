@@ -20,13 +20,11 @@ function NavLink({
   label,
   active,
   onClick,
-  light,
 }: {
   href: string;
   label: string;
   active?: boolean;
   onClick?: () => void;
-  light?: boolean;
 }) {
   return (
     <Link
@@ -34,13 +32,9 @@ function NavLink({
       onClick={onClick}
       aria-current={active ? "page" : undefined}
       className={`relative px-2.5 py-1.5 text-base font-semibold tracking-tight transition-colors xl:px-3 ${
-        light
-          ? active
-            ? "text-white after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand"
-            : "text-white/85 hover:text-white"
-          : active
-            ? "text-brand after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand"
-            : "text-ink/85 hover:text-brand"
+        active
+          ? "text-brand after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand"
+          : "text-ink/85 hover:text-brand"
       }`}
     >
       {label}
@@ -50,10 +44,8 @@ function NavLink({
 
 export function Header() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setOpen(false);
@@ -67,51 +59,29 @@ export function Header() {
     };
   }, [open]);
 
-  useEffect(() => {
-    if (!isHome) {
-      setScrolled(false);
-      return;
-    }
-    const onScroll = () => setScrolled(window.scrollY > 48);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [isHome]);
-
-  const overHero = isHome && !scrolled && !open;
   const dropLink =
     "block rounded-md px-3 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-tint hover:text-brand";
 
   const desktopLink = (active: boolean) =>
     `${"relative inline-flex items-center gap-1 px-2.5 py-1.5 text-base font-semibold tracking-tight transition-colors xl:px-3"} ${
-      overHero
-        ? active
-          ? "text-white after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand"
-          : "text-white/85 hover:text-white"
-        : active
-          ? "text-brand after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand"
-          : "text-ink/85 hover:text-brand"
+      active
+        ? "text-brand after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand"
+        : "text-ink/85 hover:text-brand"
     }`;
 
   return (
-    <header
-      className={`z-50 transition-all duration-300 ${
-        overHero
-          ? "absolute inset-x-0 top-0 border-transparent bg-transparent"
-          : "sticky top-0 border-b border-line bg-surface/95 shadow-soft backdrop-blur-md"
-      }`}
-    >
+    <header className="sticky top-0 z-50 border-b border-line bg-surface/95 shadow-soft backdrop-blur-md">
       <div className="flex h-14 w-full items-center justify-between gap-4 px-3 sm:px-4 md:h-16 md:px-5 lg:px-6">
         <Link
           href="/"
           className="shrink-0 focus-visible:rounded-sm"
           aria-label={`${SITE.name} home`}
         >
-          <BrandLogo light={overHero} className="h-8 w-auto md:h-9" />
+          <BrandLogo className="h-8 w-auto md:h-9" />
         </Link>
 
         <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
-          <NavLink href="/" label="Home" active={pathname === "/"} light={overHero} />
+          <NavLink href="/" label="Home" active={pathname === "/"} />
 
           <div className="relative group">
             <Link
@@ -137,19 +107,16 @@ export function Header() {
             href="/careers"
             label="Careers"
             active={pathname.startsWith("/careers")}
-            light={overHero}
           />
           <NavLink
             href="/life"
             label={`Life at ${SITE.name}`}
             active={pathname.startsWith("/life")}
-            light={overHero}
           />
           <NavLink
             href="/contact"
             label="Contact"
             active={pathname.startsWith("/contact")}
-            light={overHero}
           />
 
           <Button
@@ -169,11 +136,7 @@ export function Header() {
           </Button>
           <button
             type="button"
-            className={`inline-flex h-9 items-center gap-2 rounded-full border px-3 text-sm font-semibold transition ${
-              overHero
-                ? "border-white/40 text-white hover:bg-white/10"
-                : "border-line text-ink hover:bg-tint"
-            }`}
+            className="inline-flex h-9 items-center gap-2 rounded-full border border-line px-3 text-sm font-semibold text-ink transition hover:bg-tint"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
