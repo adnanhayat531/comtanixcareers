@@ -111,31 +111,37 @@ export const LIFE_ACTIVITIES = [
     title: "Monthly Team Lunches",
     body: "Every department gathers for company-funded meals celebrating sprint finishes and welcoming new recruits.",
     icon: "utensils" as const,
+    image: "/life/team-lunches.png",
   },
   {
     title: "Annual Sports Gala",
     body: "Full-day inter-departmental tournaments featuring cricket, badminton, table tennis, and chess.",
     icon: "trophy" as const,
+    image: "/life/sports-gala-cricket.png",
   },
   {
     title: "Star of the Month",
     body: "Public recognition, gift vouchers, and cash bonuses for agents who exceed monthly SLA targets.",
     icon: "star" as const,
+    image: "/life/star-month.png",
   },
   {
     title: "Skill Enrichment Sessions",
     body: "Interactive sessions covering US business idioms, cloud certifications, and public speaking.",
     icon: "graduation" as const,
+    image: "/life/skill-sessions.png",
   },
   {
     title: "Festivals & Birthdays",
     body: "Cake cutting on every birthday, festive holiday dinners, and cultural exchanges.",
     icon: "party" as const,
+    image: "/life/festivals.png",
   },
   {
     title: "Breakroom & Game Nights",
     body: "Recharge between calls with console games, foosball, quiet rest corners, and unlimited tea & coffee.",
     icon: "game" as const,
+    image: "/life/breakroom.png",
   },
 ] as const;
 
