@@ -64,12 +64,12 @@ function StatItem({
   }, [value, reduced]);
 
   return (
-    <div className="min-w-0 flex-1 px-1.5 text-center sm:px-3">
-      <div className="font-display text-2xl font-extrabold tracking-tight text-white sm:text-3xl md:text-4xl lg:text-[2.75rem]">
+    <div className="flex min-w-0 flex-1 flex-col items-center justify-center px-2 text-center sm:px-3">
+      <div className="font-display text-xl font-extrabold leading-none tracking-tight text-white sm:text-2xl md:text-3xl lg:text-[2.25rem]">
         <span ref={ref}>{display}</span>
         {suffix ? <span className="text-brand">{suffix}</span> : null}
       </div>
-      <p className="mt-1 text-[9px] font-semibold tracking-[0.1em] text-white/90 uppercase sm:text-[10px] md:text-xs">
+      <p className="mt-1.5 text-[9px] font-semibold tracking-[0.1em] text-white/90 uppercase sm:text-[10px] md:text-xs">
         {label}
       </p>
     </div>
@@ -83,15 +83,15 @@ export function StatsBar() {
       aria-label="Company footprint"
     >
       <div className="flex flex-col lg:flex-row lg:items-stretch">
-        <div className="flex shrink-0 flex-col justify-center px-5 py-3 sm:px-8 md:px-10 lg:w-[28%] lg:max-w-sm lg:py-4 xl:w-[26%] xl:px-12">
-          <h2 className="font-display text-lg font-extrabold tracking-tight text-ink leading-snug sm:text-xl md:text-[1.35rem]">
+        <div className="flex shrink-0 flex-col items-center justify-center px-5 py-2 text-center sm:px-8 md:px-10 lg:w-[28%] lg:max-w-sm lg:items-start lg:py-2.5 lg:text-left xl:w-[26%] xl:px-12">
+          <h2 className="font-display text-base font-extrabold tracking-tight text-ink leading-snug sm:text-lg md:text-xl">
             Our footprint
             <span className="mt-0.5 block text-sea">in numbers</span>
           </h2>
         </div>
 
-        <div className="min-w-0 flex-1 bg-gradient-to-r from-deep via-sea to-[#2a7575] py-3.5 pl-3 pr-0 sm:py-4 md:pl-5 lg:rounded-bl-[2.5rem] lg:pl-7">
-          <div className="flex flex-wrap items-center justify-around gap-y-3 pr-3 sm:pr-5 md:flex-nowrap md:gap-0 md:pr-8 lg:pr-10">
+        <div className="flex min-w-0 flex-1 items-center justify-center bg-gradient-to-r from-deep via-sea to-[#2a7575] px-3 py-2 sm:px-5 sm:py-2.5 md:px-8 lg:rounded-bl-[2.5rem] lg:px-10">
+          <div className="flex w-full flex-wrap items-center justify-center gap-y-3 md:flex-nowrap md:gap-0">
             {STATS.map((s) => (
               <StatItem
                 key={s.label}
