@@ -8,7 +8,8 @@ export function HeroNetwork() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
+        poster="/hero-poster.jpg"
       >
         <source src="/hero-bg.mp4" type="video/mp4" />
       </video>
