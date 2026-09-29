@@ -20,13 +20,14 @@ import { CULTURE_TILES, GOALS } from "@/lib/data/content";
 export default function HomePage() {
   return (
     <>
-      {/* Hero — navbar overlays this (not a separate bar) */}
-      <section className="relative flex min-h-svh items-center justify-center overflow-hidden bg-[#1a4545]">
+      {/* Hero + numbers in first viewport (no scroll needed) */}
+      <section className="relative flex min-h-svh flex-col overflow-hidden bg-[#1a4545]">
         <HeroNetwork />
-        <HeroCopy />
+        <div className="relative z-10 flex flex-1 flex-col justify-center">
+          <HeroCopy />
+        </div>
+        <StatsBar />
       </section>
-
-      <StatsBar />
 
       {/* Careers split */}
       <Section className="bg-surface">

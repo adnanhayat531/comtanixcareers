@@ -15,7 +15,7 @@ const BTN_DELAY = PARA_DELAY + 0.15;
 
 export function HeroCopy() {
   return (
-    <Container className="relative z-10 flex flex-col items-center pb-14 pt-28 text-center md:pb-16 md:pt-32 lg:pb-20 lg:pt-36">
+    <Container className="relative z-10 flex flex-col items-center px-5 pb-6 pt-24 text-center sm:pb-8 md:pt-28 lg:pt-32">
       <WordFadeUp
         text={HERO_HEADING}
         stagger={WORD_STAGGER}
@@ -32,7 +32,7 @@ export function HeroCopy() {
       <FadeUp
         delay={BTN_DELAY}
         duration={0.7}
-        className="mt-10 flex flex-wrap items-center justify-center gap-4"
+        className="mt-8 flex flex-wrap items-center justify-center gap-4"
       >
         <Button href="/about#story">
           Who We Are <ArrowRight className="h-4 w-4" aria-hidden />
