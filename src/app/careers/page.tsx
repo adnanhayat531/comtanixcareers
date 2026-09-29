@@ -86,10 +86,10 @@ export default function CareersPage() {
                       ))}
                     </div>
                   </div>
-                  <div className="flex shrink-0 flex-wrap gap-2 md:flex-col md:items-stretch">
+                  <div className="flex w-full shrink-0 flex-col gap-2 sm:w-auto md:items-stretch">
                     <Button
                       href={`/apply?role=${encodeURIComponent(role.title)}`}
-                      className="min-h-11"
+                      className="w-full min-h-11 sm:w-auto"
                     >
                       Apply Now <ArrowRight className="h-4 w-4" />
                     </Button>
@@ -104,7 +104,7 @@ export default function CareersPage() {
       <Section className="border-t border-line bg-tint">
         <Container>
           <SectionHeading title="Why people stay" />
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4 lg:gap-10">
             {WHY.map((w, i) => (
               <div key={w.title}>
                 <p className="font-display text-xs font-bold tracking-[0.12em] text-brand uppercase">

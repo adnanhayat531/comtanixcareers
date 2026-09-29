@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <Section id="story" className="scroll-mt-28 border-b border-line bg-surface pt-12 md:pt-16">
-        <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
+      <Section id="story" className="scroll-mt-20 border-b border-line bg-surface pt-8 md:scroll-mt-28 md:pt-12 lg:pt-16">
+        <Container className="grid min-w-0 items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+          <div className="order-2 min-w-0 lg:order-1">
             <SectionHeading
               compact
               eyebrow="Institutional Clarity & Trust"
@@ -38,22 +38,24 @@ export default function AboutPage() {
                 with us and clients stay with us.
               </p>
             </div>
-            <Button href="/apply" className="mt-8">
+            <Button href="/apply" className="mt-6 w-full sm:mt-8 sm:w-auto">
               Apply Now
             </Button>
           </div>
-          <OfficeIllustration />
+          <div className="order-1 min-w-0 w-full lg:order-2">
+            <OfficeIllustration />
+          </div>
         </Container>
       </Section>
 
-      <Section id="values" className="scroll-mt-28 bg-tint">
+      <Section id="values" className="scroll-mt-20 bg-tint md:scroll-mt-28">
         <Container>
           <SectionHeading
             eyebrow="The 4 Core Values"
             title="Core Values"
             description="Four promises we keep to our people and our clients."
           />
-          <ol className="grid gap-6 sm:gap-8 md:grid-cols-2">
+          <ol className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 md:gap-8">
             {VALUES.map((v, i) => (
               <li key={v.title} className="group">
                 <div className="relative mb-5 aspect-[4/3] overflow-hidden rounded-xl bg-on-sea">
@@ -84,7 +86,7 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      <Section id="learning" className="scroll-mt-28">
+      <Section id="learning" className="scroll-mt-20 md:scroll-mt-28">
         <Container>
           <SectionHeading
             eyebrow="Growth Architecture"

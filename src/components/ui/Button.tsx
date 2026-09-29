@@ -45,7 +45,7 @@ export function Button({
   const base =
     variant === "text"
       ? "inline-flex items-center gap-1.5 font-display text-base font-bold transition-colors duration-200 disabled:opacity-60"
-      : "inline-flex h-[52px] min-h-[52px] items-center justify-center gap-2 rounded-full px-8 font-display text-base font-bold tracking-tight transition-all duration-300 disabled:pointer-events-none disabled:opacity-55 md:h-[56px] md:min-h-[56px] md:px-9 md:text-lg";
+      : "inline-flex h-11 min-h-11 w-full max-w-full items-center justify-center gap-2 rounded-full px-5 font-display text-sm font-bold tracking-tight transition-all duration-300 disabled:pointer-events-none disabled:opacity-55 sm:w-auto sm:px-7 sm:text-base md:h-[52px] md:min-h-[52px] md:px-8 lg:h-[56px] lg:min-h-[56px] lg:px-9 lg:text-lg";
 
   const classes = `${base} ${variants[variant]} ${className}`;
 

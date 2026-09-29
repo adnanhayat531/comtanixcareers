@@ -80,9 +80,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${montserrat.variable} h-full`}>
-      <body className="flex min-h-full flex-col bg-canvas font-body text-ink antialiased">
+      <body className="flex min-h-full min-w-0 flex-col overflow-x-clip bg-canvas font-body text-ink antialiased">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="min-w-0 flex-1">{children}</main>
         <Footer />
         <WhatsAppFloat />
       </body>

@@ -175,7 +175,7 @@ export function Footer() {
     <footer className="relative shrink-0 text-white">
       <div className="bg-brand">
         <Container className="pt-12 pb-8 md:pt-14 md:pb-10 lg:pt-16">
-          <div className="grid min-w-0 gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.45fr)_repeat(4,minmax(0,1fr))] lg:gap-8">
+          <div className="grid min-w-0 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-[minmax(0,1.45fr)_repeat(4,minmax(0,1fr))] lg:gap-6 xl:gap-8">
             <div className="min-w-0 sm:col-span-2 lg:col-span-1">
               <Link
                 href="/"
@@ -199,23 +199,25 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="mt-10 flex flex-col gap-5 border-t border-white/30 pt-6 pr-[4.75rem] md:flex-row md:flex-wrap md:items-center md:justify-end md:gap-6 md:pr-[6.25rem] lg:flex-nowrap lg:gap-8">
-            <ContactChip
-              href={`tel:+${CONFIG.whatsapp}`}
-              label="Talk to hiring"
-              value={CONFIG.whatsappShow}
-              icon={Phone}
-            />
-            <ContactChip
-              href={`mailto:${CONFIG.email}`}
-              label="Have any questions?"
-              value={CONFIG.email}
-              icon={Mail}
-            />
+          <div className="mt-8 flex flex-col gap-4 border-t border-white/30 pt-6 sm:mt-10 sm:gap-5 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-6 lg:gap-8">
+            <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-6 lg:gap-8">
+              <ContactChip
+                href={`tel:+${CONFIG.whatsapp}`}
+                label="Talk to hiring"
+                value={CONFIG.whatsappShow}
+                icon={Phone}
+              />
+              <ContactChip
+                href={`mailto:${CONFIG.email}`}
+                label="Have any questions?"
+                value={CONFIG.email}
+                icon={Mail}
+              />
+            </div>
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="grid h-11 w-11 shrink-0 place-items-center self-end rounded-full border-2 border-white bg-brand text-white transition hover:bg-white hover:text-brand md:self-auto"
+              className="grid h-11 w-11 shrink-0 place-items-center self-start rounded-full border-2 border-white bg-brand text-white transition hover:bg-white hover:text-brand sm:self-auto"
               aria-label="Back to top"
             >
               <ArrowUp className="h-4 w-4" aria-hidden />
@@ -225,11 +227,11 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/25 bg-brand">
-        <Container className="flex min-h-[5.25rem] flex-col justify-center gap-2 py-3.5 !pr-[4.75rem] pb-[max(0.875rem,env(safe-area-inset-bottom,0px))] text-xs text-white/80 sm:flex-row sm:items-center sm:justify-between md:!pr-[6.25rem] md:text-sm">
-          <p>
+        <Container className="flex min-h-14 flex-col justify-center gap-2 py-3.5 pb-[max(0.875rem,env(safe-area-inset-bottom,0px))] text-xs text-white/80 sm:min-h-[4.5rem] sm:flex-row sm:items-center sm:justify-between md:text-sm">
+          <p className="pr-16 sm:pr-0">
             © {year} {SITE.name}. All rights reserved.
           </p>
-          <nav className="flex flex-wrap gap-x-5 gap-y-1" aria-label="Legal">
+          <nav className="flex flex-wrap gap-x-4 gap-y-1 sm:gap-x-5" aria-label="Legal">
             {legalLinks.map((l) => (
               <Link
                 key={l.label}

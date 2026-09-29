@@ -64,12 +64,12 @@ function StatItem({
   }, [value, reduced]);
 
   return (
-    <div className="flex min-w-[46%] flex-1 flex-col items-center justify-center px-2 text-center sm:min-w-0 sm:px-3">
-      <div className="font-display text-xl font-extrabold leading-none tracking-tight text-white sm:text-2xl md:text-3xl lg:text-[2.25rem]">
+    <div className="flex min-w-[46%] flex-1 flex-col items-center justify-center px-1.5 text-center sm:min-w-0 sm:px-3">
+      <div className="font-display text-lg font-extrabold leading-none tracking-tight text-white sm:text-2xl md:text-3xl lg:text-[2.25rem]">
         <span ref={ref}>{display}</span>
-        {suffix ? <span className="text-brand">{suffix}</span> : null}
+        {suffix ? <span className="text-white/95">{suffix}</span> : null}
       </div>
-      <p className="mt-1.5 text-xs font-semibold tracking-wide text-white/90 uppercase">
+      <p className="mt-1 max-w-[9rem] text-[10px] font-semibold leading-tight tracking-wide text-white/90 uppercase sm:mt-1.5 sm:max-w-none sm:text-xs">
         {label}
       </p>
     </div>

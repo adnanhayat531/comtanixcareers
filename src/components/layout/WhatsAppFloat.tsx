@@ -8,14 +8,14 @@ export function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed right-3 bottom-[max(0.75rem,env(safe-area-inset-bottom,0px))] z-40 transition hover:scale-105 hover:brightness-110 md:right-5"
+      className="fixed right-2.5 bottom-[max(0.65rem,env(safe-area-inset-bottom,0px))] z-40 transition hover:scale-105 hover:brightness-110 sm:right-3 md:right-5"
     >
       <Image
         src="/whatsapp.png"
         alt="WhatsApp"
         width={64}
         height={64}
-        className="h-14 w-14 rounded-[22%] object-cover drop-shadow-[0_6px_16px_rgba(73,164,174,0.35)] md:h-16 md:w-16"
+        className="h-12 w-12 rounded-[22%] object-cover drop-shadow-[0_6px_16px_rgba(73,164,174,0.35)] sm:h-14 sm:w-14 md:h-16 md:w-16"
       />
       <span className="sr-only">{CONFIG.whatsappShow}</span>
     </a>

@@ -23,9 +23,9 @@
   /* Contour-like type scale (Montserrat, weight 800 headings) */
   --text-body: 16px;
   --leading-body: 1.7;
-  --h1: clamp(2rem, 4vw, 3.5rem);
-  --h2: clamp(1.75rem, 3vw, 2.75rem);
-  --h3: clamp(1.15rem, 1.5vw, 1.5rem);
+  --h1: clamp(1.75rem, 6.5vw, 3.5rem);
+  --h2: clamp(1.5rem, 4.5vw, 2.75rem);
+  --h3: clamp(1.1rem, 2.5vw, 1.5rem);
 }
 
 @theme inline {
@@ -52,7 +52,14 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 4.5rem;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 5rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -81,6 +88,8 @@ body {
   font-size: var(--text-body);
   line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  min-width: 0;
 }
 
 h1,

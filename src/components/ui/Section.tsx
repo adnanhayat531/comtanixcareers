@@ -12,7 +12,7 @@ export function Container({
 }) {
   return (
     <div
-      className={`w-full px-5 sm:px-7 md:px-9 lg:px-11 xl:px-14 2xl:px-16 ${className}`}
+      className={`mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 ${className}`}
     >
       {children}
     </div>
@@ -29,7 +29,7 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={`py-12 md:py-14 lg:py-16 ${className}`}>
+    <section id={id} className={`py-10 md:py-14 lg:py-16 ${className}`}>
       {children}
     </section>
   );
@@ -69,7 +69,7 @@ export function SectionHeading({
         </p>
       ) : null}
       <h2
-        className={`font-display text-[clamp(1.75rem,3vw,2.75rem)] font-extrabold tracking-tight text-balance leading-[1.2] ${
+        className={`font-display text-[clamp(1.5rem,5.5vw,2.75rem)] font-extrabold tracking-tight text-balance leading-[1.2] ${
           light ? "text-white" : "text-ink"
         }`}
       >
@@ -101,8 +101,8 @@ export function PageIntro({
   children?: ReactNode;
 }) {
   return (
-    <div className="border-b border-line bg-surface pt-10 pb-8 md:pt-12 md:pb-10">
-      <Container>
+    <div className="border-b border-line bg-surface pt-8 pb-7 md:pt-12 md:pb-10">
+      <Container className="min-w-0">
         <SectionHeading
           eyebrow={eyebrow}
           title={title}

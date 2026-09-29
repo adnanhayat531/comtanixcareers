@@ -24,7 +24,7 @@ export default function LifePage() {
 
       <Section className="bg-tint">
         <Container>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
             {LIFE_ACTIVITIES.map((a) => (
               <article key={a.title} className="group flex flex-col">
                 <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-2xl bg-on-sea">
@@ -71,13 +71,13 @@ export default function LifePage() {
           aria-hidden
         />
         <Container className="relative z-10 max-w-xl text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight text-balance text-white md:text-4xl">
+          <h2 className="font-display text-[clamp(1.6rem,5vw,2.5rem)] font-bold tracking-tight text-balance text-white">
             Join the team
           </h2>
-          <p className="mt-3 text-base text-white/75 md:text-lg">
+          <p className="mt-3 text-[15px] text-white/75 sm:text-base md:text-lg">
             Your next role is one message away.
           </p>
-          <Button href="/apply" variant="white" className="mt-7">
+          <Button href="/apply" variant="white" className="mt-6 w-full sm:mt-7 sm:w-auto">
             Apply Now
           </Button>
         </Container>

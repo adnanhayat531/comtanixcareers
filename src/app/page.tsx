@@ -21,9 +21,9 @@ export default function HomePage() {
   return (
     <>
       {/* Hero + numbers in first viewport (no scroll needed) */}
-      <section className="relative flex min-h-[calc(100svh-3.5rem)] flex-col bg-brand md:min-h-[calc(100svh-4rem)]">
+      <section className="relative flex min-h-[calc(100svh-3.5rem)] flex-col overflow-hidden bg-brand md:min-h-[calc(100svh-4rem)]">
         <HeroNetwork />
-        <div className="relative z-10 flex flex-1 flex-col justify-center">
+        <div className="relative z-10 flex min-w-0 flex-1 flex-col justify-center">
           <HeroCopy />
         </div>
         <StatsBar />
@@ -98,7 +98,7 @@ export default function HomePage() {
             </p>
           </HeadingReveal>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {GOALS.map((g, i) => (
               <GoalCard
                 key={g.title}
@@ -129,7 +129,7 @@ export default function HomePage() {
             </p>
           </HeadingReveal>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
             {CULTURE_TILES.map((c, i) => (
               <CultureCard
                 key={c.title}
@@ -141,13 +141,13 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="mt-6 flex flex-col items-start justify-between gap-6 rounded-2xl bg-brand px-7 py-8 sm:flex-row sm:items-center md:mt-8 md:px-10 md:py-9">
-            <div className="max-w-xl">
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/35 px-3 py-1 text-xs font-medium text-white">
+          <div className="mt-6 flex flex-col items-stretch gap-5 rounded-2xl bg-brand px-5 py-7 sm:items-start sm:px-7 sm:py-8 md:mt-8 md:flex-row md:items-center md:justify-between md:gap-6 md:px-10 md:py-9">
+            <div className="min-w-0 max-w-xl">
+              <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/35 px-3 py-1 text-xs font-medium text-white md:mb-4">
                 <BookOpen className="h-3.5 w-3.5" aria-hidden />
                 Upskilling & Professional Growth
               </span>
-              <h3 className="font-display text-xl font-semibold text-white md:text-2xl">
+              <h3 className="font-display text-lg font-semibold text-white sm:text-xl md:text-2xl">
                 Continuous Learning & Accent Neutralization
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/80 md:text-[15px]">
@@ -155,7 +155,7 @@ export default function HomePage() {
                 idioms, client negotiations, and cloud architectural patterns.
               </p>
             </div>
-            <Button href="/careers" variant="white" className="shrink-0">
+            <Button href="/careers" variant="white" className="w-full shrink-0 sm:w-auto">
               View Openings <ArrowRight className="h-4 w-4" aria-hidden />
             </Button>
           </div>
@@ -183,14 +183,14 @@ export default function HomePage() {
         />
         <Container className="relative z-10">
           <HeadingReveal className="max-w-2xl" duration={1.1}>
-            <h2 className="font-display text-3xl font-extrabold tracking-tight text-white text-balance md:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
+            <h2 className="font-display text-[clamp(1.6rem,5.5vw,2.75rem)] font-extrabold tracking-tight text-white text-balance lg:leading-[1.15]">
               Your next opportunity could start here.
             </h2>
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
+            <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-white/80 sm:mt-5 sm:text-base md:text-lg">
               Ready to represent premier US enterprise brands and collaborate with
               high-performing global peers?
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-6 flex w-full max-w-md flex-col gap-3 sm:mt-8 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <Button href="/apply" variant="white">
                 Join us now <ArrowRight className="h-4 w-4" aria-hidden />
               </Button>
