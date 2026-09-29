@@ -31,25 +31,25 @@ export default function HomePage() {
 
       {/* Careers split */}
       <Section className="bg-[#f7fafa]">
-        <Container className="grid items-center gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-12 xl:gap-16">
+        <Container className="grid items-center gap-6 lg:grid-cols-[1fr_1.2fr] lg:gap-8 xl:gap-10">
           <div className="order-2 lg:order-1">
-            <HeadingReveal className="mb-7 max-w-xl md:mb-8" duration={1}>
+            <HeadingReveal className="mb-5 max-w-xl md:mb-6" duration={1}>
               <span className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-sea uppercase shadow-soft">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden />
                 Careers at Comtanix
               </span>
-              <h2 className="mt-4 font-display text-[clamp(1.75rem,3vw,2.65rem)] font-extrabold tracking-tight text-ink leading-[1.2] text-balance">
+              <h2 className="mt-3 font-display text-[clamp(1.75rem,3vw,2.65rem)] font-extrabold tracking-tight text-ink leading-[1.2] text-balance">
                 A home for sustainable,{" "}
                 <span className="text-sea">high-growth careers</span> in IT.
               </h2>
-              <p className="mt-3.5 max-w-prose text-base leading-[1.7] text-muted md:text-[17px]">
+              <p className="mt-2.5 max-w-prose text-base leading-[1.65] text-muted md:text-[17px]">
                 Comtanix teams adjust to each client&apos;s tools, processes and
                 standards. We train our people to match, and we grow them into the
                 next role.
               </p>
             </HeadingReveal>
 
-            <ul className="mb-8 space-y-2.5">
+            <ul className="mb-6 space-y-2">
               {[
                 "100% Paid training and onboarding program",
                 "Direct mentorship with US account managers",
@@ -57,9 +57,9 @@ export default function HomePage() {
               ].map((item) => (
                 <li
                   key={item}
-                  className="flex items-center gap-3.5 rounded-xl border border-transparent bg-white/80 px-3.5 py-3 transition-colors hover:border-line hover:bg-white"
+                  className="flex items-center gap-3 rounded-xl border border-transparent bg-white/80 px-3 py-2.5 transition-colors hover:border-line hover:bg-white"
                 >
-                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-tint text-sea">
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-tint text-sea">
                     <CheckCircle2 className="h-4 w-4" aria-hidden />
                   </span>
                   <span className="text-[15px] font-medium leading-snug text-ink">
@@ -83,16 +83,16 @@ export default function HomePage() {
       {/* Goals */}
       <Section className="bg-[#f4f8f8]">
         <Container>
-          <HeadingReveal className="mb-10 md:mb-12" duration={1}>
+          <HeadingReveal className="mb-7 md:mb-8" duration={1}>
             <span className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-sea uppercase shadow-soft">
               <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden />
               Our philosophy
             </span>
-            <h2 className="mt-4 max-w-2xl font-display text-[clamp(1.75rem,3vw,2.75rem)] font-extrabold tracking-tight text-ink leading-[1.2]">
+            <h2 className="mt-3 max-w-2xl font-display text-[clamp(1.75rem,3vw,2.75rem)] font-extrabold tracking-tight text-ink leading-[1.2]">
               Our Goals as an{" "}
               <span className="text-sea">Enterprise</span>
             </h2>
-            <p className="mt-3 max-w-xl text-base leading-[1.7] text-muted md:text-[17px]">
+            <p className="mt-2.5 max-w-xl text-base leading-[1.65] text-muted md:text-[17px]">
               To build strong careers by delivering dependable IT work for US
               businesses.
             </p>
@@ -116,12 +116,12 @@ export default function HomePage() {
       {/* Culture */}
       <Section className="bg-white">
         <Container>
-          <HeadingReveal className="mb-10 md:mb-12" duration={1}>
+          <HeadingReveal className="mb-7 md:mb-8" duration={1}>
             <span className="inline-flex items-center gap-2 rounded-full bg-tint px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-sea uppercase">
               <span className="h-1.5 w-1.5 rounded-full bg-sea" aria-hidden />
               Life at Comtanix
             </span>
-            <h2 className="mt-4 font-display text-[1.75rem] font-extrabold tracking-tight text-ink md:text-3xl lg:text-[2.35rem]">
+            <h2 className="mt-3 font-display text-[1.75rem] font-extrabold tracking-tight text-ink md:text-3xl lg:text-[2.35rem]">
               What Makes Us Comtanix
             </h2>
             <p className="mt-2 text-base text-muted md:text-lg">
