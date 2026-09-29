@@ -85,9 +85,9 @@ export function ApplyForm() {
   }
 
   const field =
-    "h-11 w-full rounded-md border border-line bg-surface px-3.5 font-body text-[15px] font-normal leading-none text-ink placeholder:text-muted/80 transition focus:border-brand focus:outline-none focus:ring-[3px] focus:ring-brand/20";
+    "h-12 w-full rounded-md border border-line bg-surface px-3.5 font-body text-base font-normal leading-none text-ink placeholder:text-muted/80 transition focus:border-brand focus:outline-none focus:ring-[3px] focus:ring-brand/20";
   const area =
-    "w-full resize-y rounded-md border border-line bg-surface px-3.5 py-3 font-body text-[15px] font-normal leading-relaxed text-ink placeholder:text-muted/80 transition focus:border-brand focus:outline-none focus:ring-[3px] focus:ring-brand/20";
+    "w-full resize-y rounded-md border border-line bg-surface px-3.5 py-3 font-body text-base font-normal leading-relaxed text-ink placeholder:text-muted/80 transition focus:border-brand focus:outline-none focus:ring-[3px] focus:ring-brand/20";
   const labelCls =
     "grid gap-2 font-body text-[13px] font-semibold tracking-wide text-ink";
 
@@ -168,7 +168,7 @@ export function ApplyForm() {
             name="cv"
             required
             accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-            className="mt-0.5 block w-full font-body text-sm font-normal text-ink file:mr-3 file:cursor-pointer file:rounded-md file:border-0 file:bg-brand file:px-4 file:py-2.5 file:font-semibold file:text-white hover:file:bg-sea"
+            className="mt-0.5 block w-full max-w-full font-body text-base font-normal text-ink file:mr-3 file:cursor-pointer file:rounded-md file:border-0 file:bg-brand file:px-4 file:py-2.5 file:font-semibold file:text-white hover:file:bg-sea"
             onChange={() => setCvErr("")}
           />
           <span className="font-normal text-[12px] leading-snug text-muted">

@@ -16,7 +16,7 @@ function QuoteCard({
   quote: string;
 }) {
   return (
-    <article className="flex w-[min(100%,300px)] shrink-0 flex-col sm:w-[320px]">
+    <article className="flex w-[min(100%,300px)] shrink-0 snap-start flex-col sm:w-[320px]">
       {/* Speech bubble */}
       <div className="relative rounded-2xl bg-white px-6 py-6 shadow-soft">
         <q className="block text-[15px] leading-relaxed text-ink/90 [quotes:none]">
@@ -91,7 +91,7 @@ export function TestimonialsSlider() {
     atStart && atEnd ? 100 : atEnd ? 100 : atStart ? 28 : 55;
 
   return (
-    <div className="grid gap-10 lg:grid-cols-[minmax(0,280px)_1fr] lg:items-stretch lg:gap-12 xl:grid-cols-[minmax(0,320px)_1fr]">
+    <div className="grid min-w-0 gap-10 lg:grid-cols-[minmax(0,280px)_minmax(0,1fr)] lg:items-stretch lg:gap-12 xl:grid-cols-[minmax(0,320px)_minmax(0,1fr)]">
       {/* Left — heading + nav */}
       <div className="flex flex-col">
         <span
@@ -110,7 +110,7 @@ export function TestimonialsSlider() {
             onClick={() => scrollBy(-1)}
             disabled={atStart}
             aria-label="Previous stories"
-            className="grid h-9 w-9 place-items-center text-ink transition disabled:text-muted/40"
+            className="grid h-11 w-11 place-items-center text-ink transition disabled:text-muted/40"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -125,7 +125,7 @@ export function TestimonialsSlider() {
             onClick={() => scrollBy(1)}
             disabled={atEnd}
             aria-label="Next stories"
-            className="grid h-9 w-9 place-items-center text-ink transition disabled:text-muted/40"
+            className="grid h-11 w-11 place-items-center text-ink transition disabled:text-muted/40"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
@@ -137,7 +137,7 @@ export function TestimonialsSlider() {
         ref={ref}
         tabIndex={0}
         aria-label="Team stories"
-        className="no-scrollbar flex gap-6 overflow-x-auto pb-2 outline-none"
+        className="no-scrollbar -mx-1 flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-2 outline-none sm:gap-6"
       >
         {TESTIMONIALS.map((t) => (
           <QuoteCard key={t.name} {...t} />

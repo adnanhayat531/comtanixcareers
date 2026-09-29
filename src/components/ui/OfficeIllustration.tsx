@@ -53,7 +53,7 @@ export function OfficeIllustration({
   return (
     <figure
       ref={frameRef}
-      className={`group relative overflow-hidden rounded-[1.25rem] shadow-[var(--shadow-overlay)] ease-out motion-reduce:transition-none ${
+      className={`group relative max-w-full min-w-0 overflow-hidden rounded-[1.25rem] shadow-[var(--shadow-overlay)] ease-out motion-reduce:transition-none ${
         visible
           ? "translate-y-0 scale-100 opacity-100"
           : "translate-y-[30px] scale-[0.94] opacity-0"
@@ -64,7 +64,7 @@ export function OfficeIllustration({
         transitionTimingFunction: "ease-out",
       }}
     >
-      <div className="relative aspect-[3/2] min-h-[260px] w-full overflow-hidden bg-brand sm:min-h-[320px] lg:min-h-[380px] xl:min-h-[420px]">
+      <div className="relative aspect-[3/2] w-full max-w-full overflow-hidden bg-brand">
         <Image
           src="/office-hq.png"
           alt="Comtanix office exterior with illuminated company signage"

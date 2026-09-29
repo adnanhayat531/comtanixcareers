@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero + numbers in first viewport (no scroll needed) */}
-      <section className="relative flex min-h-[calc(100svh-3.5rem)] flex-col overflow-hidden bg-brand md:min-h-[calc(100svh-4rem)]">
+      <section className="relative flex min-h-[calc(100svh-3.5rem)] flex-col bg-brand md:min-h-[calc(100svh-4rem)]">
         <HeroNetwork />
         <div className="relative z-10 flex flex-1 flex-col justify-center">
           <HeroCopy />
@@ -31,8 +31,8 @@ export default function HomePage() {
 
       {/* Careers split */}
       <Section className="bg-tint">
-        <Container className="grid items-center gap-6 lg:grid-cols-[1fr_1.2fr] lg:gap-8 xl:gap-10">
-          <div className="order-2 lg:order-1">
+        <Container className="grid min-w-0 items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-8 xl:gap-10">
+          <div className="order-2 min-w-0 lg:order-1">
             <HeadingReveal className="mb-5 max-w-xl md:mb-6" duration={1}>
               <span className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-brand uppercase shadow-soft">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden />
@@ -74,7 +74,7 @@ export default function HomePage() {
             </Button>
           </div>
 
-          <div className="order-1 w-full lg:order-2 lg:-mr-2 xl:-mr-4">
+          <div className="order-1 w-full min-w-0 lg:order-2">
             <OfficeIllustration caption="Comtanix office — secure, modern floor" />
           </div>
         </Container>

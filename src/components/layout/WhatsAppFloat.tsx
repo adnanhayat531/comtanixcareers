@@ -8,7 +8,7 @@ export function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] z-40 transition hover:scale-105 hover:brightness-110 md:right-6"
+      className="fixed right-3 bottom-[max(0.75rem,env(safe-area-inset-bottom,0px))] z-40 transition hover:scale-105 hover:brightness-110 md:right-5"
     >
       <Image
         src="/whatsapp.png"

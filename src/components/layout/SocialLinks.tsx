@@ -49,7 +49,7 @@ export function SocialLinks({
   const entries = Object.entries(CONFIG.socials).filter(([, url]) => Boolean(url));
 
   return (
-    <div className="flex flex-wrap gap-2.5">
+    <div className="flex min-w-0 flex-wrap gap-2.5">
       {entries.map(([name, url]) => (
         <a
           key={name}

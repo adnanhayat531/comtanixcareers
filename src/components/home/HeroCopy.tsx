@@ -15,11 +15,11 @@ const BTN_DELAY = PARA_DELAY + 0.15;
 
 export function HeroCopy() {
   return (
-    <Container className="relative z-10 flex flex-col items-center px-5 pb-6 pt-24 text-center sm:pb-8 md:pt-28 lg:pt-32">
+    <Container className="relative z-10 flex flex-col items-center px-5 pb-6 pt-10 text-center sm:pb-8 sm:pt-16 md:pt-24 lg:pt-28">
       <WordFadeUp
         text={HERO_HEADING}
         stagger={WORD_STAGGER}
-        className="max-w-3xl font-display text-[clamp(2.1rem,4.5vw,3.5rem)] font-extrabold tracking-tight text-white text-balance leading-[1.15] drop-shadow-[0_2px_12px_rgba(73,164,174,0.45)]"
+        className="max-w-3xl font-display text-[clamp(1.7rem,7.5vw,3.5rem)] font-extrabold tracking-tight text-white text-balance leading-[1.15] drop-shadow-[0_2px_12px_rgba(73,164,174,0.45)]"
       />
 
       <FadeUp delay={PARA_DELAY} duration={0.7} className="mt-5 max-w-xl">

@@ -90,7 +90,7 @@ export function ClocksPanel() {
       className="rounded-xl border border-line bg-surface p-5 shadow-hover md:p-6"
       aria-label="Live time comparison"
     >
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h3 className="font-display text-xl font-bold text-brand md:text-2xl">
             Global Operations Hub
@@ -114,7 +114,7 @@ export function ClocksPanel() {
           return (
             <div
               key={z.label}
-              className="flex items-center justify-between gap-3 rounded-lg bg-tint px-3.5 py-3.5"
+              className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 rounded-lg bg-tint px-3.5 py-3.5"
             >
               <div className="flex min-w-0 items-start gap-3">
                 <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-md bg-white text-brand shadow-soft">
@@ -133,7 +133,7 @@ export function ClocksPanel() {
               </div>
               <div className="shrink-0 text-right">
                 <b
-                  className="block font-display text-lg font-bold tabular-nums text-brand md:text-xl"
+                  className="block font-display text-base font-bold tabular-nums text-brand sm:text-lg md:text-xl"
                   data-tz={z.tz}
                 >
                   {now ? formatTime(now, tz) : "--:--:--"}

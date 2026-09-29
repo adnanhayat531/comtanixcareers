@@ -64,12 +64,12 @@ function StatItem({
   }, [value, reduced]);
 
   return (
-    <div className="flex min-w-0 flex-1 flex-col items-center justify-center px-2 text-center sm:px-3">
+    <div className="flex min-w-[46%] flex-1 flex-col items-center justify-center px-2 text-center sm:min-w-0 sm:px-3">
       <div className="font-display text-xl font-extrabold leading-none tracking-tight text-white sm:text-2xl md:text-3xl lg:text-[2.25rem]">
         <span ref={ref}>{display}</span>
         {suffix ? <span className="text-brand">{suffix}</span> : null}
       </div>
-      <p className="mt-1.5 text-[9px] font-semibold tracking-[0.1em] text-white/90 uppercase sm:text-[10px] md:text-xs">
+      <p className="mt-1.5 text-xs font-semibold tracking-wide text-white/90 uppercase">
         {label}
       </p>
     </div>
@@ -91,7 +91,7 @@ export function StatsBar() {
         </div>
 
         <div className="flex min-w-0 flex-1 items-center justify-center bg-brand px-3 py-2 sm:px-5 sm:py-2.5 md:px-8 lg:rounded-bl-[2.5rem] lg:px-10">
-          <div className="flex w-full flex-wrap items-center justify-center gap-y-3 md:flex-nowrap md:gap-0">
+          <div className="flex w-full flex-wrap items-center justify-center gap-x-2 gap-y-3 md:flex-nowrap md:gap-0">
             {STATS.map((s) => (
               <StatItem
                 key={s.label}

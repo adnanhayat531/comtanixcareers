@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { BrandLogo } from "@/components/ui/BrandLogo";
@@ -18,12 +18,16 @@ const aboutLinks = [
 function NavLink({
   href,
   label,
+  shortLabel,
   active,
+  menu,
   onClick,
 }: {
   href: string;
   label: string;
+  shortLabel?: string;
   active?: boolean;
+  menu?: boolean;
   onClick?: () => void;
 }) {
   return (
@@ -31,26 +35,58 @@ function NavLink({
       href={href}
       onClick={onClick}
       aria-current={active ? "page" : undefined}
-      className={`relative px-2.5 py-1.5 text-base font-semibold tracking-tight transition-colors xl:px-3 ${
-        active
-          ? "text-brand after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand"
-          : "text-ink/85 hover:text-brand"
-      }`}
+      className={
+        menu
+          ? `flex min-h-11 items-center rounded-md px-3 text-base font-semibold tracking-tight transition-colors ${
+              active ? "bg-tint text-brand" : "text-ink hover:bg-tint hover:text-brand"
+            }`
+          : `relative px-1.5 py-2 text-[13px] font-semibold tracking-tight transition-colors xl:px-2.5 xl:text-base ${
+              active
+                ? "text-brand after:absolute after:right-1.5 after:bottom-0 after:left-1.5 after:h-0.5 after:rounded-full after:bg-brand xl:after:right-2.5 xl:after:left-2.5"
+                : "text-ink/85 hover:text-brand"
+            }`
+      }
     >
-      {label}
+      {shortLabel ? (
+        <>
+          <span className="xl:hidden">{shortLabel}</span>
+          <span className="hidden xl:inline">{label}</span>
+        </>
+      ) : (
+        label
+      )}
     </Link>
   );
 }
 
 export function Header() {
   const pathname = usePathname();
+  const aboutRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [aboutMenu, setAboutMenu] = useState(false);
 
   useEffect(() => {
     setOpen(false);
     setAboutOpen(false);
+    setAboutMenu(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!aboutMenu) return;
+    function onPointer(e: PointerEvent) {
+      if (!aboutRef.current?.contains(e.target as Node)) setAboutMenu(false);
+    }
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setAboutMenu(false);
+    }
+    document.addEventListener("pointerdown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [aboutMenu]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -60,42 +96,60 @@ export function Header() {
   }, [open]);
 
   const dropLink =
-    "block rounded-md px-3 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-tint hover:text-brand";
+    "flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-ink transition-colors hover:bg-tint hover:text-brand";
 
   const desktopLink = (active: boolean) =>
-    `${"relative inline-flex items-center gap-1 px-2.5 py-1.5 text-base font-semibold tracking-tight transition-colors xl:px-3"} ${
+    `${"relative inline-flex min-h-11 items-center gap-1 px-1.5 text-[13px] font-semibold tracking-tight transition-colors xl:px-2.5 xl:text-base"} ${
       active
-        ? "text-brand after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand"
+        ? "text-brand after:absolute after:right-1.5 after:bottom-1 after:left-1.5 after:h-0.5 after:rounded-full after:bg-brand xl:after:right-2.5 xl:after:left-2.5"
         : "text-ink/85 hover:text-brand"
     }`;
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-surface/95 shadow-soft backdrop-blur-md">
-      <div className="flex h-14 w-full items-center justify-between gap-4 px-3 sm:px-4 md:h-16 md:px-5 lg:px-6">
+      <div className="flex h-14 w-full items-center justify-between gap-2 px-3 sm:gap-3 sm:px-4 md:h-16 md:px-5 lg:px-4 xl:px-6">
         <Link
           href="/"
-          className="shrink-0 focus-visible:rounded-sm"
+          className="min-w-0 shrink focus-visible:rounded-sm"
           aria-label={`${SITE.name} home`}
         >
-          <BrandLogo className="h-8 w-auto md:h-9" />
+          <BrandLogo className="h-7 w-auto sm:h-8 md:h-9" />
         </Link>
 
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
+        <nav className="hidden min-w-0 items-center lg:flex" aria-label="Main">
           <NavLink href="/" label="Home" active={pathname === "/"} />
 
-          <div className="relative group">
-            <Link
-              href="/about"
+          <div className="relative" ref={aboutRef}>
+            <button
+              type="button"
               className={desktopLink(pathname.startsWith("/about"))}
-              aria-current={pathname.startsWith("/about") ? "page" : undefined}
+              aria-expanded={aboutMenu}
+              aria-controls="about-menu"
+              onClick={() => setAboutMenu((v) => !v)}
             >
               About
-              <ChevronDown className="h-4 w-4 opacity-70" aria-hidden />
-            </Link>
-            <div className="invisible absolute left-0 top-full z-50 min-w-[240px] pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <ChevronDown
+                className={`h-4 w-4 opacity-70 transition ${aboutMenu ? "rotate-180" : ""}`}
+                aria-hidden
+              />
+            </button>
+            <div
+              id="about-menu"
+              className={`absolute left-0 top-full z-50 min-w-[240px] pt-2 ${
+                aboutMenu ? "visible opacity-100" : "invisible opacity-0"
+              }`}
+            >
               <div className="rounded-lg border border-line bg-surface p-2 shadow-[var(--shadow-overlay)]">
+                <Link href="/about" className={dropLink} onClick={() => setAboutMenu(false)}>
+                  About Us
+                </Link>
                 {aboutLinks.map((l) => (
-                  <Link key={l.href} href={l.href} className={dropLink}>
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className={dropLink}
+                    onClick={() => setAboutMenu(false)}
+                  >
                     {l.label}
                   </Link>
                 ))}
@@ -111,6 +165,7 @@ export function Header() {
           <NavLink
             href="/life"
             label={`Life at ${SITE.name}`}
+            shortLabel="Life"
             active={pathname.startsWith("/life")}
           />
           <NavLink
@@ -121,62 +176,73 @@ export function Header() {
 
           <Button
             href="/apply"
-            className="ml-3 !h-9 !min-h-9 !rounded-full !px-4 !text-sm md:!h-9 md:!min-h-9 md:!px-4 md:!text-sm"
+            className="ml-2 !h-11 !min-h-11 !rounded-full !px-3.5 !text-sm xl:ml-3 xl:!px-4"
           >
-            Apply Now
+            <span className="xl:hidden">Apply</span>
+            <span className="hidden xl:inline">Apply Now</span>
           </Button>
         </nav>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex shrink-0 items-center gap-2 lg:hidden">
           <Button
             href="/apply"
-            className="hidden !h-8 !min-h-8 !rounded-full !px-3 !text-sm md:!h-8 md:!min-h-8 md:!px-3 md:!text-sm sm:inline-flex"
+            className="!h-11 !min-h-11 !rounded-full !px-3.5 !text-sm"
           >
             Apply
           </Button>
           <button
             type="button"
-            className="inline-flex h-9 items-center gap-2 rounded-full border border-line px-3 text-sm font-semibold text-ink transition hover:bg-tint"
+            className="inline-flex h-11 min-h-11 items-center gap-2 rounded-full border border-line px-3 text-sm font-semibold text-ink transition hover:bg-tint"
             aria-expanded={open}
             aria-controls="mobile-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-            Menu
+            <span className="hidden sm:inline">{open ? "Close" : "Menu"}</span>
           </button>
         </div>
       </div>
 
       {open ? (
         <div id="mobile-nav" className="border-t border-line bg-surface lg:hidden">
-          <Container className="flex max-h-[calc(100dvh-3.5rem)] flex-col gap-0.5 overflow-y-auto py-3 pb-6">
-            <NavLink href="/" label="Home" active={pathname === "/"} onClick={() => setOpen(false)} />
+          <Container className="flex max-h-[calc(100dvh-3.5rem)] flex-col gap-1 overflow-y-auto py-3 pb-6">
+            <NavLink menu href="/" label="Home" active={pathname === "/"} onClick={() => setOpen(false)} />
 
             <button
               type="button"
-              className="flex items-center justify-between px-3 py-3 text-left text-[15px] font-semibold text-ink"
+              className="flex min-h-11 items-center justify-between rounded-md px-3 text-left text-base font-semibold text-ink"
               onClick={() => setAboutOpen((v) => !v)}
               aria-expanded={aboutOpen}
             >
               About
               <ChevronDown className={`h-5 w-5 transition ${aboutOpen ? "rotate-180" : ""}`} />
             </button>
-            {aboutOpen
-              ? aboutLinks.map((l) => (
+            {aboutOpen ? (
+              <div className="grid">
+                <Link
+                  href="/about"
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-11 items-center rounded-md px-5 text-base text-muted hover:bg-tint hover:text-brand"
+                >
+                  About Us
+                </Link>
+                {aboutLinks.map((l) => (
                   <Link
                     key={l.href}
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="px-5 py-2.5 text-sm text-muted hover:bg-tint hover:text-brand"
+                    className="flex min-h-11 items-center rounded-md px-5 text-base text-muted hover:bg-tint hover:text-brand"
                   >
                     {l.label}
                   </Link>
-                ))
-              : null}
+                ))}
+              </div>
+            ) : null}
 
-            <NavLink href="/careers" label="Careers" onClick={() => setOpen(false)} />
-            <NavLink href="/life" label={`Life at ${SITE.name}`} onClick={() => setOpen(false)} />
-            <NavLink href="/contact" label="Contact" onClick={() => setOpen(false)} />
+            <NavLink menu href="/careers" label="Careers" onClick={() => setOpen(false)} />
+            <NavLink menu href="/life" label={`Life at ${SITE.name}`} onClick={() => setOpen(false)} />
+            <NavLink menu href="/contact" label="Contact" onClick={() => setOpen(false)} />
             <Button href="/apply" className="mt-4 w-full rounded-full">
               Apply Now <ArrowRight className="h-4 w-4" aria-hidden />
             </Button>

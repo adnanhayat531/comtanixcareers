@@ -102,7 +102,7 @@ function SubscribeBox() {
   }
 
   return (
-    <div className="mt-8 max-w-md">
+    <div className="mt-8 w-full max-w-md">
       <h3 className="font-display text-sm font-extrabold tracking-[0.12em] text-white uppercase">
         Subscribe
       </h3>
@@ -111,7 +111,7 @@ function SubscribeBox() {
       </p>
       <form
         onSubmit={onSubmit}
-        className="mt-3 flex items-center rounded-full bg-white py-1.5 pr-1.5 pl-4 shadow-soft"
+        className="mt-3 flex w-full min-w-0 items-center rounded-full bg-white py-1.5 pr-1.5 pl-3 shadow-soft sm:pl-4"
       >
         <label className="sr-only" htmlFor="footer-email">
           Email
@@ -123,11 +123,11 @@ function SubscribeBox() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter Your Email"
-          className="min-w-0 flex-1 border-0 bg-transparent py-1.5 text-sm text-ink outline-none placeholder:text-muted"
+          className="min-w-0 flex-1 border-0 bg-transparent py-1.5 text-base text-ink outline-none placeholder:text-muted"
         />
         <button
           type="submit"
-          className="inline-flex shrink-0 items-center gap-2 pr-0.5 text-[11px] font-extrabold tracking-[0.08em] text-brand uppercase transition hover:text-ink"
+          className="inline-flex shrink-0 items-center gap-1.5 pr-0.5 text-[10px] font-extrabold tracking-[0.06em] text-brand uppercase transition hover:text-ink sm:gap-2 sm:text-[11px] sm:tracking-[0.08em]"
         >
           Subscribe
           <span className="grid h-7 w-7 place-items-center rounded-full bg-brand text-white">
@@ -160,7 +160,7 @@ function ContactChip({
         <span className="block text-[10px] font-extrabold tracking-[0.14em] text-white/75 uppercase">
           {label}
         </span>
-        <span className="mt-0.5 block font-display text-sm font-bold text-white transition group-hover:text-white/90">
+        <span className="mt-0.5 block font-display text-sm font-bold break-words text-white transition group-hover:text-white/90">
           {value}
         </span>
       </span>
@@ -175,8 +175,8 @@ export function Footer() {
     <footer className="relative shrink-0 text-white">
       <div className="bg-brand">
         <Container className="pt-12 pb-8 md:pt-14 md:pb-10 lg:pt-16">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.45fr)_repeat(4,minmax(0,1fr))] lg:gap-8">
-            <div className="sm:col-span-2 lg:col-span-1">
+          <div className="grid min-w-0 gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.45fr)_repeat(4,minmax(0,1fr))] lg:gap-8">
+            <div className="min-w-0 sm:col-span-2 lg:col-span-1">
               <Link
                 href="/"
                 className="inline-flex font-display text-xl font-extrabold tracking-tight text-white"
@@ -199,7 +199,7 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="mt-10 flex flex-col gap-5 border-t border-white/30 pt-6 sm:flex-row sm:items-center sm:justify-end sm:gap-8">
+          <div className="mt-10 flex flex-col gap-5 border-t border-white/30 pt-6 pr-[4.75rem] md:flex-row md:flex-wrap md:items-center md:justify-end md:gap-6 md:pr-[6.25rem] lg:flex-nowrap lg:gap-8">
             <ContactChip
               href={`tel:+${CONFIG.whatsapp}`}
               label="Talk to hiring"
@@ -215,7 +215,7 @@ export function Footer() {
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="grid h-11 w-11 shrink-0 place-items-center self-end rounded-full border-2 border-white bg-brand text-white transition hover:bg-white hover:text-brand sm:self-auto"
+              className="grid h-11 w-11 shrink-0 place-items-center self-end rounded-full border-2 border-white bg-brand text-white transition hover:bg-white hover:text-brand md:self-auto"
               aria-label="Back to top"
             >
               <ArrowUp className="h-4 w-4" aria-hidden />
@@ -225,7 +225,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/25 bg-brand">
-        <Container className="flex flex-col gap-2 py-3.5 text-xs text-white/80 sm:flex-row sm:items-center sm:justify-between md:text-sm">
+        <Container className="flex min-h-[5.25rem] flex-col justify-center gap-2 py-3.5 !pr-[4.75rem] pb-[max(0.875rem,env(safe-area-inset-bottom,0px))] text-xs text-white/80 sm:flex-row sm:items-center sm:justify-between md:!pr-[6.25rem] md:text-sm">
           <p>
             © {year} {SITE.name}. All rights reserved.
           </p>
