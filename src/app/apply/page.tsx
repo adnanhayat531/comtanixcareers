@@ -62,7 +62,7 @@ export default function ApplyPage() {
           <ol className="mt-6 space-y-5">
             {STEPS.map((s) => (
               <li key={s.n} className="flex gap-3">
-                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sea to-brand font-display text-sm font-bold text-white">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand font-display text-sm font-bold text-white">
                   {s.n}
                 </span>
                 <div>

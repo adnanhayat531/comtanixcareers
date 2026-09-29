@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero + numbers in first viewport (no scroll needed) */}
-      <section className="relative flex min-h-svh flex-col overflow-hidden bg-deep">
+      <section className="relative flex min-h-svh flex-col overflow-hidden bg-brand">
         <HeroNetwork />
         <div className="relative z-10 flex flex-1 flex-col justify-center">
           <HeroCopy />
@@ -141,7 +141,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="mt-6 flex flex-col items-start justify-between gap-6 rounded-2xl bg-gradient-to-r from-deep via-sea to-brand px-7 py-8 sm:flex-row sm:items-center md:mt-8 md:px-10 md:py-9">
+          <div className="mt-6 flex flex-col items-start justify-between gap-6 rounded-2xl bg-brand px-7 py-8 sm:flex-row sm:items-center md:mt-8 md:px-10 md:py-9">
             <div className="max-w-xl">
               <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/35 px-3 py-1 text-xs font-medium text-white">
                 <BookOpen className="h-3.5 w-3.5" aria-hidden />
@@ -168,7 +168,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="relative overflow-hidden bg-deep">
+      <Section className="relative overflow-hidden bg-brand">
         <Image
           src="/cta-opportunity.jpg"
           alt=""
@@ -178,7 +178,7 @@ export default function HomePage() {
           aria-hidden
         />
         <div
-          className="absolute inset-0 bg-gradient-to-r from-deep/92 via-sea-mid/82 to-deep/70"
+          className="absolute inset-0 bg-brand/88"
           aria-hidden
         />
         <Container className="relative z-10">

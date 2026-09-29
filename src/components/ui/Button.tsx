@@ -7,13 +7,13 @@ import { type ReactNode } from "react";
  */
 const variants = {
   primary:
-    "bg-gradient-to-r from-sea to-brand text-white hover:brightness-105 hover:shadow-[var(--shadow-brand)] active:brightness-95",
+    "bg-brand text-white hover:brightness-105 hover:shadow-[var(--shadow-brand)] active:brightness-95",
   secondary:
     "bg-transparent text-brand border-2 border-brand hover:bg-tint active:bg-tint",
   ghost:
     "bg-transparent text-ink border-2 border-transparent hover:bg-tint hover:text-brand active:bg-tint",
   white:
-    "bg-white text-ink hover:bg-on-sea active:bg-tint shadow-soft",
+    "bg-white text-brand hover:bg-on-sea active:bg-tint shadow-soft",
   outlineLight:
     "bg-transparent text-white border-2 border-white hover:bg-white/10 active:bg-white/15",
   text: "bg-transparent text-brand px-0 py-0 h-auto min-h-0 border-0 hover:underline underline-offset-4",

@@ -57,7 +57,7 @@ export function GetInTouch() {
           <ul className="space-y-10">
             {contactRows.map(({ icon: Icon, label, content }) => (
               <li key={label} className="flex gap-5">
-                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sea to-brand text-white shadow-brand">
+                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-brand text-white shadow-brand">
                   <Icon className="h-6 w-6" aria-hidden />
                 </span>
                 <div className="min-w-0 pt-1">

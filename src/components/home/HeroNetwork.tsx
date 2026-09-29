@@ -15,8 +15,8 @@ export function HeroNetwork() {
       </video>
 
       {/* Light readability wash — video stays clearly visible */}
-      <div className="absolute inset-0 bg-deep/35" />
-      <div className="absolute inset-0 bg-gradient-to-b from-deep/40 via-transparent to-deep/45" />
+      <div className="absolute inset-0 bg-brand/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-brand/35 via-transparent to-brand/40" />
     </div>
   );
 }

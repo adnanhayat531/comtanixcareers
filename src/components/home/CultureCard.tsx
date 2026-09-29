@@ -112,7 +112,7 @@ export function CultureCard({ title, body, image, index }: CultureCardProps) {
       </div>
 
       <div className="flex flex-1 flex-col px-5 py-5 md:px-6 md:py-6">
-        <div className="mb-4 grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-sea to-brand text-white shadow-brand">
+        <div className="mb-4 grid h-10 w-10 place-items-center rounded-xl bg-brand text-white shadow-brand">
           <Icon className="h-5 w-5" aria-hidden />
         </div>
         <h3 className="font-display text-base font-bold tracking-tight text-ink md:text-lg">

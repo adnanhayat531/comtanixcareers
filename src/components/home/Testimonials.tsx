@@ -41,7 +41,7 @@ function QuoteCard({
       {/* Author */}
       <div className="mt-5 flex items-center gap-3 pl-2">
         <div
-          className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sea to-brand font-display text-sm font-bold text-white shadow-brand"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand font-display text-sm font-bold text-white shadow-brand"
           aria-hidden
         >
           {initials}

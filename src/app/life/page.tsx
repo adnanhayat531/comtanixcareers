@@ -36,7 +36,7 @@ export default function LifePage() {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
                   <div
-                    className="absolute inset-0 bg-gradient-to-t from-deep/50 via-transparent to-transparent"
+                    className="absolute inset-0 bg-gradient-to-t from-brand/50 via-transparent to-transparent"
                     aria-hidden
                   />
                   <span className="absolute bottom-3 left-3 grid h-10 w-10 place-items-center rounded-xl bg-white/95 text-brand shadow-soft backdrop-blur-sm">
@@ -65,9 +65,9 @@ export default function LifePage() {
         </Container>
       </Section>
 
-      <Section className="relative overflow-hidden bg-deep">
+      <Section className="relative overflow-hidden bg-brand">
         <div
-          className="absolute inset-0 bg-gradient-to-br from-sea/40 via-transparent to-brand/30"
+          className="absolute inset-0 bg-brand/20"
           aria-hidden
         />
         <Container className="relative z-10 max-w-xl text-center">

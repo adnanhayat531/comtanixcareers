@@ -114,7 +114,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex h-[52px] items-center justify-center gap-2 self-end rounded-full bg-gradient-to-r from-sea to-brand px-8 text-base font-bold text-white transition hover:brightness-105 disabled:opacity-60 md:h-[56px] md:text-lg"
+          className="inline-flex h-[52px] items-center justify-center gap-2 self-end rounded-full bg-brand px-8 text-base font-bold text-white transition hover:brightness-105 disabled:opacity-60 md:h-[56px] md:text-lg"
         >
           Submit <ArrowRight className="h-4 w-4" aria-hidden />
         </button>

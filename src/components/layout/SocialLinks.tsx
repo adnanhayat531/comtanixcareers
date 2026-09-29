@@ -63,8 +63,8 @@ export function SocialLinks({
           } ${
             light
               ? circle
-                ? "border border-brand/50 text-white hover:border-brand hover:bg-brand"
-                : "border border-brand/40 text-white hover:bg-brand/20"
+                ? "border border-white/60 text-white hover:border-white hover:bg-white hover:text-brand"
+                : "border border-white/40 text-white hover:bg-white/15"
               : "border border-line text-brand hover:border-brand hover:bg-tint hover:text-brand"
           }`}
         >

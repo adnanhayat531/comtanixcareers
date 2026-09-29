@@ -90,7 +90,7 @@ export function StatsBar() {
           </h2>
         </div>
 
-        <div className="flex min-w-0 flex-1 items-center justify-center bg-gradient-to-r from-deep via-sea to-brand px-3 py-2 sm:px-5 sm:py-2.5 md:px-8 lg:rounded-bl-[2.5rem] lg:px-10">
+        <div className="flex min-w-0 flex-1 items-center justify-center bg-brand px-3 py-2 sm:px-5 sm:py-2.5 md:px-8 lg:rounded-bl-[2.5rem] lg:px-10">
           <div className="flex w-full flex-wrap items-center justify-center gap-y-3 md:flex-nowrap md:gap-0">
             {STATS.map((s) => (
               <StatItem
