@@ -58,7 +58,7 @@ export default function AboutPage() {
           <ol className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 md:gap-8">
             {VALUES.map((v, i) => (
               <li key={v.title} className="group">
-                <div className="relative mb-5 aspect-[4/3] overflow-hidden rounded-xl bg-on-sea">
+                <div className="relative mb-5 aspect-[4/3] overflow-hidden rounded-xl bg-tint">
                   <Image
                     src={v.image}
                     alt=""
@@ -66,11 +66,7 @@ export default function AboutPage() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-brand/45 via-transparent to-transparent"
-                    aria-hidden
-                  />
-                  <span className="absolute bottom-3 left-3 font-display text-xs font-bold tracking-[0.14em] text-white uppercase drop-shadow-sm">
+                  <span className="absolute bottom-3 left-3 z-10 font-display text-xs font-bold tracking-[0.14em] text-white uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.7)]">
                     0{i + 1}
                   </span>
                 </div>

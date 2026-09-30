@@ -27,7 +27,7 @@ export default function LifePage() {
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
             {LIFE_ACTIVITIES.map((a) => (
               <article key={a.title} className="group flex flex-col">
-                <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-2xl bg-on-sea">
+                <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-2xl bg-tint">
                   <Image
                     src={a.image}
                     alt=""
@@ -35,11 +35,7 @@ export default function LifePage() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-brand/50 via-transparent to-transparent"
-                    aria-hidden
-                  />
-                  <span className="absolute bottom-3 left-3 grid h-10 w-10 place-items-center rounded-xl bg-white/95 text-brand shadow-soft backdrop-blur-sm">
+                  <span className="absolute bottom-3 left-3 z-10 grid h-10 w-10 place-items-center rounded-xl bg-white/95 text-brand shadow-soft backdrop-blur-sm">
                     <LifeIcon name={a.icon} className="h-5 w-5" />
                   </span>
                 </div>

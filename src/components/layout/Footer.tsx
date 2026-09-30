@@ -66,15 +66,15 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="font-display text-sm font-extrabold tracking-[0.12em] text-white uppercase">
+      <h3 className="font-display text-[13px] font-extrabold tracking-[0.12em] text-white uppercase">
         {title}
       </h3>
-      <ul className="mt-4 space-y-2.5">
+      <ul className="mt-2.5 space-y-1.5">
         {links.map((l) => (
           <li key={`${title}-${l.label}`}>
             <Link
               href={l.href}
-              className="text-sm text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
+              className="text-[13px] leading-snug text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
             >
               {l.label}
             </Link>
@@ -102,16 +102,16 @@ function SubscribeBox() {
   }
 
   return (
-    <div className="mt-8 w-full max-w-md">
-      <h3 className="font-display text-sm font-extrabold tracking-[0.12em] text-white uppercase">
+    <div className="w-full max-w-sm shrink-0">
+      <h3 className="font-display text-[13px] font-extrabold tracking-[0.12em] text-white uppercase">
         Subscribe
       </h3>
-      <p className="mt-2 text-sm leading-snug text-white/85">
+      <p className="mt-1 text-[13px] leading-snug text-white/85">
         Get open roles and hiring updates from {SITE.name}.
       </p>
       <form
         onSubmit={onSubmit}
-        className="mt-3 flex w-full min-w-0 items-center rounded-full bg-white py-1.5 pr-1.5 pl-3 shadow-soft sm:pl-4"
+        className="mt-2.5 flex w-full min-w-0 items-center rounded-full bg-white py-1 pr-1 pl-3 shadow-soft"
       >
         <label className="sr-only" htmlFor="footer-email">
           Email
@@ -123,11 +123,11 @@ function SubscribeBox() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter Your Email"
-          className="min-w-0 flex-1 border-0 bg-transparent py-1.5 text-base text-ink outline-none placeholder:text-muted"
+          className="min-w-0 flex-1 border-0 bg-transparent py-1.5 text-sm text-ink outline-none placeholder:text-muted"
         />
         <button
           type="submit"
-          className="inline-flex shrink-0 items-center gap-1.5 pr-0.5 text-[10px] font-extrabold tracking-[0.06em] text-brand uppercase transition hover:text-ink sm:gap-2 sm:text-[11px] sm:tracking-[0.08em]"
+          className="inline-flex shrink-0 items-center gap-1.5 pr-0.5 text-[10px] font-extrabold tracking-[0.06em] text-brand uppercase transition hover:text-ink sm:gap-2 sm:text-[11px]"
         >
           Subscribe
           <span className="grid h-7 w-7 place-items-center rounded-full bg-brand text-white">
@@ -135,7 +135,7 @@ function SubscribeBox() {
           </span>
         </button>
       </form>
-      {status ? <p className="mt-2 text-xs text-white">{status}</p> : null}
+      {status ? <p className="mt-1.5 text-xs text-white">{status}</p> : null}
     </div>
   );
 }
@@ -152,15 +152,15 @@ function ContactChip({
   icon: typeof Phone;
 }) {
   return (
-    <a href={href} className="group flex items-center gap-3">
-      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white text-brand shadow-soft transition group-hover:bg-white/90">
-        <Icon className="h-4 w-4" aria-hidden />
+    <a href={href} className="group flex items-center gap-2.5">
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white text-brand shadow-soft transition group-hover:bg-white/90">
+        <Icon className="h-3.5 w-3.5" aria-hidden />
       </span>
       <span className="min-w-0">
-        <span className="block text-[10px] font-extrabold tracking-[0.14em] text-white/75 uppercase">
+        <span className="block text-[9px] font-extrabold tracking-[0.12em] text-white/75 uppercase">
           {label}
         </span>
-        <span className="mt-0.5 block font-display text-sm font-bold break-words text-white transition group-hover:text-white/90">
+        <span className="mt-0.5 block font-display text-[13px] font-bold break-words text-white transition group-hover:text-white/90">
           {value}
         </span>
       </span>
@@ -174,24 +174,23 @@ export function Footer() {
   return (
     <footer className="relative shrink-0 text-white">
       <div className="bg-brand">
-        <Container className="pt-12 pb-8 md:pt-14 md:pb-10 lg:pt-16">
-          <div className="grid min-w-0 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-[minmax(0,1.45fr)_repeat(4,minmax(0,1fr))] lg:gap-6 xl:gap-8">
+        <Container className="pt-8 pb-5 md:pt-9 md:pb-6">
+          <div className="grid min-w-0 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-[minmax(0,1.35fr)_repeat(4,minmax(0,1fr))] lg:gap-5 xl:gap-6">
             <div className="min-w-0 sm:col-span-2 lg:col-span-1">
               <Link
                 href="/"
-                className="inline-flex font-display text-xl font-extrabold tracking-tight text-white"
+                className="inline-flex font-display text-lg font-extrabold tracking-tight text-white"
                 aria-label={`${SITE.name} home`}
               >
                 {SITE.name}
               </Link>
-              <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/90">
+              <p className="mt-2.5 max-w-[17rem] text-[13px] leading-snug text-white/90">
                 Trusted IT careers partner for US enterprise teams — training,
                 mentoring, and dependable delivery every day.
               </p>
-              <div className="mt-5">
+              <div className="mt-3">
                 <SocialLinks light circle />
               </div>
-              <SubscribeBox />
             </div>
 
             {columns.map((col) => (
@@ -199,8 +198,9 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="mt-8 flex flex-col gap-4 border-t border-white/30 pt-6 sm:mt-10 sm:gap-5 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-6 lg:gap-8">
-            <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-6 lg:gap-8">
+          <div className="mt-5 flex flex-col gap-4 border-t border-white/25 pt-4 sm:mt-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-6 sm:gap-y-3">
+            <SubscribeBox />
+            <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
               <ContactChip
                 href={`tel:+${CONFIG.whatsapp}`}
                 label="Talk to hiring"
@@ -213,25 +213,25 @@ export function Footer() {
                 value={CONFIG.email}
                 icon={Mail}
               />
+              <button
+                type="button"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="grid h-9 w-9 shrink-0 place-items-center self-start rounded-full border-2 border-white bg-brand text-white transition hover:bg-white hover:text-brand sm:self-auto"
+                aria-label="Back to top"
+              >
+                <ArrowUp className="h-3.5 w-3.5" aria-hidden />
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="grid h-11 w-11 shrink-0 place-items-center self-start rounded-full border-2 border-white bg-brand text-white transition hover:bg-white hover:text-brand sm:self-auto"
-              aria-label="Back to top"
-            >
-              <ArrowUp className="h-4 w-4" aria-hidden />
-            </button>
           </div>
         </Container>
       </div>
 
-      <div className="border-t border-white/25 bg-brand">
-        <Container className="flex min-h-14 flex-col justify-center gap-2 py-3.5 pb-[max(0.875rem,env(safe-area-inset-bottom,0px))] text-xs text-white/80 sm:min-h-[4.5rem] sm:flex-row sm:items-center sm:justify-between md:text-sm">
-          <p className="pr-16 sm:pr-0">
+      <div className="border-t border-white/20 bg-brand">
+        <Container className="flex flex-col justify-center gap-1.5 py-2.5 pb-[max(0.65rem,env(safe-area-inset-bottom,0px))] text-[11px] text-white/80 sm:flex-row sm:items-center sm:justify-between sm:text-xs">
+          <p className="pr-36 sm:pr-40 md:pr-0">
             © {year} {SITE.name}. All rights reserved.
           </p>
-          <nav className="flex flex-wrap gap-x-4 gap-y-1 sm:gap-x-5" aria-label="Legal">
+          <nav className="flex flex-wrap gap-x-3.5 gap-y-1" aria-label="Legal">
             {legalLinks.map((l) => (
               <Link
                 key={l.label}

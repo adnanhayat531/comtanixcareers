@@ -21,7 +21,7 @@ export function BrandLogo({
       role="img"
       aria-label={SITE.name}
     >
-      {/* Teal hexagon with transparent diamond cutout — logo brand */}
+      {/* Teal hexagon — brand mark */}
       <path
         fillRule="evenodd"
         clipRule="evenodd"

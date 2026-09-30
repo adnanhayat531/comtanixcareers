@@ -141,23 +141,34 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="mt-6 flex flex-col items-stretch gap-5 rounded-2xl bg-brand px-5 py-7 sm:items-start sm:px-7 sm:py-8 md:mt-8 md:flex-row md:items-center md:justify-between md:gap-6 md:px-10 md:py-9">
-            <div className="min-w-0 max-w-xl">
-              <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/35 px-3 py-1 text-xs font-medium text-white md:mb-4">
-                <BookOpen className="h-3.5 w-3.5" aria-hidden />
-                Upskilling & Professional Growth
-              </span>
-              <h3 className="font-display text-lg font-semibold text-white sm:text-xl md:text-2xl">
-                Continuous Learning & Accent Neutralization
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/80 md:text-[15px]">
-                Dedicated corporate trainers coach weekly on American business
-                idioms, client negotiations, and cloud architectural patterns.
-              </p>
+          <div className="relative mt-6 overflow-hidden rounded-2xl bg-brand shadow-[var(--shadow-overlay)] md:mt-8">
+            <Image
+              src="/goals/continuous-learning.png"
+              alt=""
+              fill
+              sizes="(max-width: 1280px) 100vw, 1200px"
+              className="object-cover object-center"
+              aria-hidden
+            />
+            <div className="absolute inset-0 bg-brand/90" aria-hidden />
+            <div className="relative z-10 flex flex-col items-stretch gap-5 px-5 py-7 sm:items-start sm:px-7 sm:py-8 md:flex-row md:items-center md:justify-between md:gap-6 md:px-10 md:py-9">
+              <div className="min-w-0 max-w-xl">
+                <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/35 px-3 py-1 text-xs font-medium text-white md:mb-4">
+                  <BookOpen className="h-3.5 w-3.5" aria-hidden />
+                  Upskilling & Professional Growth
+                </span>
+                <h3 className="font-display text-lg font-semibold text-white sm:text-xl md:text-2xl">
+                  Continuous Learning & Accent Neutralization
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/80 md:text-[15px]">
+                  Dedicated corporate trainers coach weekly on American business
+                  idioms, client negotiations, and cloud architectural patterns.
+                </p>
+              </div>
+              <Button href="/careers" variant="white" className="w-full shrink-0 sm:w-auto">
+                View Openings <ArrowRight className="h-4 w-4" aria-hidden />
+              </Button>
             </div>
-            <Button href="/careers" variant="white" className="w-full shrink-0 sm:w-auto">
-              View Openings <ArrowRight className="h-4 w-4" aria-hidden />
-            </Button>
           </div>
         </Container>
       </Section>
@@ -178,7 +189,7 @@ export default function HomePage() {
           aria-hidden
         />
         <div
-          className="absolute inset-0 bg-brand/88"
+          className="absolute inset-0 bg-brand/90"
           aria-hidden
         />
         <Container className="relative z-10">

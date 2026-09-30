@@ -1,24 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  /* ONLY logo colors — hexagon #49A4AE + wordmark #0b2c35 (text) */
-  --canvas: #e8f5f6;
+  /* Site teal — footer tone for UI (buttons, text, icons); not applied to photos */
+  --canvas: #e4f0f1;
   --ink: #0b2c35;
-  --muted: #3d7a82;
-  --brand: #49a4ae;
-  --sea: #49a4ae;
-  --sea-mid: #49a4ae;
-  --deep: #49a4ae;
-  --muted-on-deep: #e8f5f6;
-  --tint: #e8f5f6;
-  --line: rgba(73, 164, 174, 0.22);
-  --line-strong: rgba(73, 164, 174, 0.4);
+  --muted: #2f6d75;
+  --brand: #2f7a84;
+  --sea: #2f7a84;
+  --sea-mid: #2f7a84;
+  --deep: #2f7a84;
+  --footer: #2f7a84;
+  --muted-on-deep: #e4f0f1;
+  --tint: #e4f0f1;
+  --line: rgba(47, 122, 132, 0.22);
+  --line-strong: rgba(47, 122, 132, 0.4);
   --surface: #ffffff;
   --on-sea: #ffffff;
-  --shadow-soft: 0 8px 28px rgba(73, 164, 174, 0.14);
-  --shadow-hover: 0 14px 36px rgba(73, 164, 174, 0.2);
-  --shadow-overlay: 0 20px 40px -8px rgba(73, 164, 174, 0.22);
-  --shadow-brand: 0 10px 28px rgba(73, 164, 174, 0.35);
+  --shadow-soft: 0 8px 28px rgba(47, 122, 132, 0.14);
+  --shadow-hover: 0 14px 36px rgba(47, 122, 132, 0.2);
+  --shadow-overlay: 0 20px 40px -8px rgba(47, 122, 132, 0.22);
+  --shadow-brand: 0 10px 28px rgba(47, 122, 132, 0.35);
 
   /* Contour-like type scale (Montserrat, weight 800 headings) */
   --text-body: 16px;
@@ -36,6 +37,7 @@
   --color-sea: var(--sea);
   --color-sea-mid: var(--sea-mid);
   --color-deep: var(--deep);
+  --color-footer: var(--footer);
   --color-muted-on-deep: var(--muted-on-deep);
   --color-tint: var(--tint);
   --color-line: var(--line);
@@ -126,7 +128,7 @@ p {
 }
 
 ::selection {
-  background: rgba(73, 164, 174, 0.25);
+  background: rgba(47, 122, 132, 0.25);
   color: var(--ink);
 }
 
@@ -197,7 +199,7 @@ p {
     transform: scale(1);
   }
   90% {
-    transform: scale(1.08);
+    transform: scale(1.05);
   }
   95% {
     transform: scale(1);
@@ -205,7 +207,7 @@ p {
 }
 
 .wa-gentle-pulse {
-  animation: wa-gentle-pulse 3.5s ease-in-out infinite;
+  animation: wa-gentle-pulse 4s ease-in-out infinite;
 }
 
 .reveal {
@@ -241,7 +243,7 @@ p {
 }
 
 .list-row:hover {
-  background-color: rgba(232, 245, 246, 0.95);
+  background-color: rgba(228, 240, 241, 0.95);
 }
 
 .list-row:last-child {
