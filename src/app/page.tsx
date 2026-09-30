@@ -31,9 +31,9 @@ export default function HomePage() {
 
       {/* Careers split */}
       <Section className="bg-tint">
-        <Container className="grid min-w-0 items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-8 xl:gap-10">
-          <div className="order-2 min-w-0 lg:order-1">
-            <HeadingReveal className="mb-5 max-w-xl md:mb-6" duration={1}>
+        <Container className="grid min-w-0 items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+          <div className="order-2 min-w-0 text-left lg:order-1">
+            <HeadingReveal className="mb-5 max-w-2xl md:mb-6" duration={1}>
               <span className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-brand uppercase shadow-soft">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden />
                 Careers at Comtanix
@@ -49,7 +49,7 @@ export default function HomePage() {
               </p>
             </HeadingReveal>
 
-            <ul className="mb-6 space-y-2">
+            <ul className="mb-6 max-w-xl space-y-2">
               {[
                 "100% Paid training and onboarding program",
                 "Direct mentorship with US account managers",

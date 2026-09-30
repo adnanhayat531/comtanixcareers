@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { BrandLogo } from "@/components/ui/BrandLogo";
@@ -61,32 +61,13 @@ function NavLink({
 
 export function Header() {
   const pathname = usePathname();
-  const aboutRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
-  const [aboutMenu, setAboutMenu] = useState(false);
 
   useEffect(() => {
     setOpen(false);
     setAboutOpen(false);
-    setAboutMenu(false);
   }, [pathname]);
-
-  useEffect(() => {
-    if (!aboutMenu) return;
-    function onPointer(e: PointerEvent) {
-      if (!aboutRef.current?.contains(e.target as Node)) setAboutMenu(false);
-    }
-    function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setAboutMenu(false);
-    }
-    document.addEventListener("pointerdown", onPointer);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("pointerdown", onPointer);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [aboutMenu]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -107,7 +88,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-surface/95 shadow-soft backdrop-blur-md">
-      <div className="flex h-14 w-full items-center justify-between gap-2 px-3 sm:gap-3 sm:px-4 md:h-16 md:px-5 lg:px-4 xl:px-6">
+      <div className="flex h-14 w-full items-center justify-between gap-2 px-3 sm:gap-3 sm:px-4 md:h-16 md:px-5 lg:px-6 xl:px-10 2xl:px-14">
         <Link
           href="/"
           className="min-w-0 shrink focus-visible:rounded-sm"
@@ -119,37 +100,30 @@ export function Header() {
         <nav className="hidden min-w-0 items-center lg:flex" aria-label="Main">
           <NavLink href="/" label="Home" active={pathname === "/"} />
 
-          <div className="relative" ref={aboutRef}>
-            <button
-              type="button"
+          <div className="group relative">
+            <Link
+              href="/about"
               className={desktopLink(pathname.startsWith("/about"))}
-              aria-expanded={aboutMenu}
-              aria-controls="about-menu"
-              onClick={() => setAboutMenu((v) => !v)}
+              aria-current={pathname.startsWith("/about") ? "page" : undefined}
+              aria-haspopup="menu"
             >
               About
               <ChevronDown
-                className={`h-4 w-4 opacity-70 transition ${aboutMenu ? "rotate-180" : ""}`}
+                className="h-4 w-4 opacity-70 transition group-hover:rotate-180 group-focus-within:rotate-180"
                 aria-hidden
               />
-            </button>
+            </Link>
             <div
               id="about-menu"
-              className={`absolute left-0 top-full z-50 min-w-[240px] pt-2 ${
-                aboutMenu ? "visible opacity-100" : "invisible opacity-0"
-              }`}
+              role="menu"
+              className="invisible absolute left-0 top-full z-[60] min-w-[240px] pt-1 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
             >
               <div className="rounded-lg border border-line bg-surface p-2 shadow-[var(--shadow-overlay)]">
-                <Link href="/about" className={dropLink} onClick={() => setAboutMenu(false)}>
+                <Link href="/about" className={dropLink} role="menuitem">
                   About Us
                 </Link>
                 {aboutLinks.map((l) => (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    className={dropLink}
-                    onClick={() => setAboutMenu(false)}
-                  >
+                  <Link key={l.href} href={l.href} className={dropLink} role="menuitem">
                     {l.label}
                   </Link>
                 ))}

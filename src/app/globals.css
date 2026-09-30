@@ -190,6 +190,24 @@ p {
   }
 }
 
+@keyframes wa-gentle-pulse {
+  0%,
+  82%,
+  100% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(1.08);
+  }
+  95% {
+    transform: scale(1);
+  }
+}
+
+.wa-gentle-pulse {
+  animation: wa-gentle-pulse 3.5s ease-in-out infinite;
+}
+
 .reveal {
   animation: fade-up 0.55s ease both;
 }
@@ -208,7 +226,8 @@ p {
   .reveal,
   .reveal-delay-1,
   .reveal-delay-2,
-  .reveal-delay-3 {
+  .reveal-delay-3,
+  .wa-gentle-pulse {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
