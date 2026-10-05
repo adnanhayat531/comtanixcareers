@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { ArrowRight, ArrowUp, Mail, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Section";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 import { CONFIG, SITE } from "@/lib/config";
 import { SocialLinks } from "@/components/layout/SocialLinks";
 
@@ -66,7 +67,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="font-display text-[13px] font-extrabold tracking-[0.12em] text-white uppercase">
+      <h3 className="font-display text-[13px] font-bold tracking-[0.08em] text-white uppercase">
         {title}
       </h3>
       <ul className="mt-2.5 space-y-1.5">
@@ -103,7 +104,7 @@ function SubscribeBox() {
 
   return (
     <div className="w-full max-w-sm shrink-0">
-      <h3 className="font-display text-[13px] font-extrabold tracking-[0.12em] text-white uppercase">
+      <h3 className="font-display text-[13px] font-bold tracking-[0.08em] text-white uppercase">
         Subscribe
       </h3>
       <p className="mt-1 text-[13px] leading-snug text-white/85">
@@ -111,7 +112,7 @@ function SubscribeBox() {
       </p>
       <form
         onSubmit={onSubmit}
-        className="mt-2.5 flex w-full min-w-0 items-center rounded-full bg-white py-1 pr-1 pl-3 shadow-soft"
+        className="mt-2.5 flex w-full min-w-0 items-center rounded-md bg-white py-1 pr-1 pl-3"
       >
         <label className="sr-only" htmlFor="footer-email">
           Email
@@ -130,7 +131,7 @@ function SubscribeBox() {
           className="inline-flex shrink-0 items-center gap-1.5 pr-0.5 text-[10px] font-extrabold tracking-[0.06em] text-brand uppercase transition hover:text-ink sm:gap-2 sm:text-[11px]"
         >
           Subscribe
-          <span className="grid h-7 w-7 place-items-center rounded-full bg-brand text-white">
+          <span className="grid h-7 w-7 place-items-center rounded-md bg-brand text-white">
             <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </span>
         </button>
@@ -153,14 +154,14 @@ function ContactChip({
 }) {
   return (
     <a href={href} className="group flex items-center gap-2.5">
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white text-brand shadow-soft transition group-hover:bg-white/90">
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-white text-brand transition group-hover:bg-white/90">
         <Icon className="h-3.5 w-3.5" aria-hidden />
       </span>
       <span className="min-w-0">
-        <span className="block text-[9px] font-extrabold tracking-[0.12em] text-white/75 uppercase">
+        <span className="block text-[9px] font-semibold tracking-[0.08em] text-white/75 uppercase">
           {label}
         </span>
-        <span className="mt-0.5 block font-display text-[13px] font-bold break-words text-white transition group-hover:text-white/90">
+        <span className="mt-0.5 block font-display text-[13px] font-semibold break-words text-white transition group-hover:text-white/90">
           {value}
         </span>
       </span>
@@ -179,17 +180,17 @@ export function Footer() {
             <div className="min-w-0 sm:col-span-2 lg:col-span-1">
               <Link
                 href="/"
-                className="inline-flex font-display text-lg font-extrabold tracking-tight text-white"
+                className="inline-flex items-center"
                 aria-label={`${SITE.name} home`}
               >
-                {SITE.name}
+                <BrandLogo light className="h-8 w-auto" />
               </Link>
               <p className="mt-2.5 max-w-[17rem] text-[13px] leading-snug text-white/90">
-                Trusted IT careers partner for US enterprise teams — training,
-                mentoring, and dependable delivery every day.
+                Pakistan-based IT delivery for US enterprise accounts — hiring,
+                training, and operations under one roof.
               </p>
               <div className="mt-3">
-                <SocialLinks light circle />
+                <SocialLinks light />
               </div>
             </div>
 
@@ -216,7 +217,7 @@ export function Footer() {
               <button
                 type="button"
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="grid h-9 w-9 shrink-0 place-items-center self-start rounded-full border-2 border-white bg-brand text-white transition hover:bg-white hover:text-brand sm:self-auto"
+                className="grid h-9 w-9 shrink-0 place-items-center self-start rounded-md border border-white bg-brand text-white transition hover:bg-white hover:text-brand sm:self-auto"
                 aria-label="Back to top"
               >
                 <ArrowUp className="h-3.5 w-3.5" aria-hidden />

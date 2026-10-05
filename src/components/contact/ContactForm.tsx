@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { CONFIG, SITE, waLink } from "@/lib/config";
 
 const fieldClass =
-  "w-full rounded-2xl border-0 bg-white px-5 py-4 text-base text-ink shadow-soft outline-none ring-0 placeholder:text-muted/70 transition focus:shadow-[var(--shadow-brand)] focus:ring-2 focus:ring-brand/30";
+  "w-full rounded-lg border border-line bg-white px-5 py-3.5 text-base text-ink outline-none ring-0 placeholder:text-muted/70 transition focus:border-brand focus:ring-1 focus:ring-brand/25";
 
 export function ContactForm() {
   const [status, setStatus] = useState("");
@@ -114,7 +114,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex h-[52px] items-center justify-center gap-2 self-end rounded-full bg-brand px-8 text-base font-bold text-white transition hover:brightness-105 disabled:opacity-60 md:h-[56px] md:text-lg"
+          className="inline-flex h-10 items-center justify-center gap-2 self-end rounded-md bg-brand px-6 text-sm font-semibold text-white transition hover:brightness-105 disabled:opacity-60 md:h-11 md:text-[15px]"
         >
           Submit <ArrowRight className="h-4 w-4" aria-hidden />
         </button>

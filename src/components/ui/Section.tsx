@@ -29,7 +29,7 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={`py-10 md:py-14 lg:py-16 ${className}`}>
+    <section id={id} className={`py-8 md:py-11 lg:py-12 ${className}`}>
       {children}
     </section>
   );
@@ -54,14 +54,14 @@ export function SectionHeading({
 }) {
   return (
     <HeadingReveal
-      className={`${compact ? "mb-0" : "mb-6 md:mb-8"} max-w-2xl ${
+      className={`${compact ? "mb-0" : "mb-5 md:mb-6"} max-w-xl ${
         align === "center" ? "mx-auto text-center" : ""
       } ${className}`}
       duration={1}
     >
       {eyebrow ? (
         <p
-          className={`mb-2.5 font-body text-[11px] font-semibold tracking-[0.12em] uppercase md:text-xs ${
+          className={`mb-1.5 font-body text-[11px] font-semibold tracking-[0.08em] uppercase ${
             light ? "text-white/65" : "text-brand"
           }`}
         >
@@ -69,7 +69,7 @@ export function SectionHeading({
         </p>
       ) : null}
       <h2
-        className={`font-display text-[clamp(1.5rem,5.5vw,2.75rem)] font-extrabold tracking-tight text-balance leading-[1.2] ${
+        className={`font-display text-[clamp(1.4rem,3.2vw,2.15rem)] font-bold tracking-tight leading-[1.25] ${
           light ? "text-white" : "text-ink"
         }`}
       >
@@ -77,7 +77,7 @@ export function SectionHeading({
       </h2>
       {description ? (
         <p
-          className={`mt-3 max-w-prose text-base leading-[1.7] md:text-[17px] ${
+          className={`mt-2 max-w-prose text-[15px] leading-[1.55] md:text-base ${
             light ? "text-white/78" : "text-muted"
           } ${align === "center" ? "mx-auto" : ""}`}
         >

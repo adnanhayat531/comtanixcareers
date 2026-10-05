@@ -27,82 +27,77 @@ export const STATS = [
 
 export const GOALS = [
   {
-    title: "Quality First",
-    body: "Zero tolerance for superficial metrics. We train our teams to resolve root problems on first touch.",
+    title: "Quality first",
+    body: "Root-cause resolution on first touch. Metrics track outcomes, not activity volume.",
     image: "/goals/quality.jpg",
-    tag: "Rigorous Execution",
+    tag: "Delivery quality",
   },
   {
-    title: "People Investment",
-    body: "Creating an inclusive environment where skill development leads directly to salary progression.",
+    title: "People investment",
+    body: "Skill development mapped to role levels and compensation bands.",
     image: "/goals/people.jpg",
-    tag: "Talent Equity & Growth",
+    tag: "Career paths",
   },
   {
-    title: "Measured Growth",
-    body: "Scaling sustainably with US accounts by maintaining rigorous talent selectivity and technical fit.",
+    title: "Measured growth",
+    body: "Account growth tied to hiring selectivity and technical fit, not headcount alone.",
     image: "/goals/growth.jpg",
-    tag: "Sustainable Scaling",
+    tag: "Capacity planning",
   },
   {
-    title: "Absolute Trust",
-    body: "Adhering to strict IP protection, NDA protocols, and secure network infrastructure on all accounts.",
+    title: "Security & trust",
+    body: "IP controls, NDAs, and secured networks on every US engagement.",
     image: "/goals/trust.jpg",
-    tag: "Enterprise Security & Compliance",
+    tag: "Compliance",
   },
   {
-    title: "Client Partnership",
-    body: "We work as an extension of every US team — same tools, same rituals, and real-time accountability across time zones.",
+    title: "Client partnership",
+    body: "Same tools and rituals as the US team; real-time accountability across zones.",
     image: "/goals/client-partnership.png",
-    tag: "Global Collaboration",
+    tag: "Embedded delivery",
   },
   {
-    title: "Continuous Learning",
-    body: "Structured upskilling, certifications, and mentor-led labs so every associate keeps pace with evolving client stacks.",
-    image: "/goals/continuous-learning.png",
-    tag: "Skill Advancement",
+    title: "Continuous learning",
+    body: "Certifications, mentor labs, and stack training matched to live client work.",
+    image: "/goals/continuous-learning.jpg",
+    tag: "Upskilling",
   },
 ] as const;
 
 export const VALUES = [
   {
-    title: "Recruit Well",
-    body: "We screen thoroughly for cognitive agility, communication clarity, and long-term ambition rather than mere keyword matches.",
+    title: "Recruit well",
+    body: "Screen for aptitude, communication, and long-term fit — not keyword matches alone.",
     image: "/values/recruit-well.png",
   },
   {
-    title: "Train Fully",
-    body: "No associate goes on a live US queue unprepared. Training includes simulated calls, tooling mastery, and deep cultural immersion.",
+    title: "Train fully",
+    body: "No live US queue without preparation: tools, scenarios, and client standards.",
     image: "/values/train-fully.png",
   },
   {
-    title: "Retain with Care",
-    body: "Competitive salaries, timely bonuses, modern ergonomic offices, and respectful, human-centric management.",
-    image: "/values/retain-care.png",
-  },
-  {
-    title: "Deliver Results",
-    body: "Accountability is our cornerstone. We measure success through our clients' KPIs and retention scores.",
+    title: "Deliver results",
+    body: "Success measured on client KPIs and retention, not internal vanity metrics.",
     image: "/values/deliver-results.png",
   },
 ] as const;
 
 export const LEARNING = [
   {
-    title: "Paid Induction",
-    body: "Two weeks of fully compensated orientation, compliance certifications, and security protocols.",
+    title: "Paid induction",
+    body: "Orientation, compliance, and security before account assignment.",
   },
   {
-    title: "Communication Mastery",
-    body: "Accent polishing, active listening modules, and executive written communication for US corporate standards.",
+    title: "Communication",
+    body: "US business speech and written standards for client-facing work.",
   },
   {
-    title: "Tooling Deep-Dive",
-    body: "Hands-on sandbox environments for Jira, Salesforce, Zendesk, AWS, and modern tech stacks.",
+    title: "Tooling",
+    body: "Sandboxed practice on Jira, Salesforce, Zendesk, AWS, and related stacks.",
   },
   {
-    title: "Leadership Track",
-    body: "Mentorship for high-performers stepping into Team Leader, Floor QA, and Operations Manager roles.",
+    title: "Leadership track",
+    body: "Mentorship into team lead, floor QA, and operations roles.",
   },
 ] as const;
 
@@ -111,59 +106,121 @@ export const LIFE_ACTIVITIES = [
     title: "Gym Membership",
     body: "Company-sponsored gym membership so you can stay fit, decompress after US shifts, and build healthy routines year-round.",
     icon: "gym" as const,
-    image: "/life/gym-membership.png",
+    image: "/life/gym-membership.jpg",
   },
   {
     title: "Weekend Sports",
     body: "Weekend cricket, badminton, table tennis, and friendly matches to unwind with the team outside the terminal.",
     icon: "trophy" as const,
-    image: "/life/sports-gala-cricket.png",
+    image: "/life/sports-gala-cricket.jpg",
   },
   {
     title: "Star of the Month",
     body: "Public recognition, gift vouchers, and cash bonuses for agents who exceed monthly SLA targets.",
     icon: "star" as const,
-    image: "/life/star-month.png",
+    image: "/life/star-month.jpg",
   },
   {
     title: "Skill Enrichment Sessions",
     body: "Interactive sessions covering US business idioms, cloud certifications, and public speaking.",
     icon: "graduation" as const,
-    image: "/life/skill-sessions.png",
+    image: "/life/skill-sessions.jpg",
   },
   {
     title: "Festivals & Birthdays",
     body: "Cake cutting on every birthday, festive holiday dinners, and cultural exchanges.",
     icon: "party" as const,
-    image: "/life/festivals.png",
+    image: "/life/festivals.jpg",
   },
   {
     title: "Breakroom & Game Nights",
     body: "Recharge between calls with console games, foosball, quiet rest corners, and unlimited tea & coffee.",
     icon: "game" as const,
-    image: "/life/breakroom.png",
+    image: "/life/breakroom.jpg",
   },
 ] as const;
 
 export const CULTURE_TILES = [
   {
-    title: "High-Impact Teamwork",
-    body: "Daily standups with US engineering teams and an ego-free, collaborative culture.",
+    title: "Client-aligned teams",
+    body: "Daily syncs with US engineering and account leads; shared tools and rituals.",
     image: "/culture/teamwork.jpg",
   },
   {
-    title: "Weekly Sports Day",
-    body: "Fierce badminton, cricket, and table tennis tournaments to unwind outside the terminal.",
-    image: "/culture/weekly-sports-cricket.png",
+    title: "Scheduled sports",
+    body: "Weekly badminton, cricket, and table tennis for off-shift recovery.",
+    image: "/culture/weekly-sports-cricket.jpg",
   },
   {
-    title: "Executive Lunches",
-    body: "Monthly town halls and team feasts celebrating sprint goals and anniversaries.",
+    title: "Floor briefings & meals",
+    body: "Monthly updates, sprint reviews, and team meals after major deliveries.",
     image: "/culture/lunches.jpg",
   },
   {
-    title: "Excellence Awards",
-    body: "Spot bonuses, Star of the Month, and US partner commendations.",
+    title: "Performance awards",
+    body: "Spot bonuses, Star of the Month, and client commendations on record.",
     image: "/culture/excellence-awards-trophy.jpg",
+  },
+] as const;
+
+/** Home — IT capabilities (from existing site language; no new service claims) */
+export const CAPABILITIES = [
+  {
+    title: "Software engineering",
+    body: "Engineering teams that work in the client’s tools, processes, and delivery cadence.",
+    image: "/goals/continuous-learning.jpg",
+  },
+  {
+    title: "IT operations",
+    body: "Reliable IT support and operations aligned to US business hours and standards.",
+    image: "/goals/client-partnership.png",
+  },
+  {
+    title: "US-aligned delivery",
+    body: "Coverage across US time zones with real-time collaboration and shared rituals.",
+    image: "/goals/growth.jpg",
+  },
+  {
+    title: "Quality & security",
+    body: "Outcome-focused quality, IP controls, and secured networks on every engagement.",
+    image: "/goals/trust.jpg",
+  },
+] as const;
+
+/** Home — Why Comtanix (company differentiators from existing goals) */
+export const WHY_COMTANIX = [
+  {
+    title: "Quality first",
+    body: "Root-cause resolution and client outcomes ahead of vanity metrics.",
+    image: "/goals/quality.jpg",
+  },
+  {
+    title: "Security & trust",
+    body: "NDAs, IP protection, and secure infrastructure on US accounts.",
+    image: "/goals/trust.jpg",
+  },
+  {
+    title: "Embedded partnership",
+    body: "Same tools and accountability as the US team across time zones.",
+    image: "/goals/client-partnership.png",
+  },
+] as const;
+
+/** Home life preview — three stronger beats (links to full Life page) */
+export const LIFE_PREVIEW = [
+  {
+    title: "Client-aligned teams",
+    body: "Daily syncs with US leads and an ego-free collaborative floor.",
+    image: "/culture/teamwork.jpg",
+  },
+  {
+    title: "Learning on the job",
+    body: "Paid induction, communication coaching, and stack upskilling.",
+    image: "/life/skill-sessions.jpg",
+  },
+  {
+    title: "Balance around US hours",
+    body: "Sports, recognition, and team rituals built for night and hybrid shifts.",
+    image: "/culture/lunches.jpg",
   },
 ] as const;

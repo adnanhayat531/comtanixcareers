@@ -16,12 +16,12 @@
   --line-strong: rgba(47, 122, 132, 0.4);
   --surface: #ffffff;
   --on-sea: #ffffff;
-  --shadow-soft: 0 8px 28px rgba(47, 122, 132, 0.14);
-  --shadow-hover: 0 14px 36px rgba(47, 122, 132, 0.2);
-  --shadow-overlay: 0 20px 40px -8px rgba(47, 122, 132, 0.22);
-  --shadow-brand: 0 10px 28px rgba(47, 122, 132, 0.35);
+  --shadow-soft: 0 1px 2px rgba(11, 44, 53, 0.06);
+  --shadow-hover: 0 2px 8px rgba(11, 44, 53, 0.08);
+  --shadow-overlay: 0 4px 16px rgba(11, 44, 53, 0.08);
+  --shadow-brand: 0 2px 8px rgba(47, 122, 132, 0.2);
 
-  /* Contour-like type scale (Montserrat, weight 800 headings) */
+  /* Contour-like type: Sora headings + Public Sans body */
   --text-body: 16px;
   --leading-body: 1.7;
   --h1: clamp(1.75rem, 6.5vw, 3.5rem);
@@ -43,8 +43,8 @@
   --color-line: var(--line);
   --color-surface: var(--surface);
   --color-on-sea: var(--on-sea);
-  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
-  --font-body: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
   --radius-lg: 1.5rem;
@@ -157,8 +157,8 @@ p {
 }
 
 .card-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
+  transform: none;
+  box-shadow: var(--shadow-soft);
 }
 
 .no-scrollbar {
@@ -194,34 +194,22 @@ p {
 
 @keyframes wa-gentle-pulse {
   0%,
-  82%,
   100% {
-    transform: scale(1);
-  }
-  90% {
-    transform: scale(1.05);
-  }
-  95% {
-    transform: scale(1);
+    transform: none;
   }
 }
 
 .wa-gentle-pulse {
-  animation: wa-gentle-pulse 4s ease-in-out infinite;
+  animation: none;
 }
 
-.reveal {
-  animation: fade-up 0.55s ease both;
-}
-
-.reveal-delay-1 {
-  animation-delay: 0.08s;
-}
-.reveal-delay-2 {
-  animation-delay: 0.16s;
-}
+.reveal,
+.reveal-delay-1,
+.reveal-delay-2,
 .reveal-delay-3 {
-  animation-delay: 0.24s;
+  animation: none;
+  opacity: 1;
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -14,32 +14,32 @@ export const metadata: Metadata = {
 const STEPS = [
   {
     n: "1",
-    title: "Profile Screening",
-    body: "Our Talent Acquisition squad evaluates your background within 48 business hours.",
+    title: "Screening",
+    body: "Background review within two business days.",
   },
   {
     n: "2",
-    title: "Communication Assessment",
-    body: "A 15-minute phone or in-person check focusing on spoken English and situational clarity.",
+    title: "Communication check",
+    body: "Short spoken-English and situational assessment.",
   },
   {
     n: "3",
-    title: "Executive Interview & Offer",
-    body: "Final panel with campaign supervisors, immediate job offer letter, and onboarding schedule.",
+    title: "Interview & offer",
+    body: "Panel interview, written offer, and onboarding date.",
   },
 ] as const;
 
 export default function ApplyPage() {
   return (
-    <Section className="pt-12 md:pt-16">
-      <Container className="grid items-start gap-10 lg:grid-cols-[1.15fr_0.85fr] xl:gap-16">
+    <Section className="pt-10 md:pt-12">
+      <Container className="grid items-start gap-8 lg:grid-cols-[1.15fr_0.85fr] xl:gap-12">
         <div>
           <SectionHeading
             compact
-            eyebrow="Fast-Track Application"
-            title="Join the Comtanix Team"
-            description="Complete the form below. We’ll open WhatsApp with your details so you can send your application and CV to our hiring team."
-            className="mb-8"
+            eyebrow="Application"
+            title="Apply to Comtanix"
+            description="Submit the form. We open WhatsApp with your details so you can send the application and CV to hiring."
+            className="mb-6"
           />
           <Suspense
             fallback={
@@ -52,27 +52,27 @@ export default function ApplyPage() {
           </Suspense>
         </div>
 
-        <aside className="rounded-lg border border-line bg-surface p-6 md:sticky md:top-24 md:p-7">
-          <h3 className="font-display text-lg font-semibold text-ink md:text-xl">
-            What happens next?
+        <aside className="rounded-md border border-line bg-surface p-5 md:sticky md:top-24 md:p-6">
+          <h3 className="font-display text-base font-semibold text-ink md:text-lg">
+            Process
           </h3>
-          <p className="mt-2 text-sm text-muted">
-            Our recruitment pipeline is fast, respectful, and transparent.
+          <p className="mt-1.5 text-sm text-muted">
+            Typical path from application to offer.
           </p>
-          <ol className="mt-6 space-y-5">
+          <ol className="mt-5 space-y-4">
             {STEPS.map((s) => (
               <li key={s.n} className="flex gap-3">
-                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand font-display text-sm font-bold text-white">
+                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-brand font-display text-xs font-bold text-white">
                   {s.n}
                 </span>
                 <div>
-                  <p className="font-semibold text-ink">{s.title}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{s.body}</p>
+                  <p className="text-sm font-semibold text-ink">{s.title}</p>
+                  <p className="mt-0.5 text-sm leading-relaxed text-muted">{s.body}</p>
                 </div>
               </li>
             ))}
           </ol>
-          <p className="mt-6 text-sm text-muted">
+          <p className="mt-5 text-sm text-muted">
             Prefer to talk first?{" "}
             <a
               href={waLink(DEFAULT_WA_MESSAGE)}
@@ -80,12 +80,12 @@ export default function ApplyPage() {
               rel="noopener noreferrer"
               className="font-semibold text-brand hover:underline"
             >
-              Message us on WhatsApp
+              WhatsApp hiring
             </a>
             .
           </p>
-          <Button href="/careers" variant="secondary" className="mt-6 w-full">
-            Browse Open Positions
+          <Button href="/careers" variant="secondary" className="mt-5 w-full">
+            Browse openings
           </Button>
         </aside>
       </Container>

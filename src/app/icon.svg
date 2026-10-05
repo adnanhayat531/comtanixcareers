@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none">
+  <!-- Original Comtanix mark color #55ACB5 — logo/favicon only -->
+  <path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    fill="#55ACB5"
+    d="M12 8 L38 8 L46 25 L38 42 L12 42 L4 25 Z M32 16.5 L36.5 25 L32 33.5 L27.5 25 Z"
+  />
+</svg>

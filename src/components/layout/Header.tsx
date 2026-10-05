@@ -87,7 +87,7 @@ export function Header() {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-surface/95 shadow-soft backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-line bg-surface">
       <div className="flex h-14 w-full items-center justify-between gap-2 px-3 sm:gap-3 sm:px-4 md:h-16 md:px-5 lg:px-6 xl:px-10 2xl:px-14">
         <Link
           href="/"
@@ -118,7 +118,7 @@ export function Header() {
               role="menu"
               className="invisible absolute left-0 top-full z-[60] min-w-[240px] pt-1 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
             >
-              <div className="rounded-lg border border-line bg-surface p-2 shadow-[var(--shadow-overlay)]">
+              <div className="rounded-lg border border-line bg-surface p-2">
                 <Link href="/about" className={dropLink} role="menuitem">
                   About Us
                 </Link>
@@ -148,25 +148,19 @@ export function Header() {
             active={pathname.startsWith("/contact")}
           />
 
-          <Button
-            href="/apply"
-            className="ml-2 !h-11 !min-h-11 !rounded-full !px-3.5 !text-sm xl:ml-3 xl:!px-4"
-          >
+          <Button href="/apply" className="ml-2 !h-9 !min-h-9 !px-3.5 !text-sm xl:ml-3 xl:!px-4">
             <span className="xl:hidden">Apply</span>
-            <span className="hidden xl:inline">Apply Now</span>
+            <span className="hidden xl:inline">Apply</span>
           </Button>
         </nav>
 
         <div className="flex shrink-0 items-center gap-2 lg:hidden">
-          <Button
-            href="/apply"
-            className="!h-11 !min-h-11 !rounded-full !px-3.5 !text-sm"
-          >
+          <Button href="/apply" className="!h-9 !min-h-9 !px-3.5 !text-sm">
             Apply
           </Button>
           <button
             type="button"
-            className="inline-flex h-11 min-h-11 items-center gap-2 rounded-full border border-line px-3 text-sm font-semibold text-ink transition hover:bg-tint"
+            className="inline-flex h-9 min-h-9 items-center gap-2 rounded-md border border-line px-3 text-sm font-semibold text-ink transition hover:bg-tint"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -217,8 +211,8 @@ export function Header() {
             <NavLink menu href="/careers" label="Careers" onClick={() => setOpen(false)} />
             <NavLink menu href="/life" label={`Life at ${SITE.name}`} onClick={() => setOpen(false)} />
             <NavLink menu href="/contact" label="Contact" onClick={() => setOpen(false)} />
-            <Button href="/apply" className="mt-4 w-full rounded-full">
-              Apply Now <ArrowRight className="h-4 w-4" aria-hidden />
+            <Button href="/apply" className="mt-4 w-full">
+              Apply <ArrowRight className="h-4 w-4" aria-hidden />
             </Button>
           </Container>
         </div>

@@ -18,7 +18,7 @@ function QuoteCard({
   return (
     <article className="flex w-[min(100%,300px)] shrink-0 snap-start flex-col sm:w-[320px]">
       {/* Speech bubble */}
-      <div className="relative rounded-2xl bg-white px-6 py-6 shadow-soft">
+      <div className="relative rounded-md border border-line bg-white px-5 py-5">
         <q className="block text-[15px] leading-relaxed text-ink/90 [quotes:none]">
           {quote}
         </q>
@@ -31,17 +31,15 @@ function QuoteCard({
             />
           ))}
         </div>
-        {/* Bubble tail */}
         <span
-          className="absolute -bottom-2.5 left-8 h-5 w-5 rotate-45 bg-white shadow-soft"
+          className="absolute -bottom-2 left-8 h-4 w-4 rotate-45 border-r border-b border-line bg-white"
           aria-hidden
         />
       </div>
 
-      {/* Author */}
       <div className="mt-5 flex items-center gap-3 pl-2">
         <div
-          className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand font-display text-sm font-bold text-white shadow-brand"
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-brand font-display text-sm font-semibold text-white"
           aria-hidden
         >
           {initials}
@@ -100,23 +98,23 @@ export function TestimonialsSlider() {
         >
           “
         </span>
-        <h2 className="mt-2 max-w-[14ch] font-display text-2xl font-extrabold tracking-tight text-ink md:text-3xl lg:text-[2rem] lg:leading-tight">
-          What our team is saying
+        <h2 className="mt-2 max-w-[16ch] font-display text-xl font-bold tracking-tight text-ink md:text-2xl lg:text-[1.65rem] lg:leading-snug">
+          Team feedback
         </h2>
 
-        <div className="mt-auto flex items-center gap-3 pt-8 lg:pt-12">
+        <div className="mt-auto flex items-center gap-3 pt-6 lg:pt-8">
           <button
             type="button"
             onClick={() => scrollBy(-1)}
             disabled={atStart}
             aria-label="Previous stories"
-            className="grid h-11 w-11 place-items-center text-ink transition disabled:text-muted/40"
+            className="grid h-9 w-9 place-items-center rounded-md border border-line text-ink transition disabled:text-muted/40"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-4 w-4" />
           </button>
-          <div className="h-0.5 flex-1 max-w-[120px] overflow-hidden rounded-full bg-line">
+          <div className="h-0.5 flex-1 max-w-[120px] overflow-hidden rounded-sm bg-line">
             <div
-              className="h-full rounded-full bg-brand transition-all duration-300"
+              className="h-full rounded-sm bg-brand transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -125,9 +123,9 @@ export function TestimonialsSlider() {
             onClick={() => scrollBy(1)}
             disabled={atEnd}
             aria-label="Next stories"
-            className="grid h-11 w-11 place-items-center text-ink transition disabled:text-muted/40"
+            className="grid h-9 w-9 place-items-center rounded-md border border-line text-ink transition disabled:text-muted/40"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-4 w-4" />
           </button>
         </div>
       </div>

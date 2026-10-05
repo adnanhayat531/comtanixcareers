@@ -1,6 +1,38 @@
 import { SITE } from "@/lib/config";
 
-/** Brand mark — SVG so there is never a white image background */
+/** Original Comtanix mark path — flat-top hexagon + tall thin diamond on the right */
+export const BRAND_MARK_PATH =
+  "M12 8 L38 8 L46 25 L38 42 L12 42 L4 25 Z M32 16.5 L36.5 25 L32 33.5 L27.5 25 Z";
+
+/** Original logo mark teal (from brand asset) — logo only, not UI theme */
+export const BRAND_MARK_COLOR = "#55ACB5";
+
+export function BrandMark({
+  className = "",
+  fill = BRAND_MARK_COLOR,
+}: {
+  className?: string;
+  fill?: string;
+}) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 50 50"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d={BRAND_MARK_PATH}
+        fill={fill}
+      />
+    </svg>
+  );
+}
+
+/** Brand mark + wordmark — SVG so there is never a white image background */
 export function BrandLogo({
   className = "",
   light = false,
@@ -21,19 +53,17 @@ export function BrandLogo({
       role="img"
       aria-label={SITE.name}
     >
-      {/* Teal hexagon — brand mark */}
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M25 4 L42.5 14.5 L42.5 35.5 L25 46 L7.5 35.5 L7.5 14.5 Z M25 17 L31 25 L25 33 L19 25 Z"
-        fill="var(--brand)"
+        d={BRAND_MARK_PATH}
+        fill={BRAND_MARK_COLOR}
       />
-      {/* Wordmark */}
       <text
         x="54"
         y="33"
         fill={text}
-        fontFamily="var(--font-montserrat), Montserrat, system-ui, sans-serif"
+        fontFamily="var(--font-sora), Sora, system-ui, sans-serif"
         fontSize="26"
         fontWeight="800"
         letterSpacing="-0.02em"

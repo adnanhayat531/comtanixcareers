@@ -13,20 +13,20 @@ export const metadata: Metadata = {
 
 const WHY = [
   {
-    title: "100% Paid Training",
-    body: "Earn from your very first day. Learn the process, tools and US communication before you start.",
+    title: "Paid training",
+    body: "Induction covers process, tools, and US communication before live queues.",
   },
   {
-    title: "Fast-Track Growth",
-    body: "Agent to senior agent to team leader to manager, with reviews that are clear.",
+    title: "Defined progression",
+    body: "Agent → senior → team lead → manager, with scheduled reviews.",
   },
   {
-    title: "Performance Rewards",
-    body: "Incentives and recognition for results — monthly metric bonuses.",
+    title: "Performance pay",
+    body: "Monthly incentives tied to published SLA and quality metrics.",
   },
   {
-    title: "Safe Modern Office",
-    body: "Good equipment, stable internet, biometric access and a comfortable workplace.",
+    title: "Office standards",
+    body: "Workstations, network stability, access control, and on-floor support.",
   },
 ] as const;
 
@@ -34,18 +34,18 @@ export default function CareersPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Open Hiring · Immediate Vacancies"
-        title="Find Your Next Opportunity at Comtanix"
-        description="Competitive packages, respectful shift cultures, fast-track promotions, and exposure to elite US enterprise accounts."
+        eyebrow="Careers"
+        title="Open roles"
+        description="Positions across engineering and IT support for US-process delivery teams."
       >
-        <p className="mt-5 text-sm font-semibold text-brand">
-          {ROLES.length} currently active positions
+        <p className="mt-4 text-sm font-semibold text-brand">
+          {ROLES.length} openings listed
         </p>
       </PageIntro>
 
       <Section>
         <Container>
-          <div className="overflow-hidden rounded-lg border border-line bg-surface">
+          <div className="overflow-hidden rounded-md border border-line bg-surface">
             {ROLES.map((role) => {
               const department = role.tags[role.tags.length - 1] ?? "Comtanix";
               const shift = role.tags.find((t) =>
@@ -91,7 +91,7 @@ export default function CareersPage() {
                       href={`/apply?role=${encodeURIComponent(role.title)}`}
                       className="w-full min-h-11 sm:w-auto"
                     >
-                      Apply Now <ArrowRight className="h-4 w-4" />
+                      Apply <ArrowRight className="h-4 w-4" />
                     </Button>
                   </div>
                 </article>
@@ -103,17 +103,17 @@ export default function CareersPage() {
 
       <Section className="border-t border-line bg-tint">
         <Container>
-          <SectionHeading title="Why people stay" />
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4 lg:gap-10">
+          <SectionHeading title="Why stay" />
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-8">
             {WHY.map((w, i) => (
               <div key={w.title}>
-                <p className="font-display text-xs font-bold tracking-[0.12em] text-brand uppercase">
+                <p className="font-display text-xs font-bold tracking-[0.08em] text-brand uppercase">
                   0{i + 1}
                 </p>
-                <h3 className="mt-2 font-display text-lg font-semibold text-ink">
+                <h3 className="mt-1.5 font-display text-base font-semibold text-ink">
                   {w.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{w.body}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted">{w.body}</p>
               </div>
             ))}
           </div>

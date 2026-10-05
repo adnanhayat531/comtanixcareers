@@ -17,32 +17,32 @@ export default function LifePage() {
   return (
     <>
       <PageIntro
-        eyebrow="Work Hard, Celebrate Together"
+        eyebrow="Workplace"
         title="Life at Comtanix"
-        description="We work demanding US hours, so we take workplace comfort, team bonding, and celebration culture very seriously."
+        description="Facilities, recognition, and team activities designed around US shift patterns."
       />
 
       <Section className="bg-tint">
         <Container>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-5">
             {LIFE_ACTIVITIES.map((a) => (
               <article key={a.title} className="group flex flex-col">
-                <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-2xl bg-tint">
+                <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-md bg-tint">
                   <Image
                     src={a.image}
                     alt=""
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    className="object-cover"
                   />
-                  <span className="absolute bottom-3 left-3 z-10 grid h-10 w-10 place-items-center rounded-xl bg-white/95 text-brand shadow-soft backdrop-blur-sm">
-                    <LifeIcon name={a.icon} className="h-5 w-5" />
+                  <span className="absolute bottom-2.5 left-2.5 z-10 grid h-8 w-8 place-items-center rounded-md bg-white text-brand">
+                    <LifeIcon name={a.icon} className="h-3.5 w-3.5" />
                   </span>
                 </div>
-                <h3 className="font-display text-lg font-extrabold tracking-tight text-ink md:text-xl">
+                <h3 className="font-display text-base font-bold tracking-tight text-ink md:text-lg">
                   {a.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted md:text-[15px]">
+                <p className="mt-1.5 text-sm leading-relaxed text-muted">
                   {a.body}
                 </p>
               </article>
@@ -54,27 +54,23 @@ export default function LifePage() {
       <Section className="border-t border-line bg-tint">
         <Container>
           <SectionHeading
-            title="What Our Team Says"
-            description="Real stories from people building their careers here."
+            title="Team feedback"
+            description="Comments from associates on delivery floors and support desks."
           />
           <TestimonialsGrid />
         </Container>
       </Section>
 
       <Section className="relative overflow-hidden bg-brand">
-        <div
-          className="absolute inset-0 bg-brand/20"
-          aria-hidden
-        />
-        <Container className="relative z-10 max-w-xl text-center">
-          <h2 className="font-display text-[clamp(1.6rem,5vw,2.5rem)] font-bold tracking-tight text-balance text-white">
-            Join the team
+        <Container className="relative z-10 max-w-lg">
+          <h2 className="font-display text-[clamp(1.35rem,3vw,1.85rem)] font-bold tracking-tight text-white leading-[1.25]">
+            Apply for open roles
           </h2>
-          <p className="mt-3 text-[15px] text-white/75 sm:text-base md:text-lg">
-            Your next role is one message away.
+          <p className="mt-2 text-[15px] text-white/75 md:text-base">
+            Submit an application for current openings.
           </p>
-          <Button href="/apply" variant="white" className="mt-6 w-full sm:mt-7 sm:w-auto">
-            Apply Now
+          <Button href="/apply" variant="white" className="mt-5 w-full sm:w-auto">
+            Apply
           </Button>
         </Container>
       </Section>

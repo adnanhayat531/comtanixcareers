@@ -26,24 +26,3 @@ export function LifeIcon({
   const Icon = lifeIcons[name];
   return <Icon className={className} aria-hidden />;
 }
-
-export function IconBadge({
-  children,
-  tone = "sea",
-}: {
-  children: React.ReactNode;
-  tone?: "sea" | "brand" | "tint";
-}) {
-  const tones = {
-    sea: "bg-brand text-white shadow-brand",
-    brand: "bg-brand text-white shadow-brand",
-    tint: "bg-tint text-brand",
-  };
-  return (
-    <div
-      className={`mb-4 grid h-11 w-11 place-items-center rounded-md ${tones[tone]}`}
-    >
-      {children}
-    </div>
-  );
-}

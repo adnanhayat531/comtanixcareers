@@ -2,20 +2,19 @@ import Link from "next/link";
 import { type ReactNode } from "react";
 
 /**
- * Contour-inspired controls: pill shape, ~59px tall, 18px/700 Montserrat.
- * Colors stay on Comtanix teal theme.
+ * Contour-like controls: sharp corners, compact height, corporate weight.
  */
 const variants = {
   primary:
-    "bg-brand text-white hover:brightness-105 hover:shadow-[var(--shadow-brand)] active:brightness-95",
+    "bg-brand text-white hover:brightness-105 active:brightness-95",
   secondary:
-    "bg-transparent text-brand border-2 border-brand hover:bg-tint active:bg-tint",
+    "bg-transparent text-brand border border-brand hover:bg-tint active:bg-tint",
   ghost:
-    "bg-transparent text-ink border-2 border-transparent hover:bg-tint hover:text-brand active:bg-tint",
+    "bg-transparent text-ink border border-transparent hover:bg-tint hover:text-brand active:bg-tint",
   white:
-    "bg-white text-brand hover:bg-on-sea active:bg-tint shadow-soft",
+    "bg-white text-brand hover:bg-on-sea active:bg-tint",
   outlineLight:
-    "bg-transparent text-white border-2 border-white hover:bg-white/10 active:bg-white/15",
+    "bg-transparent text-white border border-white hover:bg-white/10 active:bg-white/15",
   text: "bg-transparent text-brand px-0 py-0 h-auto min-h-0 border-0 hover:underline underline-offset-4",
 } as const;
 
@@ -44,8 +43,8 @@ export function Button({
 }: ButtonAsButton | ButtonAsLink) {
   const base =
     variant === "text"
-      ? "inline-flex items-center gap-1.5 font-display text-base font-bold transition-colors duration-200 disabled:opacity-60"
-      : "inline-flex h-11 min-h-11 w-full max-w-full items-center justify-center gap-2 rounded-full px-5 font-display text-sm font-bold tracking-tight transition-all duration-300 disabled:pointer-events-none disabled:opacity-55 sm:w-auto sm:px-7 sm:text-base md:h-[52px] md:min-h-[52px] md:px-8 lg:h-[56px] lg:min-h-[56px] lg:px-9 lg:text-lg";
+      ? "inline-flex items-center gap-1.5 font-display text-sm font-semibold transition-colors duration-150 disabled:opacity-60"
+      : "inline-flex h-10 min-h-10 w-full max-w-full items-center justify-center gap-2 rounded-md px-4 font-display text-sm font-semibold tracking-tight transition-colors duration-150 disabled:pointer-events-none disabled:opacity-55 sm:w-auto sm:px-5 md:h-11 md:min-h-11 md:px-6 md:text-[15px]";
 
   const classes = `${base} ${variants[variant]} ${className}`;
 
