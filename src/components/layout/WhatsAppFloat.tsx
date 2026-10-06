@@ -7,8 +7,8 @@ function WhatsAppIcon({ className = "" }: { className?: string }) {
     <img
       src="https://cdn.simpleicons.org/whatsapp/ffffff"
       alt=""
-      width={20}
-      height={20}
+      width={22}
+      height={22}
       className={className}
       decoding="async"
     />
@@ -23,12 +23,15 @@ export function WhatsAppFloat() {
       rel="noopener noreferrer"
       aria-label="Contact us on WhatsApp"
       title="Contact us on WhatsApp"
-      className="fixed right-4 bottom-[max(5.5rem,calc(env(safe-area-inset-bottom,0px)+4.75rem))] z-40 inline-flex h-10 items-center gap-2 rounded-md bg-[#25D366] py-2 pr-3.5 pl-2.5 text-white shadow-[0_1px_4px_rgba(0,0,0,0.12)] transition-colors duration-150 hover:bg-[#20bd5a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] sm:right-5 sm:bottom-[max(6rem,calc(env(safe-area-inset-bottom,0px)+5.25rem))] sm:h-11 sm:gap-2.5 sm:pr-4 sm:pl-3"
+      className="group fixed right-4 bottom-[max(5.5rem,calc(env(safe-area-inset-bottom,0px)+4.75rem))] z-40 inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-[#25D366] text-white shadow-[0_2px_8px_rgba(0,0,0,0.18)] transition-[width,background-color,box-shadow] duration-200 ease-out hover:w-[9.5rem] hover:justify-start hover:bg-[#20bd5a] hover:pl-3 hover:pr-4 hover:shadow-[0_4px_14px_rgba(0,0,0,0.22)] focus-visible:w-[9.5rem] focus-visible:justify-start focus-visible:bg-[#20bd5a] focus-visible:pl-3 focus-visible:pr-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] sm:right-5 sm:bottom-[max(6rem,calc(env(safe-area-inset-bottom,0px)+5.25rem))] sm:h-14 sm:w-14 sm:hover:w-[10.25rem] sm:focus-visible:w-[10.25rem]"
     >
-      <span className="grid h-7 w-7 shrink-0 place-items-center sm:h-8 sm:w-8">
-        <WhatsAppIcon className="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
+      <span className="grid h-6 w-6 shrink-0 place-items-center sm:h-7 sm:w-7">
+        <WhatsAppIcon className="h-[22px] w-[22px] sm:h-6 sm:w-6" />
       </span>
-      <span className="pr-0.5 text-sm font-semibold tracking-tight whitespace-nowrap sm:text-[15px]">
+      <span
+        className="max-w-0 overflow-hidden pl-0 text-sm font-semibold tracking-tight whitespace-nowrap opacity-0 transition-[max-width,opacity,padding] duration-200 ease-out group-hover:max-w-[7rem] group-hover:pl-2 group-hover:opacity-100 group-focus-visible:max-w-[7rem] group-focus-visible:pl-2 group-focus-visible:opacity-100 sm:text-[15px]"
+        aria-hidden
+      >
         Contact us
       </span>
       <span className="sr-only">{CONFIG.whatsappShow}</span>
