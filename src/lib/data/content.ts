@@ -106,7 +106,7 @@ export const LIFE_ACTIVITIES = [
     title: "Gym Membership",
     body: "Company-sponsored gym membership so you can stay fit, decompress after US shifts, and build healthy routines year-round.",
     icon: "gym" as const,
-    image: "/life/gym-membership.jpg",
+    image: "/life/gym-teal.jpg",
   },
   {
     title: "Weekend Sports",
@@ -168,22 +168,22 @@ export const CAPABILITIES = [
   {
     title: "Software engineering",
     body: "Engineering teams that work in the client’s tools, processes, and delivery cadence.",
-    image: "/goals/continuous-learning.jpg",
+    image: "/capabilities/software-engineering.jpg",
   },
   {
     title: "IT operations",
     body: "Reliable IT support and operations aligned to US business hours and standards.",
-    image: "/goals/client-partnership.png",
+    image: "/capabilities/it-operations.jpg",
   },
   {
     title: "US-aligned delivery",
     body: "Coverage across US time zones with real-time collaboration and shared rituals.",
-    image: "/goals/growth.jpg",
+    image: "/capabilities/us-delivery.jpg",
   },
   {
     title: "Quality & security",
     body: "Outcome-focused quality, IP controls, and secured networks on every engagement.",
-    image: "/goals/trust.jpg",
+    image: "/capabilities/quality-security.jpg",
   },
 ] as const;
 
@@ -192,17 +192,17 @@ export const WHY_COMTANIX = [
   {
     title: "Quality first",
     body: "Root-cause resolution and client outcomes ahead of vanity metrics.",
-    image: "/goals/quality.jpg",
+    image: "/why/quality.jpg",
   },
   {
     title: "Security & trust",
     body: "NDAs, IP protection, and secure infrastructure on US accounts.",
-    image: "/goals/trust.jpg",
+    image: "/why/security.jpg",
   },
   {
     title: "Embedded partnership",
     body: "Same tools and accountability as the US team across time zones.",
-    image: "/goals/client-partnership.png",
+    image: "/why/partnership.jpg",
   },
 ] as const;
 
@@ -211,16 +211,16 @@ export const LIFE_PREVIEW = [
   {
     title: "Client-aligned teams",
     body: "Daily syncs with US leads and an ego-free collaborative floor.",
-    image: "/culture/teamwork.jpg",
+    image: "/home/life-teams.jpg",
   },
   {
     title: "Learning on the job",
     body: "Paid induction, communication coaching, and stack upskilling.",
-    image: "/life/skill-sessions.jpg",
+    image: "/home/life-learning.jpg",
   },
   {
     title: "Balance around US hours",
     body: "Sports, recognition, and team rituals built for night and hybrid shifts.",
-    image: "/culture/lunches.jpg",
+    image: "/home/life-balance.jpg",
   },
 ] as const;

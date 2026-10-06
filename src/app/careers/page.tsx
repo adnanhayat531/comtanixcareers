@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ArrowRight, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { Container, Section, SectionHeading, PageIntro } from "@/components/ui/Section";
+import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import { GetInTouch } from "@/components/layout/GetInTouch";
 import { ROLES } from "@/lib/data/roles";
 
@@ -33,17 +34,54 @@ const WHY = [
 export default function CareersPage() {
   return (
     <>
-      <PageIntro
-        eyebrow="Careers"
-        title="Open roles"
-        description="Positions across engineering and IT support for US-process delivery teams."
-      >
-        <p className="mt-4 text-sm font-semibold text-brand">
-          {ROLES.length} openings listed
-        </p>
-      </PageIntro>
+      {/* Half hero */}
+      <section className="relative flex min-h-[42vh] flex-col justify-start overflow-hidden sm:min-h-[46vh] md:min-h-[50vh] lg:min-h-[52vh]">
+        <Image
+          src="/careers/hero-desk.jpg"
+          alt="Comtanix careers — innovation, teamwork, and growth"
+          fill
+          priority
+          quality={90}
+          sizes="100vw"
+          className="object-cover object-[center_45%]"
+        />
+        {/* Soft light wash behind dark text */}
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-full max-w-3xl bg-gradient-to-r from-white/75 via-white/40 to-transparent"
+          aria-hidden
+        />
 
-      <Section>
+        <Container className="relative z-10 pt-8 pb-10 sm:pt-10 sm:pb-12 md:pt-12 md:pb-14">
+          <div className="max-w-xl">
+            <p className="mb-2 text-[11px] font-semibold tracking-[0.1em] text-ink uppercase">
+              Careers
+            </p>
+            <h1 className="font-display text-[clamp(1.5rem,4.5vw,2.5rem)] font-bold tracking-tight text-ink leading-[1.15]">
+              Build your career on real US IT work.
+            </h1>
+            <p className="mt-2.5 max-w-md text-[14px] font-medium leading-[1.55] text-ink/85 sm:mt-3 sm:text-[15px] md:text-base">
+              Open roles across engineering and IT support — with paid training,
+              clear progression, and teams that deliver for American businesses.
+            </p>
+            <div className="mt-5 flex w-full max-w-md flex-col gap-2.5 sm:mt-6 sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-3">
+              <Button
+                href="/apply"
+                className="!bg-[#55ACB5] text-white hover:!brightness-110"
+              >
+                Apply now <ArrowRight className="h-4 w-4" aria-hidden />
+              </Button>
+              <Button
+                href="#openings"
+                className="!border-0 !bg-white !text-ink shadow-soft hover:!bg-white/95"
+              >
+                View openings <ArrowRight className="h-4 w-4" aria-hidden />
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <Section id="openings">
         <Container>
           <div className="overflow-hidden rounded-md border border-line bg-surface">
             {ROLES.map((role) => {

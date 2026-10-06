@@ -88,13 +88,13 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-surface">
-      <div className="flex h-14 w-full items-center justify-between gap-2 px-3 sm:gap-3 sm:px-4 md:h-16 md:px-5 lg:px-6 xl:px-10 2xl:px-14">
+      <div className="flex h-14 w-full items-center justify-between gap-2 pl-2 pr-3 sm:gap-3 sm:pl-3 sm:pr-4 md:h-16 md:pl-3 md:pr-5 lg:pl-4 lg:pr-6 xl:pl-5 xl:pr-10 2xl:pl-6 2xl:pr-14">
         <Link
           href="/"
           className="min-w-0 shrink focus-visible:rounded-sm"
           aria-label={`${SITE.name} home`}
         >
-          <BrandLogo className="h-7 w-auto sm:h-8 md:h-9" />
+          <BrandLogo className="h-9 w-auto sm:h-10 md:h-11" />
         </Link>
 
         <nav className="hidden min-w-0 items-center lg:flex" aria-label="Main">

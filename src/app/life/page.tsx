@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { Container, Section, SectionHeading, PageIntro } from "@/components/ui/Section";
+import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import { LifeIcon } from "@/components/ui/Icons";
 import { TestimonialsGrid } from "@/components/home/Testimonials";
 import { GetInTouch } from "@/components/layout/GetInTouch";
@@ -10,20 +11,61 @@ import { LIFE_ACTIVITIES } from "@/lib/data/content";
 export const metadata: Metadata = {
   title: "Life at Comtanix",
   description:
-    "Team lunches, sports days, awards, skill sessions and celebrations — how we work and grow together.",
+    "Team trips, sports, awards, and everyday culture — how Comtanix people work and grow together beyond the desk.",
 };
 
 export default function LifePage() {
   return (
     <>
-      <PageIntro
-        eyebrow="Workplace"
-        title="Life at Comtanix"
-        description="Facilities, recognition, and team activities designed around US shift patterns."
-      />
+      {/* Hero — team trip (half-height) */}
+      <section className="relative flex min-h-[42vh] flex-col justify-center overflow-hidden sm:min-h-[46vh] md:min-h-[50vh] lg:min-h-[52vh]">
+        <Image
+          src="/life/hero-team.jpg"
+          alt="Comtanix team together outdoors"
+          fill
+          priority
+          quality={90}
+          sizes="100vw"
+          className="object-cover object-[center_35%]"
+        />
+        {/* Teal wash only behind text — right side stays clear */}
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-[min(96%,34rem)] bg-gradient-to-r from-[#0d3a40]/80 via-[#2F7A84]/50 to-transparent sm:w-[min(78%,40rem)] md:w-[min(68%,46rem)]"
+          aria-hidden
+        />
+
+        <Container className="relative z-10 py-8 sm:py-10 md:py-12">
+          <div className="max-w-xl">
+            <p className="mb-2 text-[11px] font-semibold tracking-[0.1em] text-white/90 uppercase">
+              Life at Comtanix
+            </p>
+            <h1 className="font-display text-[clamp(1.5rem,4.5vw,2.5rem)] font-bold tracking-tight text-white leading-[1.15]">
+              Work hard. Climb higher. Stay together.
+            </h1>
+            <p className="mt-2.5 max-w-md text-[14px] font-medium leading-[1.55] text-white/95 sm:mt-3 sm:text-[15px] md:text-base">
+              Our teams share the grind, the wins, and the moments that make
+              Comtanix feel like more than a workplace.
+            </p>
+            <div className="mt-5 flex w-full max-w-md flex-col gap-2.5 sm:mt-6 sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-3">
+              <Button href="/careers" variant="white">
+                View openings <ArrowRight className="h-4 w-4" aria-hidden />
+              </Button>
+              <Button href="/apply" variant="outlineLight">
+                Join the team <ArrowRight className="h-4 w-4" aria-hidden />
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </section>
 
       <Section className="bg-tint">
         <Container>
+          <SectionHeading
+            eyebrow="Everyday culture"
+            title="How we live the work week"
+            description="Facilities, recognition, and team activities designed around US shift patterns."
+            className="mb-6 md:mb-8"
+          />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-5">
             {LIFE_ACTIVITIES.map((a) => (
               <article key={a.title} className="group flex flex-col">
@@ -51,7 +93,7 @@ export default function LifePage() {
         </Container>
       </Section>
 
-      <Section className="border-t border-line bg-tint">
+      <Section className="border-t border-line bg-white">
         <Container>
           <SectionHeading
             title="Team feedback"

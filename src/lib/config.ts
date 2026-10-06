@@ -26,7 +26,10 @@ export const CONFIG = {
     X: "https://x.com/",
   } as Record<string, string>,
   address: "Comtanix Corporate Centre, High-Tech Industrial Zone, Pakistan",
-  mapQuery: "Comtanix office",
+  /** Map pin — Arfa Software Technology Park, Lahore (IT hub placeholder) */
+  mapLat: 31.475228,
+  mapLng: 74.343061,
+  mapPlace: "Arfa Software Technology Park, Lahore, Pakistan",
   hours: "Monday to Friday, 4:00 PM to 11:00 PM",
   officeTz: "Asia/Karachi",
 } as const;
@@ -38,8 +41,16 @@ export function waLink(text?: string) {
 }
 
 export function mapsLink() {
-  const q = `${CONFIG.mapQuery} ${CONFIG.address}`;
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+  const { mapLat, mapLng, mapPlace } = CONFIG;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    `${mapLat},${mapLng}(${mapPlace})`,
+  )}`;
+}
+
+/** Google Maps embed centered on office coords (shows map tiles + marker) */
+export function mapsEmbedSrc() {
+  const { mapLat, mapLng } = CONFIG;
+  return `https://maps.google.com/maps?q=${mapLat},${mapLng}&z=16&hl=en&output=embed`;
 }
 
 export const DEFAULT_WA_MESSAGE = `Hello ${SITE.name}, I would like to know about jobs.`;
