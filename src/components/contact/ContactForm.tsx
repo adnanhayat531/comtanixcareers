@@ -5,7 +5,10 @@ import { ArrowRight } from "lucide-react";
 import { CONFIG, SITE, waLink } from "@/lib/config";
 
 const fieldClass =
-  "w-full rounded-lg border border-line bg-white px-5 py-3.5 text-base text-ink outline-none ring-0 placeholder:text-muted/70 transition focus:border-brand focus:ring-1 focus:ring-brand/25";
+  "box-border h-11 w-full rounded-md border border-line bg-white px-3.5 font-body text-[15px] text-ink outline-none transition placeholder:text-muted/65 focus:border-brand focus:ring-1 focus:ring-brand/25";
+
+const labelClass =
+  "mb-1.5 block font-body text-[13px] font-semibold tracking-wide text-ink";
 
 export function ContactForm() {
   const [status, setStatus] = useState("");
@@ -52,71 +55,80 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-4">
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="sr-only" htmlFor="contact-name">
-          Your Name
+    <form onSubmit={onSubmit} className="grid w-full gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4">
+        <div className="min-w-0">
+          <label className={labelClass} htmlFor="contact-name">
+            Your name
+          </label>
+          <input
+            id="contact-name"
+            name="name"
+            type="text"
+            required
+            placeholder="Full name"
+            className={fieldClass}
+            autoComplete="name"
+          />
+        </div>
+        <div className="min-w-0">
+          <label className={labelClass} htmlFor="contact-email">
+            Email address
+          </label>
+          <input
+            id="contact-email"
+            name="email"
+            type="email"
+            required
+            placeholder="name@example.com"
+            className={fieldClass}
+            autoComplete="email"
+          />
+        </div>
+      </div>
+
+      <div className="min-w-0">
+        <label className={labelClass} htmlFor="contact-subject">
+          Subject
         </label>
         <input
-          id="contact-name"
-          name="name"
+          id="contact-subject"
+          name="subject"
           type="text"
-          required
-          placeholder="Your Name*"
+          placeholder="How can we help?"
           className={fieldClass}
-          autoComplete="name"
-        />
-        <label className="sr-only" htmlFor="contact-email">
-          Email Address
-        </label>
-        <input
-          id="contact-email"
-          name="email"
-          type="email"
-          required
-          placeholder="Email Address*"
-          className={fieldClass}
-          autoComplete="email"
         />
       </div>
 
-      <label className="sr-only" htmlFor="contact-subject">
-        Subject
-      </label>
-      <input
-        id="contact-subject"
-        name="subject"
-        type="text"
-        placeholder="Subject"
-        className={fieldClass}
-      />
+      <div className="min-w-0">
+        <label className={labelClass} htmlFor="contact-message">
+          Message
+        </label>
+        <textarea
+          id="contact-message"
+          name="message"
+          required
+          rows={5}
+          placeholder="Write your message"
+          className={`${fieldClass} h-auto min-h-[140px] resize-y py-3 leading-relaxed`}
+        />
+      </div>
 
-      <label className="sr-only" htmlFor="contact-message">
-        Your message
-      </label>
-      <textarea
-        id="contact-message"
-        name="message"
-        required
-        rows={5}
-        placeholder="Your message"
-        className={`${fieldClass} min-h-[140px] resize-y`}
-      />
-
-      <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
         {status ? (
           <p className="text-sm text-brand" role="status">
             {status}
           </p>
         ) : (
-          <span className="hidden sm:block" />
+          <p className="text-sm text-muted">We typically reply within one business day.</p>
         )}
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex h-10 items-center justify-center gap-2 self-end rounded-md bg-brand px-6 text-sm font-semibold text-white transition hover:brightness-105 disabled:opacity-60 md:h-11 md:text-[15px]"
+          className="inline-flex h-11 w-full shrink-0 items-center justify-center gap-2 rounded-md bg-brand px-6 text-sm font-semibold text-white transition hover:brightness-105 disabled:opacity-60 sm:w-auto md:text-[15px]"
         >
-          Submit <ArrowRight className="h-4 w-4" aria-hidden />
+          {pending ? "Sending…" : "Submit"}
+          {!pending ? <ArrowRight className="h-4 w-4" aria-hidden /> : null}
         </button>
       </div>
     </form>

@@ -7,7 +7,10 @@ import { CONFIG, SITE, waLink } from "@/lib/config";
 import { EXPERIENCE_OPTIONS, ROLES } from "@/lib/data/roles";
 
 const fieldClass =
-  "w-full rounded-lg border border-line bg-white px-5 py-3.5 text-base text-ink outline-none ring-0 placeholder:text-muted/70 transition focus:border-brand focus:ring-1 focus:ring-brand/25";
+  "box-border h-11 w-full rounded-md border border-line bg-white px-3.5 font-body text-[15px] text-ink outline-none transition placeholder:text-muted/65 focus:border-brand focus:ring-1 focus:ring-brand/25";
+
+const labelClass =
+  "mb-1.5 block font-body text-[13px] font-semibold tracking-wide text-ink";
 
 export function ApplyForm() {
   const params = useSearchParams();
@@ -76,11 +79,11 @@ export function ApplyForm() {
     const name = String(fd.get("name") ?? "");
     const phone = String(fd.get("phone") ?? "");
     const position = String(fd.get("role") ?? "");
-    const exp = String(fd.get("exp") ?? "");
+    const experience = String(fd.get("exp") ?? "");
     const msg = String(fd.get("msg") ?? "").trim();
 
     const text =
-      `Job application - ${SITE.name}\nName: ${name}\nPhone: ${phone}\nPosition: ${position}\nExperience: ${exp}` +
+      `Job application - ${SITE.name}\nName: ${name}\nPhone: ${phone}\nPosition: ${position}\nExperience: ${experience}` +
       (msg ? `\nNote: ${msg}` : "") +
       `\nCV: ${cv.name} (sending it in this chat)`;
 
@@ -92,87 +95,99 @@ export function ApplyForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex w-full max-w-xl flex-col gap-4" noValidate>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="sr-only" htmlFor="apply-name">
-          Full name
-        </label>
-        <input
-          id="apply-name"
-          name="name"
-          type="text"
-          required
-          autoComplete="name"
-          placeholder="Full name*"
-          className={fieldClass}
-        />
-        <label className="sr-only" htmlFor="apply-phone">
-          Phone number
-        </label>
-        <input
-          id="apply-phone"
-          name="phone"
-          type="tel"
-          required
-          autoComplete="tel"
-          placeholder="Phone number*"
-          className={fieldClass}
-        />
+    <form
+      onSubmit={onSubmit}
+      className="grid w-full max-w-xl gap-4"
+      noValidate
+    >
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="min-w-0">
+          <label className={labelClass} htmlFor="apply-name">
+            Full name
+          </label>
+          <input
+            id="apply-name"
+            name="name"
+            type="text"
+            required
+            autoComplete="name"
+            placeholder="Your full name"
+            className={fieldClass}
+          />
+        </div>
+        <div className="min-w-0">
+          <label className={labelClass} htmlFor="apply-phone">
+            Phone number
+          </label>
+          <input
+            id="apply-phone"
+            name="phone"
+            type="tel"
+            required
+            autoComplete="tel"
+            placeholder="03xx xxxxxxx"
+            className={fieldClass}
+          />
+        </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="sr-only" htmlFor="apply-role">
-          Position
-        </label>
-        <select
-          id="apply-role"
-          name="role"
-          required
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-          className={`${fieldClass} ${role ? "text-ink" : "text-muted/70"}`}
-        >
-          <option value="">Position*</option>
-          {ROLES.map((r) => (
-            <option key={r.id} value={r.title}>
-              {r.title}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="min-w-0">
+          <label className={labelClass} htmlFor="apply-role">
+            Position
+          </label>
+          <select
+            id="apply-role"
+            name="role"
+            required
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className={`${fieldClass} ${role ? "text-ink" : "text-muted/65"}`}
+          >
+            <option value="">Select a role</option>
+            {ROLES.map((r) => (
+              <option key={r.id} value={r.title}>
+                {r.title}
+              </option>
+            ))}
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div className="min-w-0">
+          <label className={labelClass} htmlFor="apply-exp">
+            Experience
+          </label>
+          <select
+            id="apply-exp"
+            name="exp"
+            required
+            value={exp}
+            onChange={(e) => setExp(e.target.value)}
+            className={`${fieldClass} ${exp ? "text-ink" : "text-muted/65"}`}
+          >
+            <option value="" disabled>
+              Select experience
             </option>
-          ))}
-          <option value="Other">Other</option>
-        </select>
-
-        <label className="sr-only" htmlFor="apply-exp">
-          Experience
-        </label>
-        <select
-          id="apply-exp"
-          name="exp"
-          required
-          value={exp}
-          onChange={(e) => setExp(e.target.value)}
-          className={`${fieldClass} ${exp ? "text-ink" : "text-muted/70"}`}
-        >
-          <option value="" disabled>
-            Experience*
-          </option>
-          {EXPERIENCE_OPTIONS.map((o) => (
-            <option key={o} value={o}>
-              {o}
-            </option>
-          ))}
-        </select>
+            {EXPERIENCE_OPTIONS.map((o) => (
+              <option key={o} value={o}>
+                {o}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
-      <div>
+      <div className="min-w-0">
+        <span className={labelClass} id="apply-cv-label">
+          Upload CV
+        </span>
         <label
           htmlFor="apply-cv"
-          className="flex cursor-pointer flex-col items-start gap-2 rounded-lg border border-dashed border-line bg-white px-5 py-4 transition hover:border-brand/50 hover:bg-tint/40 focus-within:border-brand focus-within:ring-1 focus-within:ring-brand/25"
+          aria-labelledby="apply-cv-label"
+          className="flex min-h-11 cursor-pointer items-center gap-3 rounded-md border border-dashed border-line bg-white px-3.5 py-2.5 transition hover:border-brand/50 hover:bg-tint/40 focus-within:border-brand focus-within:ring-1 focus-within:ring-brand/25"
         >
-          <span className="inline-flex items-center gap-2 text-sm font-semibold text-ink">
-            <FileUp className="h-4 w-4 text-brand" aria-hidden />
-            {cvName ? "CV selected" : "Upload your CV*"}
-          </span>
-          <span className="text-sm text-muted">
+          <FileUp className="h-4 w-4 shrink-0 text-brand" aria-hidden />
+          <span className="min-w-0 truncate text-[15px] text-ink">
             {cvName || "PDF or Word (.pdf, .doc, .docx), max 5 MB"}
           </span>
           <input
@@ -190,37 +205,39 @@ export function ApplyForm() {
           />
         </label>
         {cvErr ? (
-          <p className="mt-2 text-sm font-medium text-red-700" role="alert">
+          <p className="mt-1.5 text-sm font-medium text-red-700" role="alert">
             {cvErr}
           </p>
         ) : null}
       </div>
 
-      <label className="sr-only" htmlFor="apply-msg">
-        Message
-      </label>
-      <textarea
-        id="apply-msg"
-        name="msg"
-        rows={4}
-        placeholder="Optional message — anything you’d like us to know"
-        className={`${fieldClass} min-h-[120px] resize-y`}
-      />
+      <div className="min-w-0">
+        <label className={labelClass} htmlFor="apply-msg">
+          Message <span className="font-normal text-muted">(optional)</span>
+        </label>
+        <textarea
+          id="apply-msg"
+          name="msg"
+          rows={4}
+          placeholder="Anything you’d like us to know"
+          className={`${fieldClass} h-auto min-h-[120px] resize-y py-3 leading-relaxed`}
+        />
+      </div>
 
-      <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
         {status ? (
           <p className="text-sm leading-relaxed text-brand" role="status">
             {status}
           </p>
         ) : (
-          <span className="hidden text-sm text-muted sm:block">
+          <p className="text-sm text-muted">
             We’ll confirm next steps after review.
-          </span>
+          </p>
         )}
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex h-10 items-center justify-center gap-2 self-end rounded-md bg-brand px-6 text-sm font-semibold text-white transition hover:brightness-105 disabled:opacity-60 md:h-11 md:text-[15px]"
+          className="inline-flex h-11 w-full shrink-0 items-center justify-center gap-2 rounded-md bg-brand px-6 text-sm font-semibold text-white transition hover:brightness-105 disabled:opacity-60 sm:w-auto md:text-[15px]"
         >
           {pending ? "Submitting…" : "Submit application"}
           {!pending ? <ArrowRight className="h-4 w-4" aria-hidden /> : null}

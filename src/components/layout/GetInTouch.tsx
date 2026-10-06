@@ -53,7 +53,7 @@ export function GetInTouch() {
           Contact
         </h2>
 
-        <div className="grid min-w-0 items-start gap-7 sm:gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-14">
+        <div className="grid min-w-0 items-start gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
           <ul className="space-y-5 sm:space-y-6">
             {contactRows.map(({ icon: Icon, label, content }) => (
               <li key={label} className="flex min-w-0 gap-3.5">
@@ -70,7 +70,7 @@ export function GetInTouch() {
             ))}
           </ul>
 
-          <div className="min-w-0">
+          <div className="min-w-0 w-full">
             <ContactForm />
           </div>
         </div>
