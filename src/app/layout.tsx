@@ -88,9 +88,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${publicSans.variable} h-full`}
+      className={`${sora.variable} ${publicSans.variable}`}
     >
-      <body className="flex min-h-full min-w-0 flex-col overflow-x-clip bg-canvas font-body text-ink antialiased [overflow-wrap:anywhere]">
+      <body className="flex min-h-dvh min-w-0 flex-col overflow-x-clip bg-canvas font-body text-ink antialiased [overflow-wrap:anywhere]">
         <Header />
         <main className="min-w-0 flex-1">{children}</main>
         <Footer />

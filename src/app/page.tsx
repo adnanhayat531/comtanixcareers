@@ -26,20 +26,18 @@ const CAPABILITY_ICONS = [Code2, Headphones, Globe2, ShieldCheck] as const;
 export default function HomePage() {
   return (
     <>
-      <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-deep">
+      <section className="relative overflow-hidden bg-deep">
         <HeroNetwork />
-        <div className="relative z-10 flex min-h-0 min-w-0 flex-1 flex-col items-center justify-center pt-14 sm:pt-16 md:pt-[4.25rem] lg:pt-[4.5rem]">
+        <div className="relative z-10 flex min-h-[28rem] w-full flex-col items-center justify-center px-0 pb-16 pt-20 sm:min-h-[32rem] sm:pb-20 sm:pt-24 md:min-h-[min(78svh,40rem)] md:pb-24 md:pt-28 lg:min-h-[min(82svh,44rem)] lg:pb-28">
           <HeroCopy />
         </div>
-        {/* Spacer so overlapping stats sit partly on the hero */}
-        <div className="relative z-10 h-12 shrink-0 sm:h-16 md:h-20 lg:h-24" aria-hidden />
       </section>
 
       <StatsBar />
 
       {/* Who We Are */}
-      <Section className="bg-canvas pt-10 md:pt-14">
-        <Container className="grid min-w-0 items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+      <Section className="bg-canvas pt-8 md:pt-12">
+        <Container className="grid min-w-0 items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div className="order-2 min-w-0 text-left lg:order-1">
             <HeadingReveal className="mb-5 max-w-xl">
               <p className="type-eyebrow mb-2 text-brand">Who we are</p>
@@ -84,7 +82,7 @@ export default function HomePage() {
       {/* IT Capabilities */}
       <Section className="bg-white">
         <Container>
-          <HeadingReveal className="mb-8 max-w-xl md:mb-10">
+          <HeadingReveal className="mb-6 max-w-xl md:mb-8">
             <p className="type-eyebrow mb-2 text-brand">What we do</p>
             <h2 className="type-h2 mt-0 text-ink">
               IT capabilities for global delivery.
@@ -95,7 +93,7 @@ export default function HomePage() {
             </p>
           </HeadingReveal>
 
-          <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 xl:grid-cols-4 xl:gap-6">
             {CAPABILITIES.map((c, i) => {
               const Icon = CAPABILITY_ICONS[i] ?? Code2;
               return (
@@ -108,15 +106,15 @@ export default function HomePage() {
                       src={c.image}
                       alt=""
                       fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
                       className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
                     />
                   </div>
-                  <div className="px-5 py-5">
+                  <div className="px-4 py-4 sm:px-5 sm:py-5">
                     <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand text-white">
                       <Icon className="h-4 w-4" aria-hidden />
                     </span>
-                    <h3 className="type-h3 mt-4 text-ink">{c.title}</h3>
+                    <h3 className="type-h3 mt-3 text-ink sm:mt-4">{c.title}</h3>
                     <p className="type-meta mt-2 text-muted">{c.body}</p>
                   </div>
                 </li>
@@ -129,7 +127,7 @@ export default function HomePage() {
       {/* Why Comtanix */}
       <Section className="bg-tint">
         <Container>
-          <HeadingReveal className="mb-8 max-w-xl md:mb-10">
+          <HeadingReveal className="mb-6 max-w-xl md:mb-8">
             <p className="type-eyebrow mb-2 text-brand">Why Comtanix</p>
             <h2 className="type-h2 mt-0 text-ink">
               How we work with global clients.
@@ -140,7 +138,7 @@ export default function HomePage() {
             </p>
           </HeadingReveal>
 
-          <ol className="grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
+          <ol className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-6">
             {WHY_COMTANIX.map((w, i) => (
               <li
                 key={w.title}
@@ -151,11 +149,11 @@ export default function HomePage() {
                     src={w.image}
                     alt=""
                     fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-center"
                   />
                 </div>
-                <div className="px-5 py-5 md:px-6 md:py-6">
+                <div className="px-4 py-4 sm:px-5 sm:py-5 md:px-6 md:py-6">
                   <p className="type-eyebrow text-brand">0{i + 1}</p>
                   <h3 className="type-h3 mt-2 text-ink">{w.title}</h3>
                   <p className="type-meta mt-2 text-muted">{w.body}</p>
@@ -168,8 +166,8 @@ export default function HomePage() {
 
       {/* Careers */}
       <Section className="bg-white">
-        <Container className="grid min-w-0 grid-cols-1 items-center gap-8 sm:gap-10 md:grid-cols-2 lg:gap-14">
-          <div className="min-w-0 max-w-xl text-left md:max-w-none">
+        <Container className="grid min-w-0 grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14">
+          <div className="min-w-0 max-w-xl text-left lg:max-w-none">
             <HeadingReveal className="max-w-xl">
               <p className="type-eyebrow mb-2 text-brand">Careers</p>
               <h2 className="type-h2 mt-0 text-ink">
@@ -217,12 +215,12 @@ export default function HomePage() {
           </div>
 
           <div className="w-full min-w-0">
-            <div className="relative mx-auto aspect-[4/3] w-full max-w-xl overflow-hidden rounded-2xl bg-tint md:mx-0 md:max-w-none md:aspect-[5/4] lg:aspect-[4/3]">
+            <div className="relative mx-auto aspect-[4/3] w-full max-w-xl overflow-hidden rounded-2xl bg-tint lg:mx-0 lg:max-w-none">
               <Image
                 src="/careers-team.jpg"
                 alt="Comtanix engineers collaborating in the office"
                 fill
-                sizes="(max-width: 767px) 100vw, 50vw"
+                sizes="(max-width: 1023px) 100vw, 50vw"
                 className="object-cover object-[center_25%]"
                 priority={false}
               />
@@ -234,7 +232,7 @@ export default function HomePage() {
       {/* Life at Comtanix */}
       <Section className="bg-tint">
         <Container>
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-10">
+          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-10">
             <HeadingReveal className="max-w-xl">
               <p className="type-eyebrow mb-2 text-brand">Life at Comtanix</p>
               <h2 className="type-h2 mt-0 text-ink">
@@ -254,7 +252,7 @@ export default function HomePage() {
             </Button>
           </div>
 
-          <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
+          <ul className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-6">
             {LIFE_PREVIEW.map((item) => (
               <li
                 key={item.title}
@@ -265,11 +263,11 @@ export default function HomePage() {
                     src={item.image}
                     alt=""
                     fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-center"
                   />
                 </div>
-                <div className="px-5 py-5">
+                <div className="px-4 py-4 sm:px-5 sm:py-5">
                   <h3 className="type-h3 text-ink">{item.title}</h3>
                   <p className="type-meta mt-2 text-muted">{item.body}</p>
                 </div>

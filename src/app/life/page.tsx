@@ -40,7 +40,7 @@ export default function LifePage() {
             title="How we live the work week"
             description="Facilities, recognition, and team activities designed around real shift patterns."
           />
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
             {LIFE_ACTIVITIES.map((a) => (
               <article key={a.title} className="group flex flex-col">
                 <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-xl bg-white">
