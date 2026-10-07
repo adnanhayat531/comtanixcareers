@@ -44,7 +44,7 @@ export function waLink(text?: string) {
 }
 
 export function mapsLink() {
-  return `https://www.google.com/maps/place/Comtanix/@${CONFIG.mapLat},${CONFIG.mapLng},17z`;
+  return "https://www.google.com/maps/place/Comtanix/@33.4977501,73.0704028,17z/data=!4m8!3m7!1s0x38df95f8d0000001:0x3b57baa0437d08ab!8m2!3d33.4977501!4d73.0704028!9m1!1b1!16s%2Fg%2F11fmqy91pv";
 }
 
 /** Google Maps embed centered on Comtanix office */

@@ -5,20 +5,10 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Star, ExternalLink } from "lucide-react";
 import {
   GOOGLE_MAPS_PLACE_URL,
-  GOOGLE_MAPS_REVIEWS_URL,
   GOOGLE_RATING,
-  GOOGLE_REVIEWS_FALLBACK,
+  GOOGLE_REVIEWS,
   type GoogleReview,
 } from "@/lib/data/google-reviews";
-
-type ApiPayload = {
-  rating: number;
-  count: number;
-  mapsUrl: string;
-  placeUrl?: string;
-  reviews: GoogleReview[];
-  source?: string;
-};
 
 function GoogleMark({ className = "" }: { className?: string }) {
   return (
@@ -44,22 +34,20 @@ function GoogleMark({ className = "" }: { className?: string }) {
 }
 
 function ReviewCard({ review }: { review: GoogleReview }) {
-  const href = review.authorUrl || review.mapsUrl || GOOGLE_MAPS_REVIEWS_URL;
-
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex h-full min-w-0 flex-col rounded-md border border-line bg-white px-5 py-5 transition hover:border-brand/40 hover:shadow-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-      aria-label={`Verify ${review.author}'s Google review`}
-    >
+    <article className="flex h-full min-w-0 flex-col rounded-md border border-line bg-white px-5 py-5">
       <div className="flex items-start gap-3">
-        <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-tint ring-1 ring-line">
+        <a
+          href={review.authorUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-tint ring-1 ring-line"
+          aria-label={`${review.author} on Google`}
+        >
           {review.photoUrl ? (
             <Image
               src={review.photoUrl}
-              alt=""
+              alt={review.author}
               fill
               sizes="44px"
               className="object-cover"
@@ -70,9 +58,16 @@ function ReviewCard({ review }: { review: GoogleReview }) {
               {review.initials}
             </span>
           )}
-        </div>
+        </a>
         <div className="min-w-0 flex-1">
-          <p className="type-meta truncate font-bold text-ink">{review.author}</p>
+          <a
+            href={review.authorUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="type-meta block truncate font-bold text-ink hover:text-brand hover:underline"
+          >
+            {review.author}
+          </a>
           <div className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5">
             <span className="inline-flex items-center gap-1 font-body text-[11px] font-semibold text-muted">
               <GoogleMark className="h-3.5 w-3.5" />
@@ -106,11 +101,16 @@ function ReviewCard({ review }: { review: GoogleReview }) {
         {review.quote}
       </q>
 
-      <span className="mt-5 inline-flex items-center gap-1 border-t border-line pt-4 font-body text-xs font-semibold text-brand">
+      <a
+        href={review.authorUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-5 inline-flex items-center gap-1 border-t border-line pt-4 font-body text-xs font-semibold text-brand hover:underline"
+      >
         Verify on Google
         <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-      </span>
-    </a>
+      </a>
+    </article>
   );
 }
 
@@ -118,33 +118,7 @@ export function TestimonialsGrid() {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
-  const [rating, setRating] = useState<number>(GOOGLE_RATING.score);
-  const [count, setCount] = useState<number>(GOOGLE_RATING.count);
-  const [mapsUrl, setMapsUrl] = useState(GOOGLE_MAPS_REVIEWS_URL);
-  const [reviews, setReviews] = useState<GoogleReview[]>(GOOGLE_REVIEWS_FALLBACK);
-
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const res = await fetch("/api/google-reviews", { cache: "no-store" });
-        if (!res.ok) return;
-        const data = (await res.json()) as ApiPayload;
-        if (cancelled) return;
-        if (typeof data.rating === "number") setRating(data.rating);
-        if (typeof data.count === "number") setCount(data.count);
-        if (data.mapsUrl) setMapsUrl(data.mapsUrl);
-        if (Array.isArray(data.reviews) && data.reviews.length > 0) {
-          setReviews(data.reviews);
-        }
-      } catch {
-        /* keep fallback */
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const reviews = GOOGLE_REVIEWS;
 
   function updateArrows() {
     const el = scrollerRef.current;
@@ -165,7 +139,7 @@ export function TestimonialsGrid() {
       el.removeEventListener("scroll", updateArrows);
       ro.disconnect();
     };
-  }, [reviews]);
+  }, []);
 
   function scrollByPage(dir: -1 | 1) {
     const el = scrollerRef.current;
@@ -177,14 +151,14 @@ export function TestimonialsGrid() {
     <div className="min-w-0">
       <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
         <a
-          href={mapsUrl || GOOGLE_MAPS_PLACE_URL}
+          href={GOOGLE_MAPS_PLACE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="group inline-flex items-center gap-4 rounded-md border border-line bg-white px-4 py-3 transition hover:border-brand/40 hover:shadow-soft"
         >
           <div>
             <p className="font-display text-3xl font-bold leading-none tracking-tight text-ink">
-              {rating.toFixed(1)}
+              {GOOGLE_RATING.score.toFixed(1)}
             </p>
             <div className="mt-1.5 flex gap-0.5" aria-hidden>
               {Array.from({ length: 5 }).map((_, i) => (
@@ -195,14 +169,14 @@ export function TestimonialsGrid() {
               ))}
             </div>
             <p className="mt-1.5 font-body text-sm font-semibold text-brand group-hover:underline">
-              {count} reviews
+              {GOOGLE_RATING.count} reviews
             </p>
           </div>
           <span className="hidden h-12 w-px bg-line sm:block" aria-hidden />
           <span className="hidden items-center gap-2 sm:inline-flex">
             <GoogleMark className="h-6 w-6" />
-            <span className="type-meta max-w-[9rem] text-muted">
-              Open on Google Maps to verify
+            <span className="type-meta max-w-[10rem] text-muted">
+              Open all reviews on Google Maps
             </span>
             <ExternalLink className="h-4 w-4 text-brand" aria-hidden />
           </span>
@@ -246,14 +220,16 @@ export function TestimonialsGrid() {
       </div>
 
       <p className="type-meta mt-4 text-center text-muted">
-        Names and photos come from Google.{" "}
+        Tap a name, photo, or{" "}
+        <span className="font-semibold text-ink">Verify on Google</span> to open
+        that reviewer&apos;s Google profile.{" "}
         <a
-          href={mapsUrl || GOOGLE_MAPS_REVIEWS_URL}
+          href={GOOGLE_MAPS_PLACE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="font-semibold text-brand underline-offset-2 hover:underline"
         >
-          See all {count} reviews on Google Maps
+          See all {GOOGLE_RATING.count} reviews
         </a>
         .
       </p>
