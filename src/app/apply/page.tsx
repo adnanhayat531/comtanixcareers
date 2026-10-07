@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Suspense } from "react";
 import { ArrowRight, Clock, MapPin, Building2 } from "lucide-react";
 import { ApplyForm } from "@/components/apply/ApplyForm";
 import { Button } from "@/components/ui/Button";
+import { PageHero } from "@/components/ui/PageHero";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import { CONFIG, DEFAULT_WA_MESSAGE, waLink } from "@/lib/config";
 
@@ -34,71 +34,41 @@ const STEPS = [
 export default function ApplyPage() {
   return (
     <>
-      <section className="relative flex min-h-[42vh] flex-col justify-end overflow-hidden sm:min-h-[46vh] md:min-h-[50vh] lg:min-h-[52vh]">
-        <Image
-          src="/careers-team.jpg"
-          alt="Apply to a current Comtanix opening"
-          fill
-          priority
-          quality={90}
-          sizes="100vw"
-          className="object-cover object-[center_40%]"
-        />
-        <div
-          className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-full max-w-3xl bg-gradient-to-r from-white/75 via-white/40 to-transparent"
-          aria-hidden
-        />
+      <PageHero
+        eyebrow="Current openings"
+        title="Apply for an open role."
+        description="Choose a listed opening, confirm the job facts, and send your application. Looking for later roles? Use Submit CV for the talent pool."
+        image="/careers-team.jpg"
+        imageAlt="Apply to a current Comtanix opening"
+      >
+        <Button href="#application" variant="white">
+          Apply now <ArrowRight className="h-4 w-4" aria-hidden />
+        </Button>
+        <Button href="/careers#openings" variant="outlineLight">
+          View openings <ArrowRight className="h-4 w-4" aria-hidden />
+        </Button>
+      </PageHero>
 
-        <Container className="relative z-10 py-8 sm:py-10 md:py-12">
-          <div className="max-w-xl">
-            <p className="type-eyebrow mb-2 text-ink">Current openings</p>
-            <h1 className="type-h1 text-ink">Apply for an open role.</h1>
-            <p className="type-lede mt-2.5 max-w-md text-ink/85 sm:mt-3">
-              Choose a listed opening, confirm the job facts, and send your
-              application. Looking for later roles?{" "}
-              <a href="/submit-cv" className="font-semibold text-brand hover:underline">
-                Submit CV
-              </a>{" "}
-              for the talent pool.
-            </p>
-            <div className="mt-5 flex w-full max-w-md flex-col gap-2.5 sm:mt-6 sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-3">
-              <Button
-                href="#application"
-                className="!bg-[#55ACB5] text-white hover:!brightness-110"
-              >
-                Apply now <ArrowRight className="h-4 w-4" aria-hidden />
-              </Button>
-              <Button
-                href="/careers#openings"
-                className="!border-0 !bg-white !text-ink shadow-soft hover:!bg-white/95"
-              >
-                View openings <ArrowRight className="h-4 w-4" aria-hidden />
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      <Section id="application" className="scroll-mt-20 md:scroll-mt-28">
+      <Section id="application" className="scroll-mt-24 bg-white md:scroll-mt-28">
         <Container>
-          <div className="grid items-start gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14 xl:gap-16">
+          <div className="grid items-start gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
             <div className="min-w-0">
               <SectionHeading
                 compact
                 eyebrow="Your details"
                 title="Application form"
                 description="Apply only for a current open role. Attach a PDF or Word CV to continue."
-                className="mb-6 md:mb-8"
+                className="mb-8"
               />
 
-              <div className="mb-6 rounded-md border border-brand/30 bg-tint px-4 py-4 sm:px-5">
+              <div className="mb-8 rounded-xl border border-brand/25 bg-tint px-5 py-5">
                 <p className="type-eyebrow text-brand">Confirm before you apply</p>
-                <p className="type-meta mt-1.5 text-muted">
+                <p className="type-meta mt-2 text-muted">
                   Current openings are night shift, onsite only, and based in
                   Bahria Town Phase 8. If any of this does not work for you,
                   please do not apply.
                 </p>
-                <ul className="mt-3 space-y-2">
+                <ul className="mt-4 space-y-2.5">
                   {[
                     {
                       icon: Clock,
@@ -138,10 +108,10 @@ export default function ApplyPage() {
               </Suspense>
             </div>
 
-            <aside className="min-w-0 lg:pt-2">
+            <aside className="min-w-0 rounded-xl border border-line bg-tint/50 p-6 lg:sticky lg:top-28 lg:p-8">
               <p className="type-eyebrow text-brand">What happens next</p>
-              <h2 className="type-h2 mt-1.5 text-ink">From apply to offer</h2>
-              <p className="type-meta mt-2 text-muted">
+              <h2 className="type-h2 mt-2 text-ink">From apply to offer</h2>
+              <p className="type-meta mt-3 text-muted">
                 Typical path after you apply. Prefer to talk first?{" "}
                 <a
                   href={waLink(DEFAULT_WA_MESSAGE)}
@@ -153,7 +123,7 @@ export default function ApplyPage() {
                 </a>
                 .
               </p>
-              <ol className="mt-6 space-y-5 border-t border-line pt-6">
+              <ol className="mt-7 space-y-5 border-t border-line pt-7">
                 {STEPS.map((s) => (
                   <li key={s.n} className="flex gap-4">
                     <span className="type-eyebrow text-brand">{s.n}</span>

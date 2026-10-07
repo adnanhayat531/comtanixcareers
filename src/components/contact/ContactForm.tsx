@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { CONFIG, SITE, waLink } from "@/lib/config";
 
 const fieldClass =
-  "type-body box-border h-11 w-full rounded-md border border-line bg-white px-3.5 text-ink outline-none transition placeholder:text-muted/65 focus:border-brand focus:ring-1 focus:ring-brand/25";
+  "type-body box-border h-11 w-full rounded-lg border border-line bg-white px-3.5 text-ink outline-none transition placeholder:text-muted/65 focus:border-brand focus:ring-1 focus:ring-brand/25";
 
 const labelClass = "type-label mb-1.5 block text-ink";
 

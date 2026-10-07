@@ -2,7 +2,7 @@
 
 import { type ReactNode } from "react";
 
-/** Section headings: static, Contour-calm */
+/** Section headings with subtle entrance motion */
 export function HeadingReveal({
   children,
   className = "",
@@ -11,5 +11,5 @@ export function HeadingReveal({
   className?: string;
   duration?: number;
 }) {
-  return <div className={className}>{children}</div>;
+  return <div className={`reveal ${className}`}>{children}</div>;
 }

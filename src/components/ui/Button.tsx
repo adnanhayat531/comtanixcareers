@@ -2,19 +2,19 @@ import Link from "next/link";
 import { type ReactNode } from "react";
 
 /**
- * Contour-like controls: sharp corners, compact height, corporate weight.
+ * Enterprise controls — generous padding, clear hierarchy, brand teal.
  */
 const variants = {
   primary:
-    "bg-brand text-white hover:brightness-105 active:brightness-95",
+    "bg-brand text-white shadow-brand hover:brightness-110 active:brightness-95",
   secondary:
-    "bg-transparent text-brand border border-brand hover:bg-tint active:bg-tint",
+    "bg-transparent text-brand border border-brand/80 hover:bg-tint active:bg-tint",
   ghost:
     "bg-transparent text-ink border border-transparent hover:bg-tint hover:text-brand active:bg-tint",
   white:
-    "bg-white text-brand hover:bg-on-sea active:bg-tint",
+    "bg-white text-brand shadow-soft hover:bg-white/95 active:bg-tint",
   outlineLight:
-    "bg-transparent text-white border border-white hover:bg-white/10 active:bg-white/15",
+    "bg-white/10 text-white border border-white/80 backdrop-blur-sm hover:bg-white/18 active:bg-white/25",
   text: "bg-transparent text-brand px-0 py-0 h-auto min-h-0 border-0 hover:underline underline-offset-4",
 } as const;
 
@@ -44,7 +44,7 @@ export function Button({
   const base =
     variant === "text"
       ? "inline-flex items-center gap-1.5 font-display text-sm font-semibold transition-colors duration-150 disabled:opacity-60"
-      : "inline-flex h-10 min-h-10 w-full max-w-full items-center justify-center gap-2 rounded-md px-4 font-display text-sm font-semibold tracking-tight transition-colors duration-150 disabled:pointer-events-none disabled:opacity-55 sm:w-auto sm:px-5 md:h-11 md:min-h-11 md:px-6";
+      : "inline-flex h-11 min-h-11 w-full max-w-full items-center justify-center gap-2 rounded-lg px-5 font-display text-sm font-semibold tracking-tight transition-all duration-200 disabled:pointer-events-none disabled:opacity-55 sm:w-auto sm:px-6 md:h-12 md:min-h-12 md:px-7";
 
   const classes = `${base} ${variants[variant]} ${className}`;
 

@@ -22,6 +22,7 @@ function NavLink({
   active,
   menu,
   onClick,
+  overlay,
 }: {
   href: string;
   label: string;
@@ -29,6 +30,7 @@ function NavLink({
   active?: boolean;
   menu?: boolean;
   onClick?: () => void;
+  overlay?: boolean;
 }) {
   return (
     <Link
@@ -37,13 +39,17 @@ function NavLink({
       aria-current={active ? "page" : undefined}
       className={
         menu
-          ? `type-nav flex min-h-11 items-center rounded-md px-3 transition-colors ${
+          ? `type-nav flex min-h-12 items-center rounded-lg px-3 transition-colors ${
               active ? "bg-tint text-brand" : "text-ink hover:bg-tint hover:text-brand"
             }`
-          : `type-nav relative px-1.5 py-2 transition-colors xl:px-2.5 ${
-              active
-                ? "text-brand after:absolute after:right-1.5 after:bottom-0 after:left-1.5 after:h-0.5 after:rounded-full after:bg-brand xl:after:right-2.5 xl:after:left-2.5"
-                : "text-ink/85 hover:text-brand"
+          : `type-nav relative px-2.5 py-2 transition-colors xl:px-3.5 ${
+              overlay
+                ? active
+                  ? "text-white after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-white xl:after:right-3.5 xl:after:left-3.5"
+                  : "text-white/90 hover:text-white"
+                : active
+                  ? "text-brand after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand xl:after:right-3.5 xl:after:left-3.5"
+                  : "text-ink/80 hover:text-brand"
             }`
       }
     >
@@ -63,6 +69,10 @@ export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const isHome = pathname === "/";
+  const overlay = isHome && !scrolled && !open;
 
   useEffect(() => {
     setOpen(false);
@@ -76,29 +86,60 @@ export function Header() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(true);
+      return;
+    }
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
+
   const dropLink =
-    "type-meta flex min-h-11 items-center rounded-md px-3 font-medium text-ink transition-colors hover:bg-tint hover:text-brand";
+    "type-meta flex min-h-11 items-center rounded-lg px-3 font-medium text-ink transition-colors hover:bg-tint hover:text-brand";
 
   const desktopLink = (active: boolean) =>
-    `type-nav relative inline-flex min-h-11 items-center gap-1 px-1.5 transition-colors xl:px-2.5 ${
-      active
-        ? "text-brand after:absolute after:right-1.5 after:bottom-1 after:left-1.5 after:h-0.5 after:rounded-full after:bg-brand xl:after:right-2.5 xl:after:left-2.5"
-        : "text-ink/85 hover:text-brand"
+    `type-nav relative inline-flex min-h-11 items-center gap-1 px-2.5 transition-colors xl:px-3.5 ${
+      overlay
+        ? active
+          ? "text-white after:absolute after:right-2.5 after:bottom-1 after:left-2.5 after:h-0.5 after:rounded-full after:bg-white xl:after:right-3.5 xl:after:left-3.5"
+          : "text-white/90 hover:text-white"
+        : active
+          ? "text-brand after:absolute after:right-2.5 after:bottom-1 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand xl:after:right-3.5 xl:after:left-3.5"
+          : "text-ink/80 hover:text-brand"
     }`;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-surface">
-      <div className="flex h-14 w-full items-center justify-between gap-2 pl-2 pr-3 sm:gap-3 sm:pl-3 sm:pr-4 md:h-16 md:pl-3 md:pr-5 lg:pl-4 lg:pr-6 xl:pl-5 xl:pr-10 2xl:pl-6 2xl:pr-14">
+    <header
+      className={`z-50 transition-[background-color,box-shadow,border-color] duration-300 ${
+        isHome ? "fixed inset-x-0 top-0" : "sticky top-0"
+      } ${
+        overlay
+          ? "border-b border-transparent bg-transparent"
+          : "border-b border-line bg-surface/95 shadow-soft backdrop-blur-md"
+      }`}
+    >
+      <div className="mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between gap-3 px-5 sm:h-[4.25rem] sm:px-6 md:px-8 lg:h-[4.5rem] lg:px-10 xl:px-14 2xl:px-16">
         <Link
           href="/"
           className="min-w-0 shrink focus-visible:rounded-sm"
           aria-label={`${SITE.name} home`}
         >
-          <BrandLogo className="h-9 w-auto sm:h-10 md:h-11" />
+          <BrandLogo
+            light={overlay}
+            className="h-9 w-auto sm:h-10 md:h-11"
+          />
         </Link>
 
-        <nav className="hidden min-w-0 items-center lg:flex" aria-label="Main">
-          <NavLink href="/" label="Home" active={pathname === "/"} />
+        <nav className="hidden min-w-0 items-center gap-0.5 lg:flex" aria-label="Main">
+          <NavLink
+            href="/"
+            label="Home"
+            active={pathname === "/"}
+            overlay={overlay}
+          />
 
           <div className="group relative">
             <Link
@@ -109,16 +150,16 @@ export function Header() {
             >
               About
               <ChevronDown
-                className="h-4 w-4 opacity-70 transition group-hover:rotate-180 group-focus-within:rotate-180"
+                className="h-3.5 w-3.5 opacity-70 transition group-hover:rotate-180 group-focus-within:rotate-180"
                 aria-hidden
               />
             </Link>
             <div
               id="about-menu"
               role="menu"
-              className="invisible absolute left-0 top-full z-[60] min-w-[240px] pt-1 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+              className="invisible absolute left-0 top-full z-[60] min-w-[240px] pt-2 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
             >
-              <div className="rounded-lg border border-line bg-surface p-2">
+              <div className="rounded-xl border border-line bg-surface p-2 shadow-overlay">
                 <Link href="/about" className={dropLink} role="menuitem">
                   About Us
                 </Link>
@@ -135,31 +176,46 @@ export function Header() {
             href="/careers"
             label="Careers"
             active={pathname.startsWith("/careers")}
+            overlay={overlay}
           />
           <NavLink
             href="/life"
             label={`Life at ${SITE.name}`}
             shortLabel="Life"
             active={pathname.startsWith("/life")}
+            overlay={overlay}
           />
           <NavLink
             href="/contact"
             label="Contact"
             active={pathname.startsWith("/contact")}
+            overlay={overlay}
           />
 
-          <Button href="/submit-cv" className="ml-2 !h-9 !min-h-9 !px-3.5 !text-sm xl:ml-3 xl:!px-4">
+          <Button
+            href="/submit-cv"
+            variant={overlay ? "white" : "primary"}
+            className="ml-3 !h-10 !min-h-10 !px-4 !text-sm xl:ml-4 xl:!px-5"
+          >
             Submit CV
           </Button>
         </nav>
 
         <div className="flex shrink-0 items-center gap-2 lg:hidden">
-          <Button href="/submit-cv" className="!h-9 !min-h-9 !px-3.5 !text-sm">
+          <Button
+            href="/submit-cv"
+            variant={overlay ? "white" : "primary"}
+            className="!h-10 !min-h-10 !px-3.5 !text-sm"
+          >
             Submit CV
           </Button>
           <button
             type="button"
-            className="inline-flex h-9 min-h-9 items-center gap-2 rounded-md border border-line px-3 text-sm font-semibold text-ink transition hover:bg-tint"
+            className={`inline-flex h-10 min-h-10 items-center gap-2 rounded-lg border px-3 text-sm font-semibold transition ${
+              overlay
+                ? "border-white/40 text-white hover:bg-white/10"
+                : "border-line text-ink hover:bg-tint"
+            }`}
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -173,12 +229,12 @@ export function Header() {
 
       {open ? (
         <div id="mobile-nav" className="border-t border-line bg-surface lg:hidden">
-          <Container className="flex max-h-[calc(100dvh-3.5rem)] flex-col gap-1 overflow-y-auto py-3 pb-6">
+          <Container className="flex max-h-[calc(100dvh-4rem)] flex-col gap-1 overflow-y-auto py-4 pb-8">
             <NavLink menu href="/" label="Home" active={pathname === "/"} onClick={() => setOpen(false)} />
 
             <button
               type="button"
-              className="type-nav flex min-h-11 items-center justify-between rounded-md px-3 text-left text-ink"
+              className="type-nav flex min-h-12 items-center justify-between rounded-lg px-3 text-left text-ink"
               onClick={() => setAboutOpen((v) => !v)}
               aria-expanded={aboutOpen}
             >
@@ -190,7 +246,7 @@ export function Header() {
                 <Link
                   href="/about"
                   onClick={() => setOpen(false)}
-                  className="type-meta flex min-h-11 items-center rounded-md px-5 text-muted hover:bg-tint hover:text-brand"
+                  className="type-meta flex min-h-11 items-center rounded-lg px-5 text-muted hover:bg-tint hover:text-brand"
                 >
                   About Us
                 </Link>
@@ -199,7 +255,7 @@ export function Header() {
                     key={l.href}
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="type-meta flex min-h-11 items-center rounded-md px-5 text-muted hover:bg-tint hover:text-brand"
+                    className="type-meta flex min-h-11 items-center rounded-lg px-5 text-muted hover:bg-tint hover:text-brand"
                   >
                     {l.label}
                   </Link>

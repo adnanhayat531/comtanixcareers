@@ -12,7 +12,7 @@ export function Container({
 }) {
   return (
     <div
-      className={`w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-14 2xl:px-20 ${className}`}
+      className={`mx-auto w-full max-w-[1400px] px-5 sm:px-6 md:px-8 lg:px-10 xl:px-14 2xl:px-16 ${className}`}
     >
       {children}
     </div>
@@ -29,7 +29,10 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={`py-8 md:py-11 lg:py-12 ${className}`}>
+    <section
+      id={id}
+      className={`py-[var(--section-y)] md:py-[var(--section-y-lg)] ${className}`}
+    >
       {children}
     </section>
   );
@@ -54,14 +57,14 @@ export function SectionHeading({
 }) {
   return (
     <HeadingReveal
-      className={`${compact ? "mb-0" : "mb-5 md:mb-6"} max-w-xl ${
+      className={`${compact ? "mb-0" : "mb-8 md:mb-10"} max-w-2xl ${
         align === "center" ? "mx-auto text-center" : ""
       } ${className}`}
       duration={1}
     >
       {eyebrow ? (
         <p
-          className={`type-eyebrow mb-1.5 ${
+          className={`type-eyebrow mb-2 ${
             light ? "text-white/65" : "text-brand"
           }`}
         >
@@ -73,7 +76,7 @@ export function SectionHeading({
       </h2>
       {description ? (
         <p
-          className={`type-body mt-2 max-w-prose ${
+          className={`type-body mt-3 max-w-prose ${
             light ? "text-white/78" : "text-muted"
           } ${align === "center" ? "mx-auto" : ""}`}
         >

@@ -118,8 +118,8 @@ export function TestimonialsGrid() {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
-  const [rating, setRating] = useState(GOOGLE_RATING.score);
-  const [count, setCount] = useState(GOOGLE_RATING.count);
+  const [rating, setRating] = useState<number>(GOOGLE_RATING.score);
+  const [count, setCount] = useState<number>(GOOGLE_RATING.count);
   const [mapsUrl, setMapsUrl] = useState(GOOGLE_MAPS_REVIEWS_URL);
   const [reviews, setReviews] = useState<GoogleReview[]>(GOOGLE_REVIEWS_FALLBACK);
 

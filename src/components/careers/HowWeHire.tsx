@@ -39,7 +39,7 @@ export function HowWeHire() {
   return (
     <Section
       id="how-we-hire"
-      className="bg-white [--hire:#0e9aa7] [--hire-d:#0a6f7a] [--hire-l:#e3f6f7] [--hire-ink:#17383d] [--hire-mute:#5d7a7e] [--hire-line:#cfe8ea]"
+      className="scroll-mt-24 bg-white md:scroll-mt-28 [--hire:#2f7a84] [--hire-d:#0f3d45] [--hire-l:#e8f2f3] [--hire-ink:#0b2c35] [--hire-mute:#2f6d75] [--hire-line:rgba(47,122,132,0.22)]"
     >
       <Container>
         <div className="mx-auto w-full max-w-[1100px]">

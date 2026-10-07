@@ -67,13 +67,13 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="type-eyebrow text-white">{title}</h3>
-      <ul className="mt-2.5 space-y-1.5">
+      <h3 className="type-eyebrow text-white/90">{title}</h3>
+      <ul className="mt-4 space-y-2.5">
         {links.map((l) => (
           <li key={`${title}-${l.label}`}>
             <Link
               href={l.href}
-              className="type-meta leading-snug text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
+              className="type-meta leading-snug text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline"
             >
               {l.label}
             </Link>
@@ -102,13 +102,13 @@ function SubscribeBox() {
 
   return (
     <div className="w-full max-w-sm shrink-0">
-      <h3 className="type-eyebrow text-white">Subscribe</h3>
-      <p className="type-meta mt-1 leading-snug text-white/85">
+      <h3 className="type-eyebrow text-white/90">Subscribe</h3>
+      <p className="type-meta mt-2 leading-snug text-white/75">
         Get open roles and hiring updates from {SITE.name}.
       </p>
       <form
         onSubmit={onSubmit}
-        className="mt-2.5 flex w-full min-w-0 items-center rounded-md bg-white py-1 pr-1 pl-3"
+        className="mt-4 flex w-full min-w-0 items-center rounded-lg bg-white py-1 pr-1 pl-3.5"
       >
         <label className="sr-only" htmlFor="footer-email">
           Email
@@ -120,19 +120,19 @@ function SubscribeBox() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter Your Email"
-          className="type-meta min-w-0 flex-1 border-0 bg-transparent py-1.5 text-ink outline-none placeholder:text-muted"
+          className="type-meta min-w-0 flex-1 border-0 bg-transparent py-2 text-ink outline-none placeholder:text-muted"
         />
         <button
           type="submit"
           className="type-eyebrow inline-flex shrink-0 items-center gap-1.5 pr-0.5 text-brand transition hover:text-ink sm:gap-2"
         >
           Subscribe
-          <span className="grid h-7 w-7 place-items-center rounded-md bg-brand text-white">
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand text-white">
             <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </span>
         </button>
       </form>
-      {status ? <p className="type-meta mt-1.5 text-white">{status}</p> : null}
+      {status ? <p className="type-meta mt-2 text-white">{status}</p> : null}
     </div>
   );
 }
@@ -149,12 +149,12 @@ function ContactChip({
   icon: typeof Phone;
 }) {
   return (
-    <a href={href} className="group flex items-center gap-2.5">
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-white text-brand transition group-hover:bg-white/90">
-        <Icon className="h-3.5 w-3.5" aria-hidden />
+    <a href={href} className="group flex items-center gap-3">
+      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-white text-brand transition group-hover:bg-white/90">
+        <Icon className="h-4 w-4" aria-hidden />
       </span>
       <span className="min-w-0">
-        <span className="type-eyebrow block text-white/75">{label}</span>
+        <span className="type-eyebrow block text-white/65">{label}</span>
         <span className="type-meta mt-0.5 block font-semibold break-words text-white transition group-hover:text-white/90">
           {value}
         </span>
@@ -168,22 +168,22 @@ export function Footer() {
 
   return (
     <footer className="relative shrink-0 text-white">
-      <div className="bg-brand">
-        <Container className="pt-8 pb-5 md:pt-9 md:pb-6">
-          <div className="grid min-w-0 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-[minmax(0,1.35fr)_repeat(4,minmax(0,1fr))] lg:gap-5 xl:gap-6">
+      <div className="bg-footer">
+        <Container className="pt-14 pb-8 md:pt-16 md:pb-10">
+          <div className="grid min-w-0 gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.35fr)_repeat(4,minmax(0,1fr))] lg:gap-8 xl:gap-10">
             <div className="min-w-0 sm:col-span-2 lg:col-span-1">
               <Link
                 href="/"
                 className="inline-flex items-center"
                 aria-label={`${SITE.name} home`}
               >
-                <BrandLogo light className="h-8 w-auto" />
+                <BrandLogo light className="h-9 w-auto" />
               </Link>
-              <p className="type-meta mt-2.5 max-w-[17rem] leading-snug text-white/90">
+              <p className="type-meta mt-4 max-w-[18rem] leading-relaxed text-white/80">
                 Pakistan-based IT delivery for global enterprises — hiring,
                 training, and operations under one roof.
               </p>
-              <div className="mt-3">
+              <div className="mt-5">
                 <SocialLinks light />
               </div>
             </div>
@@ -193,9 +193,9 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="mt-5 flex flex-col gap-4 border-t border-white/25 pt-4 sm:mt-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-6 sm:gap-y-3">
+          <div className="mt-10 flex flex-col gap-6 border-t border-white/15 pt-8 sm:mt-12 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-8 sm:gap-y-4">
             <SubscribeBox />
-            <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
+            <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
               <ContactChip
                 href={`tel:+${CONFIG.whatsapp}`}
                 label="Talk to hiring"
@@ -211,22 +211,22 @@ export function Footer() {
               <button
                 type="button"
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="grid h-9 w-9 shrink-0 place-items-center self-start rounded-md border border-white bg-brand text-white transition hover:bg-white hover:text-brand sm:self-auto"
+                className="grid h-10 w-10 shrink-0 place-items-center self-start rounded-lg border border-white/40 bg-transparent text-white transition hover:bg-white hover:text-brand sm:self-auto"
                 aria-label="Back to top"
               >
-                <ArrowUp className="h-3.5 w-3.5" aria-hidden />
+                <ArrowUp className="h-4 w-4" aria-hidden />
               </button>
             </div>
           </div>
         </Container>
       </div>
 
-      <div className="border-t border-white/20 bg-brand">
-        <Container className="type-meta flex flex-col justify-center gap-1.5 py-2.5 pb-[max(0.65rem,env(safe-area-inset-bottom,0px))] text-white/80 sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-t border-white/10 bg-deep">
+        <Container className="type-meta flex flex-col justify-center gap-2 py-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))] text-white/65 sm:flex-row sm:items-center sm:justify-between">
           <p className="pr-36 sm:pr-40 md:pr-0">
             © {year} {SITE.name}. All rights reserved.
           </p>
-          <nav className="flex flex-wrap gap-x-3.5 gap-y-1" aria-label="Legal">
+          <nav className="flex flex-wrap gap-x-4 gap-y-1" aria-label="Legal">
             {legalLinks.map((l) => (
               <Link
                 key={l.label}

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { CtaBanner } from "@/components/ui/CtaBanner";
+import { PageHero } from "@/components/ui/PageHero";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import { LifeIcon } from "@/components/ui/Icons";
 import { TestimonialsGrid } from "@/components/home/Testimonials";
@@ -16,44 +18,20 @@ export const metadata: Metadata = {
 export default function LifePage() {
   return (
     <>
-      {/* Hero — team trip (half-height) */}
-      <section className="relative flex min-h-[42vh] flex-col justify-center overflow-hidden sm:min-h-[46vh] md:min-h-[50vh] lg:min-h-[52vh]">
-        <Image
-          src="/life/hero-team.jpg"
-          alt="Comtanix team together outdoors"
-          fill
-          priority
-          quality={90}
-          sizes="100vw"
-          className="object-cover object-[center_35%]"
-        />
-        {/* Teal wash only behind text — right side stays clear */}
-        <div
-          className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-[min(96%,34rem)] bg-gradient-to-r from-[#0d3a40]/80 via-[#2F7A84]/50 to-transparent sm:w-[min(78%,40rem)] md:w-[min(68%,46rem)]"
-          aria-hidden
-        />
-
-        <Container className="relative z-10 py-8 sm:py-10 md:py-12">
-          <div className="max-w-xl">
-            <p className="type-eyebrow mb-2 text-white/90">Life at Comtanix</p>
-            <h1 className="type-h1 text-white">
-              Work hard. Climb higher. Stay together.
-            </h1>
-            <p className="type-lede mt-2.5 max-w-md text-white/95 sm:mt-3">
-              Our teams share the grind, the wins, and the moments that make
-              Comtanix feel like more than a workplace.
-            </p>
-            <div className="mt-5 flex w-full max-w-md flex-col gap-2.5 sm:mt-6 sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-3">
-              <Button href="/careers" variant="white">
-                View openings <ArrowRight className="h-4 w-4" aria-hidden />
-              </Button>
-              <Button href="/submit-cv" variant="outlineLight">
-                Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Life at Comtanix"
+        title="Work hard. Climb higher. Stay together."
+        description="Our teams share the grind, the wins, and the moments that make Comtanix feel like more than a workplace."
+        image="/life/hero-team.jpg"
+        imageAlt="Comtanix team together outdoors"
+      >
+        <Button href="/careers" variant="white">
+          View openings <ArrowRight className="h-4 w-4" aria-hidden />
+        </Button>
+        <Button href="/submit-cv" variant="outlineLight">
+          Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
+        </Button>
+      </PageHero>
 
       <Section className="bg-tint">
         <Container>
@@ -61,25 +39,24 @@ export default function LifePage() {
             eyebrow="Everyday culture"
             title="How we live the work week"
             description="Facilities, recognition, and team activities designed around real shift patterns."
-            className="mb-6 md:mb-8"
           />
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-5">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
             {LIFE_ACTIVITIES.map((a) => (
               <article key={a.title} className="group flex flex-col">
-                <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-md bg-tint">
+                <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-xl bg-white">
                   <Image
                     src={a.image}
                     alt=""
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover"
+                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
                   />
-                  <span className="absolute bottom-2.5 left-2.5 z-10 grid h-8 w-8 place-items-center rounded-md bg-white text-brand">
-                    <LifeIcon name={a.icon} className="h-3.5 w-3.5" />
+                  <span className="absolute bottom-3 left-3 z-10 grid h-9 w-9 place-items-center rounded-lg bg-white text-brand shadow-soft">
+                    <LifeIcon name={a.icon} className="h-4 w-4" />
                   </span>
                 </div>
                 <h3 className="type-h3 text-ink">{a.title}</h3>
-                <p className="type-meta mt-1.5 text-muted">{a.body}</p>
+                <p className="type-meta mt-2 text-muted">{a.body}</p>
               </article>
             ))}
           </div>
@@ -95,6 +72,19 @@ export default function LifePage() {
           <TestimonialsGrid />
         </Container>
       </Section>
+
+      <CtaBanner
+        eyebrow="Join the team"
+        title="See open roles and apply today."
+        description="Night-shift, onsite careers with paid training and clear progression."
+      >
+        <Button href="/careers" variant="white">
+          View openings <ArrowRight className="h-4 w-4" aria-hidden />
+        </Button>
+        <Button href="/apply" variant="outlineLight">
+          Apply now <ArrowRight className="h-4 w-4" aria-hidden />
+        </Button>
+      </CtaBanner>
     </>
   );
 }
