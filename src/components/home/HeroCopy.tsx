@@ -15,12 +15,12 @@ export function HeroCopy() {
           className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[130%] w-[105%] max-w-[48rem] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.42)_0%,rgba(0,0,0,0.22)_45%,transparent_72%)]"
         />
 
-        <h1 className="relative z-10 font-display text-[clamp(1.45rem,5.5vw,2.75rem)] font-bold tracking-tight text-white leading-[1.2] [text-shadow:0_1px_8px_rgba(0,0,0,0.35)]">
+        <h1 className="type-h1-hero relative z-10 text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.35)]">
           {HERO_HEADING}
         </h1>
 
-        <p className="relative z-10 mt-3 max-w-md text-[14px] leading-[1.55] text-white/95 sm:mt-4 sm:max-w-lg sm:text-[15px] md:text-base [text-shadow:0_1px_6px_rgba(0,0,0,0.35)]">
-          Comtanix is an IT company helping American businesses move forward
+        <p className="type-lede relative z-10 mt-3 max-w-md text-white/95 sm:mt-4 sm:max-w-lg [text-shadow:0_1px_6px_rgba(0,0,0,0.35)]">
+          Comtanix is an IT company helping businesses worldwide move forward
           through technology and talented people.
         </p>
 

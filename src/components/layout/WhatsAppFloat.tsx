@@ -29,7 +29,7 @@ export function WhatsAppFloat() {
         <WhatsAppIcon className="h-[22px] w-[22px] sm:h-6 sm:w-6" />
       </span>
       <span
-        className="max-w-0 overflow-hidden pl-0 text-sm font-semibold tracking-tight whitespace-nowrap opacity-0 transition-[max-width,opacity,padding] duration-200 ease-out group-hover:max-w-[7rem] group-hover:pl-2 group-hover:opacity-100 group-focus-visible:max-w-[7rem] group-focus-visible:pl-2 group-focus-visible:opacity-100 sm:text-[15px]"
+        className="type-nav max-w-0 overflow-hidden pl-0 whitespace-nowrap opacity-0 transition-[max-width,opacity,padding] duration-200 ease-out group-hover:max-w-[7rem] group-hover:pl-2 group-hover:opacity-100 group-focus-visible:max-w-[7rem] group-focus-visible:pl-2 group-focus-visible:opacity-100"
         aria-hidden
       >
         Contact us

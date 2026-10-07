@@ -56,13 +56,11 @@ export function ContactMap() {
           </svg>
         </span>
         <span className="min-w-0">
-          <span className="block text-[11px] font-semibold tracking-[0.06em] text-brand uppercase">
-            Our location
-          </span>
-          <span className="mt-0.5 block text-sm font-semibold leading-snug text-ink">
+          <span className="type-eyebrow block text-brand">Our location</span>
+          <span className="type-meta mt-0.5 block font-semibold leading-snug text-ink">
             {CONFIG.address}
           </span>
-          <span className="mt-1 block text-xs font-medium text-muted">
+          <span className="type-meta mt-1 block font-medium text-muted">
             Open in Google Maps
           </span>
         </span>

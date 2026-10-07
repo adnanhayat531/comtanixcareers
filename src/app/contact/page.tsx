@@ -35,13 +35,11 @@ export default function ContactPage() {
 
         <Container className="relative z-10 py-8 sm:py-10 md:py-12">
           <div className="max-w-xl">
-            <p className="mb-2 text-[11px] font-semibold tracking-[0.1em] text-ink uppercase">
-              Contact
-            </p>
-            <h1 className="font-display text-[clamp(1.5rem,4.5vw,2.5rem)] font-bold tracking-tight text-ink leading-[1.15]">
+            <p className="type-eyebrow mb-2 text-ink">Contact</p>
+            <h1 className="type-h1 text-ink">
               Let&apos;s talk. We&apos;re ready to help.
             </h1>
-            <p className="mt-2.5 max-w-md text-[14px] font-medium leading-[1.55] text-ink/85 sm:mt-3 sm:text-[15px] md:text-base">
+            <p className="type-lede mt-2.5 max-w-md text-ink/85 sm:mt-3">
               Reach the Comtanix team for careers, partnerships, or general
               questions — by phone, email, or the form below.
             </p>

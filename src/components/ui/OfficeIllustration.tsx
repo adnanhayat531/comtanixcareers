@@ -18,7 +18,7 @@ export function OfficeIllustration({
         />
         {caption ? (
           <figcaption className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/50 to-transparent px-5 py-4 sm:px-6 sm:py-5">
-            <p className="text-sm font-medium leading-snug text-white/95 sm:text-[15px]">
+            <p className="type-meta font-medium leading-snug text-white/95">
               {caption}
             </p>
           </figcaption>

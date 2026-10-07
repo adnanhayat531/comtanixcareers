@@ -7,31 +7,6 @@ export const BRAND_MARK_PATH =
 /** Original logo mark teal (from brand asset) — logo only, not UI theme */
 export const BRAND_MARK_COLOR = "#55ACB5";
 
-export function BrandMark({
-  className = "",
-  fill = BRAND_MARK_COLOR,
-}: {
-  className?: string;
-  fill?: string;
-}) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 50 50"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d={BRAND_MARK_PATH}
-        fill={fill}
-      />
-    </svg>
-  );
-}
-
 /** Brand mark + wordmark — SVG so there is never a white image background */
 export function BrandLogo({
   className = "",

@@ -3,13 +3,12 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import { OfficeIllustration } from "@/components/ui/OfficeIllustration";
-import { GetInTouch } from "@/components/layout/GetInTouch";
 import { LEARNING, VALUES } from "@/lib/data/content";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Our story, core values, and learning pathways at Comtanix — building careers that serve US enterprises.",
+    "Our story, core values, and learning pathways at Comtanix — building careers that serve global enterprises.",
 };
 
 export default function AboutPage() {
@@ -22,12 +21,12 @@ export default function AboutPage() {
               compact
               eyebrow="Company"
               title="About Comtanix"
-              description="Pakistan delivery teams supporting US enterprise software and IT operations."
+              description="Pakistan delivery teams supporting global enterprise software and IT operations."
               className="mb-5"
             />
-            <div className="space-y-3 text-[15px] leading-[1.55] text-muted md:text-base">
+            <div className="type-body space-y-3 text-muted">
               <p>
-                Comtanix builds IT and engineering capacity for US clients that need
+                Comtanix builds IT and engineering capacity for clients worldwide that need
                 embedded teams — not transactional call-center volume. Delivery
                 follows the client&apos;s tools, processes, and quality bar.
               </p>
@@ -36,8 +35,8 @@ export default function AboutPage() {
                 on both sides comes from fit, not slogans.
               </p>
             </div>
-            <Button href="/apply" className="mt-5 w-full sm:mt-6 sm:w-auto">
-              Apply
+            <Button href="/careers#openings" className="mt-5 w-full sm:mt-6 sm:w-auto">
+              View openings
             </Button>
           </div>
           <div className="order-1 min-w-0 w-full lg:order-2">
@@ -64,16 +63,12 @@ export default function AboutPage() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-center"
                   />
-                  <span className="absolute bottom-2.5 left-2.5 z-10 font-display text-xs font-bold tracking-[0.1em] text-white uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.7)]">
+                  <span className="type-eyebrow absolute bottom-2.5 left-2.5 z-10 text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.7)]">
                     0{i + 1}
                   </span>
                 </div>
-                <h3 className="font-display text-base font-bold tracking-tight text-ink md:text-lg">
-                  {v.title}
-                </h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted">
-                  {v.body}
-                </p>
+                <h3 className="type-h3 text-ink">{v.title}</h3>
+                <p className="type-meta mt-1.5 text-muted">{v.body}</p>
               </li>
             ))}
           </ol>
@@ -91,24 +86,18 @@ export default function AboutPage() {
             {LEARNING.map((l, i) => (
               <div key={l.title} className="relative pb-8 last:pb-0">
                 <span
-                  className="absolute top-1 -left-[1.65rem] grid h-5 w-5 place-items-center rounded-md bg-brand text-[10px] font-bold text-white md:-left-[1.9rem]"
+                  className="type-eyebrow absolute top-1 -left-[1.65rem] grid h-5 w-5 place-items-center rounded-md bg-brand !normal-case !tracking-normal text-white md:-left-[1.9rem]"
                   aria-hidden
                 >
                   {i + 1}
                 </span>
-                <h3 className="font-display text-base font-semibold text-ink md:text-lg">
-                  {l.title}
-                </h3>
-                <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-muted">
-                  {l.body}
-                </p>
+                <h3 className="type-h3 text-ink">{l.title}</h3>
+                <p className="type-meta mt-1.5 max-w-2xl text-muted">{l.body}</p>
               </div>
             ))}
           </div>
         </Container>
       </Section>
-
-      <GetInTouch />
     </>
   );
 }

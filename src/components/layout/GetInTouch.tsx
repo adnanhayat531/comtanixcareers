@@ -49,9 +49,7 @@ export function GetInTouch() {
   return (
     <Section className="bg-tint">
       <Container>
-        <h2 className="mb-6 text-left font-display text-[clamp(1.4rem,3vw,2rem)] font-bold tracking-tight text-ink leading-[1.25] md:mb-8">
-          Contact
-        </h2>
+        <h2 className="type-h2 mb-6 text-left text-ink md:mb-8">Contact</h2>
 
         <div className="grid min-w-0 items-start gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
           <ul className="space-y-5 sm:space-y-6">
@@ -61,10 +59,8 @@ export function GetInTouch() {
                   <Icon className="h-4 w-4" aria-hidden />
                 </span>
                 <div className="min-w-0 pt-0.5">
-                  <p className="text-xs font-semibold tracking-[0.06em] text-brand uppercase">
-                    {label}
-                  </p>
-                  <div className="mt-1 break-words text-sm md:text-[15px]">{content}</div>
+                  <p className="type-eyebrow text-brand">{label}</p>
+                  <div className="type-meta mt-1 break-words">{content}</div>
                 </div>
               </li>
             ))}

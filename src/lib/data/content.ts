@@ -12,55 +12,16 @@ export const STATS = [
     sub: "Specialized enterprise hubs",
   },
   {
-    value: 4,
-    suffix: "",
-    label: "US time zones",
-    sub: "Full EST, CST, MST, PST coverage",
+    value: 24,
+    suffix: "/7",
+    label: "Global coverage",
+    sub: "Follow-the-sun delivery support",
   },
   {
     value: 95,
     suffix: "%",
     label: "Quality score target",
     sub: "Consistently achieved benchmark",
-  },
-] as const;
-
-export const GOALS = [
-  {
-    title: "Quality first",
-    body: "Root-cause resolution on first touch. Metrics track outcomes, not activity volume.",
-    image: "/goals/quality.jpg",
-    tag: "Delivery quality",
-  },
-  {
-    title: "People investment",
-    body: "Skill development mapped to role levels and compensation bands.",
-    image: "/goals/people.jpg",
-    tag: "Career paths",
-  },
-  {
-    title: "Measured growth",
-    body: "Account growth tied to hiring selectivity and technical fit, not headcount alone.",
-    image: "/goals/growth.jpg",
-    tag: "Capacity planning",
-  },
-  {
-    title: "Security & trust",
-    body: "IP controls, NDAs, and secured networks on every US engagement.",
-    image: "/goals/trust.jpg",
-    tag: "Compliance",
-  },
-  {
-    title: "Client partnership",
-    body: "Same tools and rituals as the US team; real-time accountability across zones.",
-    image: "/goals/client-partnership.png",
-    tag: "Embedded delivery",
-  },
-  {
-    title: "Continuous learning",
-    body: "Certifications, mentor labs, and stack training matched to live client work.",
-    image: "/goals/continuous-learning.jpg",
-    tag: "Upskilling",
   },
 ] as const;
 
@@ -72,7 +33,7 @@ export const VALUES = [
   },
   {
     title: "Train fully",
-    body: "No live US queue without preparation: tools, scenarios, and client standards.",
+    body: "No live client queue without preparation: tools, scenarios, and quality standards.",
     image: "/values/train-fully.png",
   },
   {
@@ -89,7 +50,7 @@ export const LEARNING = [
   },
   {
     title: "Communication",
-    body: "US business speech and written standards for client-facing work.",
+    body: "Professional English and written standards for client-facing global work.",
   },
   {
     title: "Tooling",
@@ -104,7 +65,7 @@ export const LEARNING = [
 export const LIFE_ACTIVITIES = [
   {
     title: "Gym Membership",
-    body: "Company-sponsored gym membership so you can stay fit, decompress after US shifts, and build healthy routines year-round.",
+    body: "Company-sponsored gym membership so you can stay fit, decompress after shifts, and build healthy routines year-round.",
     icon: "gym" as const,
     image: "/life/gym-teal.jpg",
   },
@@ -122,7 +83,7 @@ export const LIFE_ACTIVITIES = [
   },
   {
     title: "Skill Enrichment Sessions",
-    body: "Interactive sessions covering US business idioms, cloud certifications, and public speaking.",
+    body: "Interactive sessions covering business communication, cloud certifications, and public speaking.",
     icon: "graduation" as const,
     image: "/life/skill-sessions.jpg",
   },
@@ -140,30 +101,7 @@ export const LIFE_ACTIVITIES = [
   },
 ] as const;
 
-export const CULTURE_TILES = [
-  {
-    title: "Client-aligned teams",
-    body: "Daily syncs with US engineering and account leads; shared tools and rituals.",
-    image: "/culture/teamwork.jpg",
-  },
-  {
-    title: "Scheduled sports",
-    body: "Weekly badminton, cricket, and table tennis for off-shift recovery.",
-    image: "/culture/weekly-sports-cricket.jpg",
-  },
-  {
-    title: "Floor briefings & meals",
-    body: "Monthly updates, sprint reviews, and team meals after major deliveries.",
-    image: "/culture/lunches.jpg",
-  },
-  {
-    title: "Performance awards",
-    body: "Spot bonuses, Star of the Month, and client commendations on record.",
-    image: "/culture/excellence-awards-trophy.jpg",
-  },
-] as const;
-
-/** Home — IT capabilities (from existing site language; no new service claims) */
+/** Home — IT capabilities */
 export const CAPABILITIES = [
   {
     title: "Software engineering",
@@ -172,12 +110,12 @@ export const CAPABILITIES = [
   },
   {
     title: "IT operations",
-    body: "Reliable IT support and operations aligned to US business hours and standards.",
+    body: "Reliable IT support and operations aligned to client hours and global standards.",
     image: "/capabilities/it-operations.jpg",
   },
   {
-    title: "US-aligned delivery",
-    body: "Coverage across US time zones with real-time collaboration and shared rituals.",
+    title: "Global delivery",
+    body: "Coverage across time zones with real-time collaboration and shared rituals.",
     image: "/capabilities/us-delivery.jpg",
   },
   {
@@ -187,7 +125,7 @@ export const CAPABILITIES = [
   },
 ] as const;
 
-/** Home — Why Comtanix (company differentiators from existing goals) */
+/** Home — Why Comtanix */
 export const WHY_COMTANIX = [
   {
     title: "Quality first",
@@ -196,21 +134,21 @@ export const WHY_COMTANIX = [
   },
   {
     title: "Security & trust",
-    body: "NDAs, IP protection, and secure infrastructure on US accounts.",
+    body: "NDAs, IP protection, and secure infrastructure on every client account.",
     image: "/why/security.jpg",
   },
   {
     title: "Embedded partnership",
-    body: "Same tools and accountability as the US team across time zones.",
+    body: "Same tools and accountability as the client team across time zones.",
     image: "/why/partnership.jpg",
   },
 ] as const;
 
-/** Home life preview — three stronger beats (links to full Life page) */
+/** Home life preview */
 export const LIFE_PREVIEW = [
   {
     title: "Client-aligned teams",
-    body: "Daily syncs with US leads and an ego-free collaborative floor.",
+    body: "Daily syncs with global leads and an ego-free collaborative floor.",
     image: "/home/life-teams.jpg",
   },
   {
@@ -219,8 +157,8 @@ export const LIFE_PREVIEW = [
     image: "/home/life-learning.jpg",
   },
   {
-    title: "Balance around US hours",
-    body: "Sports, recognition, and team rituals built for night and hybrid shifts.",
+    title: "Balance around the work",
+    body: "Sports, recognition, and team rituals built for hybrid and overnight shifts.",
     image: "/home/life-balance.jpg",
   },
 ] as const;

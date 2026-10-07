@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   keywords: [
     "Comtanix",
     "IT careers",
-    "US process jobs",
+    "global IT jobs",
     "software engineering",
     "IT support",
     "Pakistan IT company",

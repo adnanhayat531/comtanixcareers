@@ -2,9 +2,9 @@
 export const SITE = {
   name: "Comtanix",
   legalName: "Comtanix",
-  tagline: "IT careers that serve US enterprises",
+  tagline: "IT careers that serve global enterprises",
   description:
-    "Comtanix is an IT company building careers and delivering dependable work for US businesses.",
+    "Comtanix is an IT company building careers and delivering dependable work for businesses worldwide.",
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
     "https://www.comtanix.com",
@@ -25,11 +25,14 @@ export const CONFIG = {
     YouTube: "https://www.youtube.com/",
     X: "https://x.com/",
   } as Record<string, string>,
-  address: "Comtanix Corporate Centre, High-Tech Industrial Zone, Pakistan",
-  /** Map pin — Arfa Software Technology Park, Lahore (IT hub placeholder) */
-  mapLat: 31.475228,
-  mapLng: 74.343061,
-  mapPlace: "Arfa Software Technology Park, Lahore, Pakistan",
+  address:
+    "Plaza No. 610, Noor Heights, 2nd Floor, Business District South, Bahria Town Phase 8, Rawalpindi",
+  /** Real Comtanix office — Bahria Town Phase 8, Rawalpindi */
+  mapLat: 33.49775,
+  mapLng: 73.070403,
+  mapPlace: "Comtanix, Noor Heights Plaza 610, Bahria Town Phase 8, Rawalpindi",
+  /** Prefer Google place search by company name */
+  mapQuery: "Comtanix Noor Heights Bahria Town Phase 8 Rawalpindi",
   hours: "Monday to Friday, 4:00 PM to 11:00 PM",
   officeTz: "Asia/Karachi",
 } as const;
@@ -41,16 +44,14 @@ export function waLink(text?: string) {
 }
 
 export function mapsLink() {
-  const { mapLat, mapLng, mapPlace } = CONFIG;
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `${mapLat},${mapLng}(${mapPlace})`,
-  )}`;
+  return `https://www.google.com/maps/place/Comtanix/@${CONFIG.mapLat},${CONFIG.mapLng},17z`;
 }
 
-/** Google Maps embed centered on office coords (shows map tiles + marker) */
+/** Google Maps embed centered on Comtanix office */
 export function mapsEmbedSrc() {
-  const { mapLat, mapLng } = CONFIG;
-  return `https://maps.google.com/maps?q=${mapLat},${mapLng}&z=16&hl=en&output=embed`;
+  const { mapLat, mapLng, mapPlace } = CONFIG;
+  const q = encodeURIComponent(`${mapPlace}@${mapLat},${mapLng}`);
+  return `https://maps.google.com/maps?q=${q}&z=17&hl=en&output=embed`;
 }
 
 export const DEFAULT_WA_MESSAGE = `Hello ${SITE.name}, I would like to know about jobs.`;

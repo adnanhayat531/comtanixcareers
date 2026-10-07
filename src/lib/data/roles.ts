@@ -9,18 +9,18 @@ export type Role = {
 export const ROLES: Role[] = [
   {
     id: "support",
-    title: "Customer Support Agent (US Process)",
-    summary: "Handle calls and chats for US customers.",
+    title: "Customer Support Agent",
+    summary: "Handle calls and chats for global customers.",
     detail:
-      "Handle inbound customer calls, inquiries, and email tickets for leading American retail and logistics brands. Requires excellent English fluency and active problem-solving skills.",
-    tags: ["Night shift", "Fresh graduates welcome", "US Process"],
+      "Handle inbound customer calls, inquiries, and email tickets for leading retail and logistics brands. Requires excellent English fluency and active problem-solving skills.",
+    tags: ["Night shift", "Fresh graduates welcome", "Global process"],
   },
   {
     id: "tech",
     title: "Technical Support Representative",
     summary: "Solve software and device issues step by step.",
     detail:
-      "Deliver first-touch IT resolution for remote US staff. Diagnose network issues, reset enterprise credentials, and escalate complex incidents.",
+      "Deliver first-touch IT resolution for remote staff worldwide. Diagnose network issues, reset enterprise credentials, and escalate complex incidents.",
     tags: ["Night shift", "Technical skills", "Rotational"],
   },
   {
@@ -28,7 +28,7 @@ export const ROLES: Role[] = [
     title: "Data Entry and Back Office Executive",
     summary: "Accurate, fast processing of documents and records.",
     detail:
-      "Process medical billing claims, reconcile inventory logs, and perform secure catalog categorization for US clients.",
+      "Process billing claims, reconcile inventory logs, and perform secure catalog categorization for international clients.",
     tags: ["Day or night", "Back Office"],
   },
   {
@@ -36,8 +36,8 @@ export const ROLES: Role[] = [
     title: "Web Developer",
     summary: "Build and maintain websites and web apps.",
     detail:
-      "Build and maintain responsive client-facing web applications. Collaborate with US Product Managers on clean, documented JavaScript/TypeScript services.",
-    tags: ["IT team", "React / Node", "Flexible US overlap"],
+      "Build and maintain responsive client-facing web applications. Collaborate with product managers on clean, documented JavaScript/TypeScript services.",
+    tags: ["IT team", "React / Node", "Flexible overlap"],
   },
   {
     id: "lead",

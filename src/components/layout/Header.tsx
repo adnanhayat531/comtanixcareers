@@ -37,10 +37,10 @@ function NavLink({
       aria-current={active ? "page" : undefined}
       className={
         menu
-          ? `flex min-h-11 items-center rounded-md px-3 text-base font-semibold tracking-tight transition-colors ${
+          ? `type-nav flex min-h-11 items-center rounded-md px-3 transition-colors ${
               active ? "bg-tint text-brand" : "text-ink hover:bg-tint hover:text-brand"
             }`
-          : `relative px-1.5 py-2 text-[13px] font-semibold tracking-tight transition-colors xl:px-2.5 xl:text-base ${
+          : `type-nav relative px-1.5 py-2 transition-colors xl:px-2.5 ${
               active
                 ? "text-brand after:absolute after:right-1.5 after:bottom-0 after:left-1.5 after:h-0.5 after:rounded-full after:bg-brand xl:after:right-2.5 xl:after:left-2.5"
                 : "text-ink/85 hover:text-brand"
@@ -77,10 +77,10 @@ export function Header() {
   }, [open]);
 
   const dropLink =
-    "flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-ink transition-colors hover:bg-tint hover:text-brand";
+    "type-meta flex min-h-11 items-center rounded-md px-3 font-medium text-ink transition-colors hover:bg-tint hover:text-brand";
 
   const desktopLink = (active: boolean) =>
-    `${"relative inline-flex min-h-11 items-center gap-1 px-1.5 text-[13px] font-semibold tracking-tight transition-colors xl:px-2.5 xl:text-base"} ${
+    `type-nav relative inline-flex min-h-11 items-center gap-1 px-1.5 transition-colors xl:px-2.5 ${
       active
         ? "text-brand after:absolute after:right-1.5 after:bottom-1 after:left-1.5 after:h-0.5 after:rounded-full after:bg-brand xl:after:right-2.5 xl:after:left-2.5"
         : "text-ink/85 hover:text-brand"
@@ -148,15 +148,14 @@ export function Header() {
             active={pathname.startsWith("/contact")}
           />
 
-          <Button href="/apply" className="ml-2 !h-9 !min-h-9 !px-3.5 !text-sm xl:ml-3 xl:!px-4">
-            <span className="xl:hidden">Apply</span>
-            <span className="hidden xl:inline">Apply</span>
+          <Button href="/submit-cv" className="ml-2 !h-9 !min-h-9 !px-3.5 !text-sm xl:ml-3 xl:!px-4">
+            Submit CV
           </Button>
         </nav>
 
         <div className="flex shrink-0 items-center gap-2 lg:hidden">
-          <Button href="/apply" className="!h-9 !min-h-9 !px-3.5 !text-sm">
-            Apply
+          <Button href="/submit-cv" className="!h-9 !min-h-9 !px-3.5 !text-sm">
+            Submit CV
           </Button>
           <button
             type="button"
@@ -179,7 +178,7 @@ export function Header() {
 
             <button
               type="button"
-              className="flex min-h-11 items-center justify-between rounded-md px-3 text-left text-base font-semibold text-ink"
+              className="type-nav flex min-h-11 items-center justify-between rounded-md px-3 text-left text-ink"
               onClick={() => setAboutOpen((v) => !v)}
               aria-expanded={aboutOpen}
             >
@@ -191,7 +190,7 @@ export function Header() {
                 <Link
                   href="/about"
                   onClick={() => setOpen(false)}
-                  className="flex min-h-11 items-center rounded-md px-5 text-base text-muted hover:bg-tint hover:text-brand"
+                  className="type-meta flex min-h-11 items-center rounded-md px-5 text-muted hover:bg-tint hover:text-brand"
                 >
                   About Us
                 </Link>
@@ -200,7 +199,7 @@ export function Header() {
                     key={l.href}
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="flex min-h-11 items-center rounded-md px-5 text-base text-muted hover:bg-tint hover:text-brand"
+                    className="type-meta flex min-h-11 items-center rounded-md px-5 text-muted hover:bg-tint hover:text-brand"
                   >
                     {l.label}
                   </Link>
@@ -211,8 +210,8 @@ export function Header() {
             <NavLink menu href="/careers" label="Careers" onClick={() => setOpen(false)} />
             <NavLink menu href="/life" label={`Life at ${SITE.name}`} onClick={() => setOpen(false)} />
             <NavLink menu href="/contact" label="Contact" onClick={() => setOpen(false)} />
-            <Button href="/apply" className="mt-4 w-full">
-              Apply <ArrowRight className="h-4 w-4" aria-hidden />
+            <Button href="/submit-cv" className="mt-4 w-full">
+              Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
             </Button>
           </Container>
         </div>

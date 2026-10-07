@@ -14,8 +14,8 @@ const columns = [
     links: [
       { href: "/careers", label: "Open Roles" },
       { href: "/apply", label: "Apply Now" },
+      { href: "/submit-cv", label: "Submit CV" },
       { href: "/careers", label: "Paid Training" },
-      { href: "/apply", label: "Fresh Graduates" },
       { href: "/careers", label: "Experienced Hires" },
     ],
   },
@@ -42,7 +42,7 @@ const columns = [
   {
     title: "Resources",
     links: [
-      { href: "/apply", label: "How to Apply" },
+      { href: "/submit-cv", label: "How to Submit CV" },
       { href: "/contact", label: "Hiring Team" },
       { href: "/careers", label: "Role Guides" },
       { href: "/life", label: "Office Life" },
@@ -67,15 +67,13 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="font-display text-[13px] font-bold tracking-[0.08em] text-white uppercase">
-        {title}
-      </h3>
+      <h3 className="type-eyebrow text-white">{title}</h3>
       <ul className="mt-2.5 space-y-1.5">
         {links.map((l) => (
           <li key={`${title}-${l.label}`}>
             <Link
               href={l.href}
-              className="text-[13px] leading-snug text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
+              className="type-meta leading-snug text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
             >
               {l.label}
             </Link>
@@ -104,10 +102,8 @@ function SubscribeBox() {
 
   return (
     <div className="w-full max-w-sm shrink-0">
-      <h3 className="font-display text-[13px] font-bold tracking-[0.08em] text-white uppercase">
-        Subscribe
-      </h3>
-      <p className="mt-1 text-[13px] leading-snug text-white/85">
+      <h3 className="type-eyebrow text-white">Subscribe</h3>
+      <p className="type-meta mt-1 leading-snug text-white/85">
         Get open roles and hiring updates from {SITE.name}.
       </p>
       <form
@@ -124,11 +120,11 @@ function SubscribeBox() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter Your Email"
-          className="min-w-0 flex-1 border-0 bg-transparent py-1.5 text-sm text-ink outline-none placeholder:text-muted"
+          className="type-meta min-w-0 flex-1 border-0 bg-transparent py-1.5 text-ink outline-none placeholder:text-muted"
         />
         <button
           type="submit"
-          className="inline-flex shrink-0 items-center gap-1.5 pr-0.5 text-[10px] font-extrabold tracking-[0.06em] text-brand uppercase transition hover:text-ink sm:gap-2 sm:text-[11px]"
+          className="type-eyebrow inline-flex shrink-0 items-center gap-1.5 pr-0.5 text-brand transition hover:text-ink sm:gap-2"
         >
           Subscribe
           <span className="grid h-7 w-7 place-items-center rounded-md bg-brand text-white">
@@ -136,7 +132,7 @@ function SubscribeBox() {
           </span>
         </button>
       </form>
-      {status ? <p className="mt-1.5 text-xs text-white">{status}</p> : null}
+      {status ? <p className="type-meta mt-1.5 text-white">{status}</p> : null}
     </div>
   );
 }
@@ -158,10 +154,8 @@ function ContactChip({
         <Icon className="h-3.5 w-3.5" aria-hidden />
       </span>
       <span className="min-w-0">
-        <span className="block text-[9px] font-semibold tracking-[0.08em] text-white/75 uppercase">
-          {label}
-        </span>
-        <span className="mt-0.5 block font-display text-[13px] font-semibold break-words text-white transition group-hover:text-white/90">
+        <span className="type-eyebrow block text-white/75">{label}</span>
+        <span className="type-meta mt-0.5 block font-semibold break-words text-white transition group-hover:text-white/90">
           {value}
         </span>
       </span>
@@ -185,8 +179,8 @@ export function Footer() {
               >
                 <BrandLogo light className="h-8 w-auto" />
               </Link>
-              <p className="mt-2.5 max-w-[17rem] text-[13px] leading-snug text-white/90">
-                Pakistan-based IT delivery for US enterprise accounts — hiring,
+              <p className="type-meta mt-2.5 max-w-[17rem] leading-snug text-white/90">
+                Pakistan-based IT delivery for global enterprises — hiring,
                 training, and operations under one roof.
               </p>
               <div className="mt-3">
@@ -228,7 +222,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/20 bg-brand">
-        <Container className="flex flex-col justify-center gap-1.5 py-2.5 pb-[max(0.65rem,env(safe-area-inset-bottom,0px))] text-[11px] text-white/80 sm:flex-row sm:items-center sm:justify-between sm:text-xs">
+        <Container className="type-meta flex flex-col justify-center gap-1.5 py-2.5 pb-[max(0.65rem,env(safe-area-inset-bottom,0px))] text-white/80 sm:flex-row sm:items-center sm:justify-between">
           <p className="pr-36 sm:pr-40 md:pr-0">
             © {year} {SITE.name}. All rights reserved.
           </p>

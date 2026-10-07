@@ -5,10 +5,9 @@ import { ArrowRight } from "lucide-react";
 import { CONFIG, SITE, waLink } from "@/lib/config";
 
 const fieldClass =
-  "box-border h-11 w-full rounded-md border border-line bg-white px-3.5 font-body text-[15px] text-ink outline-none transition placeholder:text-muted/65 focus:border-brand focus:ring-1 focus:ring-brand/25";
+  "type-body box-border h-11 w-full rounded-md border border-line bg-white px-3.5 text-ink outline-none transition placeholder:text-muted/65 focus:border-brand focus:ring-1 focus:ring-brand/25";
 
-const labelClass =
-  "mb-1.5 block font-body text-[13px] font-semibold tracking-wide text-ink";
+const labelClass = "type-label mb-1.5 block text-ink";
 
 export function ContactForm() {
   const [status, setStatus] = useState("");
@@ -116,16 +115,16 @@ export function ContactForm() {
 
       <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
         {status ? (
-          <p className="text-sm text-brand" role="status">
+          <p className="type-meta text-brand" role="status">
             {status}
           </p>
         ) : (
-          <p className="text-sm text-muted">We typically reply within one business day.</p>
+          <p className="type-meta text-muted">We typically reply within one business day.</p>
         )}
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex h-11 w-full shrink-0 items-center justify-center gap-2 rounded-md bg-brand px-6 text-sm font-semibold text-white transition hover:brightness-105 disabled:opacity-60 sm:w-auto md:text-[15px]"
+          className="inline-flex h-11 w-full shrink-0 items-center justify-center gap-2 rounded-md bg-brand px-6 font-display text-sm font-semibold text-white transition hover:brightness-105 disabled:opacity-60 sm:w-auto"
         >
           {pending ? "Sending…" : "Submit"}
           {!pending ? <ArrowRight className="h-4 w-4" aria-hidden /> : null}

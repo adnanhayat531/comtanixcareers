@@ -61,23 +61,19 @@ export function SectionHeading({
     >
       {eyebrow ? (
         <p
-          className={`mb-1.5 font-body text-[11px] font-semibold tracking-[0.08em] uppercase ${
+          className={`type-eyebrow mb-1.5 ${
             light ? "text-white/65" : "text-brand"
           }`}
         >
           {eyebrow}
         </p>
       ) : null}
-      <h2
-        className={`font-display text-[clamp(1.4rem,3.2vw,2.15rem)] font-bold tracking-tight leading-[1.25] ${
-          light ? "text-white" : "text-ink"
-        }`}
-      >
+      <h2 className={`type-h2 ${light ? "text-white" : "text-ink"}`}>
         {title}
       </h2>
       {description ? (
         <p
-          className={`mt-2 max-w-prose text-[15px] leading-[1.55] md:text-base ${
+          className={`type-body mt-2 max-w-prose ${
             light ? "text-white/78" : "text-muted"
           } ${align === "center" ? "mx-auto" : ""}`}
         >
@@ -85,33 +81,5 @@ export function SectionHeading({
         </p>
       ) : null}
     </HeadingReveal>
-  );
-}
-
-/** Page intro band for inner routes */
-export function PageIntro({
-  eyebrow,
-  title,
-  description,
-  children,
-}: {
-  eyebrow?: string;
-  title: string;
-  description?: string;
-  children?: ReactNode;
-}) {
-  return (
-    <div className="border-b border-line bg-surface pt-8 pb-7 md:pt-12 md:pb-10">
-      <Container className="min-w-0">
-        <SectionHeading
-          eyebrow={eyebrow}
-          title={title}
-          description={description}
-          compact
-          className="mb-0"
-        />
-        {children}
-      </Container>
-    </div>
   );
 }

@@ -65,11 +65,11 @@ function StatItem({
 
   return (
     <div className="flex min-w-[46%] flex-1 flex-col items-center justify-center px-1.5 text-center sm:min-w-0 sm:px-3">
-      <div className="font-display text-lg font-bold leading-none tracking-tight text-white sm:text-2xl md:text-3xl lg:text-[2.25rem]">
+      <div className="type-h2 leading-none text-white">
         <span ref={ref}>{display}</span>
         {suffix ? <span className="text-white/95">{suffix}</span> : null}
       </div>
-      <p className="mt-1 max-w-[9rem] text-[10px] font-semibold leading-tight tracking-wide text-white/90 uppercase sm:mt-1.5 sm:max-w-none sm:text-xs">
+      <p className="type-eyebrow mt-1 max-w-[9rem] leading-tight text-white/90 sm:mt-1.5 sm:max-w-none">
         {label}
       </p>
     </div>
@@ -84,9 +84,7 @@ export function StatsBar() {
     >
       <div className="flex flex-col lg:flex-row lg:items-stretch">
         <div className="flex shrink-0 flex-col items-center justify-center px-5 py-2 text-center sm:px-8 md:px-10 lg:w-[28%] lg:max-w-sm lg:items-start lg:py-2.5 lg:text-left xl:w-[26%] xl:px-12">
-          <h2 className="font-display text-base font-bold tracking-tight text-ink leading-snug sm:text-lg md:text-xl">
-            Comtanix at a glance
-          </h2>
+          <h2 className="type-h3 text-ink leading-snug">Comtanix at a glance</h2>
         </div>
 
         <div className="flex min-w-0 flex-1 items-center justify-center bg-brand px-3 py-2 sm:px-5 sm:py-2.5 md:px-8 lg:px-10">

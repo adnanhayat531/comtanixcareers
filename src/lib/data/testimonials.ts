@@ -9,16 +9,16 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     initials: "AK",
     name: "Ayesha K.",
-    role: "QA Lead — US Healthcare",
+    role: "QA Lead — Healthcare",
     quote:
-      "I joined as a junior CSR on the US healthcare process. Within 14 months, thanks to internal leadership coaching, I was promoted to Floor QA Lead. Comtanix values consistency over politics.",
+      "I joined as a junior CSR on a healthcare support process. Within 14 months, thanks to internal leadership coaching, I was promoted to Floor QA Lead. Comtanix values consistency over politics.",
   },
   {
     initials: "SM",
     name: "Sara Malik",
     role: "Cloud Support Engineer",
     quote:
-      "Working direct night shifts with California-based DevOps engineers expanded my systems engineering skills 10x compared to standard local firms. Compensation is always on time.",
+      "Working direct night shifts with international DevOps engineers expanded my systems engineering skills 10x compared to standard local firms. Compensation is always on time.",
   },
   {
     initials: "HB",

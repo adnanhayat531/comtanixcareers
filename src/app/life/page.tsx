@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/Button";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import { LifeIcon } from "@/components/ui/Icons";
 import { TestimonialsGrid } from "@/components/home/Testimonials";
-import { GetInTouch } from "@/components/layout/GetInTouch";
 import { LIFE_ACTIVITIES } from "@/lib/data/content";
 
 export const metadata: Metadata = {
@@ -36,13 +35,11 @@ export default function LifePage() {
 
         <Container className="relative z-10 py-8 sm:py-10 md:py-12">
           <div className="max-w-xl">
-            <p className="mb-2 text-[11px] font-semibold tracking-[0.1em] text-white/90 uppercase">
-              Life at Comtanix
-            </p>
-            <h1 className="font-display text-[clamp(1.5rem,4.5vw,2.5rem)] font-bold tracking-tight text-white leading-[1.15]">
+            <p className="type-eyebrow mb-2 text-white/90">Life at Comtanix</p>
+            <h1 className="type-h1 text-white">
               Work hard. Climb higher. Stay together.
             </h1>
-            <p className="mt-2.5 max-w-md text-[14px] font-medium leading-[1.55] text-white/95 sm:mt-3 sm:text-[15px] md:text-base">
+            <p className="type-lede mt-2.5 max-w-md text-white/95 sm:mt-3">
               Our teams share the grind, the wins, and the moments that make
               Comtanix feel like more than a workplace.
             </p>
@@ -50,8 +47,8 @@ export default function LifePage() {
               <Button href="/careers" variant="white">
                 View openings <ArrowRight className="h-4 w-4" aria-hidden />
               </Button>
-              <Button href="/apply" variant="outlineLight">
-                Join the team <ArrowRight className="h-4 w-4" aria-hidden />
+              <Button href="/submit-cv" variant="outlineLight">
+                Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
               </Button>
             </div>
           </div>
@@ -63,7 +60,7 @@ export default function LifePage() {
           <SectionHeading
             eyebrow="Everyday culture"
             title="How we live the work week"
-            description="Facilities, recognition, and team activities designed around US shift patterns."
+            description="Facilities, recognition, and team activities designed around real shift patterns."
             className="mb-6 md:mb-8"
           />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-5">
@@ -81,12 +78,8 @@ export default function LifePage() {
                     <LifeIcon name={a.icon} className="h-3.5 w-3.5" />
                   </span>
                 </div>
-                <h3 className="font-display text-base font-bold tracking-tight text-ink md:text-lg">
-                  {a.title}
-                </h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted">
-                  {a.body}
-                </p>
+                <h3 className="type-h3 text-ink">{a.title}</h3>
+                <p className="type-meta mt-1.5 text-muted">{a.body}</p>
               </article>
             ))}
           </div>
@@ -96,28 +89,12 @@ export default function LifePage() {
       <Section className="border-t border-line bg-white">
         <Container>
           <SectionHeading
-            title="Team feedback"
-            description="Comments from associates on delivery floors and support desks."
+            title="Google reviews"
+            description="Live Google reviews for Comtanix — tap a card to open the reviewer on Google Maps."
           />
           <TestimonialsGrid />
         </Container>
       </Section>
-
-      <Section className="relative overflow-hidden bg-brand">
-        <Container className="relative z-10 max-w-lg">
-          <h2 className="font-display text-[clamp(1.35rem,3vw,1.85rem)] font-bold tracking-tight text-white leading-[1.25]">
-            Apply for open roles
-          </h2>
-          <p className="mt-2 text-[15px] text-white/75 md:text-base">
-            Submit an application for current openings.
-          </p>
-          <Button href="/apply" variant="white" className="mt-5 w-full sm:w-auto">
-            Apply
-          </Button>
-        </Container>
-      </Section>
-
-      <GetInTouch />
     </>
   );
 }

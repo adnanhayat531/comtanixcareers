@@ -7,19 +7,47 @@ import { CONFIG, SITE, waLink } from "@/lib/config";
 import { EXPERIENCE_OPTIONS, ROLES } from "@/lib/data/roles";
 
 const fieldClass =
-  "box-border h-11 w-full rounded-md border border-line bg-white px-3.5 font-body text-[15px] text-ink outline-none transition placeholder:text-muted/65 focus:border-brand focus:ring-1 focus:ring-brand/25";
+  "type-body box-border h-11 w-full rounded-md border border-line bg-white px-3.5 text-ink outline-none transition placeholder:text-muted/65 focus:border-brand focus:ring-1 focus:ring-brand/25";
 
-const labelClass =
-  "mb-1.5 block font-body text-[13px] font-semibold tracking-wide text-ink";
+const labelClass = "type-label mb-1.5 block text-ink";
 
-export function ApplyForm() {
+const CONFIRMATIONS = [
+  {
+    id: "confirm-night",
+    name: "confirmNight",
+    label: "I understand this is a night-shift role.",
+  },
+  {
+    id: "confirm-onsite",
+    name: "confirmOnsite",
+    label: "I understand this is an onsite office job (not remote).",
+  },
+  {
+    id: "confirm-location",
+    name: "confirmLocation",
+    label:
+      "I can commute to Bahria Town Phase 8, Rawalpindi (Noor Heights).",
+  },
+] as const;
+
+export type ApplyFormMode = "apply" | "cv";
+
+export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
   const params = useSearchParams();
   const [role, setRole] = useState("");
   const [exp, setExp] = useState("");
   const [cvName, setCvName] = useState("");
   const [status, setStatus] = useState("");
   const [cvErr, setCvErr] = useState("");
+  const [confirmErr, setConfirmErr] = useState("");
   const [pending, setPending] = useState(false);
+  const [checks, setChecks] = useState({
+    confirmNight: false,
+    confirmOnsite: false,
+    confirmLocation: false,
+  });
+
+  const isCv = mode === "cv";
 
   useEffect(() => {
     const q = params.get("role");
@@ -29,11 +57,27 @@ export function ApplyForm() {
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setCvErr("");
+    setConfirmErr("");
     setStatus("");
     setPending(true);
 
     const form = e.currentTarget;
     const fd = new FormData(form);
+
+    if (
+      !checks.confirmNight ||
+      !checks.confirmOnsite ||
+      !checks.confirmLocation
+    ) {
+      setConfirmErr(
+        isCv
+          ? "Please confirm night shift, onsite work, and Bahria Town Phase 8 location before submitting your CV."
+          : "Please confirm night shift, onsite work, and Bahria Town Phase 8 location before applying.",
+      );
+      setPending(false);
+      return;
+    }
+
     const cv = fd.get("cv");
     const hasCv = cv instanceof File && cv.name.length > 0 && cv.size > 0;
 
@@ -63,11 +107,20 @@ export function ApplyForm() {
           headers: { Accept: "application/json" },
         });
         if (res.ok) {
-          setStatus("Application received. Our team will contact you soon.");
+          setStatus(
+            isCv
+              ? "CV received. We will review it for future openings."
+              : "Application received. Our team will contact you soon.",
+          );
           form.reset();
           setRole("");
           setExp("");
           setCvName("");
+          setChecks({
+            confirmNight: false,
+            confirmOnsite: false,
+            confirmLocation: false,
+          });
           setPending(false);
           return;
         }
@@ -82,10 +135,15 @@ export function ApplyForm() {
     const experience = String(fd.get("exp") ?? "");
     const msg = String(fd.get("msg") ?? "").trim();
 
-    const text =
-      `Job application - ${SITE.name}\nName: ${name}\nPhone: ${phone}\nPosition: ${position}\nExperience: ${experience}` +
-      (msg ? `\nNote: ${msg}` : "") +
-      `\nCV: ${cv.name} (sending it in this chat)`;
+    const text = isCv
+      ? `CV submission - ${SITE.name} (future openings only)\nName: ${name}\nPhone: ${phone}\nInterest: ${position}\nExperience: ${experience}` +
+        `\nConfirmed: Night shift · Onsite · Bahria Town Phase 8` +
+        (msg ? `\nNote: ${msg}` : "") +
+        `\nCV: ${cv.name} (sending it in this chat)`
+      : `Job application - ${SITE.name} (current opening)\nName: ${name}\nPhone: ${phone}\nPosition: ${position}\nExperience: ${experience}` +
+        `\nConfirmed: Night shift · Onsite · Bahria Town Phase 8` +
+        (msg ? `\nNote: ${msg}` : "") +
+        `\nCV: ${cv.name} (sending it in this chat)`;
 
     window.open(waLink(text), "_blank", "noopener");
     setStatus(
@@ -100,6 +158,8 @@ export function ApplyForm() {
       className="grid w-full max-w-xl gap-4"
       noValidate
     >
+      <input type="hidden" name="intent" value={isCv ? "cv-future" : "apply-current"} />
+
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="min-w-0">
           <label className={labelClass} htmlFor="apply-name">
@@ -134,7 +194,7 @@ export function ApplyForm() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="min-w-0">
           <label className={labelClass} htmlFor="apply-role">
-            Position
+            {isCv ? "Role interest" : "Open role"}
           </label>
           <select
             id="apply-role"
@@ -144,13 +204,22 @@ export function ApplyForm() {
             onChange={(e) => setRole(e.target.value)}
             className={`${fieldClass} ${role ? "text-ink" : "text-muted/65"}`}
           >
-            <option value="">Select a role</option>
+            <option value="">
+              {isCv ? "Select interest" : "Select open role"}
+            </option>
             {ROLES.map((r) => (
               <option key={r.id} value={r.title}>
                 {r.title}
               </option>
             ))}
-            <option value="Other">Other</option>
+            {isCv ? (
+              <>
+                <option value="General / future openings">
+                  General / future openings
+                </option>
+                <option value="Other">Other</option>
+              </>
+            ) : null}
           </select>
         </div>
         <div className="min-w-0">
@@ -187,7 +256,7 @@ export function ApplyForm() {
           className="flex min-h-11 cursor-pointer items-center gap-3 rounded-md border border-dashed border-line bg-white px-3.5 py-2.5 transition hover:border-brand/50 hover:bg-tint/40 focus-within:border-brand focus-within:ring-1 focus-within:ring-brand/25"
         >
           <FileUp className="h-4 w-4 shrink-0 text-brand" aria-hidden />
-          <span className="min-w-0 truncate text-[15px] text-ink">
+          <span className="type-body min-w-0 truncate text-ink">
             {cvName || "PDF or Word (.pdf, .doc, .docx), max 5 MB"}
           </span>
           <input
@@ -205,7 +274,7 @@ export function ApplyForm() {
           />
         </label>
         {cvErr ? (
-          <p className="mt-1.5 text-sm font-medium text-red-700" role="alert">
+          <p className="type-meta mt-1.5 font-medium text-red-700" role="alert">
             {cvErr}
           </p>
         ) : null}
@@ -224,22 +293,72 @@ export function ApplyForm() {
         />
       </div>
 
+      <fieldset className="min-w-0 rounded-md border border-line bg-tint/50 px-4 py-4">
+        <legend className="type-label px-1 text-ink">
+          {isCv ? "Confirm before you submit" : "Confirm before you apply"}
+        </legend>
+        <p className="type-meta mt-1 text-muted">
+          {isCv
+            ? "Please read and check each point. Only submit your CV if all three fit you."
+            : "Please read and check each point. Only apply if all three fit you."}
+        </p>
+        <ul className="mt-3 space-y-2.5">
+          {CONFIRMATIONS.map((c) => (
+            <li key={c.id}>
+              <label
+                htmlFor={`${mode}-${c.id}`}
+                className="type-meta flex cursor-pointer items-start gap-2.5 leading-snug text-ink"
+              >
+                <input
+                  id={`${mode}-${c.id}`}
+                  name={c.name}
+                  type="checkbox"
+                  required
+                  checked={checks[c.name]}
+                  onChange={(e) => {
+                    setConfirmErr("");
+                    setChecks((prev) => ({
+                      ...prev,
+                      [c.name]: e.target.checked,
+                    }));
+                  }}
+                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-line text-brand accent-brand focus:ring-brand/30"
+                />
+                <span>{c.label}</span>
+              </label>
+            </li>
+          ))}
+        </ul>
+        {confirmErr ? (
+          <p className="type-meta mt-2.5 font-medium text-red-700" role="alert">
+            {confirmErr}
+          </p>
+        ) : null}
+      </fieldset>
+
       <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
         {status ? (
-          <p className="text-sm leading-relaxed text-brand" role="status">
+          <p className="type-meta text-brand" role="status">
             {status}
           </p>
         ) : (
-          <p className="text-sm text-muted">
-            We’ll confirm next steps after review.
+          <p className="type-meta text-muted">
+            {isCv
+              ? "We review CVs for future openings."
+              : "We’ll confirm next steps after review."}
           </p>
         )}
         <button
           type="submit"
-          disabled={pending}
-          className="inline-flex h-11 w-full shrink-0 items-center justify-center gap-2 rounded-md bg-brand px-6 text-sm font-semibold text-white transition hover:brightness-105 disabled:opacity-60 sm:w-auto md:text-[15px]"
+          disabled={
+            pending ||
+            !checks.confirmNight ||
+            !checks.confirmOnsite ||
+            !checks.confirmLocation
+          }
+          className="inline-flex h-11 w-full shrink-0 items-center justify-center gap-2 rounded-md bg-brand px-6 font-display text-sm font-semibold text-white transition hover:brightness-105 disabled:opacity-60 sm:w-auto"
         >
-          {pending ? "Submitting…" : "Submit application"}
+          {pending ? "Submitting…" : isCv ? "Submit CV" : "Submit application"}
           {!pending ? <ArrowRight className="h-4 w-4" aria-hidden /> : null}
         </button>
       </div>

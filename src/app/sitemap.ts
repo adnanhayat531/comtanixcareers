@@ -7,6 +7,7 @@ const routes = [
   "/careers",
   "/life",
   "/apply",
+  "/submit-cv",
   "/contact",
 ] as const;
 

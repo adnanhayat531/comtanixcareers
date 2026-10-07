@@ -12,7 +12,6 @@ import { Container, Section } from "@/components/ui/Section";
 import { HeroNetwork } from "@/components/home/HeroNetwork";
 import { HeroCopy } from "@/components/home/HeroCopy";
 import { StatsBar } from "@/components/home/StatsBar";
-import { GetInTouch } from "@/components/layout/GetInTouch";
 import { HeadingReveal } from "@/components/motion/Reveal";
 import { OfficeIllustration } from "@/components/ui/OfficeIllustration";
 import {
@@ -39,23 +38,21 @@ export default function HomePage() {
         <Container className="grid min-w-0 items-center gap-7 lg:grid-cols-2 lg:gap-10 xl:gap-12">
           <div className="order-2 min-w-0 text-left lg:order-1">
             <HeadingReveal className="mb-4 max-w-xl">
-              <p className="mb-1.5 text-[11px] font-semibold tracking-[0.08em] text-brand uppercase">
-                Who we are
-              </p>
-              <h2 className="mt-0 font-display text-[clamp(1.5rem,2.8vw,2.15rem)] font-bold tracking-tight text-ink leading-[1.25]">
-                A professional IT company serving American businesses.
+              <p className="type-eyebrow mb-1.5 text-brand">Who we are</p>
+              <h2 className="type-h2 mt-0 text-ink">
+                A professional IT company serving businesses worldwide.
               </h2>
-              <p className="mt-2 max-w-prose text-[15px] leading-[1.55] text-muted md:text-base">
+              <p className="type-body mt-2 max-w-prose text-muted">
                 Comtanix delivers software engineering and IT operations from
-                Pakistan, aligned to US client tools, hours, and quality
-                standards. We build capable teams that work as an extension of
-                the businesses we support.
+                Pakistan, aligned to client tools, hours, and quality standards
+                across markets. We build capable teams that work as an extension
+                of the businesses we support.
               </p>
             </HeadingReveal>
 
             <ul className="mb-5 max-w-xl space-y-2">
               {[
-                "IT delivery for US enterprise accounts",
+                "IT delivery for global enterprise accounts",
                 "Shared tools, processes, and accountability",
                 "People developed for long-term technical roles",
               ].map((item) => (
@@ -64,9 +61,7 @@ export default function HomePage() {
                     className="mt-0.5 h-4 w-4 shrink-0 text-brand"
                     aria-hidden
                   />
-                  <span className="text-sm leading-snug text-ink md:text-[15px]">
-                    {item}
-                  </span>
+                  <span className="type-meta leading-snug text-ink">{item}</span>
                 </li>
               ))}
             </ul>
@@ -86,14 +81,12 @@ export default function HomePage() {
       <Section className="bg-white">
         <Container>
           <HeadingReveal className="mb-6 max-w-xl md:mb-8">
-            <p className="mb-1.5 text-[11px] font-semibold tracking-[0.08em] text-brand uppercase">
-              What we do
-            </p>
-            <h2 className="mt-0 font-display text-[clamp(1.5rem,2.8vw,2.15rem)] font-bold tracking-tight text-ink leading-[1.25]">
-              IT capabilities for US-facing delivery.
+            <p className="type-eyebrow mb-1.5 text-brand">What we do</p>
+            <h2 className="type-h2 mt-0 text-ink">
+              IT capabilities for global delivery.
             </h2>
-            <p className="mt-2 max-w-xl text-[15px] leading-[1.55] text-muted md:text-base">
-              Focused workstreams that keep American businesses moving — with
+            <p className="type-body mt-2 max-w-xl text-muted">
+              Focused workstreams that keep businesses worldwide moving — with
               the people and discipline to match.
             </p>
           </HeadingReveal>
@@ -119,12 +112,8 @@ export default function HomePage() {
                     <span className="grid h-8 w-8 place-items-center rounded-md bg-brand text-white">
                       <Icon className="h-3.5 w-3.5" aria-hidden />
                     </span>
-                    <h3 className="mt-3 font-display text-[15px] font-bold tracking-tight text-ink md:text-base">
-                      {c.title}
-                    </h3>
-                    <p className="mt-1.5 text-sm leading-[1.55] text-muted">
-                      {c.body}
-                    </p>
+                    <h3 className="type-h3 mt-3 text-ink">{c.title}</h3>
+                    <p className="type-meta mt-1.5 text-muted">{c.body}</p>
                   </div>
                 </li>
               );
@@ -137,13 +126,11 @@ export default function HomePage() {
       <Section className="bg-on-sea">
         <Container>
           <HeadingReveal className="mb-6 max-w-xl md:mb-8">
-            <p className="mb-1.5 text-[11px] font-semibold tracking-[0.08em] text-brand uppercase">
-              Why Comtanix
-            </p>
-            <h2 className="mt-0 font-display text-[clamp(1.5rem,2.8vw,2.15rem)] font-bold tracking-tight text-ink leading-[1.25]">
-              How we work with US accounts.
+            <p className="type-eyebrow mb-1.5 text-brand">Why Comtanix</p>
+            <h2 className="type-h2 mt-0 text-ink">
+              How we work with global clients.
             </h2>
-            <p className="mt-2 max-w-xl text-[15px] leading-[1.55] text-muted md:text-base">
+            <p className="type-body mt-2 max-w-xl text-muted">
               Clear standards for quality, security, and partnership — without
               the noise.
             </p>
@@ -165,15 +152,9 @@ export default function HomePage() {
                   />
                 </div>
                 <div className="px-4 py-4 md:px-5 md:py-5">
-                  <p className="font-display text-xs font-bold tracking-[0.08em] text-brand uppercase">
-                    0{i + 1}
-                  </p>
-                  <h3 className="mt-1.5 font-display text-base font-bold tracking-tight text-ink">
-                    {w.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-[1.55] text-muted">
-                    {w.body}
-                  </p>
+                  <p className="type-eyebrow text-brand">0{i + 1}</p>
+                  <h3 className="type-h3 mt-1.5 text-ink">{w.title}</h3>
+                  <p className="type-meta mt-1.5 text-muted">{w.body}</p>
                 </div>
               </li>
             ))}
@@ -186,22 +167,20 @@ export default function HomePage() {
         <Container className="grid min-w-0 grid-cols-1 items-center gap-6 sm:gap-7 md:grid-cols-2 md:gap-8 lg:gap-12">
           <div className="min-w-0 max-w-xl text-left md:max-w-none">
             <HeadingReveal className="max-w-xl">
-              <p className="mb-1.5 text-[11px] font-semibold tracking-[0.08em] text-brand uppercase">
-                Careers
-              </p>
-              <h2 className="mt-0 font-display text-[clamp(1.35rem,3.2vw,2.15rem)] font-bold tracking-tight text-ink leading-[1.25]">
-                Build your career on US-facing IT work.
+              <p className="type-eyebrow mb-1.5 text-brand">Careers</p>
+              <h2 className="type-h2 mt-0 text-ink">
+                Build your career on real global IT work.
               </h2>
-              <p className="mt-2 max-w-prose text-[15px] leading-[1.55] text-muted md:text-base">
+              <p className="type-body mt-2 max-w-prose text-muted">
                 Structured training, clear progression, and roles that connect you
-                to real American business delivery — not short-term volume work.
+                to live international delivery — not short-term volume work.
               </p>
             </HeadingReveal>
 
             <ul className="mt-4 space-y-0 border-t border-line sm:mt-5">
               {[
                 "Paid induction and role-specific onboarding",
-                "Mentorship with US account leads",
+                "Mentorship with client account leads",
                 "Defined paths from associate to leadership",
                 "Fixed shift patterns with night-shift allowance",
               ].map((item) => (
@@ -213,7 +192,7 @@ export default function HomePage() {
                     className="mt-0.5 h-4 w-4 shrink-0 text-brand"
                     aria-hidden
                   />
-                  <span className="min-w-0 text-sm leading-snug text-ink md:text-[15px]">
+                  <span className="type-meta min-w-0 leading-snug text-ink">
                     {item}
                   </span>
                 </li>
@@ -224,11 +203,11 @@ export default function HomePage() {
                 View openings <ArrowRight className="h-4 w-4" aria-hidden />
               </Button>
               <Button
-                href="/apply"
+                href="/submit-cv"
                 variant="secondary"
                 className="w-full justify-center sm:w-auto"
               >
-                Build Your Career <ArrowRight className="h-4 w-4" aria-hidden />
+                Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
               </Button>
             </div>
           </div>
@@ -253,15 +232,13 @@ export default function HomePage() {
         <Container>
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-8">
             <HeadingReveal className="max-w-xl">
-              <p className="mb-1.5 text-[11px] font-semibold tracking-[0.08em] text-brand uppercase">
-                Life at Comtanix
-              </p>
-              <h2 className="mt-0 font-display text-[clamp(1.5rem,2.8vw,2.15rem)] font-bold tracking-tight text-ink leading-[1.25]">
+              <p className="type-eyebrow mb-1.5 text-brand">Life at Comtanix</p>
+              <h2 className="type-h2 mt-0 text-ink">
                 People, culture, and growth around the work.
               </h2>
-              <p className="mt-2 max-w-xl text-[15px] leading-[1.55] text-muted md:text-base">
-                Teams that deliver for US hours also need balance, recognition,
-                and room to learn.
+              <p className="type-body mt-2 max-w-xl text-muted">
+                Teams that deliver across time zones also need balance,
+                recognition, and room to learn.
               </p>
             </HeadingReveal>
             <Button
@@ -289,12 +266,8 @@ export default function HomePage() {
                   />
                 </div>
                 <div className="px-4 py-4">
-                  <h3 className="font-display text-[15px] font-bold tracking-tight text-ink md:text-base">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-[1.55] text-muted">
-                    {item.body}
-                  </p>
+                  <h3 className="type-h3 text-ink">{item.title}</h3>
+                  <p className="type-meta mt-1.5 text-muted">{item.body}</p>
                 </div>
               </li>
             ))}
@@ -307,15 +280,13 @@ export default function HomePage() {
         <Container>
           <div className="grid min-w-0 items-center gap-6 rounded-md border border-line bg-white px-5 py-7 sm:px-7 sm:py-8 md:grid-cols-[1.2fr_auto] md:gap-10 md:px-10 md:py-9">
             <div className="min-w-0 max-w-xl">
-              <p className="mb-1.5 text-[11px] font-semibold tracking-[0.08em] text-brand uppercase">
-                Opportunities
-              </p>
-              <h2 className="font-display text-[clamp(1.35rem,2.5vw,1.85rem)] font-bold tracking-tight text-ink leading-[1.25]">
+              <p className="type-eyebrow mb-1.5 text-brand">Opportunities</p>
+              <h2 className="type-h2 text-ink">
                 Open roles across engineering and IT support.
               </h2>
-              <p className="mt-2 text-[15px] leading-[1.55] text-muted md:text-base">
+              <p className="type-body mt-2 text-muted">
                 Review current openings, or explore how we train and grow people
-                inside live US accounts.
+                inside live client accounts.
               </p>
             </div>
             <div className="flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap">
@@ -329,40 +300,6 @@ export default function HomePage() {
           </div>
         </Container>
       </Section>
-
-      {/* Final CTA */}
-      <Section className="relative overflow-hidden bg-brand">
-        <Image
-          src="/cta-opportunity.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-          aria-hidden
-        />
-        <div className="absolute inset-0 bg-brand/90" aria-hidden />
-        <Container className="relative z-10">
-          <HeadingReveal className="max-w-xl">
-            <h2 className="font-display text-[clamp(1.4rem,3.5vw,2rem)] font-bold tracking-tight text-white leading-[1.25]">
-              Technology for American businesses. Careers that grow with it.
-            </h2>
-            <p className="mt-2.5 max-w-lg text-[15px] leading-[1.55] text-white/80 md:text-base">
-              Learn how Comtanix works — or take the next step in your career
-              with us.
-            </p>
-            <div className="mt-5 flex w-full max-w-md flex-col gap-2.5 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
-              <Button href="/about#story" variant="white">
-                Explore Comtanix <ArrowRight className="h-4 w-4" aria-hidden />
-              </Button>
-              <Button href="/careers" variant="outlineLight">
-                Build Your Career <ArrowRight className="h-4 w-4" aria-hidden />
-              </Button>
-            </div>
-          </HeadingReveal>
-        </Container>
-      </Section>
-
-      <GetInTouch />
     </>
   );
 }
