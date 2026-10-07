@@ -28,13 +28,13 @@
   --text-eyebrow: 0.75rem; /* 12px */
   --leading-body: 1.65;
   --leading-tight: 1.2;
-  --h1: clamp(2rem, 4.2vw, 3.25rem);
-  --h1-hero: clamp(2.15rem, 5.5vw, 3.75rem);
-  --h2: clamp(1.65rem, 3.2vw, 2.5rem);
+  --h1: clamp(1.75rem, 5vw, 3.25rem);
+  --h1-hero: clamp(1.85rem, 6.5vw, 3.75rem);
+  --h2: clamp(1.4rem, 3.6vw, 2.5rem);
   --h3: 1.2rem;
-  --stat: clamp(1.75rem, 3.5vw, 2.75rem);
-  --section-y: clamp(3.5rem, 6vw, 5.5rem);
-  --section-y-lg: clamp(4.5rem, 8vw, 7rem);
+  --stat: clamp(1.4rem, 4.5vw, 2.75rem);
+  --section-y: clamp(2.75rem, 5.5vw, 5.5rem);
+  --section-y-lg: clamp(3.5rem, 7vw, 7rem);
 }
 
 @theme inline {
@@ -64,11 +64,17 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 4.5rem;
   overflow-x: clip;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
   html {
     scroll-padding-top: 5.5rem;
   }

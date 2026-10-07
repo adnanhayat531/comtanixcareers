@@ -51,7 +51,7 @@ export function HowWeHire() {
             Comtanix.
           </p>
 
-          <ol className="relative mt-12 grid grid-cols-1 gap-10 sm:mt-14 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-12 md:gap-x-6 lg:mt-16 lg:grid-cols-5 lg:gap-4 xl:gap-5">
+          <ol className="relative mt-10 grid grid-cols-1 gap-8 sm:mt-12 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-10 md:gap-x-6 lg:mt-16 lg:grid-cols-5 lg:gap-4 xl:gap-5">
             {/* Desktop connector */}
             <div
               aria-hidden

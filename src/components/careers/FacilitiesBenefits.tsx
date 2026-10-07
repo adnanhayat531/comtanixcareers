@@ -100,11 +100,11 @@ export function FacilitiesBenefits() {
             Because your growth matters
           </p>
 
-          <ul className="mt-10 flex flex-wrap justify-center gap-2.5 sm:mt-11 sm:gap-4 md:mt-12 md:gap-[22px]">
+          <ul className="mt-8 grid grid-cols-2 gap-2.5 sm:mt-10 sm:gap-4 md:mt-12 md:grid-cols-3 md:gap-5">
             {BENEFITS.map((b) => (
               <li
                 key={b.title}
-                className="group relative min-h-[150px] w-[calc((100%-1.25rem)/2)] overflow-hidden rounded-[18px] border border-[var(--fb-line)] bg-white px-1.5 py-4 text-center shadow-soft transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_14px_28px_rgba(14,154,167,0.18)] sm:min-h-[180px] sm:w-[calc((100%-2rem)/2)] sm:rounded-[22px] sm:px-4 sm:py-6 md:min-h-[210px] md:w-[calc((100%-44px)/3)] md:rounded-[26px] md:px-[18px] md:py-7"
+                className="group relative flex min-h-[140px] min-w-0 flex-col items-center overflow-hidden rounded-2xl border border-[var(--fb-line)] bg-white px-2 py-4 text-center shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(14,154,167,0.18)] sm:min-h-[180px] sm:rounded-[22px] sm:px-4 sm:py-6 md:min-h-[210px] md:rounded-[26px] md:px-[18px] md:py-7"
               >
                 {/* Top card line — white */}
                 <span

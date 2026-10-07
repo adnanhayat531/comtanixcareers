@@ -11,7 +11,7 @@ export function HeroNetwork() {
         priority
         quality={92}
         sizes="100vw"
-        className="scale-105 object-cover object-center"
+        className="object-cover object-center"
       />
 
       {/* Deep brand wash for enterprise contrast */}

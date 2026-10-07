@@ -28,11 +28,11 @@ export default function HomePage() {
     <>
       <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-deep">
         <HeroNetwork />
-        <div className="relative z-10 flex min-h-0 min-w-0 flex-1 flex-col items-center justify-center pt-16 sm:pt-[4.25rem] lg:pt-[4.5rem]">
+        <div className="relative z-10 flex min-h-0 min-w-0 flex-1 flex-col items-center justify-center pt-14 sm:pt-16 md:pt-[4.25rem] lg:pt-[4.5rem]">
           <HeroCopy />
         </div>
         {/* Spacer so overlapping stats sit partly on the hero */}
-        <div className="relative z-10 h-16 shrink-0 sm:h-20 md:h-24 lg:h-28" aria-hidden />
+        <div className="relative z-10 h-12 shrink-0 sm:h-16 md:h-20 lg:h-24" aria-hidden />
       </section>
 
       <StatsBar />

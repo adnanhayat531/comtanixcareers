@@ -121,7 +121,7 @@ export function Header() {
           : "border-b border-line bg-surface/95 shadow-soft backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between gap-3 px-5 sm:h-[4.25rem] sm:px-6 md:px-8 lg:h-[4.5rem] lg:px-10 xl:px-14 2xl:px-16">
+      <div className="mx-auto flex h-14 w-full max-w-[1400px] items-center justify-between gap-2 px-4 sm:h-16 sm:gap-3 sm:px-6 md:h-[4.25rem] md:px-8 lg:h-[4.5rem] lg:px-10 xl:px-14 2xl:px-16">
         <Link
           href="/"
           className="min-w-0 shrink focus-visible:rounded-sm"
@@ -129,7 +129,7 @@ export function Header() {
         >
           <BrandLogo
             light={overlay}
-            className="h-9 w-auto sm:h-10 md:h-11"
+            className="h-8 w-auto max-w-[9.5rem] sm:h-10 sm:max-w-none md:h-11"
           />
         </Link>
 
@@ -201,17 +201,17 @@ export function Header() {
           </Button>
         </nav>
 
-        <div className="flex shrink-0 items-center gap-2 lg:hidden">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 lg:hidden">
           <Button
             href="/submit-cv"
             variant={overlay ? "white" : "primary"}
-            className="!h-10 !min-h-10 !px-3.5 !text-sm"
+            className="!hidden !h-9 !min-h-9 !px-3 !text-sm min-[380px]:!inline-flex sm:!h-10 sm:!min-h-10 sm:!px-3.5"
           >
             Submit CV
           </Button>
           <button
             type="button"
-            className={`inline-flex h-10 min-h-10 items-center gap-2 rounded-lg border px-3 text-sm font-semibold transition ${
+            className={`inline-flex h-9 min-h-9 w-9 items-center justify-center rounded-lg border text-sm font-semibold transition sm:h-10 sm:min-h-10 sm:w-auto sm:gap-2 sm:px-3 ${
               overlay
                 ? "border-white/40 text-white hover:bg-white/10"
                 : "border-line text-ink hover:bg-tint"

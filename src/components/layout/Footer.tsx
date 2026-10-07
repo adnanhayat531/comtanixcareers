@@ -124,9 +124,10 @@ function SubscribeBox() {
         />
         <button
           type="submit"
-          className="type-eyebrow inline-flex shrink-0 items-center gap-1.5 pr-0.5 text-brand transition hover:text-ink sm:gap-2"
+          className="type-eyebrow inline-flex shrink-0 items-center gap-1 pr-0.5 text-brand transition hover:text-ink sm:gap-2"
+          aria-label="Subscribe"
         >
-          Subscribe
+          <span className="hidden min-[360px]:inline">Subscribe</span>
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand text-white">
             <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </span>
@@ -223,7 +224,7 @@ export function Footer() {
 
       <div className="border-t border-white/10 bg-deep">
         <Container className="type-meta flex flex-col justify-center gap-2 py-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))] text-white/65 sm:flex-row sm:items-center sm:justify-between">
-          <p className="pr-36 sm:pr-40 md:pr-0">
+          <p className="pr-16 sm:pr-20 md:pr-0">
             © {year} {SITE.name}. All rights reserved.
           </p>
           <nav className="flex flex-wrap gap-x-4 gap-y-1" aria-label="Legal">

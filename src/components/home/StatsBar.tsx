@@ -65,12 +65,12 @@ function StatItem({
   }, [value, reduced]);
 
   return (
-    <div className="flex min-w-[46%] flex-1 flex-col items-center justify-center px-2 text-center sm:min-w-0 sm:px-3 md:px-4">
+    <div className="flex min-w-0 flex-col items-center justify-center px-1.5 text-center sm:px-2 lg:px-3">
       <div className="type-stat leading-none text-white">
         <span ref={ref}>{display}</span>
         {suffix ? <span className="text-white/95">{suffix}</span> : null}
       </div>
-      <p className="type-eyebrow mt-0.5 max-w-[9rem] leading-tight text-white/85 sm:max-w-none">
+      <p className="type-eyebrow mt-0.5 max-w-[8.5rem] leading-tight text-white/85 sm:max-w-[10rem] lg:max-w-none">
         {label}
       </p>
     </div>
@@ -80,21 +80,23 @@ function StatItem({
 export function StatsBar() {
   return (
     <section
-      className="stats-overlap relative z-20 w-full pb-2 md:pb-3"
+      className="stats-overlap relative z-20 w-full min-w-0 pb-2 md:pb-3"
       aria-label="Company footprint"
     >
       <Container>
-        <div className="overflow-hidden rounded-2xl bg-white shadow-overlay ring-1 ring-line md:rounded-3xl">
+        <div className="overflow-hidden rounded-xl bg-white shadow-overlay ring-1 ring-line sm:rounded-2xl md:rounded-3xl">
           <div className="flex flex-col lg:flex-row lg:items-stretch">
-            <div className="flex shrink-0 flex-col items-center justify-center px-5 py-3 text-center sm:px-7 md:px-9 lg:w-[28%] lg:max-w-sm lg:py-3.5 xl:w-[26%] xl:px-10">
-              <h2 className="type-h2 text-ink">Comtanix at a glance</h2>
+            <div className="flex shrink-0 flex-col items-center justify-center px-4 py-3 text-center sm:px-6 sm:py-3 md:px-8 lg:w-[28%] lg:max-w-sm lg:px-8 lg:py-3.5 xl:w-[26%] xl:px-10">
+              <h2 className="type-h2 text-balance text-ink">
+                Comtanix at a glance
+              </h2>
               <p className="type-meta mt-0.5 text-muted">
                 Real delivery — real careers
               </p>
             </div>
 
-            <div className="relative flex min-w-0 flex-1 items-center justify-center bg-brand px-3 py-3 sm:px-5 sm:py-3 md:px-6 lg:rounded-tl-[2.25rem] lg:px-8 lg:py-3.5 xl:rounded-tl-[2.75rem]">
-              <div className="flex w-full flex-wrap items-center justify-center gap-x-1 gap-y-2 md:flex-nowrap md:justify-evenly md:gap-0">
+            <div className="relative flex min-w-0 flex-1 items-center justify-center bg-brand px-3 py-3 sm:px-4 sm:py-3 md:px-6 lg:rounded-tl-[2.25rem] lg:px-6 lg:py-3.5 xl:rounded-tl-[2.75rem] xl:px-8">
+              <div className="grid w-full grid-cols-2 gap-x-2 gap-y-3 sm:grid-cols-4 sm:gap-y-0 lg:flex lg:flex-nowrap lg:justify-evenly lg:gap-0">
                 {STATS.map((s) => (
                   <StatItem
                     key={s.label}
