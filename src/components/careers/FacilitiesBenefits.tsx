@@ -91,7 +91,7 @@ export function FacilitiesBenefits() {
       className="scroll-mt-24 border-t border-line bg-tint md:scroll-mt-28 [--fb:#2f7a84] [--fb-d:#0f3d45] [--fb-l:#e8f2f3] [--fb-ink:#0b2c35] [--fb-card:#ffffff] [--fb-line:rgba(47,122,132,0.22)]"
     >
       <Container>
-        <div className="mx-auto w-full max-w-[1000px]">
+        <div className="mx-auto w-full max-w-none">
           <h2 className="type-h2 text-center text-ink">
             Facilities &amp;{" "}
             <span className="font-bold text-ink">Benefits</span>

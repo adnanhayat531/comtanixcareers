@@ -121,7 +121,7 @@ export function Header() {
           : "border-b border-line bg-surface/95 shadow-soft backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex h-14 w-full max-w-[1400px] items-center justify-between gap-2 px-4 sm:h-16 sm:gap-3 sm:px-6 md:h-[4.25rem] md:px-8 lg:h-[4.5rem] lg:px-10 xl:px-14 2xl:px-16">
+      <div className="mx-auto flex h-14 w-full max-w-none items-center justify-between gap-2 py-0 pr-5 pl-2 sm:h-16 sm:gap-3 sm:pr-6 sm:pl-2.5 md:h-[4.25rem] md:pr-8 md:pl-3 lg:h-[4.5rem] lg:pr-10 lg:pl-3 xl:pr-12 xl:pl-4 2xl:pr-14 2xl:pl-4">
         <Link
           href="/"
           className="min-w-0 shrink focus-visible:rounded-sm"
