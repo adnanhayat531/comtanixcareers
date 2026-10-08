@@ -20,7 +20,7 @@ export const STATS = [
   {
     value: 95,
     suffix: "%",
-    label: "Quality Score Benchmark",
+    label: "Client Satisfaction",
     sub: "Consistently achieved standard",
   },
 ] as const;
