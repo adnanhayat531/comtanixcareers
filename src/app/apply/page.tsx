@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { ArrowRight, Clock, MapPin, Building2 } from "lucide-react";
 import { ApplyForm } from "@/components/apply/ApplyForm";
+import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
@@ -110,7 +111,9 @@ export default function ApplyPage() {
 
             <aside className="min-w-0 rounded-xl border border-line bg-tint/50 p-6 lg:sticky lg:top-28 lg:p-8">
               <p className="type-eyebrow text-brand">What happens next</p>
-              <h2 className="type-h2 mt-2 text-ink">From apply to offer</h2>
+              <h2 className="type-h2 mt-2 text-ink">
+                <BrandAccentText>From apply to offer</BrandAccentText>
+              </h2>
               <p className="type-meta mt-3 text-muted">
                 Typical path after you apply. Prefer to talk first?{" "}
                 <a
@@ -128,7 +131,9 @@ export default function ApplyPage() {
                   <li key={s.n} className="flex gap-4">
                     <span className="type-eyebrow text-brand">{s.n}</span>
                     <div>
-                      <p className="type-h3 text-ink">{s.title}</p>
+                      <p className="type-h3 text-ink">
+                        <BrandAccentText>{s.title}</BrandAccentText>
+                      </p>
                       <p className="type-meta mt-1 text-muted">{s.body}</p>
                     </div>
                   </li>

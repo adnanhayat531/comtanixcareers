@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/ui/CtaBanner";
 import { PageHero } from "@/components/ui/PageHero";
@@ -85,7 +86,9 @@ export default function AboutPage() {
                     0{i + 1}
                   </span>
                 </div>
-                <h3 className="type-h3 text-ink">{v.title}</h3>
+                <h3 className="type-h3 text-ink">
+                  <BrandAccentText>{v.title}</BrandAccentText>
+                </h3>
                 <p className="type-meta mt-2 text-muted">{v.body}</p>
               </li>
             ))}
@@ -109,7 +112,9 @@ export default function AboutPage() {
                 >
                   {i + 1}
                 </span>
-                <h3 className="type-h3 text-ink">{l.title}</h3>
+                <h3 className="type-h3 text-ink">
+                  <BrandAccentText>{l.title}</BrandAccentText>
+                </h3>
                 <p className="type-meta mt-2 max-w-2xl text-muted">{l.body}</p>
               </div>
             ))}

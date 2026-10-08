@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { FacilitiesBenefits } from "@/components/careers/FacilitiesBenefits";
 import { HowWeHire } from "@/components/careers/HowWeHire";
 import { OpeningsList } from "@/components/careers/OpeningsList";
+import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
@@ -75,7 +76,9 @@ export default function CareersPage() {
             {WHY.map((w, i) => (
               <div key={w.title}>
                 <p className="type-eyebrow text-brand">0{i + 1}</p>
-                <h3 className="type-h3 mt-2 text-ink">{w.title}</h3>
+                <h3 className="type-h3 mt-2 text-ink">
+                  <BrandAccentText>{w.title}</BrandAccentText>
+                </h3>
                 <p className="type-meta mt-2 text-muted">{w.body}</p>
               </div>
             ))}

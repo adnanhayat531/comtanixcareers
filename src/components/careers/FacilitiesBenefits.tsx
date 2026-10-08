@@ -1,3 +1,4 @@
+import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Container, Section } from "@/components/ui/Section";
 
 const BENEFITS = [
@@ -93,8 +94,7 @@ export function FacilitiesBenefits() {
       <Container>
         <div className="mx-auto w-full max-w-none">
           <h2 className="type-h2 text-center text-ink">
-            Facilities &amp;{" "}
-            <span className="font-bold text-ink">Benefits</span>
+            <BrandAccentText>Facilities & Benefits</BrandAccentText>
           </h2>
           <p className="type-eyebrow mt-2.5 text-center text-ink/70">
             Because your growth matters
@@ -119,7 +119,7 @@ export function FacilitiesBenefits() {
                 </div>
 
                 <h3 className="font-display text-[11px] font-bold leading-snug text-ink sm:text-sm md:text-base md:leading-[1.45]">
-                  {b.title}
+                  <BrandAccentText>{b.title}</BrandAccentText>
                 </h3>
               </li>
             ))}

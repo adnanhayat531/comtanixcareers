@@ -1,4 +1,5 @@
 import { type ReactNode } from "react";
+import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Container, Section } from "@/components/ui/Section";
 
 type CtaBannerProps = {
@@ -30,7 +31,11 @@ export function CtaBanner({
               {eyebrow ? (
                 <p className="type-eyebrow mb-2 text-white/75">{eyebrow}</p>
               ) : null}
-              <h2 className="type-h2 text-balance text-white">{title}</h2>
+              <h2 className="type-h2 text-balance text-white">
+                <BrandAccentText accentClassName="text-white underline decoration-white/55 decoration-2 underline-offset-[0.2em]">
+                  {title}
+                </BrandAccentText>
+              </h2>
               {description ? (
                 <p className="type-body mt-3 text-pretty text-white/90">{description}</p>
               ) : null}

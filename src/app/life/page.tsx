@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/ui/CtaBanner";
 import { PageHero } from "@/components/ui/PageHero";
@@ -55,7 +56,9 @@ export default function LifePage() {
                     <LifeIcon name={a.icon} className="h-4 w-4" />
                   </span>
                 </div>
-                <h3 className="type-h3 text-ink">{a.title}</h3>
+                <h3 className="type-h3 text-ink">
+                  <BrandAccentText>{a.title}</BrandAccentText>
+                </h3>
                 <p className="type-meta mt-2 text-muted">{a.body}</p>
               </article>
             ))}

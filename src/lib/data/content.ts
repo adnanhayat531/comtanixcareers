@@ -106,22 +106,22 @@ export const CAPABILITIES = [
   {
     title: "AI & Automation",
     body: "AI solutions that automate work and create new possibilities.",
-    image: "/capabilities/software-engineering.jpg",
+    image: "/capabilities/ai-automation.png",
   },
   {
     title: "Software Development",
     body: "Scalable software designed to solve real business challenges.",
-    image: "/capabilities/it-operations.jpg",
+    image: "/capabilities/software-development.png",
   },
   {
     title: "Cloud & Infrastructure",
     body: "Modern cloud and IT infrastructure designed to perform and scale.",
-    image: "/capabilities/us-delivery.jpg",
+    image: "/capabilities/cloud-infrastructure.png",
   },
   {
     title: "Cybersecurity & Data",
     body: "Secure systems and trusted data for a stronger digital foundation.",
-    image: "/capabilities/quality-security.jpg",
+    image: "/capabilities/cybersecurity-data.png",
   },
 ] as const;
 
@@ -130,17 +130,17 @@ export const WHY_COMTANIX = [
   {
     title: "Quality first",
     body: "Reliable delivery, thoughtful solutions, and outcomes that matter.",
-    image: "/why/quality.jpg",
+    image: "/why/quality.png",
   },
   {
     title: "Security & trust",
     body: "Protected systems, data, and intellectual property on every engagement.",
-    image: "/why/security.jpg",
+    image: "/why/security.png",
   },
   {
     title: "True partnership",
     body: "Shared tools, clear accountability, and close collaboration across time zones.",
-    image: "/why/partnership.jpg",
+    image: "/why/partnership.png",
   },
 ] as const;
 

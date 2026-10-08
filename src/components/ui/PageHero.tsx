@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { type ReactNode } from "react";
+import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Container } from "@/components/ui/Section";
 
 type PageHeroProps = {
@@ -88,7 +89,15 @@ export function PageHero({
               isDark || !image ? "text-white" : "text-ink"
             }`}
           >
-            {title}
+            <BrandAccentText
+              accentClassName={
+                isDark || !image
+                  ? "text-white underline decoration-white/50 decoration-2 underline-offset-[0.2em]"
+                  : "text-brand"
+              }
+            >
+              {title}
+            </BrandAccentText>
           </h1>
           <p
             className={`type-lede mt-3 max-w-xl text-pretty sm:mt-5 ${

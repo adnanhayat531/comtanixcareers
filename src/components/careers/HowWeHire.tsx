@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Container, Section } from "@/components/ui/Section";
 
 const STEPS = [
@@ -44,7 +45,7 @@ export function HowWeHire() {
       <Container>
         <div className="mx-auto w-full max-w-none">
           <h2 className="type-h2 text-center text-[var(--hire-ink)]">
-            How We <span className="font-bold text-[var(--hire)]">Hire</span>
+            <BrandAccentText>How We Hire</BrandAccentText>
           </h2>
           <p className="type-body mx-auto mt-2 max-w-[560px] px-1 text-center text-[var(--hire-mute)]">
             A clear, fair path from your application to your first day at
@@ -79,7 +80,7 @@ export function HowWeHire() {
                     Step {step.n}
                   </p>
                   <h3 className="font-display text-[15px] font-semibold leading-snug text-[var(--hire-ink)] sm:text-base">
-                    {step.title}
+                    <BrandAccentText>{step.title}</BrandAccentText>
                   </h3>
                   {"tags" in step && step.tags ? (
                     <div className="mt-2 mb-1 flex flex-wrap justify-center gap-1.5 sm:mb-2.5">
@@ -113,7 +114,9 @@ export function HowWeHire() {
               />
               <div className="min-w-0 pt-0.5 sm:pt-0">
                 <h4 className="font-display text-[15px] font-semibold text-white sm:text-base">
-                  Job Offered
+                  <BrandAccentText accentClassName="text-white underline decoration-white/50 decoration-2 underline-offset-[0.15em]">
+                    Job Offered
+                  </BrandAccentText>
                 </h4>
                 <p className="type-meta mt-1 text-white/90">
                   Welcome to the team. Let&apos;s get you started.
@@ -131,8 +134,8 @@ export function HowWeHire() {
                 sizes="(max-width: 640px) 56px, 68px"
               />
               <div className="min-w-0 pt-0.5 sm:pt-0">
-                <h4 className="font-display text-[15px] font-semibold text-[var(--hire)] sm:text-base">
-                  Not shortlisted?
+                <h4 className="font-display text-[15px] font-semibold text-[var(--hire-ink)] sm:text-base">
+                  <BrandAccentText>Not shortlisted?</BrandAccentText>
                 </h4>
                 <p className="type-meta mt-1 text-[var(--hire-mute)]">
                   You&apos;ll still be considered for other current or future

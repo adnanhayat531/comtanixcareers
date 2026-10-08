@@ -1,8 +1,10 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
+import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
+
 const HERO_HEADING = "Build what’s next with AI, technology, and the right expertise.";
 
 export function HeroCopy() {
@@ -16,7 +18,7 @@ export function HeroCopy() {
         />
 
         <h1 className="type-h1-hero reveal relative z-10 text-balance text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]">
-          {HERO_HEADING}
+          <BrandAccentText>{HERO_HEADING}</BrandAccentText>
         </h1>
 
         <p className="type-lede reveal-delay-1 relative z-10 mt-4 max-w-xl text-pretty text-white/95 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)] sm:max-w-2xl">

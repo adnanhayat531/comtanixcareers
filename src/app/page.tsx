@@ -7,6 +7,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
+import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Section";
 import { CtaBanner } from "@/components/ui/CtaBanner";
@@ -52,8 +53,9 @@ export default function HomePage() {
             <HeadingReveal className="mb-5 max-w-xl">
               <p className="type-eyebrow mb-2 text-brand">Who we are</p>
               <h2 className="type-h2 mt-0 text-ink">
-                A global technology company built around{" "}
-                <span className="text-brand">capability</span>.
+                <BrandAccentText>
+                  A global technology company built around capability.
+                </BrandAccentText>
               </h2>
               <p className="type-body mt-3 max-w-prose text-muted">
                 From software and AI to everyday IT, we bring specialized
@@ -93,7 +95,9 @@ export default function HomePage() {
           <HeadingReveal className="mb-6 max-w-xl md:mb-8">
             <p className="type-eyebrow mb-2 text-brand">What We Do</p>
             <h2 className="type-h2 mt-0 text-ink">
-              From emerging technology to everyday IT.
+              <BrandAccentText>
+                From emerging technology to everyday IT.
+              </BrandAccentText>
             </h2>
             <p className="type-body mt-3 max-w-xl text-muted">
               Focused technology services across AI, software, cloud, and
@@ -122,7 +126,9 @@ export default function HomePage() {
                     <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand text-white">
                       <Icon className="h-4 w-4" aria-hidden />
                     </span>
-                    <h3 className="type-h3 mt-3 text-ink sm:mt-4">{c.title}</h3>
+                    <h3 className="type-h3 mt-3 text-ink sm:mt-4">
+                      <BrandAccentText>{c.title}</BrandAccentText>
+                    </h3>
                     <p className="type-meta mt-2 text-muted">{c.body}</p>
                   </div>
                 </li>
@@ -138,7 +144,7 @@ export default function HomePage() {
           <HeadingReveal className="mb-6 max-w-xl md:mb-8">
             <p className="type-eyebrow mb-2 text-brand">Why Comtanix</p>
             <h2 className="type-h2 mt-0 text-ink">
-              How we work with clients.
+              <BrandAccentText>How we work with clients.</BrandAccentText>
             </h2>
             <p className="type-body mt-3 max-w-xl text-muted">
               A straightforward delivery model built around alignment,
@@ -163,7 +169,9 @@ export default function HomePage() {
                 </div>
                 <div className="px-4 py-4 sm:px-5 sm:py-5 md:px-6 md:py-6">
                   <p className="type-eyebrow text-brand">0{i + 1}</p>
-                  <h3 className="type-h3 mt-2 text-ink">{w.title}</h3>
+                  <h3 className="type-h3 mt-2 text-ink">
+                    <BrandAccentText>{w.title}</BrandAccentText>
+                  </h3>
                   <p className="type-meta mt-2 text-muted">{w.body}</p>
                 </div>
               </li>
@@ -179,7 +187,9 @@ export default function HomePage() {
             <HeadingReveal className="max-w-xl">
               <p className="type-eyebrow mb-2 text-brand">Career</p>
               <h2 className="type-h2 mt-0 text-ink">
-                Grow your career on work that’s real.
+                <BrandAccentText>
+                  Grow your career on work that’s real.
+                </BrandAccentText>
               </h2>
               <p className="type-body mt-3 max-w-prose text-muted">
                 Work on real-world technology projects, develop in-demand
@@ -240,7 +250,9 @@ export default function HomePage() {
             <HeadingReveal className="max-w-xl">
               <p className="type-eyebrow mb-2 text-brand">Life at Comtanix</p>
               <h2 className="type-h2 mt-0 text-ink">
-                A Culture Built Around People and Growth
+                <BrandAccentText>
+                  A Culture Built Around People and Growth
+                </BrandAccentText>
               </h2>
               <p className="type-body mt-3 max-w-xl text-muted">
                 The best work comes from people who have room to collaborate,
@@ -273,7 +285,9 @@ export default function HomePage() {
                   />
                 </div>
                 <div className="px-4 py-4 sm:px-5 sm:py-5">
-                  <h3 className="type-h3 text-ink">{item.title}</h3>
+                  <h3 className="type-h3 text-ink">
+                    <BrandAccentText>{item.title}</BrandAccentText>
+                  </h3>
                   <p className="type-meta mt-2 text-muted">{item.body}</p>
                 </div>
               </li>

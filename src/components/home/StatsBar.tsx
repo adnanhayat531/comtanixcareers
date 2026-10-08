@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { STATS } from "@/lib/data/content";
 import { Container } from "@/components/ui/Section";
 
@@ -88,7 +89,7 @@ export function StatsBar() {
           <div className="flex flex-col xl:flex-row xl:items-stretch">
             <div className="flex shrink-0 flex-col items-center justify-center px-4 py-4 text-center sm:px-6 sm:py-5 xl:w-[26%] xl:max-w-xs xl:items-center xl:px-8 xl:py-5">
               <h2 className="font-display text-lg font-bold leading-snug tracking-tight text-ink sm:text-xl">
-                Growing with purpose.
+                <BrandAccentText>Growing with purpose.</BrandAccentText>
               </h2>
               <p className="type-meta mt-1 text-muted">
                 Delivering with impact.

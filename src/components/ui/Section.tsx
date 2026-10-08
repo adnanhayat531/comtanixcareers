@@ -1,6 +1,7 @@
 "use client";
 
 import { type ReactNode } from "react";
+import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { HeadingReveal } from "@/components/motion/Reveal";
 
 export function Container({
@@ -72,7 +73,15 @@ export function SectionHeading({
         </p>
       ) : null}
       <h2 className={`type-h2 ${light ? "text-white" : "text-ink"}`}>
-        {title}
+        <BrandAccentText
+          accentClassName={
+            light
+              ? "text-white underline decoration-white/50 decoration-2 underline-offset-[0.2em]"
+              : "text-brand"
+          }
+        >
+          {title}
+        </BrandAccentText>
       </h2>
       {description ? (
         <p

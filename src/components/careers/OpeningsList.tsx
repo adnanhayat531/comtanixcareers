@@ -1,4 +1,5 @@
 import { ArrowRight, MapPin, Clock } from "lucide-react";
+import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Button } from "@/components/ui/Button";
 import { fetchJobs, jobToRole, type UiRole } from "@/lib/api";
 import { ROLES } from "@/lib/data/roles";
@@ -50,7 +51,9 @@ export async function OpeningsList() {
             className="list-row flex flex-col gap-5 px-5 py-7 sm:px-7 md:flex-row md:items-center md:justify-between md:gap-10 md:px-8"
           >
                   <div className="min-w-0 flex-1">
-                    <h2 className="type-h3 text-ink">{role.title}</h2>
+                    <h2 className="type-h3 text-ink">
+                      <BrandAccentText>{role.title}</BrandAccentText>
+                    </h2>
                     <div className="type-meta mt-2.5 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-muted">
                       <span className="inline-flex items-center gap-1.5">
                         <MapPin className="h-3.5 w-3.5 text-brand" aria-hidden />

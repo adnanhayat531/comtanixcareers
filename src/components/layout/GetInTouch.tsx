@@ -51,7 +51,9 @@ export function GetInTouch() {
       <Container>
         <div className="mb-8 md:mb-10">
           <p className="type-eyebrow text-brand">Get in touch</p>
-          <h2 className="type-h2 mt-2 text-ink">Contact</h2>
+          <h2 className="type-h2 mt-2 text-ink">
+            <span className="text-brand">Contact</span>
+          </h2>
           <p className="type-body mt-3 max-w-xl text-muted">
             Reach hiring or partnerships — we respond during business hours.
           </p>
