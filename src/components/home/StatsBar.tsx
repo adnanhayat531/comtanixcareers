@@ -65,12 +65,12 @@ function StatItem({
   }, [value, reduced]);
 
   return (
-    <div className="flex min-w-0 flex-col items-center justify-center px-1 text-center sm:px-2">
-      <div className="type-stat leading-none text-white">
+    <div className="flex min-w-0 flex-col items-center justify-center px-1.5 text-center sm:px-2">
+      <div className="font-display text-[1.75rem] font-bold leading-none tracking-tight text-white sm:text-[2.15rem] md:text-[2.5rem]">
         <span ref={ref}>{display}</span>
         {suffix ? <span className="text-white/95">{suffix}</span> : null}
       </div>
-      <p className="type-eyebrow mt-1 max-w-[7.5rem] leading-tight text-white/85 sm:max-w-[9rem] xl:max-w-none">
+      <p className="mt-2 max-w-[8.5rem] text-[11px] font-semibold tracking-[0.06em] text-white/95 uppercase sm:max-w-[10rem] sm:text-xs md:text-[13px]">
         {label}
       </p>
     </div>
@@ -86,17 +86,17 @@ export function StatsBar() {
       <Container>
         <div className="overflow-hidden rounded-xl bg-white shadow-overlay ring-1 ring-line sm:rounded-2xl">
           <div className="flex flex-col xl:flex-row xl:items-stretch">
-            <div className="flex shrink-0 flex-col items-center justify-center px-4 py-2.5 text-center sm:px-6 sm:py-3 xl:w-[26%] xl:max-w-xs xl:items-center xl:px-8 xl:py-3">
+            <div className="flex shrink-0 flex-col items-center justify-center px-4 py-4 text-center sm:px-6 sm:py-5 xl:w-[26%] xl:max-w-xs xl:items-center xl:px-8 xl:py-5">
               <h2 className="font-display text-lg font-bold leading-snug tracking-tight text-ink sm:text-xl">
                 Comtanix at a glance
               </h2>
-              <p className="type-meta mt-0.5 text-muted">
+              <p className="type-meta mt-1 text-muted">
                 Real delivery — real careers
               </p>
             </div>
 
-            <div className="relative flex min-w-0 flex-1 items-center justify-center bg-brand px-3 py-2.5 sm:px-5 sm:py-3 xl:rounded-tl-[2rem] xl:px-6 xl:py-3">
-              <div className="grid w-full grid-cols-2 place-items-center gap-x-2 gap-y-2.5 sm:grid-cols-4 sm:gap-y-0">
+            <div className="relative flex min-w-0 flex-1 items-center justify-center bg-brand px-3 py-4 sm:px-5 sm:py-5 xl:rounded-tl-[2rem] xl:px-6 xl:py-5">
+              <div className="grid w-full grid-cols-2 place-items-center gap-x-3 gap-y-4 sm:grid-cols-4 sm:gap-y-0">
                 {STATS.map((s) => (
                   <StatItem
                     key={s.label}

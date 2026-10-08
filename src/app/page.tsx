@@ -26,9 +26,9 @@ const CAPABILITY_ICONS = [Code2, Headphones, Globe2, ShieldCheck] as const;
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-deep">
+      <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-deep">
         <HeroNetwork />
-        <div className="relative z-10 flex min-h-[28rem] w-full flex-col items-center justify-center px-0 pb-16 pt-20 sm:min-h-[32rem] sm:pb-20 sm:pt-24 md:min-h-[min(78svh,40rem)] md:pb-24 md:pt-28 lg:min-h-[min(82svh,44rem)] lg:pb-28">
+        <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col items-center justify-center px-0 pb-16 pt-20 sm:pb-20 sm:pt-24 md:pb-24 md:pt-28 lg:pb-28">
           <HeroCopy />
         </div>
       </section>
