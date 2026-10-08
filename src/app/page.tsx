@@ -4,10 +4,8 @@ import {
   CheckCircle2,
   Cloud,
   Code2,
-  Headphones,
-  Globe2,
   ShieldCheck,
-  Users,
+  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Section";
@@ -19,31 +17,18 @@ import { HeadingReveal } from "@/components/motion/Reveal";
 import { OfficeIllustration } from "@/components/ui/OfficeIllustration";
 import {
   CAPABILITIES,
+  CAREER_POINTS,
   LIFE_PREVIEW,
+  WHO_WE_ARE_POINTS,
   WHY_COMTANIX,
 } from "@/lib/data/content";
 
-const CAPABILITY_ICONS = [Code2, Headphones, Globe2, ShieldCheck] as const;
-
-const WHO_WE_ARE_POINTS = [
-  {
-    icon: ShieldCheck,
-    label: "IT Strategy & Digital Transformation",
-  },
-  {
-    icon: Cloud,
-    label: "Cloud Solutions & Infrastructure",
-  },
-  {
-    icon: Users,
-    label: "Managed Services & IT Support",
-  },
-] as const;
+const CAPABILITY_ICONS = [Sparkles, Code2, Cloud, ShieldCheck] as const;
 
 export default function HomePage() {
   return (
     <>
-      <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-deep">
+      <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-surface">
         <HeroNetwork />
         <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col items-center justify-center px-0 pb-16 pt-20 sm:pb-20 sm:pt-24 md:pb-24 md:pt-28 lg:pb-28">
           <HeroCopy />
@@ -67,33 +52,32 @@ export default function HomePage() {
             <HeadingReveal className="mb-5 max-w-xl">
               <p className="type-eyebrow mb-2 text-brand">Who we are</p>
               <h2 className="type-h2 mt-0 text-ink">
-                A professional IT company{" "}
-                <span className="text-brand">serving businesses</span> worldwide.
+                A global technology company built around{" "}
+                <span className="text-brand">capability</span>.
               </h2>
               <p className="type-body mt-3 max-w-prose text-muted">
-                Comtanix delivers reliable and innovative IT solutions, helping
-                businesses around the world stay connected, secure, and ahead.
-                With a strong focus on quality, customer satisfaction, and
-                long-term partnerships, we&apos;re committed to delivering
-                technology that drives real results.
+                From software and AI to everyday IT, we bring specialized
+                talent, practical delivery, and AI-enabled solutions to help
+                businesses manage critical technology needs. We work closely
+                with client teams, systems, and processes to deliver reliable
+                outcomes and build long-term technology partnerships.
               </p>
             </HeadingReveal>
 
-            <ul className="mb-7 max-w-xl space-y-3.5">
-              {WHO_WE_ARE_POINTS.map(({ icon: Icon, label }) => (
-                <li key={label} className="flex items-center gap-3">
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-white">
-                    <Icon className="h-4 w-4" aria-hidden />
-                  </span>
-                  <span className="type-meta font-medium leading-snug text-ink">
-                    {label}
-                  </span>
+            <ul className="mb-7 max-w-xl space-y-3">
+              {WHO_WE_ARE_POINTS.map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <CheckCircle2
+                    className="mt-0.5 h-4 w-4 shrink-0 text-brand"
+                    aria-hidden
+                  />
+                  <span className="type-meta leading-snug text-ink">{item}</span>
                 </li>
               ))}
             </ul>
 
             <Button href="/about#story" variant="secondary">
-              Explore Our Services <ArrowRight className="h-4 w-4" aria-hidden />
+              Explore Comtanix <ArrowRight className="h-4 w-4" aria-hidden />
             </Button>
           </div>
 
@@ -103,17 +87,17 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* IT Capabilities */}
-      <Section className="bg-white">
+      {/* What We Do */}
+      <Section className="bg-canvas">
         <Container>
           <HeadingReveal className="mb-6 max-w-xl md:mb-8">
-            <p className="type-eyebrow mb-2 text-brand">What we do</p>
+            <p className="type-eyebrow mb-2 text-brand">What We Do</p>
             <h2 className="type-h2 mt-0 text-ink">
-              IT capabilities for global delivery.
+              From emerging technology to everyday IT.
             </h2>
             <p className="type-body mt-3 max-w-xl text-muted">
-              Focused workstreams that keep businesses worldwide moving — with
-              the people and discipline to match.
+              Focused technology services across AI, software, cloud, and
+              cybersecurity for growing and established businesses worldwide.
             </p>
           </HeadingReveal>
 
@@ -123,7 +107,7 @@ export default function HomePage() {
               return (
                 <li
                   key={c.title}
-                  className="card-lift group min-w-0 overflow-hidden rounded-xl border border-line bg-canvas/60"
+                  className="card-lift group min-w-0 overflow-hidden rounded-xl border border-line bg-white"
                 >
                   <div className="relative aspect-[16/10] w-full overflow-hidden bg-tint">
                     <Image
@@ -149,16 +133,16 @@ export default function HomePage() {
       </Section>
 
       {/* Why Comtanix */}
-      <Section className="bg-tint">
+      <Section className="bg-white">
         <Container>
           <HeadingReveal className="mb-6 max-w-xl md:mb-8">
             <p className="type-eyebrow mb-2 text-brand">Why Comtanix</p>
             <h2 className="type-h2 mt-0 text-ink">
-              How we work with global clients.
+              How we work with clients.
             </h2>
             <p className="type-body mt-3 max-w-xl text-muted">
-              Clear standards for quality, security, and partnership — without
-              the noise.
+              A straightforward delivery model built around alignment,
+              accountability, security, and consistent communication.
             </p>
           </HeadingReveal>
 
@@ -166,7 +150,7 @@ export default function HomePage() {
             {WHY_COMTANIX.map((w, i) => (
               <li
                 key={w.title}
-                className="card-lift min-w-0 overflow-hidden rounded-xl border border-line bg-white"
+                className="card-lift min-w-0 overflow-hidden rounded-xl border border-line bg-canvas/60"
               >
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-tint">
                   <Image
@@ -189,27 +173,23 @@ export default function HomePage() {
       </Section>
 
       {/* Careers */}
-      <Section className="bg-white">
+      <Section className="bg-tint">
         <Container className="grid min-w-0 grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14">
           <div className="min-w-0 max-w-xl text-left lg:max-w-none">
             <HeadingReveal className="max-w-xl">
-              <p className="type-eyebrow mb-2 text-brand">Careers</p>
+              <p className="type-eyebrow mb-2 text-brand">Career</p>
               <h2 className="type-h2 mt-0 text-ink">
-                Build your career on real global IT work.
+                Grow your career on work that’s real.
               </h2>
               <p className="type-body mt-3 max-w-prose text-muted">
-                Structured training, clear progression, and roles that connect you
-                to live international delivery — not short-term volume work.
+                Work on real-world technology projects, develop in-demand
+                skills, and grow alongside people who know the work and are
+                invested in your progress.
               </p>
             </HeadingReveal>
 
             <ul className="mt-6 space-y-0 border-t border-line">
-              {[
-                "Paid induction and role-specific onboarding",
-                "Mentorship with client account leads",
-                "Defined paths from associate to leadership",
-                "Fixed shift patterns with night-shift allowance",
-              ].map((item) => (
+              {CAREER_POINTS.map((item) => (
                 <li
                   key={item}
                   className="flex items-start gap-2.5 border-b border-line py-3.5"
@@ -242,7 +222,7 @@ export default function HomePage() {
             <div className="relative mx-auto aspect-[4/3] w-full max-w-xl overflow-hidden rounded-2xl bg-tint lg:mx-0 lg:max-w-none">
               <Image
                 src="/careers-team.jpg"
-                alt="Comtanix engineers collaborating in the office"
+                alt="Comtanix technology teams collaborating"
                 fill
                 sizes="(max-width: 1023px) 100vw, 50vw"
                 className="object-cover object-[center_25%]"
@@ -254,17 +234,18 @@ export default function HomePage() {
       </Section>
 
       {/* Life at Comtanix */}
-      <Section className="bg-tint">
+      <Section className="bg-white">
         <Container>
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-10">
             <HeadingReveal className="max-w-xl">
               <p className="type-eyebrow mb-2 text-brand">Life at Comtanix</p>
               <h2 className="type-h2 mt-0 text-ink">
-                People, culture, and growth around the work.
+                A Culture Built Around People and Growth
               </h2>
               <p className="type-body mt-3 max-w-xl text-muted">
-                Teams that deliver across time zones also need balance,
-                recognition, and room to learn.
+                The best work comes from people who have room to collaborate,
+                learn, contribute, and grow. Life at Comtanix brings that
+                balance into the everyday experience.
               </p>
             </HeadingReveal>
             <Button
@@ -280,7 +261,7 @@ export default function HomePage() {
             {LIFE_PREVIEW.map((item) => (
               <li
                 key={item.title}
-                className="card-lift min-w-0 overflow-hidden rounded-xl border border-line bg-white"
+                className="card-lift min-w-0 overflow-hidden rounded-xl border border-line bg-canvas/60"
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-tint">
                   <Image
@@ -303,14 +284,14 @@ export default function HomePage() {
 
       <CtaBanner
         eyebrow="Opportunities"
-        title="Open roles across engineering and IT support."
-        description="Review current openings, or explore how we train and grow people inside live client accounts."
+        title="Grow your career on work that’s real."
+        description="Review current openings, or submit your CV for future technology roles."
       >
         <Button href="/careers" variant="white">
           View openings <ArrowRight className="h-4 w-4" aria-hidden />
         </Button>
-        <Button href="/about#learning" variant="outlineLight">
-          Learning path <ArrowRight className="h-4 w-4" aria-hidden />
+        <Button href="/submit-cv" variant="outlineLight">
+          Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
         </Button>
       </CtaBanner>
     </>

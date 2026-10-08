@@ -72,7 +72,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   const isHome = pathname === "/";
-  const overlay = isHome && !scrolled && !open;
+  const overlay = false; // raw hero photo — solid nav for contrast
 
   useEffect(() => {
     setOpen(false);

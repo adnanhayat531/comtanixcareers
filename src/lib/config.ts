@@ -4,9 +4,9 @@ import { API_BASE_URL, apiUrl } from "@/lib/api";
 export const SITE = {
   name: "Comtanix",
   legalName: "Comtanix",
-  tagline: "IT careers that serve global enterprises",
+  tagline: "Build what’s next with AI, technology, and the right expertise",
   description:
-    "Comtanix is an IT company building careers and delivering dependable work for businesses worldwide.",
+    "Comtanix helps businesses harness AI, modernize technology, solve complex challenges, and move forward with highly capable technical teams.",
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
     "https://www.comtanix.com",

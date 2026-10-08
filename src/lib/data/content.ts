@@ -2,26 +2,26 @@ export const STATS = [
   {
     value: 250,
     suffix: "+",
-    label: "Team members",
-    sub: "Engineers & IT Specialists",
+    label: "Technology Professionals",
+    sub: "Specialists across IT, software, and AI",
   },
   {
     value: 6,
     suffix: "",
-    label: "Service lines",
-    sub: "Specialized enterprise hubs",
+    label: "Service Lines",
+    sub: "Focused technology practices",
   },
   {
     value: 24,
     suffix: "/7",
-    label: "Global coverage",
-    sub: "Follow-the-sun delivery support",
+    label: "Operational Support",
+    sub: "Always-on delivery coverage",
   },
   {
     value: 95,
     suffix: "%",
-    label: "Quality score target",
-    sub: "Consistently achieved benchmark",
+    label: "Quality Score Benchmark",
+    sub: "Consistently achieved standard",
   },
 ] as const;
 
@@ -101,26 +101,26 @@ export const LIFE_ACTIVITIES = [
   },
 ] as const;
 
-/** Home — IT capabilities */
+/** Home — What We Do */
 export const CAPABILITIES = [
   {
-    title: "Software engineering",
-    body: "Engineering teams that work in the client’s tools, processes, and delivery cadence.",
+    title: "AI & Automation",
+    body: "AI solutions that automate work and create new possibilities.",
     image: "/capabilities/software-engineering.jpg",
   },
   {
-    title: "IT operations",
-    body: "Reliable IT support and operations aligned to client hours and global standards.",
+    title: "Software Development",
+    body: "Scalable software designed to solve real business challenges.",
     image: "/capabilities/it-operations.jpg",
   },
   {
-    title: "Global delivery",
-    body: "Coverage across time zones with real-time collaboration and shared rituals.",
+    title: "Cloud & Infrastructure",
+    body: "Modern cloud and IT infrastructure designed to perform and scale.",
     image: "/capabilities/us-delivery.jpg",
   },
   {
-    title: "Quality & security",
-    body: "Outcome-focused quality, IP controls, and secured networks on every engagement.",
+    title: "Cybersecurity & Data",
+    body: "Secure systems and trusted data for a stronger digital foundation.",
     image: "/capabilities/quality-security.jpg",
   },
 ] as const;
@@ -129,17 +129,17 @@ export const CAPABILITIES = [
 export const WHY_COMTANIX = [
   {
     title: "Quality first",
-    body: "Root-cause resolution and client outcomes ahead of vanity metrics.",
+    body: "Reliable delivery, thoughtful solutions, and outcomes that matter.",
     image: "/why/quality.jpg",
   },
   {
     title: "Security & trust",
-    body: "NDAs, IP protection, and secure infrastructure on every client account.",
+    body: "Protected systems, data, and intellectual property on every engagement.",
     image: "/why/security.jpg",
   },
   {
-    title: "Embedded partnership",
-    body: "Same tools and accountability as the client team across time zones.",
+    title: "True partnership",
+    body: "Shared tools, clear accountability, and close collaboration across time zones.",
     image: "/why/partnership.jpg",
   },
 ] as const;
@@ -147,18 +147,32 @@ export const WHY_COMTANIX = [
 /** Home life preview */
 export const LIFE_PREVIEW = [
   {
-    title: "Client-aligned teams",
-    body: "Daily syncs with global leads and an ego-free collaborative floor.",
+    title: "Collaborative by Nature",
+    body: "Work alongside experienced teams, share ideas openly, and contribute to projects with people across markets.",
     image: "/home/life-teams.jpg",
   },
   {
-    title: "Learning on the job",
-    body: "Paid induction, communication coaching, and stack upskilling.",
+    title: "Always Learning",
+    body: "Build new skills through hands-on experience, continuous learning, and exposure to evolving technologies.",
     image: "/home/life-learning.jpg",
   },
   {
-    title: "Balance around the work",
-    body: "Sports, recognition, and team rituals built for hybrid and overnight shifts.",
+    title: "Room to Thrive",
+    body: "A workplace that values recognition, connection, wellbeing, and the balance needed to do your best work.",
     image: "/home/life-balance.jpg",
   },
+] as const;
+
+export const WHO_WE_ARE_POINTS = [
+  "Technical specialists across IT, software, and AI",
+  "Delivery across markets and time zones",
+  "Teams integrated with client environments",
+  "Long-term partnerships based on trust",
+] as const;
+
+export const CAREER_POINTS = [
+  "Paid induction and role-specific onboarding",
+  "Mentorship from experienced technology teams",
+  "Clear progression from associate to leadership",
+  "Structured shifts with night-shift allowance",
 ] as const;
