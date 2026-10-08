@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Public_Sans, Sora } from "next/font/google";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
+import { SiteChrome } from "@/components/layout/SiteChrome";
 import { SITE } from "@/lib/config";
 import "./globals.css";
 
@@ -91,10 +89,7 @@ export default function RootLayout({
       className={`${sora.variable} ${publicSans.variable}`}
     >
       <body className="flex min-h-dvh min-w-0 flex-col overflow-x-clip bg-canvas font-body text-ink antialiased [overflow-wrap:anywhere]">
-        <Header />
-        <main className="min-w-0 flex-1">{children}</main>
-        <Footer />
-        <WhatsAppFloat />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

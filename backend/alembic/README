@@ -1,0 +1,6 @@
+Alembic migrations for the Comtanix API.
+
+```bash
+alembic upgrade head
+alembic revision --autogenerate -m "describe change"
+```

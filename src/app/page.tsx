@@ -2,10 +2,12 @@ import Image from "next/image";
 import {
   ArrowRight,
   CheckCircle2,
+  Cloud,
   Code2,
   Headphones,
   Globe2,
   ShieldCheck,
+  Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Section";
@@ -23,6 +25,21 @@ import {
 
 const CAPABILITY_ICONS = [Code2, Headphones, Globe2, ShieldCheck] as const;
 
+const WHO_WE_ARE_POINTS = [
+  {
+    icon: ShieldCheck,
+    label: "IT Strategy & Digital Transformation",
+  },
+  {
+    icon: Cloud,
+    label: "Cloud Solutions & Infrastructure",
+  },
+  {
+    icon: Users,
+    label: "Managed Services & IT Support",
+  },
+] as const;
+
 export default function HomePage() {
   return (
     <>
@@ -36,45 +53,52 @@ export default function HomePage() {
       <StatsBar />
 
       {/* Who We Are */}
-      <Section className="bg-canvas pt-8 md:pt-12">
-        <Container className="grid min-w-0 items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+      <Section className="relative overflow-hidden bg-white pt-8 md:pt-12">
+        <div
+          className="pointer-events-none absolute -right-16 top-0 h-56 w-56 rounded-[2rem] bg-brand/10 blur-0 sm:h-72 sm:w-72"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute -left-20 bottom-8 h-40 w-40 rotate-12 rounded-[1.5rem] bg-tint sm:h-52 sm:w-52"
+          aria-hidden
+        />
+        <Container className="relative grid min-w-0 items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div className="order-2 min-w-0 text-left lg:order-1">
             <HeadingReveal className="mb-5 max-w-xl">
               <p className="type-eyebrow mb-2 text-brand">Who we are</p>
               <h2 className="type-h2 mt-0 text-ink">
-                A professional IT company serving businesses worldwide.
+                A professional IT company{" "}
+                <span className="text-brand">serving businesses</span> worldwide.
               </h2>
               <p className="type-body mt-3 max-w-prose text-muted">
-                Comtanix delivers software engineering and IT operations from
-                Pakistan, aligned to client tools, hours, and quality standards
-                across markets. We build capable teams that work as an extension
-                of the businesses we support.
+                Comtanix delivers reliable and innovative IT solutions, helping
+                businesses around the world stay connected, secure, and ahead.
+                With a strong focus on quality, customer satisfaction, and
+                long-term partnerships, we&apos;re committed to delivering
+                technology that drives real results.
               </p>
             </HeadingReveal>
 
-            <ul className="mb-7 max-w-xl space-y-3">
-              {[
-                "IT delivery for global enterprise accounts",
-                "Shared tools, processes, and accountability",
-                "People developed for long-term technical roles",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5">
-                  <CheckCircle2
-                    className="mt-0.5 h-4 w-4 shrink-0 text-brand"
-                    aria-hidden
-                  />
-                  <span className="type-meta leading-snug text-ink">{item}</span>
+            <ul className="mb-7 max-w-xl space-y-3.5">
+              {WHO_WE_ARE_POINTS.map(({ icon: Icon, label }) => (
+                <li key={label} className="flex items-center gap-3">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-white">
+                    <Icon className="h-4 w-4" aria-hidden />
+                  </span>
+                  <span className="type-meta font-medium leading-snug text-ink">
+                    {label}
+                  </span>
                 </li>
               ))}
             </ul>
 
             <Button href="/about#story" variant="secondary">
-              Explore Comtanix <ArrowRight className="h-4 w-4" aria-hidden />
+              Explore Our Services <ArrowRight className="h-4 w-4" aria-hidden />
             </Button>
           </div>
 
           <div className="order-1 w-full min-w-0 lg:order-2">
-            <OfficeIllustration caption="Comtanix office" />
+            <OfficeIllustration />
           </div>
         </Container>
       </Section>

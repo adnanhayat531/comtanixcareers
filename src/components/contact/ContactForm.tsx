@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { ArrowRight } from "lucide-react";
-import { CONFIG, SITE, waLink } from "@/lib/config";
+import { submitContact } from "@/lib/api";
 
 const fieldClass =
   "type-body box-border h-11 w-full rounded-lg border border-line bg-white px-3.5 text-ink outline-none transition placeholder:text-muted/65 focus:border-brand focus:ring-1 focus:ring-brand/25";
@@ -11,46 +11,32 @@ const labelClass = "type-label mb-1.5 block text-ink";
 
 export function ContactForm() {
   const [status, setStatus] = useState("");
+  const [statusError, setStatusError] = useState(false);
   const [pending, setPending] = useState(false);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("");
+    setStatusError(false);
     setPending(true);
 
     const form = e.currentTarget;
     const fd = new FormData(form);
-    const name = String(fd.get("name") ?? "").trim();
-    const email = String(fd.get("email") ?? "").trim();
-    const subject = String(fd.get("subject") ?? "").trim();
-    const message = String(fd.get("message") ?? "").trim();
 
-    if (CONFIG.formEndpoint) {
-      try {
-        const res = await fetch(CONFIG.formEndpoint, {
-          method: "POST",
-          body: fd,
-          headers: { Accept: "application/json" },
-        });
-        if (res.ok) {
-          setStatus("Message sent. We’ll get back to you soon.");
-          form.reset();
-          setPending(false);
-          return;
-        }
-      } catch {
-        /* fall through */
-      }
+    try {
+      const result = await submitContact(fd);
+      setStatus(result.message || "Message sent. We’ll get back to you soon.");
+      form.reset();
+    } catch (err) {
+      setStatusError(true);
+      setStatus(
+        err instanceof Error
+          ? err.message
+          : "Could not send your message. Please try again.",
+      );
+    } finally {
+      setPending(false);
     }
-
-    const text =
-      `Contact form - ${SITE.name}\nName: ${name}\nEmail: ${email}` +
-      (subject ? `\nSubject: ${subject}` : "") +
-      `\nMessage: ${message}`;
-
-    window.open(waLink(text), "_blank", "noopener");
-    setStatus("Opening WhatsApp to send your message…");
-    setPending(false);
   }
 
   return (
@@ -115,7 +101,10 @@ export function ContactForm() {
 
       <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
         {status ? (
-          <p className="type-meta text-brand" role="status">
+          <p
+            className={`type-meta ${statusError ? "font-medium text-red-700" : "text-brand"}`}
+            role={statusError ? "alert" : "status"}
+          >
             {status}
           </p>
         ) : (

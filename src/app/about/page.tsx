@@ -21,7 +21,7 @@ export default function AboutPage() {
         eyebrow="Company"
         title="About Comtanix"
         description="Pakistan delivery teams supporting global enterprise software and IT operations."
-        image="/office-building.jpg"
+        image="/office-comtanix.jpg"
         imageAlt="Comtanix office"
       >
         <Button href="/careers#openings" variant="white">
@@ -58,7 +58,7 @@ export default function AboutPage() {
             </Button>
           </div>
           <div className="order-1 min-w-0 w-full lg:order-2">
-            <OfficeIllustration />
+            <OfficeIllustration caption="Comtanix office — Bahria Town Phase 8" />
           </div>
         </Container>
       </Section>

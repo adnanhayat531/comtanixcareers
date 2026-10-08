@@ -3,7 +3,14 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { ArrowRight, FileUp } from "lucide-react";
-import { CONFIG, SITE, waLink } from "@/lib/config";
+import {
+  fetchJobBySlug,
+  fetchJobs,
+  jobToRole,
+  submitCareerCv,
+  submitJobApplication,
+  type UiRole,
+} from "@/lib/api";
 import { EXPERIENCE_OPTIONS, ROLES } from "@/lib/data/roles";
 
 const fieldClass =
@@ -32,12 +39,29 @@ const CONFIRMATIONS = [
 
 export type ApplyFormMode = "apply" | "cv";
 
+function fallbackRoles(): UiRole[] {
+  return ROLES.map((role) => ({
+    id: role.id,
+    title: role.title,
+    summary: role.summary,
+    detail: role.detail ?? role.summary,
+    tags: role.tags,
+    slug: role.id,
+    jobId: "",
+  }));
+}
+
 export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
   const params = useSearchParams();
-  const [role, setRole] = useState("");
+  const queryRole = params.get("role") ?? "";
+  const [roles, setRoles] = useState<UiRole[]>(fallbackRoles);
+  /** null = follow ?role= query; string = user/API selection (including ""). */
+  const [roleOverride, setRoleOverride] = useState<string | null>(null);
+  const role = roleOverride ?? queryRole;
   const [exp, setExp] = useState("");
   const [cvName, setCvName] = useState("");
   const [status, setStatus] = useState("");
+  const [statusError, setStatusError] = useState(false);
   const [cvErr, setCvErr] = useState("");
   const [confirmErr, setConfirmErr] = useState("");
   const [pending, setPending] = useState(false);
@@ -50,19 +74,88 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
   const isCv = mode === "cv";
 
   useEffect(() => {
-    const q = params.get("role");
-    if (q) setRole(q);
-  }, [params]);
+    let cancelled = false;
+    (async () => {
+      try {
+        const jobs = await fetchJobs({ cache: "no-store" });
+        if (cancelled || !jobs.length) return;
+        setRoles(jobs.map(jobToRole));
+      } catch {
+        /* keep static fallback roles */
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Job details via GET /api/jobs/{slug} when an open role is chosen.
+  useEffect(() => {
+    if (isCv || !role) return;
+
+    let cancelled = false;
+    (async () => {
+      try {
+        const jobs = await fetchJobs({ cache: "no-store" });
+        const match = jobs.find(
+          (j) => j.title === role || j.slug === role || j.code === role,
+        );
+        if (!match) return;
+        const detailed = await fetchJobBySlug(match.slug, { cache: "no-store" });
+        if (cancelled || !detailed) return;
+        const ui = jobToRole(detailed);
+        setRoles((prev) => {
+          const byId = new Map(prev.map((r) => [r.title, r]));
+          byId.set(ui.title, ui);
+          for (const job of jobs) {
+            const mapped = jobToRole(job);
+            if (!byId.has(mapped.title)) byId.set(mapped.title, mapped);
+          }
+          return Array.from(byId.values()).sort((a, b) =>
+            a.title.localeCompare(b.title),
+          );
+        });
+        if (ui.title !== role) setRoleOverride(ui.title);
+      } catch {
+        /* keep list data */
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isCv, role]);
+
+  async function resolveJobId(roleTitle: string): Promise<string> {
+    const fromState = roles.find((r) => r.title === roleTitle)?.jobId;
+    if (fromState) return fromState;
+
+    const jobs = await fetchJobs({ cache: "no-store" });
+    const match = jobs.find(
+      (j) => j.title === roleTitle || j.slug === roleTitle || j.code === roleTitle,
+    );
+    if (!match) return "";
+    const detailed = await fetchJobBySlug(match.slug, { cache: "no-store" });
+    return detailed?.id ?? match.id;
+  }
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setCvErr("");
     setConfirmErr("");
     setStatus("");
+    setStatusError(false);
     setPending(true);
 
     const form = e.currentTarget;
     const fd = new FormData(form);
+    const email = String(fd.get("email") ?? "").trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setStatusError(true);
+      setStatus("Please enter a valid email address.");
+      setPending(false);
+      return;
+    }
 
     if (
       !checks.confirmNight ||
@@ -99,57 +192,60 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
       return;
     }
 
-    if (CONFIG.formEndpoint) {
-      try {
-        const res = await fetch(CONFIG.formEndpoint, {
-          method: "POST",
-          body: fd,
-          headers: { Accept: "application/json" },
-        });
-        if (res.ok) {
-          setStatus(
-            isCv
-              ? "CV received. We will review it for future openings."
-              : "Application received. Our team will contact you soon.",
+    try {
+      if (isCv) {
+        const result = await submitCareerCv(fd);
+        setStatus(
+          result.message ||
+            "CV received. We will review it for future openings.",
+        );
+      } else {
+        const roleTitle = String(fd.get("role") ?? role);
+        const jobId = await resolveJobId(roleTitle);
+        if (!jobId) {
+          throw new Error(
+            "Selected open role was not found. Please choose a current opening.",
           );
-          form.reset();
-          setRole("");
-          setExp("");
-          setCvName("");
-          setChecks({
-            confirmNight: false,
-            confirmOnsite: false,
-            confirmLocation: false,
-          });
-          setPending(false);
-          return;
         }
-      } catch {
-        /* fall through to WhatsApp */
+        const result = await submitJobApplication(jobId, fd);
+        setStatus(
+          result.message ||
+            "Application received. Our team will contact you soon.",
+        );
       }
+
+      form.reset();
+      setRoleOverride("");
+      setExp("");
+      setCvName("");
+      setChecks({
+        confirmNight: false,
+        confirmOnsite: false,
+        confirmLocation: false,
+      });
+    } catch (err) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again.";
+      const lower = message.toLowerCase();
+      if (
+        lower.includes("cv") ||
+        lower.includes("pdf") ||
+        lower.includes("word") ||
+        lower.includes("upload") ||
+        lower.includes("5 mb")
+      ) {
+        setCvErr(message);
+      } else if (lower.includes("confirm")) {
+        setConfirmErr(message);
+      } else {
+        setStatusError(true);
+        setStatus(message);
+      }
+    } finally {
+      setPending(false);
     }
-
-    const name = String(fd.get("name") ?? "");
-    const phone = String(fd.get("phone") ?? "");
-    const position = String(fd.get("role") ?? "");
-    const experience = String(fd.get("exp") ?? "");
-    const msg = String(fd.get("msg") ?? "").trim();
-
-    const text = isCv
-      ? `CV submission - ${SITE.name} (future openings only)\nName: ${name}\nPhone: ${phone}\nInterest: ${position}\nExperience: ${experience}` +
-        `\nConfirmed: Night shift · Onsite · Bahria Town Phase 8` +
-        (msg ? `\nNote: ${msg}` : "") +
-        `\nCV: ${cv.name} (sending it in this chat)`
-      : `Job application - ${SITE.name} (current opening)\nName: ${name}\nPhone: ${phone}\nPosition: ${position}\nExperience: ${experience}` +
-        `\nConfirmed: Night shift · Onsite · Bahria Town Phase 8` +
-        (msg ? `\nNote: ${msg}` : "") +
-        `\nCV: ${cv.name} (sending it in this chat)`;
-
-    window.open(waLink(text), "_blank", "noopener");
-    setStatus(
-      `WhatsApp opened. Press Send, then attach your CV (“${cv.name}”) using the paperclip and choose Document.`,
-    );
-    setPending(false);
   }
 
   return (
@@ -176,19 +272,34 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
           />
         </div>
         <div className="min-w-0">
-          <label className={labelClass} htmlFor="apply-phone">
-            Phone number
+          <label className={labelClass} htmlFor="apply-email">
+            Email address
           </label>
           <input
-            id="apply-phone"
-            name="phone"
-            type="tel"
+            id="apply-email"
+            name="email"
+            type="email"
             required
-            autoComplete="tel"
-            placeholder="03xx xxxxxxx"
+            autoComplete="email"
+            placeholder="name@example.com"
             className={fieldClass}
           />
         </div>
+      </div>
+
+      <div className="min-w-0">
+        <label className={labelClass} htmlFor="apply-phone">
+          Phone number
+        </label>
+        <input
+          id="apply-phone"
+          name="phone"
+          type="tel"
+          required
+          autoComplete="tel"
+          placeholder="03xx xxxxxxx"
+          className={fieldClass}
+        />
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -201,13 +312,13 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
             name="role"
             required
             value={role}
-            onChange={(e) => setRole(e.target.value)}
+            onChange={(e) => setRoleOverride(e.target.value)}
             className={`${fieldClass} ${role ? "text-ink" : "text-muted/65"}`}
           >
             <option value="">
               {isCv ? "Select interest" : "Select open role"}
             </option>
-            {ROLES.map((r) => (
+            {roles.map((r) => (
               <option key={r.id} value={r.title}>
                 {r.title}
               </option>
@@ -338,7 +449,10 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
 
       <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
         {status ? (
-          <p className="type-meta text-brand" role="status">
+          <p
+            className={`type-meta ${statusError ? "font-medium text-red-700" : "text-brand"}`}
+            role={statusError ? "alert" : "status"}
+          >
             {status}
           </p>
         ) : (

@@ -1,3 +1,5 @@
+import { API_BASE_URL, apiUrl } from "@/lib/api";
+
 /** Canonical brand — use this everywhere (UI, SEO, forms, WhatsApp). */
 export const SITE = {
   name: "Comtanix",
@@ -14,7 +16,13 @@ export const SITE = {
 export const CONFIG = {
   whatsapp: "923001234567",
   whatsappShow: "+92 300 1234567",
-  formEndpoint: "",
+  /** FastAPI origin — prefer NEXT_PUBLIC_API_URL. */
+  apiUrl: API_BASE_URL,
+  /**
+   * Unified submit URL kept for compatibility.
+   * Forms use dedicated endpoints in ApplyForm / ContactForm.
+   */
+  formEndpoint: apiUrl("/api/submit"),
   email: "info@comtanix.com",
   careersEmail: "careers@comtanix.com",
   partnersEmail: "partners@comtanix.com",

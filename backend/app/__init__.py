@@ -1,0 +1,1 @@
+"""Comtanix FastAPI application package."""
