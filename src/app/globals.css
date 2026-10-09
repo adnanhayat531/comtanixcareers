@@ -54,7 +54,7 @@
   --radius-xl: 1rem;
   --header-h: 2.5rem;
   --sidebar-w: min(15rem, 85vw);
-  --hero-min-h: clamp(24rem, 94svh, 46rem);
+  --hero-min-h: clamp(22rem, 90svh, 42rem);
 }
 
 /* Very small phones */
@@ -67,7 +67,7 @@
     --h1: clamp(1.2rem, 5.5vw, 1.4rem);
     --h2: clamp(1.125rem, 5vw, 1.35rem);
     --control-h: 2.375rem;
-    --hero-min-h: clamp(22rem, 88svh, 32rem);
+    --hero-min-h: clamp(20rem, 90svh, 32rem);
   }
 }
 
@@ -111,14 +111,14 @@ html {
 @media (min-width: 640px) {
   :root {
     --header-h: 2.625rem;
-    --hero-min-h: clamp(28rem, 98svh, 50rem);
+    --hero-min-h: clamp(26rem, 90svh, 46rem);
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --header-h: 2.75rem;
-    --hero-min-h: clamp(32rem, 100svh, 56rem);
+    --hero-min-h: clamp(28rem, 90svh, 48rem);
     --sidebar-w: 15rem;
   }
 }
