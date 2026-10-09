@@ -12,7 +12,7 @@ export function HeroNetwork() {
         decoding="async"
         fetchPriority="high"
         draggable={false}
-        className="absolute inset-0 h-full w-full object-cover object-[center_40%]"
+        className="absolute inset-0 h-full w-full object-cover object-[center_48%]"
       />
     </div>
   );

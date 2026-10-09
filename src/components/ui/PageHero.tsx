@@ -34,7 +34,7 @@ export function PageHero({
 
   return (
     <section
-      className={`relative flex min-h-[min(46vh,20rem)] flex-col justify-center overflow-hidden sm:min-h-[min(52vh,28rem)] md:min-h-[min(56vh,34rem)] lg:min-h-[min(58vh,36rem)] ${className}`}
+      className={`relative flex min-h-[min(38vh,16rem)] flex-col justify-center overflow-hidden sm:min-h-[min(42vh,20rem)] md:min-h-[min(46vh,24rem)] ${className}`}
     >
       {image ? (
         <>
@@ -75,10 +75,10 @@ export function PageHero({
         </div>
       )}
 
-      <Container className="relative z-10 py-12 sm:py-16 md:py-20 lg:py-24">
+      <Container className="relative z-10 py-10 sm:py-12 md:py-14 lg:py-16">
         <div className="max-w-2xl min-w-0">
           <p
-            className={`type-eyebrow mb-2 sm:mb-3 ${
+            className={`type-eyebrow mb-2 ${
               isDark || !image ? "text-white/80" : "text-brand"
             }`}
           >
@@ -100,14 +100,14 @@ export function PageHero({
             </BrandAccentText>
           </h1>
           <p
-            className={`type-lede mt-3 max-w-xl text-pretty sm:mt-5 ${
+            className={`type-lede mt-3 max-w-xl text-pretty ${
               isDark || !image ? "text-white/90" : "text-ink/85"
             }`}
           >
             {description}
           </p>
           {children ? (
-            <div className="mt-6 flex w-full max-w-sm flex-col gap-2.5 sm:mt-8 sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-3 [&_a]:w-full sm:[&_a]:w-auto">
+            <div className="mt-5 flex w-full max-w-sm flex-col gap-2.5 sm:mt-6 sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-3 [&_a]:w-full sm:[&_a]:w-auto">
               {children}
             </div>
           ) : null}

@@ -52,17 +52,17 @@ export default function SubmitCvPage() {
 
       <Section id="cv-form" className="scroll-mt-24 bg-white md:scroll-mt-28">
         <Container>
-          <div className="grid items-start gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
+          <div className="grid items-start gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
             <div className="min-w-0">
               <SectionHeading
                 compact
                 eyebrow="Talent pool"
                 title="CV submission form"
                 description="This form is for future openings — not a live role application. Attach a PDF or Word CV to continue."
-                className="mb-8"
+                className="mb-6"
               />
 
-              <div className="mb-8 rounded-xl border border-brand/25 bg-tint px-5 py-5">
+              <div className="mb-6 rounded-[var(--radius-lg)] border border-brand/25 bg-tint px-4 py-4">
                 <p className="type-eyebrow text-brand">Confirm before you submit</p>
                 <p className="type-meta mt-2 text-muted">
                   Future roles at Comtanix are typically night shift, onsite, and

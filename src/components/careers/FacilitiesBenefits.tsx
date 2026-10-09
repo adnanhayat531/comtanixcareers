@@ -100,25 +100,24 @@ export function FacilitiesBenefits() {
             Because your growth matters
           </p>
 
-          <ul className="mt-8 grid grid-cols-2 gap-2.5 sm:mt-10 sm:gap-4 md:mt-12 md:grid-cols-3 md:gap-5">
+          <ul className="mt-6 grid grid-cols-2 gap-2.5 sm:mt-8 sm:gap-3 md:grid-cols-3 md:gap-4">
             {BENEFITS.map((b) => (
               <li
                 key={b.title}
-                className="group relative flex min-h-[140px] min-w-0 flex-col items-center overflow-hidden rounded-2xl border border-[var(--fb-line)] bg-white px-2 py-4 text-center shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(14,154,167,0.18)] sm:min-h-[180px] sm:rounded-[22px] sm:px-4 sm:py-6 md:min-h-[210px] md:rounded-[26px] md:px-[18px] md:py-7"
+                className="group relative flex min-h-[7.5rem] min-w-0 flex-col items-center overflow-hidden rounded-[var(--radius-lg)] border border-[var(--fb-line)] bg-white px-2.5 py-3.5 text-center shadow-soft transition duration-300 hover:-translate-y-0.5 hover:shadow-hover sm:min-h-[9rem] sm:px-3.5 sm:py-5 md:min-h-[10rem]"
               >
-                {/* Top card line — white */}
                 <span
                   aria-hidden
-                  className="absolute inset-x-0 top-0 h-[5px] bg-white"
+                  className="absolute inset-x-0 top-0 h-1 bg-white"
                 />
 
-                <div className="mx-auto mb-3 grid h-14 w-14 place-items-center rounded-full bg-[var(--fb-l)] shadow-[0_4px_12px_rgba(14,154,167,0.15)] transition-colors duration-300 group-hover:bg-[var(--fb)] sm:mb-4 sm:h-[72px] sm:w-[72px] md:mb-5 md:h-[84px] md:w-[84px]">
-                  <span className="block h-7 w-7 text-[var(--fb)] transition-colors duration-300 group-hover:text-white sm:h-9 sm:w-9 md:h-[42px] md:w-[42px] [&_svg]:h-full [&_svg]:w-full [&_svg]:fill-none [&_svg]:stroke-current [&_svg]:stroke-[2.4] [&_svg]:[stroke-linecap:round] [&_svg]:[stroke-linejoin:round] [&_.fill-a]:fill-current [&_.fill-a]:opacity-20">
+                <div className="mx-auto mb-2.5 grid h-12 w-12 place-items-center rounded-full bg-[var(--fb-l)] shadow-[0_0.25rem_0.75rem_rgba(14,154,167,0.15)] transition-colors duration-300 group-hover:bg-[var(--fb)] sm:mb-3 sm:h-14 sm:w-14 md:h-16 md:w-16">
+                  <span className="block h-6 w-6 text-[var(--fb)] transition-colors duration-300 group-hover:text-white sm:h-7 sm:w-7 md:h-8 md:w-8 [&_svg]:h-full [&_svg]:w-full [&_svg]:fill-none [&_svg]:stroke-current [&_svg]:stroke-[2.4] [&_svg]:[stroke-linecap:round] [&_svg]:[stroke-linejoin:round] [&_.fill-a]:fill-current [&_.fill-a]:opacity-20">
                     {b.icon}
                   </span>
                 </div>
 
-                <h3 className="font-display text-[11px] font-bold leading-snug text-ink sm:text-sm md:text-base md:leading-[1.45]">
+                <h3 className="type-h3 text-ink">
                   <BrandAccentText>{b.title}</BrandAccentText>
                 </h3>
               </li>

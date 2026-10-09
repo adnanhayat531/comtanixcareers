@@ -41,10 +41,10 @@ export default function LifePage() {
             title="How we live the work week"
             description="Facilities, recognition, and team activities designed around real shift patterns."
           />
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {LIFE_ACTIVITIES.map((a) => (
               <article key={a.title} className="group flex flex-col">
-                <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-xl bg-white">
+                <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] bg-white">
                   <Image
                     src={a.image}
                     alt=""
@@ -52,14 +52,14 @@ export default function LifePage() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition duration-500 group-hover:scale-[1.03]"
                   />
-                  <span className="absolute bottom-3 left-3 z-10 grid h-9 w-9 place-items-center rounded-lg bg-white text-brand shadow-soft">
-                    <LifeIcon name={a.icon} className="h-4 w-4" />
+                  <span className="absolute bottom-2.5 left-2.5 z-10 grid h-8 w-8 place-items-center rounded-[var(--radius-md)] bg-white text-brand shadow-soft">
+                    <LifeIcon name={a.icon} className="h-3.5 w-3.5" />
                   </span>
                 </div>
                 <h3 className="type-h3 text-ink">
                   <BrandAccentText>{a.title}</BrandAccentText>
                 </h3>
-                <p className="type-meta mt-2 text-muted">{a.body}</p>
+                <p className="type-meta mt-1.5 text-muted">{a.body}</p>
               </article>
             ))}
           </div>

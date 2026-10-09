@@ -4,8 +4,7 @@ import { useState, type FormEvent } from "react";
 import { ArrowRight } from "lucide-react";
 import { submitContact } from "@/lib/api";
 
-const fieldClass =
-  "type-body box-border h-11 w-full rounded-lg border border-line bg-white px-3.5 text-ink outline-none transition placeholder:text-muted/65 focus:border-brand focus:ring-1 focus:ring-brand/25";
+const fieldClass = "ui-field";
 
 const labelClass = "type-label mb-1.5 block text-ink";
 
@@ -95,7 +94,7 @@ export function ContactForm() {
           required
           rows={5}
           placeholder="Write your message"
-          className={`${fieldClass} h-auto min-h-[140px] resize-y py-3 leading-relaxed`}
+          className={`${fieldClass} ui-field-area`}
         />
       </div>
 
@@ -113,7 +112,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex h-11 w-full shrink-0 items-center justify-center gap-2 rounded-md bg-brand px-6 font-display text-sm font-semibold text-white transition hover:brightness-105 disabled:opacity-60 sm:w-auto"
+          className="ui-btn ui-btn-primary w-full sm:w-auto"
         >
           {pending ? "Sending…" : "Submit"}
           {!pending ? <ArrowRight className="h-4 w-4" aria-hidden /> : null}

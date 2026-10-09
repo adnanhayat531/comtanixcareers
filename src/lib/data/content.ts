@@ -164,10 +164,18 @@ export const LIFE_PREVIEW = [
 ] as const;
 
 export const WHO_WE_ARE_POINTS = [
-  "Technical specialists across IT, software, and AI",
-  "Delivery across markets and time zones",
-  "Teams integrated with client environments",
-  "Long-term partnerships based on trust",
+  {
+    icon: "shield" as const,
+    label: "IT Strategy & Digital Transformation",
+  },
+  {
+    icon: "cloud" as const,
+    label: "Cloud Solutions & Infrastructure",
+  },
+  {
+    icon: "users" as const,
+    label: "Managed Services & IT Support",
+  },
 ] as const;
 
 export const CAREER_POINTS = [

@@ -66,9 +66,10 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   }
 
   const nav = (
-    <nav className="flex flex-1 flex-col gap-1 p-3">
+    <nav className="flex flex-1 flex-col gap-0.5 p-2.5">
       {NAV.map((item) => {
-        const active = item.exact
+        const exact = "exact" in item && item.exact;
+        const active = exact
           ? pathname === item.href
           : pathname === item.href || pathname.startsWith(`${item.href}/`);
         const Icon = item.icon;
@@ -77,7 +78,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
             key={item.href}
             href={item.href}
             onClick={() => setOpen(false)}
-            className={`flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+            className={`type-nav flex items-center gap-2.5 rounded-md px-2.5 py-2 transition ${
               active
                 ? "bg-brand text-white"
                 : "text-ink/80 hover:bg-tint hover:text-ink"
@@ -88,11 +89,11 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           </Link>
         );
       })}
-      <div className="mt-auto space-y-1 border-t border-line pt-3">
+      <div className="mt-auto space-y-0.5 border-t border-line pt-2.5">
         <Link
           href="/admin/settings"
           onClick={() => setOpen(false)}
-          className={`flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+          className={`type-nav flex items-center gap-2.5 rounded-md px-2.5 py-2 transition ${
             pathname.startsWith("/admin/settings")
               ? "bg-brand text-white"
               : "text-ink/80 hover:bg-tint"
@@ -104,7 +105,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
         <button
           type="button"
           onClick={onLogout}
-          className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium text-ink/80 transition hover:bg-tint"
+          className="type-nav flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-ink/80 transition hover:bg-tint"
         >
           <LogOut className="h-4 w-4" aria-hidden />
           Logout
@@ -115,14 +116,14 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-dvh bg-canvas">
-      <aside className="hidden w-64 shrink-0 flex-col border-r border-line bg-white lg:flex">
-        <div className="border-b border-line px-5 py-5">
-          <p className="font-display text-lg font-semibold text-ink">Comtanix</p>
+      <aside className="hidden w-[var(--sidebar-w)] shrink-0 flex-col border-r border-line bg-white lg:flex">
+        <div className="border-b border-line px-4 py-4">
+          <p className="type-section-title text-ink">Comtanix</p>
           <p className="type-meta text-muted">Admin Panel</p>
         </div>
         {nav}
         {admin ? (
-          <div className="border-t border-line px-5 py-4">
+          <div className="border-t border-line px-4 py-3">
             <p className="truncate text-sm font-medium text-ink">{admin.name}</p>
             <p className="truncate text-xs text-muted">{admin.email}</p>
           </div>
@@ -130,23 +131,21 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex items-center justify-between border-b border-line bg-white px-4 py-3 lg:px-8">
+        <header className="flex items-center justify-between border-b border-line bg-white px-4 py-3 lg:px-6">
           <button
             type="button"
-            className="rounded-lg border border-line p-2 lg:hidden"
+            className="rounded-md border border-line p-2 lg:hidden"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
           >
             <Menu className="h-5 w-5" />
           </button>
-          <p className="font-display text-sm font-semibold text-ink lg:text-base">
-            Hiring operations
-          </p>
+          <p className="type-section-title text-ink">Hiring operations</p>
           <Link href="/" className="type-meta text-brand hover:underline">
             View site
           </Link>
         </header>
-        <div className="min-w-0 flex-1 p-4 sm:p-6 lg:p-8">{children}</div>
+        <div className="min-w-0 flex-1 p-4 sm:p-5 lg:p-6">{children}</div>
       </div>
 
       {open ? (
@@ -157,9 +156,9 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
             aria-label="Close menu"
             onClick={() => setOpen(false)}
           />
-          <aside className="absolute inset-y-0 left-0 flex w-72 flex-col bg-white shadow-overlay">
-            <div className="flex items-center justify-between border-b border-line px-4 py-4">
-              <p className="font-display font-semibold text-ink">Menu</p>
+          <aside className="absolute inset-y-0 left-0 flex w-[var(--sidebar-w)] flex-col bg-white shadow-overlay">
+            <div className="flex items-center justify-between border-b border-line px-4 py-3">
+              <p className="type-section-title text-ink">Menu</p>
               <button type="button" onClick={() => setOpen(false)} aria-label="Close">
                 <X className="h-5 w-5" />
               </button>

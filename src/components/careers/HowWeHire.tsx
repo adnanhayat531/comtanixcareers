@@ -47,16 +47,15 @@ export function HowWeHire() {
           <h2 className="type-h2 text-center text-[var(--hire-ink)]">
             <BrandAccentText>How We Hire</BrandAccentText>
           </h2>
-          <p className="type-body mx-auto mt-2 max-w-[560px] px-1 text-center text-[var(--hire-mute)]">
+          <p className="type-body mx-auto mt-2 max-w-lg px-1 text-center text-[var(--hire-mute)]">
             A clear, fair path from your application to your first day at
             Comtanix.
           </p>
 
-          <ol className="relative mt-10 grid grid-cols-1 gap-8 sm:mt-12 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-10 md:gap-x-6 lg:mt-16 lg:grid-cols-5 lg:gap-4 xl:gap-5">
-            {/* Desktop connector */}
+          <ol className="relative mt-8 grid grid-cols-1 gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 lg:mt-12 lg:grid-cols-5 lg:gap-3 xl:gap-4">
             <div
               aria-hidden
-              className="pointer-events-none absolute top-[2.15rem] right-[6%] left-[6%] z-0 hidden border-t-2 border-dashed border-[var(--hire)] opacity-45 lg:block"
+              className="pointer-events-none absolute top-[1.75rem] right-[6%] left-[6%] z-0 hidden border-t-2 border-dashed border-[var(--hire)] opacity-45 lg:block"
             />
 
             {STEPS.map((step) => (
@@ -64,37 +63,37 @@ export function HowWeHire() {
                 key={step.n}
                 className="relative z-10 mx-auto flex w-full max-w-sm flex-col items-center sm:max-w-none"
               >
-                <div className="relative z-20 h-16 w-16 shrink-0 overflow-hidden rounded-[18px] border-[3px] border-white shadow-[0_8px_18px_rgba(14,154,167,0.35)] sm:h-[4.5rem] sm:w-[4.5rem] lg:h-[88px] lg:w-[88px] lg:rounded-[20px]">
+                <div className="relative z-20 h-14 w-14 shrink-0 overflow-hidden rounded-[var(--radius-lg)] border-[3px] border-white shadow-[0_0.5rem_1rem_rgba(14,154,167,0.3)] sm:h-16 sm:w-16 lg:h-[4.25rem] lg:w-[4.25rem]">
                   <Image
                     src={step.icon}
                     alt=""
-                    width={88}
-                    height={88}
+                    width={68}
+                    height={68}
                     className="h-full w-full object-cover"
-                    sizes="(max-width: 640px) 64px, (max-width: 1024px) 72px, 88px"
+                    sizes="(max-width: 640px) 56px, (max-width: 1024px) 64px, 68px"
                   />
                 </div>
 
-                <div className="mt-[-1.35rem] flex h-full w-full flex-col rounded-2xl border border-[var(--hire-line)] bg-white px-4 pt-9 pb-5 text-center shadow-[0_6px_18px_rgba(14,154,167,0.08)] sm:rounded-[18px] sm:px-3.5 sm:pt-10 sm:pb-[22px] lg:mt-[-1.75rem] lg:px-3 lg:pt-12 xl:px-4">
-                  <p className="mb-1.5 font-display text-[11px] font-bold tracking-[0.12em] text-[var(--hire)] uppercase sm:text-xs">
+                <div className="mt-[-1.1rem] flex h-full w-full flex-col rounded-[var(--radius-lg)] border border-[var(--hire-line)] bg-white px-3.5 pt-8 pb-4 text-center shadow-[0_0.35rem_1rem_rgba(14,154,167,0.08)] sm:px-3 sm:pt-9 lg:mt-[-1.25rem] lg:px-2.5 lg:pt-10 xl:px-3">
+                  <p className="type-eyebrow mb-1.5 text-[var(--hire)]">
                     Step {step.n}
                   </p>
-                  <h3 className="font-display text-[15px] font-semibold leading-snug text-[var(--hire-ink)] sm:text-base">
+                  <h3 className="type-h3 text-[var(--hire-ink)]">
                     <BrandAccentText>{step.title}</BrandAccentText>
                   </h3>
                   {"tags" in step && step.tags ? (
-                    <div className="mt-2 mb-1 flex flex-wrap justify-center gap-1.5 sm:mb-2.5">
+                    <div className="mt-2 mb-1 flex flex-wrap justify-center gap-1.5">
                       {step.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full bg-[var(--hire-l)] px-2.5 py-1 font-body text-[11px] font-medium text-[var(--hire-d)] sm:text-xs"
+                          className="rounded-md bg-[var(--hire-l)] px-2 py-0.5 type-meta font-medium text-[var(--hire-d)]"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
                   ) : null}
-                  <p className="type-meta mt-2 flex-1 text-[var(--hire-mute)]">
+                  <p className="type-meta mt-1.5 flex-1 text-[var(--hire-mute)]">
                     {step.body}
                   </p>
                 </div>
@@ -102,18 +101,18 @@ export function HowWeHire() {
             ))}
           </ol>
 
-          <div className="mt-8 grid grid-cols-1 gap-3.5 sm:mt-9 sm:gap-4 md:mt-10 md:grid-cols-2 md:gap-[18px]">
-            <div className="flex items-start gap-3.5 rounded-2xl bg-gradient-to-br from-[var(--hire)] to-[var(--hire-d)] px-4 py-4 text-white sm:items-center sm:gap-4 sm:rounded-[18px] sm:px-5 sm:py-5 md:px-6 md:py-[22px]">
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:mt-8 md:grid-cols-2 md:gap-4">
+            <div className="flex items-start gap-3 rounded-[var(--radius-lg)] bg-gradient-to-br from-[var(--hire)] to-[var(--hire-d)] px-4 py-3.5 text-white sm:items-center sm:gap-3.5 sm:px-5 sm:py-4">
               <Image
                 src="/careers/hire/outcome-offer.png"
                 alt=""
-                width={68}
-                height={68}
-                className="h-14 w-14 shrink-0 rounded-xl border-2 border-white/75 object-cover sm:h-[68px] sm:w-[68px] sm:rounded-2xl"
-                sizes="(max-width: 640px) 56px, 68px"
+                width={56}
+                height={56}
+                className="h-12 w-12 shrink-0 rounded-[var(--radius-md)] border-2 border-white/75 object-cover sm:h-14 sm:w-14"
+                sizes="(max-width: 640px) 48px, 56px"
               />
               <div className="min-w-0 pt-0.5 sm:pt-0">
-                <h4 className="font-display text-[15px] font-semibold text-white sm:text-base">
+                <h4 className="type-h3 text-white">
                   <BrandAccentText accentClassName="text-white underline decoration-white/50 decoration-2 underline-offset-[0.15em]">
                     Job Offered
                   </BrandAccentText>
@@ -124,17 +123,17 @@ export function HowWeHire() {
               </div>
             </div>
 
-            <div className="flex items-start gap-3.5 rounded-2xl border border-[var(--hire-line)] bg-[var(--hire-l)] px-4 py-4 sm:items-center sm:gap-4 sm:rounded-[18px] sm:px-5 sm:py-5 md:px-6 md:py-[22px]">
+            <div className="flex items-start gap-3 rounded-[var(--radius-lg)] border border-[var(--hire-line)] bg-[var(--hire-l)] px-4 py-3.5 sm:items-center sm:gap-3.5 sm:px-5 sm:py-4">
               <Image
                 src="/careers/hire/outcome-other.png"
                 alt=""
-                width={68}
-                height={68}
-                className="h-14 w-14 shrink-0 rounded-xl border-2 border-white/75 object-cover sm:h-[68px] sm:w-[68px] sm:rounded-2xl"
-                sizes="(max-width: 640px) 56px, 68px"
+                width={56}
+                height={56}
+                className="h-12 w-12 shrink-0 rounded-[var(--radius-md)] border-2 border-white/75 object-cover sm:h-14 sm:w-14"
+                sizes="(max-width: 640px) 48px, 56px"
               />
               <div className="min-w-0 pt-0.5 sm:pt-0">
-                <h4 className="font-display text-[15px] font-semibold text-[var(--hire-ink)] sm:text-base">
+                <h4 className="type-h3 text-[var(--hire-ink)]">
                   <BrandAccentText>Not shortlisted?</BrandAccentText>
                 </h4>
                 <p className="type-meta mt-1 text-[var(--hire-mute)]">

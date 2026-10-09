@@ -53,9 +53,9 @@ export default function CareersPage() {
 
       <Section id="openings" className="scroll-mt-24 bg-white md:scroll-mt-28">
         <Container>
-          <div className="mb-8 rounded-xl border border-brand/25 bg-tint px-5 py-5 sm:px-6">
+          <div className="mb-6 rounded-[var(--radius-lg)] border border-brand/25 bg-tint px-4 py-4 sm:px-5">
             <p className="type-eyebrow text-brand">Before you apply</p>
-            <p className="type-body mt-2 text-muted">
+            <p className="type-meta mt-2 text-muted">
               All listed roles are <span className="font-semibold text-ink">night shift</span>,{" "}
               <span className="font-semibold text-ink">onsite</span>, and based at{" "}
               <span className="font-semibold text-ink">
@@ -72,11 +72,11 @@ export default function CareersPage() {
       <Section className="border-t border-line bg-tint">
         <Container>
           <SectionHeading title="Why grow your career with us" />
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {WHY.map((w, i) => (
               <div key={w.title}>
                 <p className="type-eyebrow text-brand">0{i + 1}</p>
-                <h3 className="type-h3 mt-2 text-ink">
+                <h3 className="type-h3 mt-1.5 text-ink">
                   <BrandAccentText>{w.title}</BrandAccentText>
                 </h3>
                 <p className="type-meta mt-2 text-muted">{w.body}</p>

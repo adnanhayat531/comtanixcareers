@@ -1,16 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Public_Sans, Sora } from "next/font/google";
+import { Public_Sans } from "next/font/google";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { SITE } from "@/lib/config";
 import "./globals.css";
 
-const sora = Sora({
-  variable: "--font-sora",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-});
-
+/** Single typeface for the entire product (marketing + admin). */
 const publicSans = Public_Sans({
   variable: "--font-public-sans",
   subsets: ["latin"],
@@ -84,11 +78,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${sora.variable} ${publicSans.variable}`}
-    >
-      <body className="flex min-h-dvh min-w-0 flex-col overflow-x-clip bg-canvas font-body text-ink antialiased [overflow-wrap:anywhere]">
+    <html lang="en" className={publicSans.variable}>
+      <body className="flex min-h-dvh min-w-0 flex-col overflow-x-clip bg-canvas font-sans text-ink antialiased [overflow-wrap:anywhere]">
         <SiteChrome>{children}</SiteChrome>
       </body>
     </html>

@@ -52,17 +52,17 @@ export default function ApplyPage() {
 
       <Section id="application" className="scroll-mt-24 bg-white md:scroll-mt-28">
         <Container>
-          <div className="grid items-start gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
+          <div className="grid items-start gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
             <div className="min-w-0">
               <SectionHeading
                 compact
                 eyebrow="Your details"
                 title="Application form"
                 description="Apply only for a current open role. Attach a PDF or Word CV to continue."
-                className="mb-8"
+                className="mb-6"
               />
 
-              <div className="mb-8 rounded-xl border border-brand/25 bg-tint px-5 py-5">
+              <div className="mb-6 rounded-[var(--radius-lg)] border border-brand/25 bg-tint px-4 py-4">
                 <p className="type-eyebrow text-brand">Confirm before you apply</p>
                 <p className="type-meta mt-2 text-muted">
                   Current openings are night shift, onsite only, and based in

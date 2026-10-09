@@ -22,7 +22,7 @@ export default function EditJobPage() {
   return (
     <div className="mx-auto max-w-4xl space-y-6">
       <div>
-        <h1 className="font-display text-2xl font-semibold text-ink">Edit Job</h1>
+        <h1 className="type-page-title text-ink">Edit Job</h1>
         <p className="type-meta mt-1 text-muted">
           Update content, status, and application ending date.
         </p>

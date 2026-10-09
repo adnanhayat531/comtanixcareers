@@ -30,14 +30,14 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-canvas px-4">
-      <div className="w-full max-w-md rounded-xl border border-line bg-white p-8 shadow-soft">
+    <div className="flex min-h-dvh items-center justify-center bg-canvas px-[var(--container-pad-x)]">
+      <div className="w-full max-w-sm rounded-[var(--radius-lg)] border border-line bg-white p-5 shadow-soft sm:p-6">
         <p className="type-eyebrow text-brand">Comtanix Admin</p>
-        <h1 className="mt-2 font-display text-2xl font-semibold text-ink">Sign in</h1>
-        <p className="type-meta mt-2 text-muted">
+        <h1 className="type-page-title mt-1.5 text-ink">Sign in</h1>
+        <p className="type-meta mt-1.5 text-muted">
           Authorized staff only. Your session is protected by the API.
         </p>
-        <form onSubmit={onSubmit} className="mt-8 grid gap-4">
+        <form onSubmit={onSubmit} className="mt-5 grid gap-3.5">
           <div>
             <label className="type-label mb-1.5 block" htmlFor="admin-email">
               Email
@@ -49,7 +49,7 @@ export default function AdminLoginPage() {
               autoComplete="username"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="type-body h-11 w-full rounded-lg border border-line px-3.5 outline-none focus:border-brand focus:ring-1 focus:ring-brand/25"
+              className="ui-field"
             />
           </div>
           <div>
@@ -63,7 +63,7 @@ export default function AdminLoginPage() {
               autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="type-body h-11 w-full rounded-lg border border-line px-3.5 outline-none focus:border-brand focus:ring-1 focus:ring-brand/25"
+              className="ui-field"
             />
           </div>
           {error ? (
@@ -74,7 +74,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={pending}
-            className="inline-flex h-11 items-center justify-center rounded-md bg-brand px-5 font-display text-sm font-semibold text-white transition hover:brightness-105 disabled:opacity-60"
+            className="ui-btn ui-btn-primary w-full"
           >
             {pending ? "Signing in…" : "Login"}
           </button>

@@ -49,32 +49,32 @@ export function GetInTouch() {
   return (
     <Section className="bg-tint">
       <Container>
-        <div className="mb-8 md:mb-10">
+        <div className="mb-6 md:mb-8">
           <p className="type-eyebrow text-brand">Get in touch</p>
           <h2 className="type-h2 mt-2 text-ink">
             <span className="text-brand">Contact</span>
           </h2>
-          <p className="type-body mt-3 max-w-xl text-muted">
+          <p className="type-body mt-2.5 max-w-xl text-muted">
             Reach hiring or partnerships — we respond during business hours.
           </p>
         </div>
 
-        <div className="grid min-w-0 items-start gap-10 lg:grid-cols-2 lg:gap-14">
-          <ul className="space-y-6 sm:space-y-7">
+        <div className="grid min-w-0 items-start gap-8 lg:grid-cols-2 lg:gap-10">
+          <ul className="space-y-5">
             {contactRows.map(({ icon: Icon, label, content }) => (
-              <li key={label} className="flex min-w-0 gap-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-brand text-white">
+              <li key={label} className="flex min-w-0 gap-3.5">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[var(--radius-md)] bg-brand text-white">
                   <Icon className="h-4 w-4" aria-hidden />
                 </span>
                 <div className="min-w-0 pt-0.5">
                   <p className="type-eyebrow text-brand">{label}</p>
-                  <div className="type-meta mt-1.5 break-words">{content}</div>
+                  <div className="type-meta mt-1 break-words">{content}</div>
                 </div>
               </li>
             ))}
           </ul>
 
-          <div className="min-w-0 w-full rounded-xl border border-line bg-white p-5 shadow-soft sm:p-7">
+          <div className="min-w-0 w-full rounded-[var(--radius-lg)] border border-line bg-white p-4 shadow-soft sm:p-5">
             <ContactForm />
           </div>
         </div>

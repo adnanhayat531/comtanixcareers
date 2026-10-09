@@ -34,39 +34,43 @@ export default function AdminJobsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-display text-2xl font-semibold text-ink">Jobs</h1>
+          <h1 className="type-page-title text-ink">Jobs</h1>
           <p className="type-meta mt-1 text-muted">Create and manage openings.</p>
         </div>
         <Link
           href="/admin/jobs/new"
-          className="rounded-md bg-brand px-4 py-2.5 font-display text-sm font-semibold text-white"
+          className="ui-btn ui-btn-primary"
         >
           Add Job
         </Link>
       </div>
 
-      <div className="flex flex-wrap gap-3 rounded-xl border border-line bg-white p-4">
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Search title…"
-          className="h-10 rounded-lg border border-line px-3 text-sm"
-        />
-        <select
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-          className="h-10 rounded-lg border border-line px-3 text-sm"
-        >
-          <option value="">All statuses</option>
-          <option value="draft">Draft</option>
-          <option value="published">Published</option>
-          <option value="closed">Closed</option>
-          <option value="archived">Archived</option>
-        </select>
+      <div className="flex flex-wrap items-center gap-3 rounded-xl border border-line bg-white p-4">
+        <div className="min-w-[12rem] flex-1 sm:max-w-xs">
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Search title…"
+            className="ui-field"
+          />
+        </div>
+        <div className="w-40">
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+            className="ui-field"
+          >
+            <option value="">All statuses</option>
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+            <option value="closed">Closed</option>
+            <option value="archived">Archived</option>
+          </select>
+        </div>
         <button
           type="button"
           onClick={() => load(1)}
-          className="rounded-md border border-line px-4 text-sm font-medium"
+          className="ui-btn border border-line"
         >
           Filter
         </button>
@@ -75,34 +79,34 @@ export default function AdminJobsPage() {
       {error ? <p className="text-red-700">{error}</p> : null}
 
       <div className="overflow-x-auto rounded-xl border border-line bg-white shadow-soft">
-        <table className="min-w-full text-left text-sm">
-          <thead className="bg-canvas text-muted">
+        <table className="ui-table">
+          <thead>
             <tr>
-              <th className="px-4 py-3 font-medium">Title</th>
-              <th className="px-4 py-3 font-medium">Department</th>
-              <th className="px-4 py-3 font-medium">Location</th>
-              <th className="px-4 py-3 font-medium">Type</th>
-              <th className="px-4 py-3 font-medium">Status</th>
-              <th className="px-4 py-3 font-medium">Posted</th>
-              <th className="px-4 py-3 font-medium">Ending</th>
-              <th className="px-4 py-3 font-medium">Apps</th>
-              <th className="px-4 py-3 font-medium">Actions</th>
+              <th>Title</th>
+              <th>Department</th>
+              <th>Location</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Posted</th>
+              <th>Ending</th>
+              <th>Apps</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {items.map((job) => (
-              <tr key={job.id} className="border-t border-line">
-                <td className="px-4 py-3 font-medium text-ink">{job.title}</td>
-                <td className="px-4 py-3 text-muted">{job.department || "—"}</td>
-                <td className="px-4 py-3 text-muted">{job.location}</td>
-                <td className="px-4 py-3 text-muted">{job.employment_type || "—"}</td>
-                <td className="px-4 py-3">
+              <tr key={job.id}>
+                <td className="font-medium text-ink">{job.title}</td>
+                <td className="text-muted">{job.department || "—"}</td>
+                <td className="text-muted">{job.location}</td>
+                <td className="text-muted">{job.employment_type || "—"}</td>
+                <td>
                   <StatusBadge status={job.status} />
                 </td>
-                <td className="px-4 py-3 text-muted">{job.posted_date || "—"}</td>
-                <td className="px-4 py-3 text-muted">{job.application_deadline || "—"}</td>
-                <td className="px-4 py-3 text-muted">{job.applications_count}</td>
-                <td className="px-4 py-3">
+                <td className="text-muted">{job.posted_date || "—"}</td>
+                <td className="text-muted">{job.application_deadline || "—"}</td>
+                <td className="text-muted">{job.applications_count}</td>
+                <td>
                   <div className="flex flex-wrap gap-2">
                     <Link href={`/admin/jobs/${job.id}/edit`} className="text-brand hover:underline">
                       Edit
@@ -151,7 +155,7 @@ export default function AdminJobsPage() {
             ))}
             {!items.length ? (
               <tr>
-                <td colSpan={9} className="px-4 py-10 text-center text-muted">
+                <td colSpan={9} className="py-10 text-center text-muted">
                   No jobs found.
                 </td>
               </tr>

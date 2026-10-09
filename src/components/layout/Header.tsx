@@ -39,10 +39,10 @@ function NavLink({
       aria-current={active ? "page" : undefined}
       className={
         menu
-          ? `type-nav flex min-h-12 items-center rounded-lg px-3 transition-colors ${
+          ? `type-nav flex min-h-[var(--control-h)] items-center rounded-[var(--radius-md)] px-3 transition-colors ${
               active ? "bg-tint text-brand" : "text-ink hover:bg-tint hover:text-brand"
             }`
-          : `type-nav relative px-2.5 py-2 transition-colors xl:px-3.5 ${
+          : `type-nav relative px-2 py-1.5 transition-colors xl:px-2.5 ${
               overlay
                 ? active
                   ? "text-white after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:rounded-full after:bg-white xl:after:right-3.5 xl:after:left-3.5"
@@ -98,16 +98,16 @@ export function Header() {
   }, [isHome]);
 
   const dropLink =
-    "type-meta flex min-h-11 items-center rounded-lg px-3 font-medium text-ink transition-colors hover:bg-tint hover:text-brand";
+    "type-meta flex min-h-[var(--control-h)] items-center rounded-[var(--radius-md)] px-3 font-medium text-ink transition-colors hover:bg-tint hover:text-brand";
 
   const desktopLink = (active: boolean) =>
-    `type-nav relative inline-flex min-h-11 items-center gap-1 px-2.5 transition-colors xl:px-3.5 ${
+    `type-nav relative inline-flex min-h-8 items-center gap-1 px-2 transition-colors xl:px-2.5 ${
       overlay
         ? active
-          ? "text-white after:absolute after:right-2.5 after:bottom-1 after:left-2.5 after:h-0.5 after:rounded-full after:bg-white xl:after:right-3.5 xl:after:left-3.5"
+          ? "text-white after:absolute after:right-2 after:bottom-1 after:left-2 after:h-0.5 after:rounded-full after:bg-white xl:after:right-2.5 xl:after:left-2.5"
           : "text-white/90 hover:text-white"
         : active
-          ? "text-brand after:absolute after:right-2.5 after:bottom-1 after:left-2.5 after:h-0.5 after:rounded-full after:bg-brand xl:after:right-3.5 xl:after:left-3.5"
+          ? "text-brand after:absolute after:right-2 after:bottom-1 after:left-2 after:h-0.5 after:rounded-full after:bg-brand xl:after:right-2.5 xl:after:left-2.5"
           : "text-ink/80 hover:text-brand"
     }`;
 
@@ -121,7 +121,7 @@ export function Header() {
           : "border-b border-line bg-surface/95 shadow-soft backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex h-14 w-full max-w-none items-center justify-between gap-2 py-0 pr-5 pl-2 sm:h-16 sm:gap-3 sm:pr-6 sm:pl-2.5 md:h-[4.25rem] md:pr-8 md:pl-3 lg:h-[4.5rem] lg:pr-10 lg:pl-3 xl:pr-12 xl:pl-4 2xl:pr-14 2xl:pl-4">
+      <div className="mx-auto flex h-[var(--header-h)] w-full max-w-none items-center justify-between gap-2 py-0 pr-[var(--container-pad-x)] pl-2 sm:gap-3 sm:pl-2.5 md:pl-3 xl:pl-4">
         <Link
           href="/"
           className="min-w-0 shrink focus-visible:rounded-sm"
@@ -129,7 +129,7 @@ export function Header() {
         >
           <BrandLogo
             light={overlay}
-            className="h-8 w-auto max-w-[9.5rem] sm:h-10 sm:max-w-none md:h-11"
+            className="h-[1.375rem] w-auto max-w-[7.5rem] sm:h-6 sm:max-w-none"
           />
         </Link>
 
@@ -195,7 +195,7 @@ export function Header() {
           <Button
             href="/submit-cv"
             variant={overlay ? "white" : "primary"}
-            className="ml-3 !h-10 !min-h-10 !px-4 !text-sm xl:ml-4 xl:!px-5"
+            className="ml-3 !h-8 !min-h-8 !px-3 !text-xs xl:ml-4"
           >
             Submit CV
           </Button>
@@ -205,13 +205,13 @@ export function Header() {
           <Button
             href="/submit-cv"
             variant={overlay ? "white" : "primary"}
-            className="!hidden !h-9 !min-h-9 !px-3 !text-sm min-[380px]:!inline-flex sm:!h-10 sm:!min-h-10 sm:!px-3.5"
+            className="!hidden !h-8 !min-h-8 !px-3 !text-xs min-[380px]:!inline-flex"
           >
             Submit CV
           </Button>
           <button
             type="button"
-            className={`inline-flex h-9 min-h-9 w-9 items-center justify-center rounded-lg border text-sm font-semibold transition sm:h-10 sm:min-h-10 sm:w-auto sm:gap-2 sm:px-3 ${
+            className={`inline-flex h-[var(--control-h-sm)] min-h-[var(--control-h-sm)] w-[var(--control-h-sm)] items-center justify-center rounded-[var(--radius-md)] border text-sm font-semibold transition sm:w-auto sm:gap-2 sm:px-3 ${
               overlay
                 ? "border-white/40 text-white hover:bg-white/10"
                 : "border-line text-ink hover:bg-tint"

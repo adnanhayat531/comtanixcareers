@@ -35,30 +35,34 @@ export default function AdminApplicationsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-display text-2xl font-semibold text-ink">Applications</h1>
+        <h1 className="type-page-title text-ink">Applications</h1>
         <p className="type-meta mt-1 text-muted">Review candidates for open roles.</p>
       </div>
 
-      <div className="flex flex-wrap gap-3 rounded-xl border border-line bg-white p-4">
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Search name, email, phone…"
-          className="h-10 rounded-lg border border-line px-3 text-sm"
-        />
-        <select
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-          className="h-10 rounded-lg border border-line px-3 text-sm"
-        >
-          <option value="">All statuses</option>
-          {["new", "reviewing", "shortlisted", "interview", "rejected", "hired"].map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
-        <button type="button" onClick={() => load(1)} className="rounded-md border border-line px-4 text-sm">
+      <div className="flex flex-wrap items-center gap-3 rounded-xl border border-line bg-white p-4">
+        <div className="min-w-[12rem] flex-1 sm:max-w-xs">
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Search name, email, phone…"
+            className="ui-field"
+          />
+        </div>
+        <div className="w-40">
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+            className="ui-field"
+          >
+            <option value="">All statuses</option>
+            {["new", "reviewing", "shortlisted", "interview", "rejected", "hired"].map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button type="button" onClick={() => load(1)} className="ui-btn border border-line">
           Filter
         </button>
       </div>
@@ -66,32 +70,32 @@ export default function AdminApplicationsPage() {
       {error ? <p className="text-red-700">{error}</p> : null}
 
       <div className="overflow-x-auto rounded-xl border border-line bg-white shadow-soft">
-        <table className="min-w-full text-left text-sm">
-          <thead className="bg-canvas text-muted">
+        <table className="ui-table">
+          <thead>
             <tr>
-              <th className="px-4 py-3 font-medium">Applicant</th>
-              <th className="px-4 py-3 font-medium">Email</th>
-              <th className="px-4 py-3 font-medium">Phone</th>
-              <th className="px-4 py-3 font-medium">Job</th>
-              <th className="px-4 py-3 font-medium">Date</th>
-              <th className="px-4 py-3 font-medium">Status</th>
-              <th className="px-4 py-3 font-medium">Actions</th>
+              <th>Applicant</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Job</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {items.map((a) => (
-              <tr key={a.id} className="border-t border-line">
-                <td className="px-4 py-3 font-medium">{a.full_name}</td>
-                <td className="px-4 py-3 text-muted">{a.email || "—"}</td>
-                <td className="px-4 py-3 text-muted">{a.phone}</td>
-                <td className="px-4 py-3 text-muted">{a.job_title || "—"}</td>
-                <td className="px-4 py-3 text-muted">
+              <tr key={a.id}>
+                <td className="font-medium">{a.full_name}</td>
+                <td className="text-muted">{a.email || "—"}</td>
+                <td className="text-muted">{a.phone}</td>
+                <td className="text-muted">{a.job_title || "—"}</td>
+                <td className="text-muted">
                   {new Date(a.created_at).toLocaleDateString()}
                 </td>
-                <td className="px-4 py-3">
+                <td>
                   <StatusBadge status={a.status} />
                 </td>
-                <td className="px-4 py-3">
+                <td>
                   <Link href={`/admin/applications/${a.id}`} className="text-brand hover:underline">
                     View
                   </Link>
@@ -100,7 +104,7 @@ export default function AdminApplicationsPage() {
             ))}
             {!items.length ? (
               <tr>
-                <td colSpan={7} className="px-4 py-10 text-center text-muted">
+                <td colSpan={7} className="py-10 text-center text-muted">
                   No applications found.
                 </td>
               </tr>

@@ -31,7 +31,7 @@ export default function ApplicationDetailPage() {
     <div className="mx-auto max-w-3xl space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h1 className="font-display text-2xl font-semibold text-ink">{row.full_name}</h1>
+          <h1 className="type-page-title text-ink">{row.full_name}</h1>
           <p className="type-meta mt-1 text-muted">{row.job_title || "Application"}</p>
         </div>
         <StatusBadge status={row.status} />
@@ -64,7 +64,7 @@ export default function ApplicationDetailPage() {
             <dd className="mt-2 flex flex-wrap gap-3">
               <button
                 type="button"
-                className="rounded-md bg-brand px-4 py-2 text-sm font-semibold text-white"
+                className="ui-btn ui-btn-primary"
                 onClick={() =>
                   downloadAdminFile(
                     adminApplicationCvUrl(row.id),
@@ -84,23 +84,25 @@ export default function ApplicationDetailPage() {
 
       <div className="flex flex-wrap items-center gap-3">
         <label className="type-label">Change status</label>
-        <select
-          className="rounded-lg border border-line px-3 py-2 text-sm"
-          value={row.status}
-          onChange={async (e) => {
-            const updated = await adminPatchApplicationStatus(row.id, e.target.value);
-            setRow(updated);
-          }}
-        >
-          {["new", "reviewing", "shortlisted", "interview", "rejected", "hired"].map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
+        <div className="w-40">
+          <select
+            className="ui-field"
+            value={row.status}
+            onChange={async (e) => {
+              const updated = await adminPatchApplicationStatus(row.id, e.target.value);
+              setRow(updated);
+            }}
+          >
+            {["new", "reviewing", "shortlisted", "interview", "rejected", "hired"].map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+        </div>
         <button
           type="button"
-          className="rounded-md border border-red-200 px-4 py-2 text-sm font-medium text-red-700"
+          className="ui-btn border border-red-200 text-red-700"
           onClick={async () => {
             if (!confirm("Are you sure you want to delete this application?")) return;
             await adminDeleteApplication(row.id);

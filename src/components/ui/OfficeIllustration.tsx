@@ -2,12 +2,20 @@ import Image from "next/image";
 
 export function OfficeIllustration({
   caption,
+  className = "rounded-2xl border border-line shadow-soft",
+  aspectClassName = "aspect-[4/3] sm:aspect-[3/2]",
 }: {
   caption?: string;
+  className?: string;
+  aspectClassName?: string;
 }) {
   return (
-    <figure className="relative max-w-full min-w-0 overflow-hidden rounded-2xl border border-line bg-tint shadow-soft">
-      <div className="relative aspect-[4/3] w-full max-w-full overflow-hidden sm:aspect-[3/2]">
+    <figure
+      className={`relative max-w-full min-w-0 overflow-hidden bg-tint ${className}`}
+    >
+      <div
+        className={`relative w-full max-w-full overflow-hidden ${aspectClassName}`}
+      >
         <Image
           src="/office-comtanix.jpg"
           alt="Comtanix office building at night — Bahria Town Phase 8, Rawalpindi"

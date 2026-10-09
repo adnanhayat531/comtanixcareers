@@ -13,7 +13,7 @@ export function Container({
 }) {
   return (
     <div
-      className={`mx-auto w-full min-w-0 max-w-none px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-14 ${className}`}
+      className={`mx-auto w-full min-w-0 max-w-none px-[var(--container-pad-x)] ${className}`}
     >
       {children}
     </div>
@@ -58,7 +58,7 @@ export function SectionHeading({
 }) {
   return (
     <HeadingReveal
-      className={`${compact ? "mb-0" : "mb-8 md:mb-10"} max-w-2xl ${
+      className={`${compact ? "mb-0" : "mb-6 md:mb-8"} max-w-2xl ${
         align === "center" ? "mx-auto text-center" : ""
       } ${className}`}
       duration={1}
@@ -85,7 +85,7 @@ export function SectionHeading({
       </h2>
       {description ? (
         <p
-          className={`type-body mt-3 max-w-prose ${
+          className={`type-body mt-2.5 max-w-prose ${
             light ? "text-white/78" : "text-muted"
           } ${align === "center" ? "mx-auto" : ""}`}
         >

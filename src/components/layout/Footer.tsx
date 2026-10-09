@@ -68,7 +68,7 @@ function FooterColumn({
   return (
     <div>
       <h3 className="type-eyebrow text-white/90">{title}</h3>
-      <ul className="mt-4 space-y-2.5">
+      <ul className="mt-3 space-y-2">
         {links.map((l) => (
           <li key={`${title}-${l.label}`}>
             <Link
@@ -108,7 +108,7 @@ function SubscribeBox() {
       </p>
       <form
         onSubmit={onSubmit}
-        className="mt-4 flex w-full min-w-0 items-center rounded-lg bg-white py-1 pr-1 pl-3.5"
+        className="mt-3 flex w-full min-w-0 items-center rounded-[var(--radius-md)] bg-white py-0.5 pr-0.5 pl-3"
       >
         <label className="sr-only" htmlFor="footer-email">
           Email
@@ -170,21 +170,21 @@ export function Footer() {
   return (
     <footer className="relative shrink-0 text-white">
       <div className="bg-footer">
-        <Container className="pt-14 pb-8 md:pt-16 md:pb-10">
-          <div className="grid min-w-0 gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.35fr)_repeat(4,minmax(0,1fr))] lg:gap-8 xl:gap-10">
+        <Container className="pt-10 pb-6 md:pt-12 md:pb-8">
+          <div className="grid min-w-0 gap-8 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.35fr)_repeat(4,minmax(0,1fr))] lg:gap-6 xl:gap-8">
             <div className="min-w-0 sm:col-span-2 lg:col-span-1">
               <Link
                 href="/"
                 className="inline-flex items-center"
                 aria-label={`${SITE.name} home`}
               >
-                <BrandLogo light className="h-9 w-auto" />
+                <BrandLogo light className="h-8 w-auto" />
               </Link>
-              <p className="type-meta mt-4 max-w-[18rem] leading-relaxed text-white/80">
+              <p className="type-meta mt-3 max-w-[18rem] leading-relaxed text-white/80">
                 Pakistan-based IT delivery for global enterprises — hiring,
                 training, and operations under one roof.
               </p>
-              <div className="mt-5">
+              <div className="mt-4">
                 <SocialLinks light />
               </div>
             </div>
@@ -194,7 +194,7 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="mt-10 flex flex-col gap-6 border-t border-white/15 pt-8 sm:mt-12 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-8 sm:gap-y-4">
+          <div className="mt-8 flex flex-col gap-5 border-t border-white/15 pt-6 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-8 sm:gap-y-4">
             <SubscribeBox />
             <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
               <ContactChip

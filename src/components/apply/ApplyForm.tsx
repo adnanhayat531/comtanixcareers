@@ -13,8 +13,7 @@ import {
 } from "@/lib/api";
 import { EXPERIENCE_OPTIONS, ROLES } from "@/lib/data/roles";
 
-const fieldClass =
-  "type-body box-border h-11 w-full rounded-lg border border-line bg-white px-3.5 text-ink outline-none transition placeholder:text-muted/65 focus:border-brand focus:ring-1 focus:ring-brand/25";
+const fieldClass = "ui-field";
 
 const labelClass = "type-label mb-1.5 block text-ink";
 
@@ -48,6 +47,7 @@ function fallbackRoles(): UiRole[] {
     tags: role.tags,
     slug: role.id,
     jobId: "",
+    applicationDeadline: null as string | null,
   }));
 }
 
@@ -364,7 +364,7 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
         <label
           htmlFor="apply-cv"
           aria-labelledby="apply-cv-label"
-          className="flex min-h-11 cursor-pointer items-center gap-3 rounded-md border border-dashed border-line bg-white px-3.5 py-2.5 transition hover:border-brand/50 hover:bg-tint/40 focus-within:border-brand focus-within:ring-1 focus-within:ring-brand/25"
+          className="flex min-h-[var(--control-h)] cursor-pointer items-center gap-3 rounded-[var(--radius-md)] border border-dashed border-line bg-white px-3.5 py-2.5 transition hover:border-brand/50 hover:bg-tint/40 focus-within:border-brand focus-within:ring-1 focus-within:ring-brand/25"
         >
           <FileUp className="h-4 w-4 shrink-0 text-brand" aria-hidden />
           <span className="type-body min-w-0 truncate text-ink">
@@ -470,7 +470,7 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
             !checks.confirmOnsite ||
             !checks.confirmLocation
           }
-          className="inline-flex h-11 w-full shrink-0 items-center justify-center gap-2 rounded-md bg-brand px-6 font-display text-sm font-semibold text-white transition hover:brightness-105 disabled:opacity-60 sm:w-auto"
+          className="ui-btn ui-btn-primary w-full sm:w-auto"
         >
           {pending ? "Submitting…" : isCv ? "Submit CV" : "Submit application"}
           {!pending ? <ArrowRight className="h-4 w-4" aria-hidden /> : null}

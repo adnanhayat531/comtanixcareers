@@ -54,7 +54,7 @@ function ReviewCard({ review }: { review: GoogleReview }) {
               unoptimized
             />
           ) : (
-            <span className="grid h-full w-full place-items-center font-display text-sm font-semibold text-brand">
+            <span className="grid h-full w-full place-items-center text-sm font-semibold text-brand">
               {review.initials}
             </span>
           )}
@@ -69,7 +69,7 @@ function ReviewCard({ review }: { review: GoogleReview }) {
             {review.author}
           </a>
           <div className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5">
-            <span className="inline-flex items-center gap-1 font-body text-[11px] font-semibold text-muted">
+            <span className="type-eyebrow inline-flex items-center gap-1 normal-case tracking-normal text-muted">
               <GoogleMark className="h-3.5 w-3.5" />
               Google review
             </span>
@@ -105,7 +105,7 @@ function ReviewCard({ review }: { review: GoogleReview }) {
         href={review.authorUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-5 inline-flex items-center gap-1 border-t border-line pt-4 font-body text-xs font-semibold text-brand hover:underline"
+        className="mt-5 inline-flex items-center gap-1 border-t border-line pt-4 text-xs font-semibold text-brand hover:underline"
       >
         Verify on Google
         <ExternalLink className="h-3.5 w-3.5" aria-hidden />
@@ -157,7 +157,7 @@ export function TestimonialsGrid() {
           className="group inline-flex items-center gap-4 rounded-md border border-line bg-white px-4 py-3 transition hover:border-brand/40 hover:shadow-soft"
         >
           <div>
-            <p className="font-display text-3xl font-bold leading-none tracking-tight text-ink">
+            <p className="type-stat text-ink">
               {GOOGLE_RATING.score.toFixed(1)}
             </p>
             <div className="mt-1.5 flex gap-0.5" aria-hidden>
@@ -168,7 +168,7 @@ export function TestimonialsGrid() {
                 />
               ))}
             </div>
-            <p className="mt-1.5 font-body text-sm font-semibold text-brand group-hover:underline">
+            <p className="mt-1.5 text-sm font-semibold text-brand group-hover:underline">
               {GOOGLE_RATING.count} reviews
             </p>
           </div>

@@ -31,7 +31,7 @@ export default function CvDetailPage() {
     <div className="mx-auto max-w-3xl space-y-6">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <h1 className="font-display text-2xl font-semibold text-ink">{row.full_name}</h1>
+          <h1 className="type-page-title text-ink">{row.full_name}</h1>
           <p className="type-meta mt-1 text-muted">{row.role_interest}</p>
         </div>
         <StatusBadge status={row.status} />
@@ -47,7 +47,7 @@ export default function CvDetailPage() {
         </dl>
         <button
           type="button"
-          className="mt-6 rounded-md bg-brand px-4 py-2 text-sm font-semibold text-white"
+          className="ui-btn ui-btn-primary mt-6"
           onClick={() => downloadAdminFile(adminCvFileUrl(row.id), row.resume_original_filename)}
         >
           Download CV
@@ -55,18 +55,20 @@ export default function CvDetailPage() {
       </div>
 
       <div className="flex flex-wrap gap-3">
-        <select
-          className="rounded-lg border border-line px-3 py-2 text-sm"
-          value={row.status}
-          onChange={async (e) => setRow(await adminPatchCvStatus(row.id, e.target.value))}
-        >
-          <option value="new">New</option>
-          <option value="reviewed">Reviewed</option>
-          <option value="archived">Archived</option>
-        </select>
+        <div className="w-40">
+          <select
+            className="ui-field"
+            value={row.status}
+            onChange={async (e) => setRow(await adminPatchCvStatus(row.id, e.target.value))}
+          >
+            <option value="new">New</option>
+            <option value="reviewed">Reviewed</option>
+            <option value="archived">Archived</option>
+          </select>
+        </div>
         <button
           type="button"
-          className="rounded-md border border-red-200 px-4 py-2 text-sm text-red-700"
+          className="ui-btn border border-red-200 text-red-700"
           onClick={async () => {
             if (!confirm("Are you sure you want to delete this CV submission?")) return;
             await adminDeleteCv(row.id);

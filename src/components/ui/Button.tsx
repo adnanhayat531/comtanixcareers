@@ -2,7 +2,7 @@ import Link from "next/link";
 import { type ReactNode } from "react";
 
 /**
- * Enterprise controls — generous padding, clear hierarchy, brand teal.
+ * Shared control — compact SaaS sizing, rem-based height via design tokens.
  */
 const variants = {
   primary:
@@ -43,8 +43,8 @@ export function Button({
 }: ButtonAsButton | ButtonAsLink) {
   const base =
     variant === "text"
-      ? "inline-flex items-center gap-1.5 font-display text-sm font-semibold transition-colors duration-150 disabled:opacity-60"
-      : "inline-flex h-11 min-h-11 w-full max-w-full items-center justify-center gap-2 rounded-lg px-5 font-display text-sm font-semibold tracking-tight transition-all duration-200 disabled:pointer-events-none disabled:opacity-55 sm:w-auto sm:px-6 md:h-12 md:min-h-12 md:px-7";
+      ? "inline-flex items-center gap-1.5 font-sans text-sm font-semibold transition-colors duration-150 disabled:opacity-60"
+      : "inline-flex h-[var(--control-h)] min-h-[var(--control-h)] w-full max-w-full items-center justify-center gap-2 rounded-[var(--radius-md)] px-4 font-sans text-sm font-semibold tracking-tight transition-all duration-200 disabled:pointer-events-none disabled:opacity-55 sm:w-auto sm:px-5";
 
   const classes = `${base} ${variants[variant]} ${className}`;
 

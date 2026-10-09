@@ -21,12 +21,12 @@ export function CtaBanner({
   return (
     <Section className={`bg-tint ${className}`}>
       <Container>
-        <div className="relative overflow-hidden rounded-xl bg-brand px-5 py-8 text-white sm:rounded-2xl sm:px-8 sm:py-12 md:px-12 md:py-14">
+        <div className="relative overflow-hidden rounded-[var(--radius-lg)] bg-brand px-5 py-7 text-white sm:rounded-[var(--radius-xl)] sm:px-7 sm:py-9 md:px-9 md:py-10">
           <div
             className="pointer-events-none absolute inset-0 opacity-40 [background-image:radial-gradient(ellipse_at_85%_20%,rgba(255,255,255,0.22)_0%,transparent_45%),radial-gradient(ellipse_at_10%_90%,rgba(11,44,53,0.35)_0%,transparent_50%)]"
             aria-hidden
           />
-          <div className="relative z-10 grid min-w-0 items-center gap-5 md:grid-cols-[1.25fr_auto] md:gap-10">
+          <div className="relative z-10 grid min-w-0 items-center gap-5 md:grid-cols-[1.25fr_auto] md:gap-8">
             <div className="min-w-0 max-w-xl">
               {eyebrow ? (
                 <p className="type-eyebrow mb-2 text-white/75">{eyebrow}</p>
@@ -37,7 +37,7 @@ export function CtaBanner({
                 </BrandAccentText>
               </h2>
               {description ? (
-                <p className="type-body mt-3 text-pretty text-white/90">{description}</p>
+                <p className="type-body mt-2.5 text-pretty text-white/90">{description}</p>
               ) : null}
             </div>
             <div className="flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-3 [&_a]:w-full sm:[&_a]:w-auto">

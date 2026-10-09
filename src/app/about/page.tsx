@@ -34,7 +34,7 @@ export default function AboutPage() {
       </PageHero>
 
       <Section id="story" className="scroll-mt-24 bg-white md:scroll-mt-28">
-        <Container className="grid min-w-0 items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+        <Container className="grid min-w-0 items-center gap-6 lg:grid-cols-2 lg:gap-10">
           <div className="order-2 min-w-0 lg:order-1">
             <SectionHeading
               compact
@@ -71,10 +71,10 @@ export default function AboutPage() {
             title="Operating principles"
             description="Standards we hold for hiring, training, and client delivery."
           />
-          <ol className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {VALUES.map((v, i) => (
               <li key={v.title} className="group">
-                <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-xl bg-white">
+                <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] bg-white">
                   <Image
                     src={v.image}
                     alt=""
@@ -103,11 +103,11 @@ export default function AboutPage() {
             title="Learning path"
             description="From paid induction through tooling and leadership tracks."
           />
-          <div className="relative space-y-0 border-l-2 border-brand/25 pl-6 md:pl-8">
+          <div className="relative space-y-0 border-l-2 border-brand/25 pl-5 md:pl-7">
             {LEARNING.map((l, i) => (
-              <div key={l.title} className="relative pb-10 last:pb-0">
+              <div key={l.title} className="relative pb-7 last:pb-0">
                 <span
-                  className="type-eyebrow absolute top-0 -left-[1.9rem] grid h-6 w-6 place-items-center rounded-md bg-brand !normal-case !tracking-normal text-white md:-left-[2.15rem]"
+                  className="type-eyebrow absolute top-0 -left-[1.65rem] grid h-5 w-5 place-items-center rounded-[var(--radius-sm)] bg-brand !normal-case !tracking-normal text-white md:-left-[1.9rem]"
                   aria-hidden
                 >
                   {i + 1}
@@ -115,7 +115,7 @@ export default function AboutPage() {
                 <h3 className="type-h3 text-ink">
                   <BrandAccentText>{l.title}</BrandAccentText>
                 </h3>
-                <p className="type-meta mt-2 max-w-2xl text-muted">{l.body}</p>
+                <p className="type-meta mt-1.5 max-w-2xl text-muted">{l.body}</p>
               </div>
             ))}
           </div>
