@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Section";
@@ -31,10 +30,7 @@ export function WhoWeAre() {
       <Container className="relative z-10">
         <div className="grid min-w-0 items-center gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10">
           <div className="min-w-0 max-w-xl text-left lg:max-w-none">
-            <p className="type-eyebrow mb-2 inline-flex items-center gap-2 text-brand">
-              Who we are
-              <span className="block h-px w-6 bg-brand" aria-hidden />
-            </p>
+            <p className="type-eyebrow mb-2 text-brand">Who we are</p>
 
             <h2 className="type-h2 text-ink">
               A global technology company built around{" "}
@@ -75,13 +71,16 @@ export function WhoWeAre() {
           </div>
 
           <div className="relative w-full min-w-0">
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[var(--radius-lg)] sm:rounded-[var(--radius-xl)]">
-              <Image
-                src="/office-comtanix.jpg"
-                alt="Comtanix office building at night — Bahria Town Phase 8, Rawalpindi"
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 1023px) 100vw, 50vw"
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[var(--radius-lg)] bg-tint ring-1 ring-line/70 sm:rounded-[var(--radius-xl)]">
+              {/* Native img — avoids Next optimizer issues with new public assets */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/who-we-are-office.jpg"
+                alt="Bright modern Comtanix workspace with open desks and glass meeting room"
+                width={1920}
+                height={1080}
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover object-[center_45%]"
               />
             </div>
           </div>

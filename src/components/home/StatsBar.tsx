@@ -1,21 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { STATS } from "@/lib/data/content";
 import { Container } from "@/components/ui/Section";
-
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const onChange = () => setReduced(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-  return reduced;
-}
 
 function StatItem({
   value,
@@ -26,49 +13,10 @@ function StatItem({
   suffix: string;
   label: string;
 }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const [display, setDisplay] = useState(0);
-  const reduced = usePrefersReducedMotion();
-  const started = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const run = () => {
-      if (started.current) return;
-      started.current = true;
-      if (reduced) {
-        setDisplay(value);
-        return;
-      }
-      const t0 = performance.now();
-      const dur = 1200;
-      const frame = (t: number) => {
-        const k = Math.min(1, (t - t0) / dur);
-        setDisplay(Math.round(value * k));
-        if (k < 1) requestAnimationFrame(frame);
-      };
-      requestAnimationFrame(frame);
-    };
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          run();
-          io.disconnect();
-        }
-      },
-      { threshold: 0.2 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [value, reduced]);
-
   return (
     <div className="flex min-w-0 flex-col items-center justify-center px-0.5 text-center sm:px-2">
       <div className="type-stat text-white">
-        <span ref={ref}>{display}</span>
+        <span>{value}</span>
         {suffix ? <span className="text-white/95">{suffix}</span> : null}
       </div>
       <p className="mt-1.5 max-w-[7.5rem] text-[0.625rem] leading-snug font-semibold break-words uppercase tracking-[0.05em] text-white/90 sm:max-w-[10rem] sm:text-[0.6875rem]">
