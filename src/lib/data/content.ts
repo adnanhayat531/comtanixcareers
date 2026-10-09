@@ -67,37 +67,37 @@ export const LIFE_ACTIVITIES = [
     title: "Gym Membership",
     body: "Company-sponsored gym membership so you can stay fit, decompress after shifts, and build healthy routines year-round.",
     icon: "gym" as const,
-    image: "/life/gym-teal.jpg",
+    image: "/life/gym.png",
   },
   {
     title: "Weekend Sports",
     body: "Weekend cricket, badminton, table tennis, and friendly matches to unwind with the team outside the terminal.",
     icon: "trophy" as const,
-    image: "/life/sports-gala-cricket.jpg",
+    image: "/life/sports.png",
   },
   {
     title: "Star of the Month",
     body: "Public recognition, gift vouchers, and cash bonuses for agents who exceed monthly SLA targets.",
     icon: "star" as const,
-    image: "/life/star-month.jpg",
+    image: "/life/star-month.png",
   },
   {
     title: "Skill Enrichment Sessions",
     body: "Interactive sessions covering business communication, cloud certifications, and public speaking.",
     icon: "graduation" as const,
-    image: "/life/skill-sessions.jpg",
+    image: "/life/skill-sessions.png",
   },
   {
     title: "Festivals & Birthdays",
     body: "Cake cutting on every birthday, festive holiday dinners, and cultural exchanges.",
     icon: "party" as const,
-    image: "/life/festivals.jpg",
+    image: "/life/festivals.png",
   },
   {
     title: "Breakroom & Game Nights",
     body: "Recharge between calls with console games, foosball, quiet rest corners, and unlimited tea & coffee.",
     icon: "game" as const,
-    image: "/life/breakroom.jpg",
+    image: "/life/breakroom.png",
   },
 ] as const;
 
