@@ -41,8 +41,9 @@ export function HeroCopy() {
 
         <TextGlow className="mt-3 max-w-[20rem] px-2 py-1.5 min-[400px]:max-w-xl sm:max-w-2xl sm:px-3">
           <p className="type-lede reveal-delay-1 relative text-pretty text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.85),0_3px_12px_rgba(0,0,0,0.55)]">
-            We help businesses harness AI, modernize technology, solve complex
-            challenges, and move forward with highly capable technical teams.
+            Comtanix helps you integrate AI, develop software, modernize IT
+            systems, and solve complex technical challenges with teams that work
+            around your needs.
           </p>
         </TextGlow>
 

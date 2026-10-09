@@ -39,7 +39,7 @@ export default function SubmitCvPage() {
         eyebrow="Future openings"
         title="Submit your CV."
         description="For future opportunities only. We review your CV and keep strong profiles for when a matching role opens. For a listed job, use Apply."
-        image="/careers-team.jpg"
+        image="/careers-collab.jpg"
         imageAlt="Submit your CV to Comtanix for future opportunities"
       >
         <Button href="#cv-form" variant="white">

@@ -39,7 +39,7 @@ export default function ApplyPage() {
         eyebrow="Current openings"
         title="Apply for an open role."
         description="Choose a listed opening, confirm the job facts, and send your application. Looking for later roles? Use Submit CV for the talent pool."
-        image="/careers-team.jpg"
+        image="/careers-collab.jpg"
         imageAlt="Apply to a current Comtanix opening"
       >
         <Button href="#application" variant="white">

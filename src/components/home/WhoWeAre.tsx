@@ -1,14 +1,8 @@
 import Image from "next/image";
-import { ArrowRight, Cloud, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Section";
 import { WHO_WE_ARE_POINTS } from "@/lib/data/content";
-
-const ICONS = {
-  shield: ShieldCheck,
-  cloud: Cloud,
-  users: Users,
-} as const;
 
 /**
  * Who We Are — compact two-column block under StatsBar.
@@ -43,35 +37,29 @@ export function WhoWeAre() {
             </p>
 
             <h2 className="type-h2 text-ink">
-              A professional IT company{" "}
-              <span className="text-brand">serving businesses</span> worldwide.
+              A global technology company built around{" "}
+              <span className="text-brand">capability</span>.
             </h2>
 
             <p className="type-meta mt-3 max-w-prose text-muted">
-              Comtanix delivers reliable and innovative IT solutions, helping
-              businesses around the world stay connected, secure, and ahead.
-              With a strong focus on quality, customer satisfaction, and
-              long-term partnerships, we&apos;re committed to delivering
-              technology that drives real results.
+              From software and AI to everyday IT, we help you manage critical
+              technology needs with skilled professionals and AI-enabled
+              solutions. Our teams work with your people, systems, and processes
+              to support your operations and keep projects on track.
             </p>
 
             <ul className="mt-4 space-y-2.5 sm:mt-5">
-              {WHO_WE_ARE_POINTS.map((item) => {
-                const Icon = ICONS[item.icon];
-                return (
-                  <li key={item.label} className="flex min-w-0 items-center gap-2.5">
-                    <span
-                      className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-brand text-brand"
-                      aria-hidden
-                    >
-                      <Icon className="h-3.5 w-3.5" strokeWidth={1.75} />
-                    </span>
-                    <span className="type-meta min-w-0 font-medium text-ink">
-                      {item.label}
-                    </span>
-                  </li>
-                );
-              })}
+              {WHO_WE_ARE_POINTS.map((item) => (
+                <li key={item} className="flex min-w-0 items-start gap-2.5">
+                  <CheckCircle2
+                    className="mt-0.5 h-4 w-4 shrink-0 text-brand"
+                    aria-hidden
+                  />
+                  <span className="type-meta min-w-0 leading-snug font-medium text-ink">
+                    {item}
+                  </span>
+                </li>
+              ))}
             </ul>
 
             <div className="mt-5">

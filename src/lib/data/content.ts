@@ -8,7 +8,7 @@ export const STATS = [
   {
     value: 6,
     suffix: "",
-    label: "Service Lines",
+    label: "Core Service Areas",
     sub: "Focused technology practices",
   },
   {
@@ -105,22 +105,22 @@ export const LIFE_ACTIVITIES = [
 export const CAPABILITIES = [
   {
     title: "AI & Automation",
-    body: "AI solutions that automate work and create new possibilities.",
+    body: "Free up time by automating routine tasks and workflows.",
     image: "/capabilities/ai-automation.png",
   },
   {
     title: "Software Development",
-    body: "Scalable software designed to solve real business challenges.",
+    body: "Bring your product ideas to life with web, mobile, and enterprise applications.",
     image: "/capabilities/software-development.png",
   },
   {
     title: "Cloud & Infrastructure",
-    body: "Modern cloud and IT infrastructure designed to perform and scale.",
+    body: "Keep your systems accessible, connected, and ready for changing demands.",
     image: "/capabilities/cloud-infrastructure.png",
   },
   {
     title: "Cybersecurity & Data",
-    body: "Secure systems and trusted data for a stronger digital foundation.",
+    body: "Reduce security risks and turn your data into useful insights.",
     image: "/capabilities/cybersecurity-data.png",
   },
 ] as const;
@@ -128,18 +128,18 @@ export const CAPABILITIES = [
 /** Home — Why Comtanix */
 export const WHY_COMTANIX = [
   {
-    title: "Quality first",
-    body: "Reliable delivery, thoughtful solutions, and outcomes that matter.",
+    title: "Quality First",
+    body: "Careful execution, thorough testing, and attention to the details that affect results.",
     image: "/why/quality.png",
   },
   {
-    title: "Security & trust",
-    body: "Protected systems, data, and intellectual property on every engagement.",
+    title: "Security & Trust",
+    body: "Protecting your systems, data, and intellectual property through sound security practices.",
     image: "/why/security.png",
   },
   {
-    title: "True partnership",
-    body: "Shared tools, clear accountability, and close collaboration across time zones.",
+    title: "Working as One Team",
+    body: "Working within your tools and processes, with clear responsibilities and open communication.",
     image: "/why/partnership.png",
   },
 ] as const;
@@ -147,35 +147,27 @@ export const WHY_COMTANIX = [
 /** Home life preview */
 export const LIFE_PREVIEW = [
   {
-    title: "Collaborative by Nature",
-    body: "Work alongside experienced teams, share ideas openly, and contribute to projects with people across markets.",
+    title: "Working Together",
+    body: "Exchange ideas, share knowledge, and contribute alongside colleagues with different skills and perspectives.",
     image: "/home/life-teams.jpg",
   },
   {
-    title: "Always Learning",
-    body: "Build new skills through hands-on experience, continuous learning, and exposure to evolving technologies.",
+    title: "Learning Through Work",
+    body: "Develop practical skills through hands-on experience, ongoing learning, and exposure to new technologies.",
     image: "/home/life-learning.jpg",
   },
   {
-    title: "Room to Thrive",
-    body: "A workplace that values recognition, connection, wellbeing, and the balance needed to do your best work.",
+    title: "Room to Grow",
+    body: "Find opportunities to develop, connect with colleagues, and maintain a healthy balance between work and life.",
     image: "/home/life-balance.jpg",
   },
 ] as const;
 
 export const WHO_WE_ARE_POINTS = [
-  {
-    icon: "shield" as const,
-    label: "IT Strategy & Digital Transformation",
-  },
-  {
-    icon: "cloud" as const,
-    label: "Cloud Solutions & Infrastructure",
-  },
-  {
-    icon: "users" as const,
-    label: "Managed Services & IT Support",
-  },
+  "Technical specialists across IT, software, and AI",
+  "Delivery across markets and time zones",
+  "Teams integrated with client environments",
+  "Long-term partnerships based on trust",
 ] as const;
 
 export const CAREER_POINTS = [

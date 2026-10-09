@@ -6,7 +6,7 @@ export const SITE = {
   legalName: "Comtanix",
   tagline: "Build what’s next with AI, technology, and the right expertise",
   description:
-    "Comtanix helps businesses harness AI, modernize technology, solve complex challenges, and move forward with highly capable technical teams.",
+    "Comtanix helps you integrate AI, develop software, modernize IT systems, and solve complex technical challenges with teams that work around your needs.",
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
     "https://www.comtanix.com",
