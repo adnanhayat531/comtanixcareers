@@ -4,14 +4,14 @@ export function HeroNetwork() {
     <div className="pointer-events-none absolute inset-0 overflow-hidden select-none" aria-hidden>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/hero-comtanix.jpg"
+        src="/hero-comtanix.jpg?v=board"
         alt=""
         width={2560}
         height={1440}
         decoding="async"
         fetchPriority="high"
         draggable={false}
-        className="absolute inset-0 h-full w-full object-cover object-center [image-rendering:auto] [transform:none]"
+        className="absolute inset-0 h-full w-full object-cover object-[center_38%] [image-rendering:auto] [transform:none]"
       />
     </div>
   );
