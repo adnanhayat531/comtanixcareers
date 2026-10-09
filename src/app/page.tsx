@@ -50,8 +50,9 @@ export default function HomePage() {
               </BrandAccentText>
             </h2>
             <p className="type-body mt-2.5 max-w-xl text-muted">
-              Focused technology services across AI, software, cloud, and
-              cybersecurity for growing and established businesses worldwide.
+              Whether you need to automate work, build software, strengthen
+              infrastructure, or protect your data, we work with you to get it
+              done.
             </p>
           </HeadingReveal>
 
@@ -94,11 +95,13 @@ export default function HomePage() {
           <HeadingReveal className="mb-5 max-w-xl md:mb-6">
             <p className="type-eyebrow mb-2 text-brand">Why Comtanix</p>
             <h2 className="type-h2 mt-0 text-ink">
-              <BrandAccentText>How we work with clients.</BrandAccentText>
+              <BrandAccentText>
+                Clear communication. Shared responsibility.
+              </BrandAccentText>
             </h2>
             <p className="type-body mt-2.5 max-w-xl text-muted">
-              A straightforward delivery model built around alignment,
-              accountability, security, and consistent communication.
+              We work closely with you, take ownership of our work, and keep you
+              informed at every stage.
             </p>
           </HeadingReveal>
 
@@ -142,9 +145,9 @@ export default function HomePage() {
                 </BrandAccentText>
               </h2>
               <p className="type-body mt-2.5 max-w-prose text-muted">
-                Work on real-world technology projects, develop in-demand
-                skills, and grow alongside people who know the work and are
-                invested in your progress.
+                Work on technology projects, develop practical skills, and learn
+                from colleagues who can help you take the next step in your
+                career.
               </p>
             </HeadingReveal>
 
@@ -166,14 +169,14 @@ export default function HomePage() {
             </ul>
             <div className="mt-5 flex w-full flex-col gap-2.5 sm:flex-row sm:flex-wrap">
               <Button href="/careers" className="w-full justify-center sm:w-auto">
-                View openings <ArrowRight className="h-4 w-4" aria-hidden />
+                View Openings <ArrowRight className="h-4 w-4" aria-hidden />
               </Button>
               <Button
                 href="/submit-cv"
                 variant="secondary"
                 className="w-full justify-center sm:w-auto"
               >
-                Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
+                Submit Your CV <ArrowRight className="h-4 w-4" aria-hidden />
               </Button>
             </div>
           </div>
@@ -181,11 +184,11 @@ export default function HomePage() {
           <div className="w-full min-w-0">
             <div className="relative mx-auto aspect-[4/3] w-full max-w-xl overflow-hidden rounded-[var(--radius-xl)] bg-tint lg:mx-0 lg:max-w-none">
               <Image
-                src="/careers-team.jpg"
-                alt="Comtanix technology teams collaborating"
+                src="/careers-collab.jpg"
+                alt="Comtanix team collaborating in the office"
                 fill
                 sizes="(max-width: 1023px) 100vw, 50vw"
-                className="object-cover object-[center_25%]"
+                className="object-cover object-center"
                 priority={false}
               />
             </div>
@@ -205,9 +208,9 @@ export default function HomePage() {
                 </BrandAccentText>
               </h2>
               <p className="type-body mt-2.5 max-w-xl text-muted">
-                The best work comes from people who have room to collaborate,
-                learn, contribute, and grow. Life at Comtanix brings that
-                balance into the everyday experience.
+                Working well together means sharing ideas, learning from one
+                another, and having room to develop. At Comtanix, these everyday
+                experiences shape how people work and grow.
               </p>
             </HeadingReveal>
             <Button
@@ -225,7 +228,7 @@ export default function HomePage() {
                 key={item.title}
                 className="card-lift min-w-0 overflow-hidden rounded-[var(--radius-lg)] border border-line bg-canvas/60"
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-tint">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-tint">
                   <Image
                     src={item.image}
                     alt=""
@@ -252,10 +255,10 @@ export default function HomePage() {
         description="Review current openings, or submit your CV for future technology roles."
       >
         <Button href="/careers" variant="white">
-          View openings <ArrowRight className="h-4 w-4" aria-hidden />
+          View Openings <ArrowRight className="h-4 w-4" aria-hidden />
         </Button>
         <Button href="/submit-cv" variant="outlineLight">
-          Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
+          Submit Your CV <ArrowRight className="h-4 w-4" aria-hidden />
         </Button>
       </CtaBanner>
     </>

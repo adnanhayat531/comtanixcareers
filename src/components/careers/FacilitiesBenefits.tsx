@@ -64,25 +64,6 @@ const BENEFITS = [
       </svg>
     ),
   },
-  {
-    title: "Child Care Facility",
-    icon: (
-      <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
-        <circle className="fill-a" cx="24" cy="25" r="14" />
-        <path d="M24 11c0-4 3-6 6-5M18 22v.01M30 22v.01M19 29a7 5 0 0 0 10 0" />
-      </svg>
-    ),
-  },
-  {
-    title: "Company Provided Lunch/Dinner",
-    icon: (
-      <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
-        <circle className="fill-a" cx="24" cy="24" r="10" />
-        <circle cx="24" cy="24" r="4.5" />
-        <path d="M6 8v9a3 3 0 0 0 6 0V8M9 8v32M42 8c-4 2-5 8-5 14h5zM42 22v18" />
-      </svg>
-    ),
-  },
 ] as const;
 
 export function FacilitiesBenefits() {

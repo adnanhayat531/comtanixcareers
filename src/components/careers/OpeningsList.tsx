@@ -1,5 +1,4 @@
-import { ArrowRight, MapPin, Clock } from "lucide-react";
-import { BrandAccentText } from "@/components/ui/BrandAccentText";
+import { ArrowRight, CalendarDays, Clock, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { fetchJobs, jobToRole, type UiRole } from "@/lib/api";
 import { ROLES } from "@/lib/data/roles";
@@ -23,7 +22,7 @@ function formatDeadline(value: string | null | undefined) {
   if (Number.isNaN(d.getTime())) return value;
   return d.toLocaleDateString(undefined, {
     year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
   });
 }
@@ -38,62 +37,94 @@ async function loadOpenings(): Promise<UiRole[]> {
   }
 }
 
+function displayTags(tags: string[]) {
+  return tags
+    .filter((t) => !/night\s*shift/i.test(t))
+    .slice(0, 3);
+}
+
 export async function OpeningsList() {
   const roles = await loadOpenings();
 
+  if (!roles.length) {
+    return (
+      <div className="rounded-[var(--radius-xl)] border border-line bg-white px-6 py-12 text-center">
+        <p className="type-h3 text-ink">No open roles right now</p>
+        <p className="type-meta mx-auto mt-2 max-w-md text-muted">
+          Submit your CV to our talent pool and we will reach out when a matching
+          role opens.
+        </p>
+        <div className="mt-5">
+          <Button href="/submit-cv" variant="secondary">
+            Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface shadow-soft">
+    <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-5">
       {roles.map((role) => {
-        const shift = role.tags.find((t) => /night/i.test(t)) ?? "Night shift";
+        const shift =
+          role.tags.find((t) => /night/i.test(t)) ?? "Night shift";
+        const deadline = formatDeadline(role.applicationDeadline);
+        const tags = displayTags(role.tags);
+        const blurb = role.summary || role.detail;
+
         return (
-          <article
-            key={role.id}
-            className="list-row flex flex-col gap-4 px-4 py-5 sm:px-5 md:flex-row md:items-center md:justify-between md:gap-8 md:px-6 md:py-5"
-          >
-            <div className="min-w-0 flex-1">
-              <h2 className="type-h3 text-ink">
-                <BrandAccentText>{role.title}</BrandAccentText>
-              </h2>
-              <div className="type-meta mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-muted">
-                <span className="inline-flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5 text-brand" aria-hidden />
-                  Bahria Town Phase 8 · Onsite
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <Clock className="h-3.5 w-3.5 text-brand" aria-hidden />
-                  {shift}
-                </span>
-                {formatDeadline(role.applicationDeadline) ? (
-                  <span className="inline-flex items-center gap-1.5">
-                    Apply by {formatDeadline(role.applicationDeadline)}
-                  </span>
+          <li key={role.id}>
+            <article className="card-lift flex h-full flex-col rounded-[var(--radius-xl)] border border-line bg-white p-5 sm:p-6">
+              <div className="min-w-0 flex-1">
+                <h2 className="type-h3 text-balance text-ink">{role.title}</h2>
+
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  <li className="inline-flex items-center gap-1.5 rounded-full bg-tint px-2.5 py-1 type-meta text-brand">
+                    <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                    Bahria Town Phase 8 · Onsite
+                  </li>
+                  <li className="inline-flex items-center gap-1.5 rounded-full bg-tint px-2.5 py-1 type-meta text-brand">
+                    <Clock className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                    {shift}
+                  </li>
+                  {deadline ? (
+                    <li className="inline-flex items-center gap-1.5 rounded-full bg-tint px-2.5 py-1 type-meta text-brand">
+                      <CalendarDays className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                      Apply by {deadline}
+                    </li>
+                  ) : null}
+                </ul>
+
+                <p className="type-meta mt-4 line-clamp-3 text-muted">
+                  {blurb}
+                </p>
+
+                {tags.length ? (
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {tags.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-line px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-muted uppercase"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 ) : null}
               </div>
-              <p className="type-meta mt-2.5 max-w-3xl text-muted">
-                {role.detail ?? role.summary}
-              </p>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {role.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="type-eyebrow rounded-[var(--radius-sm)] border border-brand/20 bg-tint px-2 py-0.5 text-brand"
-                  >
-                    {t}
-                  </span>
-                ))}
+
+              <div className="mt-5 border-t border-line pt-4">
+                <Button
+                  href={`/apply?role=${encodeURIComponent(role.title)}`}
+                  className="w-full sm:w-auto"
+                >
+                  Apply now <ArrowRight className="h-4 w-4" aria-hidden />
+                </Button>
               </div>
-            </div>
-            <div className="flex w-full shrink-0 flex-col gap-2 sm:w-auto md:items-stretch">
-              <Button
-                href={`/apply?role=${encodeURIComponent(role.title)}`}
-                className="w-full sm:w-auto"
-              >
-                Apply <ArrowRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </article>
+            </article>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }
