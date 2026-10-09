@@ -37,7 +37,7 @@ export default function AdminContactsPage() {
       </div>
 
       <div className="flex flex-wrap items-center gap-3 rounded-xl border border-line bg-white p-4">
-        <div className="min-w-[12rem] flex-1 sm:max-w-xs">
+        <div className="min-w-0 w-full sm:min-w-[12rem] sm:flex-1 sm:max-w-xs">
           <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search…" className="ui-field" />
         </div>
         <div className="w-40">
@@ -54,7 +54,7 @@ export default function AdminContactsPage() {
 
       {error ? <p className="text-red-700">{error}</p> : null}
 
-      <div className="overflow-x-auto rounded-xl border border-line bg-white shadow-soft">
+      <div className="ui-table-wrap rounded-xl border border-line bg-white shadow-soft">
         <table className="ui-table">
           <thead>
             <tr>

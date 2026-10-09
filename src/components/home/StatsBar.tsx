@@ -66,12 +66,12 @@ function StatItem({
   }, [value, reduced]);
 
   return (
-    <div className="flex min-w-0 flex-col items-center justify-center px-1 text-center sm:px-2">
+    <div className="flex min-w-0 flex-col items-center justify-center px-0.5 text-center sm:px-2">
       <div className="type-stat text-white">
         <span ref={ref}>{display}</span>
         {suffix ? <span className="text-white/95">{suffix}</span> : null}
       </div>
-      <p className="mt-1.5 max-w-[9rem] text-[0.6875rem] font-semibold uppercase tracking-[0.06em] text-white/90 sm:max-w-[10rem]">
+      <p className="mt-1.5 max-w-[7.5rem] text-[0.625rem] leading-snug font-semibold break-words uppercase tracking-[0.05em] text-white/90 sm:max-w-[10rem] sm:text-[0.6875rem]">
         {label}
       </p>
     </div>
@@ -86,8 +86,8 @@ export function StatsBar() {
     >
       <Container>
         <div className="overflow-hidden rounded-[var(--radius-lg)] bg-white shadow-overlay ring-1 ring-line sm:rounded-[var(--radius-xl)]">
-          <div className="flex flex-col xl:flex-row xl:items-stretch">
-            <div className="flex shrink-0 flex-col items-center justify-center px-4 py-3.5 text-center sm:px-5 sm:py-4 xl:w-[22%] xl:max-w-xs xl:items-center xl:px-6">
+          <div className="flex flex-col lg:flex-row lg:items-stretch">
+            <div className="flex shrink-0 flex-col items-center justify-center px-3 py-3 text-center sm:px-5 sm:py-4 lg:w-[min(22%,14rem)] lg:items-center lg:px-5 xl:px-6">
               <h2 className="type-h3 text-ink">
                 <BrandAccentText>Growing with purpose.</BrandAccentText>
               </h2>
@@ -96,8 +96,8 @@ export function StatsBar() {
               </p>
             </div>
 
-            <div className="relative flex min-w-0 flex-1 items-center justify-center bg-brand px-3 py-3.5 sm:px-5 sm:py-4 xl:rounded-tl-[1.25rem]">
-              <div className="grid w-full grid-cols-2 place-items-center gap-x-3 gap-y-3 sm:grid-cols-4 sm:gap-y-0">
+            <div className="relative flex min-w-0 flex-1 items-center justify-center bg-brand px-2 py-3 sm:px-4 sm:py-4 lg:rounded-tl-[1.25rem]">
+              <div className="grid w-full grid-cols-2 place-items-center gap-x-2 gap-y-3 min-[480px]:grid-cols-4 min-[480px]:gap-y-0 sm:gap-x-3">
                 {STATS.map((s) => (
                   <StatItem
                     key={s.label}

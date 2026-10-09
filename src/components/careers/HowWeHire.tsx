@@ -52,10 +52,10 @@ export function HowWeHire() {
             Comtanix.
           </p>
 
-          <ol className="relative mt-8 grid grid-cols-1 gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 lg:mt-12 lg:grid-cols-5 lg:gap-3 xl:gap-4">
+          <ol className="relative mt-8 grid grid-cols-1 gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 lg:mt-12 lg:grid-cols-3 lg:gap-4 xl:grid-cols-5 xl:gap-3">
             <div
               aria-hidden
-              className="pointer-events-none absolute top-[1.75rem] right-[6%] left-[6%] z-0 hidden border-t-2 border-dashed border-[var(--hire)] opacity-45 lg:block"
+              className="pointer-events-none absolute top-[1.75rem] right-[4%] left-[4%] z-0 hidden border-t-2 border-dashed border-[var(--hire)] opacity-45 xl:block"
             />
 
             {STEPS.map((step) => (

@@ -52,6 +52,13 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       });
   }, [router]);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   async function onLogout() {
     await adminLogout();
     router.replace("/admin/login");
@@ -115,7 +122,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   );
 
   return (
-    <div className="flex min-h-dvh bg-canvas">
+    <div className="flex min-h-dvh min-w-0 overflow-x-clip bg-canvas">
       <aside className="hidden w-[var(--sidebar-w)] shrink-0 flex-col border-r border-line bg-white lg:flex">
         <div className="border-b border-line px-4 py-4">
           <p className="type-section-title text-ink">Comtanix</p>
@@ -131,21 +138,28 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex items-center justify-between border-b border-line bg-white px-4 py-3 lg:px-6">
+        <header className="flex items-center justify-between gap-3 border-b border-line bg-white px-3 py-2.5 sm:px-4 lg:px-6">
           <button
             type="button"
-            className="rounded-md border border-line p-2 lg:hidden"
+            className="shrink-0 rounded-md border border-line p-2 lg:hidden"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
           >
             <Menu className="h-5 w-5" />
           </button>
-          <p className="type-section-title text-ink">Hiring operations</p>
-          <Link href="/" className="type-meta text-brand hover:underline">
+          <p className="type-section-title min-w-0 truncate text-ink">
+            Hiring operations
+          </p>
+          <Link
+            href="/"
+            className="type-meta shrink-0 text-brand hover:underline"
+          >
             View site
           </Link>
         </header>
-        <div className="min-w-0 flex-1 p-4 sm:p-5 lg:p-6">{children}</div>
+        <div className="min-w-0 flex-1 overflow-x-clip p-3 sm:p-5 lg:p-6">
+          {children}
+        </div>
       </div>
 
       {open ? (
@@ -156,14 +170,14 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
             aria-label="Close menu"
             onClick={() => setOpen(false)}
           />
-          <aside className="absolute inset-y-0 left-0 flex w-[var(--sidebar-w)] flex-col bg-white shadow-overlay">
+          <aside className="absolute inset-y-0 left-0 flex w-[var(--sidebar-w)] max-w-[85vw] flex-col bg-white shadow-overlay">
             <div className="flex items-center justify-between border-b border-line px-4 py-3">
               <p className="type-section-title text-ink">Menu</p>
               <button type="button" onClick={() => setOpen(false)} aria-label="Close">
                 <X className="h-5 w-5" />
               </button>
             </div>
-            {nav}
+            <div className="min-h-0 flex-1 overflow-y-auto">{nav}</div>
           </aside>
         </div>
       ) : null}

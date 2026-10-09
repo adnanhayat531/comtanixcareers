@@ -101,7 +101,7 @@ function SubscribeBox() {
   }
 
   return (
-    <div className="w-full max-w-sm shrink-0">
+    <div className="w-full max-w-full shrink-0 sm:max-w-sm">
       <h3 className="type-eyebrow text-white/90">Subscribe</h3>
       <p className="type-meta mt-2 leading-snug text-white/75">
         Get open roles and hiring updates from {SITE.name}.
@@ -171,14 +171,14 @@ export function Footer() {
     <footer className="relative shrink-0 text-white">
       <div className="bg-footer">
         <Container className="pt-10 pb-6 md:pt-12 md:pb-8">
-          <div className="grid min-w-0 gap-8 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.35fr)_repeat(4,minmax(0,1fr))] lg:gap-6 xl:gap-8">
-            <div className="min-w-0 sm:col-span-2 lg:col-span-1">
+          <div className="grid min-w-0 gap-8 grid-cols-2 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.35fr)_repeat(4,minmax(0,1fr))] lg:gap-6 xl:gap-8">
+            <div className="col-span-2 min-w-0 lg:col-span-1">
               <Link
                 href="/"
-                className="inline-flex items-center"
+                className="inline-flex max-w-full items-center"
                 aria-label={`${SITE.name} home`}
               >
-                <BrandLogo light className="h-8 w-auto" />
+                <BrandLogo light className="h-7 w-auto max-w-[10rem] sm:h-8 sm:max-w-none" />
               </Link>
               <p className="type-meta mt-3 max-w-[18rem] leading-relaxed text-white/80">
                 Pakistan-based IT delivery for global enterprises — hiring,

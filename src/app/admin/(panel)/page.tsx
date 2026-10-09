@@ -62,7 +62,7 @@ export default function AdminDashboardPage() {
               View all
             </Link>
           </div>
-          <div className="overflow-x-auto">
+          <div className="ui-table-wrap">
             <table className="ui-table">
               <thead>
                 <tr>
@@ -111,7 +111,7 @@ export default function AdminDashboardPage() {
               View all
             </Link>
           </div>
-          <div className="overflow-x-auto">
+          <div className="ui-table-wrap">
             <table className="ui-table">
               <thead>
                 <tr>

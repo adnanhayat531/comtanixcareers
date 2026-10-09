@@ -34,7 +34,7 @@ export function PageHero({
 
   return (
     <section
-      className={`relative flex min-h-[min(38vh,16rem)] flex-col justify-center overflow-hidden sm:min-h-[min(42vh,20rem)] md:min-h-[min(46vh,24rem)] ${className}`}
+      className={`relative flex min-h-[clamp(14rem,38vh,18rem)] flex-col justify-center overflow-hidden sm:min-h-[clamp(16rem,42vh,22rem)] md:min-h-[clamp(18rem,46vh,26rem)] ${className}`}
     >
       {image ? (
         <>

@@ -28,9 +28,9 @@ const CAPABILITY_ICONS = [Sparkles, Code2, Cloud, ShieldCheck] as const;
 export default function HomePage() {
   return (
     <>
-      <section className="relative flex min-h-[min(94svh,40rem)] flex-col overflow-hidden bg-surface sm:min-h-[min(96svh,44rem)] lg:min-h-[min(100svh,48rem)]">
+      <section className="relative flex min-h-[var(--hero-min-h)] flex-col overflow-hidden bg-surface">
         <HeroNetwork />
-        <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col items-center justify-center px-0 pb-14 pt-[calc(var(--header-h)+1.5rem)] sm:pb-16 sm:pt-[calc(var(--header-h)+1.75rem)]">
+        <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col items-center justify-center px-0 pb-[clamp(2.5rem,6vh,4rem)] pt-[calc(var(--header-h)+clamp(1rem,3vh,1.75rem))]">
           <HeroCopy />
         </div>
       </section>
@@ -55,7 +55,7 @@ export default function HomePage() {
             </p>
           </HeadingReveal>
 
-          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4">
+          <ul className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 sm:gap-4 xl:grid-cols-4">
             {CAPABILITIES.map((c, i) => {
               const Icon = CAPABILITY_ICONS[i] ?? Code2;
               return (

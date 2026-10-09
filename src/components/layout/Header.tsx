@@ -121,7 +121,7 @@ export function Header() {
           : "border-b border-line bg-surface/95 shadow-soft backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex h-[var(--header-h)] w-full max-w-none items-center justify-between gap-2 py-0 pr-[var(--container-pad-x)] pl-2 sm:gap-3 sm:pl-2.5 md:pl-3 xl:pl-4">
+      <div className="mx-auto flex h-[var(--header-h)] w-full max-w-none items-center justify-between gap-1.5 py-0 pr-[max(var(--container-pad-x),env(safe-area-inset-right,0px))] pl-[max(0.5rem,env(safe-area-inset-left,0px))] sm:gap-2 sm:pl-2.5 md:pl-3 lg:gap-1 xl:gap-0.5 xl:pl-4">
         <Link
           href="/"
           className="min-w-0 shrink focus-visible:rounded-sm"
@@ -129,11 +129,11 @@ export function Header() {
         >
           <BrandLogo
             light={overlay}
-            className="h-[1.375rem] w-auto max-w-[7.5rem] sm:h-6 sm:max-w-none"
+            className="h-[1.375rem] w-auto max-w-[7rem] sm:h-6 sm:max-w-[9rem] lg:max-w-none"
           />
         </Link>
 
-        <nav className="hidden min-w-0 items-center gap-0.5 lg:flex" aria-label="Main">
+        <nav className="hidden min-w-0 items-center gap-0 lg:flex lg:gap-0.5" aria-label="Main">
           <NavLink
             href="/"
             label="Home"
@@ -229,17 +229,17 @@ export function Header() {
 
       {open ? (
         <div id="mobile-nav" className="border-t border-line bg-surface lg:hidden">
-          <Container className="flex max-h-[calc(100dvh-4rem)] flex-col gap-1 overflow-y-auto py-4 pb-8">
+          <Container className="flex max-h-[calc(100dvh-var(--header-h))] flex-col gap-1 overflow-y-auto py-3 pb-[max(1.5rem,env(safe-area-inset-bottom,0px))]">
             <NavLink menu href="/" label="Home" active={pathname === "/"} onClick={() => setOpen(false)} />
 
             <button
               type="button"
-              className="type-nav flex min-h-12 items-center justify-between rounded-lg px-3 text-left text-ink"
+              className="type-nav flex min-h-[var(--control-h)] items-center justify-between rounded-[var(--radius-md)] px-3 text-left text-ink"
               onClick={() => setAboutOpen((v) => !v)}
               aria-expanded={aboutOpen}
             >
               About
-              <ChevronDown className={`h-5 w-5 transition ${aboutOpen ? "rotate-180" : ""}`} />
+              <ChevronDown className={`h-4 w-4 transition ${aboutOpen ? "rotate-180" : ""}`} />
             </button>
             {aboutOpen ? (
               <div className="grid">

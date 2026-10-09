@@ -53,7 +53,22 @@
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
   --header-h: 2.5rem;
-  --sidebar-w: 15rem;
+  --sidebar-w: min(15rem, 85vw);
+  --hero-min-h: clamp(22rem, 88svh, 40rem);
+}
+
+/* Very small phones */
+@media (max-width: 379px) {
+  :root {
+    --container-pad-x: 0.875rem;
+    --text-body: 0.875rem;
+    --text-meta: 0.8125rem;
+    --h1-hero: clamp(1.25rem, 6.5vw, 1.5rem);
+    --h1: clamp(1.2rem, 5.5vw, 1.4rem);
+    --h2: clamp(1.125rem, 5vw, 1.35rem);
+    --control-h: 2.375rem;
+    --hero-min-h: clamp(20rem, 82svh, 28rem);
+  }
 }
 
 @theme inline {
@@ -96,12 +111,15 @@ html {
 @media (min-width: 640px) {
   :root {
     --header-h: 2.625rem;
+    --hero-min-h: clamp(26rem, 92svh, 44rem);
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --header-h: 2.75rem;
+    --hero-min-h: clamp(30rem, 96svh, 48rem);
+    --sidebar-w: 15rem;
   }
 }
 
@@ -340,25 +358,50 @@ p {
   filter: brightness(1.06);
 }
 
+.ui-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .ui-table {
   width: 100%;
-  min-width: 100%;
+  min-width: max(100%, 40rem);
   border-collapse: collapse;
   text-align: left;
   font-size: var(--text-meta);
 }
 
+.ui-table th,
+.ui-table td {
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .ui-table th,
+  .ui-table td {
+    padding: 0.625rem 1rem;
+  }
+}
+
 .ui-table th {
-  padding: 0.625rem 1rem;
   font-weight: 500;
   color: var(--muted);
   background: var(--canvas);
 }
 
 .ui-table td {
-  padding: 0.625rem 1rem;
   border-top: 1px solid var(--line);
   vertical-align: middle;
+}
+
+.ui-table td.wrap,
+.ui-table th.wrap {
+  white-space: normal;
+  min-width: 8rem;
+  max-width: 16rem;
 }
 
 :focus-visible {
