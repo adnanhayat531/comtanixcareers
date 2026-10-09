@@ -51,18 +51,23 @@ export default function CareersPage() {
         </Button>
       </PageHero>
 
-      <Section id="openings" className="scroll-mt-24 bg-white md:scroll-mt-28">
+      <Section id="openings" className="scroll-mt-24 bg-canvas md:scroll-mt-28">
         <Container>
-          <div className="mb-6 rounded-[var(--radius-lg)] border border-brand/25 bg-tint px-4 py-4 sm:px-5">
-            <p className="type-eyebrow text-brand">Before you apply</p>
-            <p className="type-meta mt-2 text-muted">
-              All listed roles are <span className="font-semibold text-ink">night shift</span>,{" "}
-              <span className="font-semibold text-ink">onsite</span>, and based at{" "}
-              <span className="font-semibold text-ink">
-                Bahria Town Phase 8, Rawalpindi
-              </span>
-              . Please confirm these fit you before submitting an application.
-            </p>
+          <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading
+              compact
+              eyebrow="Open roles"
+              title="Current openings"
+              description="Night shift · Onsite · Bahria Town Phase 8, Rawalpindi"
+              className="mb-0"
+            />
+            <Button
+              href="/submit-cv"
+              variant="secondary"
+              className="shrink-0 self-start sm:self-auto"
+            >
+              Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
+            </Button>
           </div>
 
           <OpeningsList />

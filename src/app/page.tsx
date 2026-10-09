@@ -228,7 +228,7 @@ export default function HomePage() {
                 key={item.title}
                 className="card-lift min-w-0 overflow-hidden rounded-[var(--radius-lg)] border border-line bg-canvas/60"
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-tint">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-tint">
                   <Image
                     src={item.image}
                     alt=""

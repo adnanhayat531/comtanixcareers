@@ -251,12 +251,12 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
   return (
     <form
       onSubmit={onSubmit}
-      className="grid w-full max-w-xl gap-4"
+      className="grid w-full max-w-none gap-5 lg:gap-6"
       noValidate
     >
       <input type="hidden" name="intent" value={isCv ? "cv-future" : "apply-current"} />
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
         <div className="min-w-0">
           <label className={labelClass} htmlFor="apply-name">
             Full name
@@ -285,24 +285,23 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
             className={fieldClass}
           />
         </div>
+        <div className="min-w-0 sm:col-span-2 lg:col-span-1">
+          <label className={labelClass} htmlFor="apply-phone">
+            Phone number
+          </label>
+          <input
+            id="apply-phone"
+            name="phone"
+            type="tel"
+            required
+            autoComplete="tel"
+            placeholder="03xx xxxxxxx"
+            className={fieldClass}
+          />
+        </div>
       </div>
 
-      <div className="min-w-0">
-        <label className={labelClass} htmlFor="apply-phone">
-          Phone number
-        </label>
-        <input
-          id="apply-phone"
-          name="phone"
-          type="tel"
-          required
-          autoComplete="tel"
-          placeholder="03xx xxxxxxx"
-          className={fieldClass}
-        />
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-5">
         <div className="min-w-0">
           <label className={labelClass} htmlFor="apply-role">
             {isCv ? "Role interest" : "Open role"}
@@ -364,11 +363,20 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
         <label
           htmlFor="apply-cv"
           aria-labelledby="apply-cv-label"
-          className="flex min-h-[var(--control-h)] cursor-pointer items-center gap-3 rounded-[var(--radius-md)] border border-dashed border-line bg-white px-3.5 py-2.5 transition hover:border-brand/50 hover:bg-tint/40 focus-within:border-brand focus-within:ring-1 focus-within:ring-brand/25"
+          className="flex min-h-[5.5rem] cursor-pointer flex-col items-center justify-center gap-3 rounded-[var(--radius-md)] border border-dashed border-line bg-canvas/60 px-3.5 py-5 text-center transition hover:border-brand/50 hover:bg-tint/50 focus-within:border-brand focus-within:ring-1 focus-within:ring-brand/25 sm:flex-row sm:text-left"
         >
-          <FileUp className="h-4 w-4 shrink-0 text-brand" aria-hidden />
-          <span className="type-body min-w-0 truncate text-ink">
-            {cvName || "PDF or Word (.pdf, .doc, .docx), max 5 MB"}
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-tint text-brand">
+            <FileUp className="h-5 w-5" aria-hidden />
+          </span>
+          <span className="min-w-0">
+            <span className="type-body block truncate font-medium text-ink">
+              {cvName || "Drop your CV here, or browse"}
+            </span>
+            {!cvName ? (
+              <span className="type-meta mt-0.5 block text-muted">
+                PDF or Word · max 5 MB
+              </span>
+            ) : null}
           </span>
           <input
             id="apply-cv"
@@ -398,13 +406,13 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
         <textarea
           id="apply-msg"
           name="msg"
-          rows={4}
+          rows={5}
           placeholder="Anything you’d like us to know"
           className={`${fieldClass} h-auto min-h-[120px] resize-y py-3 leading-relaxed`}
         />
       </div>
 
-      <fieldset className="min-w-0 rounded-md border border-line bg-tint/50 px-4 py-4">
+      <fieldset className="min-w-0 rounded-[var(--radius-md)] border border-line bg-tint/50 px-4 py-4">
         <legend className="type-label px-1 text-ink">
           {isCv ? "Confirm before you submit" : "Confirm before you apply"}
         </legend>
@@ -447,7 +455,7 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
         ) : null}
       </fieldset>
 
-      <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between">
         {status ? (
           <p
             className={`type-meta ${statusError ? "font-medium text-red-700" : "text-brand"}`}
@@ -458,7 +466,7 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
         ) : (
           <p className="type-meta text-muted">
             {isCv
-              ? "We review CVs for future openings."
+              ? "We review CVs for future openings and contact matching candidates."
               : "We’ll confirm next steps after review."}
           </p>
         )}
@@ -470,7 +478,7 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
             !checks.confirmOnsite ||
             !checks.confirmLocation
           }
-          className="ui-btn ui-btn-primary w-full sm:w-auto"
+          className="ui-btn ui-btn-primary w-full sm:min-w-[11rem] sm:w-auto"
         >
           {pending ? "Submitting…" : isCv ? "Submit CV" : "Submit application"}
           {!pending ? <ArrowRight className="h-4 w-4" aria-hidden /> : null}

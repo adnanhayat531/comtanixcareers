@@ -44,7 +44,7 @@ export default function LifePage() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {LIFE_ACTIVITIES.map((a) => (
               <article key={a.title} className="group flex flex-col">
-                <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] bg-white">
+                <div className="relative mb-3 aspect-[16/10] overflow-hidden rounded-[var(--radius-lg)] bg-white">
                   <Image
                     src={a.image}
                     alt=""
