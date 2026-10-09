@@ -5,11 +5,12 @@ export function HeroNetwork() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
       <Image
-        src="/hero-floor.jpg"
+        src="/hero-comtanix.png"
         alt=""
         fill
         priority
-        quality={92}
+        quality={100}
+        unoptimized
         sizes="100vw"
         className="object-cover object-center"
       />
