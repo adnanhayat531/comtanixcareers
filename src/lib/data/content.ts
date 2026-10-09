@@ -130,17 +130,17 @@ export const WHY_COMTANIX = [
   {
     title: "Quality First",
     body: "Careful execution, thorough testing, and attention to the details that affect results.",
-    image: "/why/quality.png",
+    image: "/why/quality-first.png",
   },
   {
     title: "Security & Trust",
     body: "Protecting your systems, data, and intellectual property through sound security practices.",
-    image: "/why/security.png",
+    image: "/why/security-trust.png",
   },
   {
     title: "Working as One Team",
     body: "Working within your tools and processes, with clear responsibilities and open communication.",
-    image: "/why/partnership.png",
+    image: "/why/working-as-one-team.png",
   },
 ] as const;
 

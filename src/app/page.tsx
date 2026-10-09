@@ -251,8 +251,8 @@ export default function HomePage() {
 
       <CtaBanner
         eyebrow="Opportunities"
-        title="Grow your career on work that’s real."
-        description="Review current openings, or submit your CV for future technology roles."
+        title="Build your future with Comtanix."
+        description="Discover opportunities at Comtanix, or submit your CV to be considered for future openings."
       >
         <Button href="/careers" variant="white">
           View Openings <ArrowRight className="h-4 w-4" aria-hidden />
