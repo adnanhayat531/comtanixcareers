@@ -89,7 +89,7 @@ export function FacilitiesBenefits() {
   return (
     <Section
       id="facilities"
-      className="scroll-mt-24 border-t border-line bg-tint md:scroll-mt-28 [--fb:#2f7a84] [--fb-d:#0f3d45] [--fb-l:#e8f2f3] [--fb-ink:#0b2c35] [--fb-card:#ffffff] [--fb-line:rgba(47,122,132,0.22)]"
+      className="scroll-mt-24 border-t border-line bg-tint md:scroll-mt-28 [--fb:var(--brand)] [--fb-d:var(--deep)] [--fb-l:var(--tint)] [--fb-ink:var(--ink)] [--fb-card:#ffffff] [--fb-line:var(--line-strong)]"
     >
       <Container>
         <div className="mx-auto w-full max-w-none">
@@ -111,7 +111,7 @@ export function FacilitiesBenefits() {
                   className="absolute inset-x-0 top-0 h-1 bg-white"
                 />
 
-                <div className="mx-auto mb-2.5 grid h-12 w-12 place-items-center rounded-full bg-[var(--fb-l)] shadow-[0_0.25rem_0.75rem_rgba(14,154,167,0.15)] transition-colors duration-300 group-hover:bg-[var(--fb)] sm:mb-3 sm:h-14 sm:w-14 md:h-16 md:w-16">
+                <div className="mx-auto mb-2.5 grid h-12 w-12 place-items-center rounded-full bg-[var(--fb-l)] shadow-soft transition-colors duration-300 group-hover:bg-[var(--fb)] sm:mb-3 sm:h-14 sm:w-14 md:h-16 md:w-16">
                   <span className="block h-6 w-6 text-[var(--fb)] transition-colors duration-300 group-hover:text-white sm:h-7 sm:w-7 md:h-8 md:w-8 [&_svg]:h-full [&_svg]:w-full [&_svg]:fill-none [&_svg]:stroke-current [&_svg]:stroke-[2.4] [&_svg]:[stroke-linecap:round] [&_svg]:[stroke-linejoin:round] [&_.fill-a]:fill-current [&_.fill-a]:opacity-20">
                     {b.icon}
                   </span>

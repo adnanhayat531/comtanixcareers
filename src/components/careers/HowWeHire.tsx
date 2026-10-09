@@ -40,7 +40,7 @@ export function HowWeHire() {
   return (
     <Section
       id="how-we-hire"
-      className="scroll-mt-24 bg-white md:scroll-mt-28 [--hire:#2f7a84] [--hire-d:#0f3d45] [--hire-l:#e8f2f3] [--hire-ink:#0b2c35] [--hire-mute:#2f6d75] [--hire-line:rgba(47,122,132,0.22)]"
+      className="scroll-mt-24 bg-white md:scroll-mt-28 [--hire:var(--brand)] [--hire-d:var(--deep)] [--hire-l:var(--tint)] [--hire-ink:var(--ink)] [--hire-mute:var(--muted)] [--hire-line:var(--line-strong)]"
     >
       <Container>
         <div className="mx-auto w-full max-w-none">
@@ -63,7 +63,7 @@ export function HowWeHire() {
                 key={step.n}
                 className="relative z-10 mx-auto flex w-full max-w-sm flex-col items-center sm:max-w-none"
               >
-                <div className="relative z-20 h-14 w-14 shrink-0 overflow-hidden rounded-[var(--radius-lg)] border-[3px] border-white shadow-[0_0.5rem_1rem_rgba(14,154,167,0.3)] sm:h-16 sm:w-16 lg:h-[4.25rem] lg:w-[4.25rem]">
+                <div className="relative z-20 h-14 w-14 shrink-0 overflow-hidden rounded-[var(--radius-lg)] border-[3px] border-white shadow-brand sm:h-16 sm:w-16 lg:h-[4.25rem] lg:w-[4.25rem]">
                   <Image
                     src={step.icon}
                     alt=""
@@ -74,7 +74,7 @@ export function HowWeHire() {
                   />
                 </div>
 
-                <div className="mt-[-1.1rem] flex h-full w-full flex-col rounded-[var(--radius-lg)] border border-[var(--hire-line)] bg-white px-3.5 pt-8 pb-4 text-center shadow-[0_0.35rem_1rem_rgba(14,154,167,0.08)] sm:px-3 sm:pt-9 lg:mt-[-1.25rem] lg:px-2.5 lg:pt-10 xl:px-3">
+                <div className="mt-[-1.1rem] flex h-full w-full flex-col rounded-[var(--radius-lg)] border border-[var(--hire-line)] bg-white px-3.5 pt-8 pb-4 text-center shadow-soft sm:px-3 sm:pt-9 lg:mt-[-1.25rem] lg:px-2.5 lg:pt-10 xl:px-3">
                   <p className="type-eyebrow mb-1.5 text-[var(--hire)]">
                     Step {step.n}
                   </p>

@@ -35,7 +35,7 @@ export function HeroCopy() {
         <h1 className="type-h1-hero reveal relative z-10 text-balance text-center text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.9),0_4px_16px_rgba(0,0,0,0.65)]">
           <TextGlow className="px-2 py-1">
             Build what&apos;s next with AI, technology, and the right{" "}
-            <span className="text-[#9fe0e6]">expertise</span>.
+            <span className="text-[var(--brand-bright)]">expertise</span>.
           </TextGlow>
         </h1>
 

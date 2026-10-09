@@ -54,7 +54,7 @@ export function PageHero({
                 aria-hidden
               />
               <div
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,rgba(47,122,132,0.35)_0%,transparent_55%)]"
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,rgba(73,164,174,0.35)_0%,transparent_55%)]"
                 aria-hidden
               />
             </>
@@ -67,7 +67,7 @@ export function PageHero({
         </>
       ) : (
         <div
-          className="absolute inset-0 bg-[linear-gradient(135deg,var(--deep)_0%,var(--brand)_48%,#3a8f99_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(135deg,var(--deep)_0%,var(--brand)_48%,var(--brand-bright)_100%)]"
           aria-hidden
         >
           <div className="absolute inset-0 opacity-40 [background-image:radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.18)_0%,transparent_42%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.1)_0%,transparent_40%)]" />
