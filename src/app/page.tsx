@@ -29,7 +29,7 @@ const CAPABILITY_ICONS = [Sparkles, Code2, Cloud, ShieldCheck] as const;
 export default function HomePage() {
   return (
     <>
-      <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-surface">
+      <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-black">
         <HeroNetwork />
         <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col items-center justify-center px-0 pb-16 pt-20 sm:pb-20 sm:pt-24 md:pb-24 md:pt-28 lg:pb-28">
           <HeroCopy />
