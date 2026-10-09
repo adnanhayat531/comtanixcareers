@@ -31,10 +31,7 @@ export function WhoWeAre() {
       <Container className="relative z-10">
         <div className="grid min-w-0 items-center gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10">
           <div className="min-w-0 max-w-xl text-left lg:max-w-none">
-            <p className="type-eyebrow mb-2 inline-flex items-center gap-2 text-brand">
-              Who we are
-              <span className="block h-px w-6 bg-brand" aria-hidden />
-            </p>
+            <p className="type-eyebrow mb-2 text-brand">Who we are</p>
 
             <h2 className="type-h2 text-ink">
               A global technology company built around{" "}
