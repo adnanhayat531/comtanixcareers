@@ -28,9 +28,9 @@ const CAPABILITY_ICONS = [Sparkles, Code2, Cloud, ShieldCheck] as const;
 export default function HomePage() {
   return (
     <>
-      <section className="relative flex min-h-[var(--hero-min-h)] flex-col overflow-hidden bg-[#0b1520]">
+      <section className="relative flex min-h-[90svh] flex-col overflow-hidden bg-[#050d18]">
         <HeroNetwork />
-        <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col items-center justify-center px-0 pb-[clamp(2.5rem,6vh,4rem)] pt-[calc(var(--header-h)+clamp(1rem,3vh,1.75rem))]">
+        <div className="relative z-10 flex min-h-[90svh] w-full flex-col items-start justify-center px-0 pb-[clamp(2.5rem,6vh,4rem)] pt-[calc(var(--header-h)+clamp(1rem,3vh,1.75rem))]">
           <HeroCopy />
         </div>
       </section>
@@ -252,7 +252,7 @@ export default function HomePage() {
       <CtaBanner
         eyebrow="Opportunities"
         title="Build your future with Comtanix."
-        description="Discover opportunities at Comtanix, or submit your CV to be considered for future openings."
+        description="Explore current openings or submit your CV for consideration for future opportunities."
       >
         <Button href="/careers" variant="white">
           View Openings <ArrowRight className="h-4 w-4" aria-hidden />

@@ -174,5 +174,5 @@ export const CAREER_POINTS = [
   "Paid induction and role-specific onboarding",
   "Mentorship from experienced technology teams",
   "Clear progression from associate to leadership",
-  "Structured shifts with night-shift allowance",
+  "Structured night shifts with clear schedules",
 ] as const;

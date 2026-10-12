@@ -1,17 +1,20 @@
-/** Full-bleed 90svh hero — tall photo fills edge-to-edge, no dark letterbox */
+/** 90svh hero — full image, no crop panel; sits on the right over dark navy */
 export function HeroNetwork() {
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden select-none" aria-hidden>
+    <div
+      className="pointer-events-none absolute inset-0 overflow-hidden bg-[#050d18] select-none"
+      aria-hidden
+    >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/hero-comtanix.jpg?v=board"
+        src="/hero-comtanix.png?v=neon-wide"
         alt=""
-        width={2560}
-        height={1440}
+        width={1024}
+        height={409}
         decoding="async"
         fetchPriority="high"
         draggable={false}
-        className="absolute inset-0 h-full w-full object-cover object-[center_38%] [image-rendering:auto] [transform:none]"
+        className="absolute inset-0 h-full w-full object-contain object-right"
       />
     </div>
   );
