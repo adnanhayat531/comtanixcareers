@@ -1,8 +1,8 @@
-/** 90svh hero — full image visible, no cover zoom */
+/** 90svh hero — full-bleed photo, no dark letterbox, no scale zoom */
 export function HeroNetwork() {
   return (
     <div
-      className="pointer-events-none absolute inset-0 overflow-hidden bg-[#071422] select-none"
+      className="pointer-events-none absolute inset-0 overflow-hidden select-none"
       aria-hidden
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -14,7 +14,7 @@ export function HeroNetwork() {
         decoding="async"
         fetchPriority="high"
         draggable={false}
-        className="absolute inset-0 h-full w-full object-contain object-right"
+        className="absolute inset-0 h-full w-full object-cover object-[center_right] max-md:object-[70%_center]"
       />
     </div>
   );
