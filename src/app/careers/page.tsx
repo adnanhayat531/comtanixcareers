@@ -54,13 +54,26 @@ export default function CareersPage() {
       <Section id="openings" className="scroll-mt-24 bg-canvas md:scroll-mt-28">
         <Container>
           <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
-            <SectionHeading
-              compact
-              eyebrow="Open roles"
-              title="Current openings"
-              description="Night shift · Onsite · Bahria Town Phase 8, Rawalpindi"
-              className="mb-0"
-            />
+            <div className="min-w-0">
+              <SectionHeading
+                compact
+                eyebrow="Open roles"
+                title="Current openings"
+                className="mb-0"
+              />
+              <ul className="mt-3 flex flex-wrap gap-2" aria-label="Role highlights">
+                {["Night shift", "Onsite", "Bahria Town Phase 8, Rawalpindi"].map(
+                  (tag) => (
+                    <li
+                      key={tag}
+                      className="inline-flex items-center rounded-[var(--radius-md)] border border-brand/40 bg-white px-2.5 py-1 type-meta text-brand"
+                    >
+                      {tag}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
             <Button
               href="/submit-cv"
               variant="secondary"

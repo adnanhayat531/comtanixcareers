@@ -17,15 +17,16 @@ export function OfficeIllustration({
         className={`relative w-full max-w-full overflow-hidden ${aspectClassName}`}
       >
         <Image
-          src="/office-comtanix.jpg"
+          src="/hero-comtanix.png"
           alt="Comtanix office building at night — Bahria Town Phase 8, Rawalpindi"
           fill
           className="object-cover object-center"
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 55vw, 640px"
           priority={false}
+          quality={100}
         />
         {caption ? (
-          <figcaption className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/55 to-transparent px-5 py-4 sm:px-6 sm:py-5">
+          <figcaption className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/50 to-transparent px-5 py-4 sm:px-6 sm:py-5">
             <p className="type-meta font-medium leading-snug text-white/95">
               {caption}
             </p>
