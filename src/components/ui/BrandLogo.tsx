@@ -32,7 +32,7 @@ export function BrandLogo({
       priority
       quality={100}
       unoptimized
-      className={`h-auto w-auto object-contain object-left ${className}`}
+      className={`block max-h-full w-auto object-contain object-left ${className}`}
     />
   );
 }

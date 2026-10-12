@@ -113,7 +113,7 @@ export function Header() {
 
   return (
     <header
-      className={`z-50 transition-[background-color,box-shadow,border-color] duration-300 ${
+      className={`z-50 overflow-visible transition-[background-color,box-shadow,border-color] duration-300 ${
         isHome ? "fixed inset-x-0 top-0" : "sticky top-0"
       } ${
         overlay
@@ -124,12 +124,12 @@ export function Header() {
       <div className="mx-auto flex h-[var(--header-h)] w-full max-w-none items-center justify-between gap-1.5 py-0 pr-[max(var(--container-pad-x),env(safe-area-inset-right,0px))] pl-[max(0.5rem,env(safe-area-inset-left,0px))] sm:gap-2 sm:pl-2.5 md:pl-3 lg:gap-1 xl:gap-0.5 xl:pl-4">
         <Link
           href="/"
-          className="min-w-0 shrink focus-visible:rounded-sm"
+          className="flex h-8 shrink-0 items-center focus-visible:rounded-sm sm:h-9"
           aria-label={`${SITE.name} home`}
         >
           <BrandLogo
             light={overlay}
-            className="h-[1.375rem] w-auto max-w-[7rem] sm:h-6 sm:max-w-[9rem] lg:max-w-none"
+            className="h-7 w-auto max-w-[9.5rem] sm:h-8 sm:max-w-[11rem] lg:max-w-[12.5rem]"
           />
         </Link>
 

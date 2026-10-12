@@ -36,9 +36,9 @@
   --leading-body: 1.55;
   --leading-tight: 1.25;
 
-  --h1: clamp(1.75rem, 4.5vw, 3rem);
-  --h1-hero: clamp(1.75rem, 4vw + 0.75rem, 3.25rem);
-  --h2: clamp(1.4rem, 3.6vw, 2.5rem);
+  --h1: clamp(1.5rem, 1.1rem + 2vw, 2.75rem);
+  --h1-hero: clamp(1.5rem, 1.05rem + 2.2vw, 2.75rem);
+  --h2: clamp(1.3rem, 1.05rem + 1.5vw, 2.25rem);
   --h3: 1.0625rem;
   --stat: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);
 
@@ -52,7 +52,7 @@
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
-  --header-h: 2.5rem;
+  --header-h: 3.25rem;
   --sidebar-w: min(15rem, 85vw);
   --hero-min-h: 90svh;
 }
@@ -107,16 +107,32 @@ html {
   font-size: 100%;
 }
 
+/* Keep inline media from forcing horizontal scroll (heroes/logos use utility sizing) */
+img:not([class*="absolute"]):not([class*="h-"]),
+video:not([class*="absolute"]),
+svg,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mid laptops — keep hero type inside left column */
+@media (min-width: 768px) and (max-width: 1279px) {
+  :root {
+    --h1-hero: clamp(1.45rem, 1.1rem + 1.4vw, 2.15rem);
+  }
+}
+
 @media (min-width: 640px) {
   :root {
-    --header-h: 2.625rem;
+    --header-h: 3.5rem;
     --hero-min-h: 90svh;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --header-h: 2.75rem;
+    --header-h: 3.75rem;
     --hero-min-h: 90svh;
     --sidebar-w: 15rem;
   }

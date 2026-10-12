@@ -1,4 +1,4 @@
-/** 90svh hero — full image, no crop panel; sits on the right over dark navy */
+/** Full-bleed hero bg — original image lighting, no wash */
 export function HeroNetwork() {
   return (
     <div

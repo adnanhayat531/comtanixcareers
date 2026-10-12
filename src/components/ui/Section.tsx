@@ -32,7 +32,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`py-[var(--section-y)] md:py-[var(--section-y-lg)] ${className}`}
+      className={`min-w-0 overflow-x-clip py-[var(--section-y)] md:py-[var(--section-y-lg)] ${className}`}
     >
       {children}
     </section>

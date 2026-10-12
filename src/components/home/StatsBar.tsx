@@ -32,10 +32,10 @@ export function StatsBar() {
       className="stats-overlap relative z-20 w-full min-w-0"
       aria-label="Company footprint"
     >
-      <Container>
+      <Container className="min-w-0">
         <div className="overflow-hidden rounded-[var(--radius-lg)] bg-white shadow-overlay ring-1 ring-line sm:rounded-[var(--radius-xl)]">
-          <div className="flex flex-col lg:flex-row lg:items-stretch">
-            <div className="flex shrink-0 flex-col items-center justify-center px-3 py-3 text-center sm:px-5 sm:py-4 lg:w-[min(22%,14rem)] lg:items-center lg:px-5 xl:px-6">
+          <div className="flex min-w-0 flex-col lg:flex-row lg:items-stretch">
+            <div className="flex w-full shrink-0 flex-col items-center justify-center px-4 py-3.5 text-center sm:px-5 sm:py-4 lg:w-[min(24%,15rem)] lg:px-5 xl:px-6">
               <h2 className="type-h3 text-ink">
                 <BrandAccentText>Growing with purpose.</BrandAccentText>
               </h2>
@@ -44,8 +44,8 @@ export function StatsBar() {
               </p>
             </div>
 
-            <div className="relative flex min-w-0 flex-1 items-center justify-center bg-brand px-2 py-3 sm:px-4 sm:py-4 lg:rounded-tl-[1.25rem]">
-              <div className="grid w-full grid-cols-2 place-items-center gap-x-2 gap-y-3 min-[480px]:grid-cols-4 min-[480px]:gap-y-0 sm:gap-x-3">
+            <div className="relative flex min-w-0 flex-1 items-center justify-center bg-brand px-3 py-3.5 sm:px-4 sm:py-4 lg:rounded-tl-[1.25rem]">
+              <div className="grid w-full min-w-0 grid-cols-2 place-items-center gap-x-2 gap-y-3 min-[480px]:grid-cols-4 min-[480px]:gap-y-0 sm:gap-x-3">
                 {STATS.map((s) => (
                   <StatItem
                     key={s.label}
