@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, type FormEvent } from "react";
-import { ArrowRight, ArrowUp, Mail, Phone } from "lucide-react";
+import { ArrowRight, Mail, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Section";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { CONFIG, SITE } from "@/lib/config";
@@ -13,21 +13,10 @@ const columns = [
   {
     title: "Careers",
     links: [
-      { href: "/careers", label: "Open Roles" },
+      { href: "/careers#openings", label: "Open Roles" },
       { href: "/apply", label: "Apply Now" },
       { href: "/submit-cv", label: "Submit CV" },
-      { href: "/careers", label: "Paid Training" },
-      { href: "/careers", label: "Experienced Hires" },
-    ],
-  },
-  {
-    title: "Life",
-    links: [
-      { href: "/life", label: `Life at ${SITE.name}` },
-      { href: "/life", label: "Team Culture" },
-      { href: "/life", label: "Sports & Events" },
-      { href: "/about#learning", label: "Learning Path" },
-      { href: "/life", label: "Perks & Benefits" },
+      { href: "/contact", label: "Contact" },
     ],
   },
   {
@@ -36,25 +25,16 @@ const columns = [
       { href: "/about", label: "About Us" },
       { href: "/about#story", label: "Our Story" },
       { href: "/about#values", label: "Core Values" },
-      { href: "/about#learning", label: "Development" },
-      { href: "/contact", label: "Contact" },
+      { href: "/about#learning", label: "Learning & Development" },
     ],
   },
   {
-    title: "Resources",
-    links: [
-      { href: "/submit-cv", label: "How to Submit CV" },
-      { href: "/contact", label: "Hiring Team" },
-      { href: "/careers", label: "Role Guides" },
-      { href: "/life", label: "Office Life" },
-      { href: "/contact", label: "FAQs" },
-    ],
+    title: "Life",
+    links: [{ href: "/life", label: `Life at ${SITE.name}` }],
   },
 ] as const;
 
 const legalLinks = [
-  { href: "/contact", label: "Privacy Policy" },
-  { href: "/contact", label: "Terms of Use" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact Us" },
 ];
@@ -67,14 +47,14 @@ function FooterColumn({
   links: readonly { href: string; label: string }[];
 }) {
   return (
-    <div>
+    <div className="text-center">
       <h3 className="type-eyebrow text-white/90">{title}</h3>
       <ul className="mt-3 space-y-2">
         {links.map((l) => (
           <li key={`${title}-${l.label}`}>
             <Link
               href={l.href}
-              className="type-meta leading-snug text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline"
+              className="type-meta inline-block leading-snug text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline"
             >
               {l.label}
             </Link>
@@ -102,14 +82,14 @@ function SubscribeBox() {
   }
 
   return (
-    <div className="w-full max-w-full shrink-0 sm:max-w-sm">
+    <div className="w-full min-w-0 shrink-0">
       <h3 className="type-eyebrow text-white/90">Subscribe</h3>
-      <p className="type-meta mt-2 leading-snug text-white/75">
-        Get open roles and hiring updates from {SITE.name}.
+      <p className="type-meta mt-1 max-w-[15rem] text-[0.75rem] leading-snug text-white/70">
+        Hiring updates from {SITE.name}.
       </p>
       <form
         onSubmit={onSubmit}
-        className="mt-3 flex w-full min-w-0 items-center rounded-[var(--radius-md)] bg-white py-0.5 pr-0.5 pl-3"
+        className="mt-2.5 flex w-full min-w-0 items-center rounded-[var(--radius-md)] bg-white py-0.5 pr-0.5 pl-2.5"
       >
         <label className="sr-only" htmlFor="footer-email">
           Email
@@ -120,21 +100,18 @@ function SubscribeBox() {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter Your Email"
-          className="type-meta min-w-0 flex-1 border-0 bg-transparent py-2 text-ink outline-none placeholder:text-muted"
+          placeholder="Your email"
+          className="type-meta min-w-0 flex-1 border-0 bg-transparent py-1.5 text-[0.8125rem] text-ink outline-none placeholder:text-muted"
         />
         <button
           type="submit"
-          className="type-eyebrow inline-flex shrink-0 items-center gap-1 pr-0.5 text-brand transition hover:text-ink sm:gap-2"
+          className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-brand text-white transition hover:bg-ink"
           aria-label="Subscribe"
         >
-          <span className="hidden min-[360px]:inline">Subscribe</span>
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand text-white">
-            <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-          </span>
+          <ArrowRight className="h-3.5 w-3.5" aria-hidden />
         </button>
       </form>
-      {status ? <p className="type-meta mt-2 text-white">{status}</p> : null}
+      {status ? <p className="type-meta mt-1.5 text-white">{status}</p> : null}
     </div>
   );
 }
@@ -144,20 +121,43 @@ function ContactChip({
   label,
   value,
   icon: Icon,
+  compact = false,
 }: {
   href: string;
   label: string;
   value: string;
   icon: typeof Phone;
+  compact?: boolean;
 }) {
   return (
-    <a href={href} className="group flex items-center gap-3">
-      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-white text-brand transition group-hover:bg-white/90">
-        <Icon className="h-4 w-4" aria-hidden />
+    <a
+      href={href}
+      className={`group flex min-w-0 items-center ${compact ? "gap-2" : "gap-3"}`}
+    >
+      <span
+        className={`grid shrink-0 place-items-center rounded-md bg-white text-brand transition group-hover:bg-white/90 ${
+          compact ? "h-7 w-7" : "h-10 w-10 rounded-lg"
+        }`}
+      >
+        <Icon className={compact ? "h-3 w-3" : "h-4 w-4"} aria-hidden />
       </span>
       <span className="min-w-0">
-        <span className="type-eyebrow block text-white/65">{label}</span>
-        <span className="type-meta mt-0.5 block font-semibold break-words text-white transition group-hover:text-white/90">
+        <span
+          className={`block text-white/65 ${
+            compact
+              ? "text-[0.625rem] font-semibold tracking-[0.08em] uppercase"
+              : "type-eyebrow"
+          }`}
+        >
+          {label}
+        </span>
+        <span
+          className={`mt-0.5 block break-words text-white transition group-hover:text-white/90 ${
+            compact
+              ? "text-[0.75rem] font-semibold leading-tight"
+              : "type-meta font-semibold"
+          }`}
+        >
           {value}
         </span>
       </span>
@@ -172,9 +172,9 @@ export function Footer() {
   return (
     <footer className="relative shrink-0 text-white">
       <div className="bg-footer">
-        <Container className="pt-10 pb-6 md:pt-12 md:pb-8">
-          <div className="grid min-w-0 gap-8 grid-cols-2 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.35fr)_repeat(4,minmax(0,1fr))] lg:gap-6 xl:gap-8">
-            <div className="col-span-2 min-w-0 lg:col-span-1">
+        <Container className="pt-8 pb-6 md:pt-9 md:pb-8">
+          <div className="flex min-w-0 flex-col gap-8 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-stretch lg:gap-8">
+            <div className="flex min-w-0 shrink-0 -mt-0.5 flex-col lg:h-full">
               <Link
                 href="/"
                 className="inline-flex max-w-full items-center"
@@ -186,47 +186,40 @@ export function Footer() {
                   }
                 }}
               >
-                <BrandLogo light className="h-7 w-auto max-w-[10rem] sm:h-8 sm:max-w-none" />
+                <BrandLogo light className="h-9 w-auto max-w-[12rem] sm:h-11 sm:max-w-none" />
               </Link>
-              <p className="type-meta mt-3 max-w-[18rem] leading-relaxed text-white/80">
-                Pakistan-based IT delivery for global enterprises — hiring,
-                training, and operations under one roof.
-              </p>
-              <div className="mt-4">
-                <SocialLinks light />
+              <div className="mt-8 lg:mt-auto lg:pt-8">
+                <SocialLinks light large />
               </div>
             </div>
 
-            {columns.map((col) => (
-              <FooterColumn key={col.title} title={col.title} links={col.links} />
-            ))}
-          </div>
+            <div className="flex min-w-0 flex-wrap justify-center gap-x-10 gap-y-8 sm:gap-x-12 lg:gap-x-14">
+              {columns.map((col) => (
+                <FooterColumn key={col.title} title={col.title} links={col.links} />
+              ))}
+            </div>
 
-          <div className="mt-8 flex flex-col gap-5 border-t border-white/15 pt-6 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-8 sm:gap-y-4">
-            <SubscribeBox />
-            <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
-              <ContactChip
-                href={`tel:+${CONFIG.whatsapp}`}
-                label="Talk to hiring"
-                value={CONFIG.whatsappShow}
-                icon={Phone}
-              />
-              <ContactChip
-                href={`mailto:${CONFIG.email}`}
-                label="Have any questions?"
-                value={CONFIG.email}
-                icon={Mail}
-              />
-              <button
-                type="button"
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="grid h-10 w-10 shrink-0 place-items-center self-start rounded-lg border border-white/40 bg-transparent text-white transition hover:bg-white hover:text-brand sm:self-auto"
-                aria-label="Back to top"
-              >
-                <ArrowUp className="h-4 w-4" aria-hidden />
-              </button>
+            <div className="flex w-full min-w-0 max-w-[17rem] flex-col gap-5 lg:ml-auto lg:justify-self-end">
+              <div className="flex flex-col gap-2.5">
+                <ContactChip
+                  compact
+                  href={`tel:+${CONFIG.whatsapp}`}
+                  label="Talk to hiring"
+                  value={CONFIG.whatsappShow}
+                  icon={Phone}
+                />
+                <ContactChip
+                  compact
+                  href={`mailto:${CONFIG.email}`}
+                  label="Have any questions?"
+                  value={CONFIG.email}
+                  icon={Mail}
+                />
+              </div>
+              <SubscribeBox />
             </div>
           </div>
+
         </Container>
       </div>
 

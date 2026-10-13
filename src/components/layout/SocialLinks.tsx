@@ -11,10 +11,11 @@ const ICONS: Record<string, string> = {
   X: "M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64z",
 };
 
-function SocialGlyph({ name }: { name: string }) {
+function SocialGlyph({ name, large }: { name: string; large?: boolean }) {
+  const iconClass = large ? "h-5 w-5" : "h-4 w-4";
   if (name === "Instagram") {
     return (
-      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden>
+      <svg viewBox="0 0 24 24" className={iconClass} fill="none" aria-hidden>
         <rect
           x="3"
           y="3"
@@ -33,7 +34,7 @@ function SocialGlyph({ name }: { name: string }) {
   const d = ICONS[name];
   if (!d) return null;
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
+    <svg viewBox="0 0 24 24" className={iconClass} fill="currentColor" aria-hidden>
       <path d={d} fillRule={name === "YouTube" ? "evenodd" : undefined} />
     </svg>
   );
@@ -42,14 +43,18 @@ function SocialGlyph({ name }: { name: string }) {
 export function SocialLinks({
   light = false,
   circle = false,
+  large = false,
 }: {
   light?: boolean;
   circle?: boolean;
+  large?: boolean;
 }) {
   const entries = Object.entries(CONFIG.socials).filter(([, url]) => Boolean(url));
 
   return (
-    <div className="flex min-w-0 flex-wrap gap-2.5">
+    <div
+      className={`flex min-w-0 flex-nowrap items-center ${large ? "gap-2 sm:gap-2.5" : "flex-wrap gap-2.5"}`}
+    >
       {entries.map(([name, url]) => (
         <a
           key={name}
@@ -58,9 +63,9 @@ export function SocialLinks({
           rel="noopener noreferrer"
           aria-label={name}
           title={name}
-          className={`grid h-10 w-10 place-items-center transition ${
-            circle ? "rounded-full" : "rounded-md"
-          } ${
+          className={`grid shrink-0 place-items-center transition ${
+            large ? "h-10 w-10 sm:h-11 sm:w-11" : "h-10 w-10"
+          } ${circle ? "rounded-full" : "rounded-md"} ${
             light
               ? circle
                 ? "border border-white/60 text-white hover:border-white hover:bg-white hover:text-brand"
@@ -68,7 +73,7 @@ export function SocialLinks({
               : "border border-line text-brand hover:border-brand hover:bg-tint hover:text-brand"
           }`}
         >
-          <SocialGlyph name={name} />
+          <SocialGlyph name={name} large={large} />
         </a>
       ))}
     </div>
