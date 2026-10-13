@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Allow LAN IP access in `next dev` (CSS/JS otherwise return 403)
-  allowedDevOrigins: ["192.168.205.85", "192.168.60.176", "127.0.0.1", "localhost"],
+  // Private LAN wildcards so DHCP IP changes don't require config edits
+  allowedDevOrigins: ["192.168.*.*", "10.*.*.*", "172.*.*.*"],
   images: {
     qualities: [75, 92, 100],
     remotePatterns: [
