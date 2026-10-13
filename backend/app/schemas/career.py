@@ -7,30 +7,52 @@ from app.schemas.common import ORMModel
 
 
 class CareerCreateFields(ORMModel):
-    """Validated fields from ApplyForm (mode=cv / submit-cv)."""
+    """Validated fields from Submit CV form (checks + CV only)."""
 
-    name: str = Field(min_length=2, max_length=200)
-    email: EmailStr
-    phone: str = Field(min_length=7, max_length=40)
-    role: str = Field(min_length=2, max_length=200)
-    exp: str = Field(min_length=1, max_length=80)
+    name: str = Field(default="See CV", max_length=200)
+    email: EmailStr | None = None
+    phone: str = Field(default="See CV", max_length=40)
+    role: str = Field(default="General / future openings", max_length=200)
+    exp: str = Field(default="See CV", max_length=80)
     msg: str | None = Field(default=None, max_length=4000)
     confirmNight: bool = False
     confirmOnsite: bool = False
     confirmLocation: bool = False
 
-    @field_validator("name", "phone", "role", "exp")
+    @field_validator("name", "phone", "role", "exp", mode="before")
     @classmethod
-    def strip_required(cls, value: str) -> str:
-        cleaned = value.strip()
-        if not cleaned:
-            raise ValueError("This field is required.")
-        return cleaned
+    def default_blank(cls, value: object) -> str:
+        if value is None:
+            return ""
+        return str(value).strip()
 
-    @field_validator("email")
+    @field_validator("name")
     @classmethod
-    def normalize_email(cls, value: EmailStr) -> str:
-        return str(value).strip().lower()
+    def name_or_placeholder(cls, value: str) -> str:
+        return value or "See CV"
+
+    @field_validator("phone")
+    @classmethod
+    def phone_or_placeholder(cls, value: str) -> str:
+        return value or "See CV"
+
+    @field_validator("role")
+    @classmethod
+    def role_or_placeholder(cls, value: str) -> str:
+        return value or "General / future openings"
+
+    @field_validator("exp")
+    @classmethod
+    def exp_or_placeholder(cls, value: str) -> str:
+        return value or "See CV"
+
+    @field_validator("email", mode="before")
+    @classmethod
+    def empty_email_none(cls, value: object) -> object:
+        if value is None:
+            return None
+        text = str(value).strip()
+        return text or None
 
     @field_validator("msg")
     @classmethod
@@ -60,3 +82,11 @@ class CareerOut(ORMModel):
     message: str | None
     resume_original_filename: str
     created_at: datetime
+
+
+class CvParseOut(ORMModel):
+    name: str = ""
+    email: str = ""
+    phone: str = ""
+    role: str = ""
+    exp: str = ""

@@ -33,26 +33,26 @@ export default function SubmitCvPage() {
       <Section id="cv-form" className="scroll-mt-24 bg-canvas md:scroll-mt-28">
         <Container>
           <div className="w-full min-w-0">
-            <div className="mb-5 max-w-3xl sm:mb-7">
+            <div className="mb-6 max-w-3xl sm:mb-8">
               <p className="type-eyebrow text-brand">Talent pool</p>
               <h2 className="type-h2 mt-2 text-ink">CV submission</h2>
-              <p className="type-body mt-2.5 text-muted">
-                Fill in your details and attach a PDF or Word CV. Looking for a
-                listed job?{" "}
+              <p className="type-body mt-2.5 max-w-2xl text-muted">
+                Confirm the role basics, upload your CV, then review auto-filled
+                details (edit if needed). For a listed job,{" "}
                 <a
                   href="/apply"
-                  className="font-semibold text-brand underline-offset-2 hover:underline"
+                  className="font-medium text-brand underline-offset-2 hover:underline"
                 >
-                  Apply to a current opening
+                  apply here
                 </a>
                 .
               </p>
             </div>
 
-            <div className="w-full rounded-[var(--radius-xl)] border border-line bg-white p-4 shadow-soft sm:p-6 md:p-8 lg:p-10">
+            <div className="w-full rounded-2xl border border-line/80 bg-white p-5 sm:p-7 md:p-8 lg:p-10">
               <Suspense
                 fallback={
-                  <p className="text-muted" role="status">
+                  <p className="text-center text-muted" role="status">
                     Loading form…
                   </p>
                 }

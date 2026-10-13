@@ -15,7 +15,7 @@ async def create_career_submission(
 ) -> CareerSubmission:
     row = CareerSubmission(
         full_name=fields.name,
-        email=str(fields.email).lower(),
+        email=str(fields.email).lower() if fields.email else None,
         phone=fields.phone,
         role_interest=fields.role,
         experience=fields.exp,

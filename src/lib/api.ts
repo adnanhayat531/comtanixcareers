@@ -139,18 +139,18 @@ export async function fetchJobBySlug(
   return payload.data ?? null;
 }
 
-async function postForm(
+async function postForm<T = unknown>(
   path: string,
   formData: FormData,
   fallbackError: string,
-): Promise<ApiResponse<unknown>> {
+): Promise<ApiResponse<T>> {
   const res = await safeFetch(apiUrl(path), {
     method: "POST",
     body: formData,
     headers: { Accept: "application/json" },
   });
 
-  const payload = (await res.json().catch(() => null)) as ApiResponse<unknown> | null;
+  const payload = (await res.json().catch(() => null)) as ApiResponse<T> | null;
   if (!res.ok) {
     throw new Error(
       payload
@@ -179,6 +179,32 @@ export function submitJobApplication(jobId: string, formData: FormData) {
 
 export function submitCareerCv(formData: FormData) {
   return postForm("/api/careers", formData, "Could not submit your CV.");
+}
+
+export type ParsedCvFields = {
+  name: string;
+  email: string;
+  phone: string;
+  role: string;
+  exp: string;
+};
+
+export async function parseCareerCv(file: File): Promise<ParsedCvFields> {
+  const formData = new FormData();
+  formData.append("cv", file);
+  const result = await postForm<ParsedCvFields>(
+    "/api/careers/parse",
+    formData,
+    "Could not read your CV. Please fill the fields manually.",
+  );
+  const data = result.data;
+  return {
+    name: data?.name ?? "",
+    email: data?.email ?? "",
+    phone: data?.phone ?? "",
+    role: data?.role ?? "",
+    exp: data?.exp ?? "",
+  };
 }
 
 export function submitContact(formData: FormData) {

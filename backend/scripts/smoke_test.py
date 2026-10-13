@@ -75,10 +75,6 @@ def main() -> int:
     print("5) Career CV submission")
     files = {"cv": ("pool.docx", pdf_bytes(), "application/vnd.openxmlformats-officedocument.wordprocessingml.document")}
     form = {
-        "name": "Future Candidate",
-        "phone": "03007654321",
-        "role": "General / future openings",
-        "exp": "Fresher",
         "confirmNight": "true",
         "confirmOnsite": "true",
         "confirmLocation": "true",

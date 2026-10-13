@@ -79,25 +79,25 @@ export const LIFE_ACTIVITIES = [
     title: "Star of the Month",
     body: "Public recognition, gift vouchers, and cash bonuses for agents who exceed monthly SLA targets.",
     icon: "star" as const,
-    image: "/life/star-month.png",
+    image: "/life/star-month.jpg",
   },
   {
     title: "Skill Enrichment Sessions",
     body: "Interactive sessions covering business communication, cloud certifications, and public speaking.",
     icon: "graduation" as const,
-    image: "/life/skill-sessions.png",
+    image: "/life/skill-sessions.jpg",
   },
   {
     title: "Festivals & Birthdays",
     body: "Cake cutting on every birthday, festive holiday dinners, and cultural exchanges.",
     icon: "party" as const,
-    image: "/life/festivals.png",
+    image: "/life/festivals.jpg",
   },
   {
     title: "Breakroom & Game Nights",
     body: "Recharge between calls with console games, foosball, quiet rest corners, and unlimited tea & coffee.",
     icon: "game" as const,
-    image: "/life/breakroom.png",
+    image: "/life/breakroom.jpg",
   },
 ] as const;
 
