@@ -5,24 +5,28 @@ import { Button } from "@/components/ui/Button";
 
 export function HeroCopy() {
   return (
-    <div className="flex w-full min-w-0 max-w-xl flex-col items-start text-left lg:max-w-2xl">
-      <h1 className="type-h1-hero reveal relative z-10 w-full text-left text-white [text-shadow:0_2px_16px_rgba(5,13,24,0.75)]">
-        <span className="block whitespace-nowrap">
-          Build what&apos;s next with AI,
-        </span>
-        <span className="block whitespace-nowrap">
-          technology, and the right
-        </span>
+    <div className="relative flex w-full min-w-0 max-w-2xl flex-col items-center text-center">
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[120%] w-[115%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(8, 24, 32, 0.55) 0%, rgba(8, 24, 32, 0.28) 42%, transparent 72%)",
+        }}
+        aria-hidden
+      />
+      <h1 className="type-h1-hero reveal relative z-10 w-full text-center text-white [text-shadow:0_1px_2px_rgba(5,13,24,0.45),0_4px_24px_rgba(5,13,24,0.35)]">
+        <span className="block">Build what&apos;s next with AI,</span>
+        <span className="block">technology, and the right</span>
         <span className="block text-[var(--brand-bright)]">expertise.</span>
       </h1>
 
-      <p className="reveal-delay-1 type-lede relative mt-5 w-full max-w-lg text-pretty !text-white [text-shadow:0_2px_14px_rgba(5,13,24,0.85)] sm:mt-6">
+      <p className="reveal-delay-1 type-lede relative z-10 mx-auto mt-5 w-full max-w-xl text-pretty !text-white [text-shadow:0_1px_2px_rgba(5,13,24,0.4),0_3px_18px_rgba(5,13,24,0.3)] sm:mt-6">
         Comtanix helps you integrate AI, develop software, modernize IT systems,
         and solve complex technical challenges with teams that work around your
         needs.
       </p>
 
-      <div className="reveal-delay-2 relative z-10 mt-5 flex w-full max-w-lg flex-col items-stretch gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+      <div className="reveal-delay-2 relative z-10 mt-5 flex w-full max-w-lg flex-col items-stretch justify-center gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
         <Button href="/about#story" variant="outlineLight" className="w-full sm:w-auto">
           Explore <ArrowRight className="h-4 w-4" aria-hidden />
         </Button>

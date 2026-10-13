@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Star, ExternalLink } from "lucide-react";
+import { Star, ExternalLink } from "lucide-react";
 import {
   GOOGLE_MAPS_PLACE_URL,
   GOOGLE_RATING,
@@ -114,38 +113,29 @@ function ReviewCard({ review }: { review: GoogleReview }) {
   );
 }
 
+function ReviewTrack({
+  reviews,
+  keyPrefix,
+}: {
+  reviews: GoogleReview[];
+  keyPrefix: string;
+}) {
+  return (
+    <div className="flex shrink-0 gap-4 pe-4">
+      {reviews.map((review) => (
+        <div
+          key={`${keyPrefix}-${review.id}`}
+          className="w-[min(85vw,20rem)] shrink-0 sm:w-[22rem]"
+        >
+          <ReviewCard review={review} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function TestimonialsGrid() {
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const [canPrev, setCanPrev] = useState(false);
-  const [canNext, setCanNext] = useState(true);
   const reviews = GOOGLE_REVIEWS;
-
-  function updateArrows() {
-    const el = scrollerRef.current;
-    if (!el) return;
-    const { scrollLeft, scrollWidth, clientWidth } = el;
-    setCanPrev(scrollLeft > 4);
-    setCanNext(scrollLeft + clientWidth < scrollWidth - 4);
-  }
-
-  useEffect(() => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    updateArrows();
-    el.addEventListener("scroll", updateArrows, { passive: true });
-    const ro = new ResizeObserver(updateArrows);
-    ro.observe(el);
-    return () => {
-      el.removeEventListener("scroll", updateArrows);
-      ro.disconnect();
-    };
-  }, []);
-
-  function scrollByPage(dir: -1 | 1) {
-    const el = scrollerRef.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * el.clientWidth, behavior: "smooth" });
-  }
 
   return (
     <div className="min-w-0">
@@ -181,58 +171,15 @@ export function TestimonialsGrid() {
             <ExternalLink className="h-4 w-4 text-brand" aria-hidden />
           </span>
         </a>
+      </div>
 
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => scrollByPage(-1)}
-            disabled={!canPrev}
-            className="grid h-10 w-10 place-items-center rounded-md border border-line bg-white text-ink transition hover:border-brand hover:text-brand disabled:pointer-events-none disabled:opacity-35"
-            aria-label="Previous reviews"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollByPage(1)}
-            disabled={!canNext}
-            className="grid h-10 w-10 place-items-center rounded-md border border-line bg-white text-ink transition hover:border-brand hover:text-brand disabled:pointer-events-none disabled:opacity-35"
-            aria-label="Next reviews"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
+      {/* News-ticker style marquee: right → left, continuous */}
+      <div className="reviews-marquee group relative -mx-[var(--container-pad-x)] overflow-hidden px-[var(--container-pad-x)]">
+        <div className="reviews-marquee-track flex w-max">
+          <ReviewTrack reviews={reviews} keyPrefix="a" />
+          <ReviewTrack reviews={reviews} keyPrefix="b" />
         </div>
       </div>
-
-      <div
-        ref={scrollerRef}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {reviews.map((review) => (
-          <div
-            key={review.id}
-            data-review-card
-            className="w-[min(100%,20rem)] shrink-0 snap-start sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
-          >
-            <ReviewCard review={review} />
-          </div>
-        ))}
-      </div>
-
-      <p className="type-meta mt-4 text-center text-muted">
-        Tap a name, photo, or{" "}
-        <span className="font-semibold text-ink">Verify on Google</span> to open
-        that reviewer&apos;s Google profile.{" "}
-        <a
-          href={GOOGLE_MAPS_PLACE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-semibold text-brand underline-offset-2 hover:underline"
-        >
-          See all {GOOGLE_RATING.count} reviews
-        </a>
-        .
-      </p>
     </div>
   );
 }

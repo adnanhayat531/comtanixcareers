@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { ArrowRight, ArrowUp, Mail, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Section";
@@ -166,6 +167,7 @@ function ContactChip({
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const pathname = usePathname();
 
   return (
     <footer className="relative shrink-0 text-white">
@@ -177,6 +179,12 @@ export function Footer() {
                 href="/"
                 className="inline-flex max-w-full items-center"
                 aria-label={`${SITE.name} home`}
+                onClick={(e) => {
+                  if (pathname === "/") {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
               >
                 <BrandLogo light className="h-7 w-auto max-w-[10rem] sm:h-8 sm:max-w-none" />
               </Link>

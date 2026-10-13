@@ -7,14 +7,14 @@ export function HeroNetwork() {
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/hero-comtanix.png?v=wide-orig"
+        src="/hero-comtanix.png?v=office"
         alt=""
         width={1024}
-        height={409}
+        height={512}
         decoding="async"
         fetchPriority="high"
         draggable={false}
-        className="absolute inset-0 h-full w-full object-cover object-[center_right] max-md:object-[70%_center]"
+        className="absolute inset-0 h-full w-full object-cover object-center max-md:object-[center_40%]"
       />
     </div>
   );

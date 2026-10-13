@@ -533,12 +533,32 @@ p {
   animation: cx-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
 }
 
+/* Google reviews — news-ticker marquee (right → left) */
+@keyframes reviews-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.reviews-marquee-track {
+  animation: reviews-marquee 80s linear infinite;
+  will-change: transform;
+}
+
+.reviews-marquee:hover .reviews-marquee-track {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal-delay-1,
   .reveal-delay-2,
   .reveal-delay-3,
-  .wa-gentle-pulse {
+  .wa-gentle-pulse,
+  .reviews-marquee-track {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;

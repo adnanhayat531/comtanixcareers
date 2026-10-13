@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { type ReactNode } from "react";
 import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Container } from "@/components/ui/Section";
@@ -9,14 +8,45 @@ type PageHeroProps = {
   description: string;
   image?: string;
   imageAlt?: string;
+  /** cover crops to fill; contain shows the full original (no zoom). */
+  imageFit?: "cover" | "contain";
+  /** object-position for the photo. */
+  imagePosition?: "center" | "right" | "left";
+  /** Soft left→right fade so letterbox edge blends into the hero (no hard cut). */
+  imageBlend?: boolean;
   /** Prefer light text on photo heroes. Default when image is set. */
   tone?: "dark" | "light";
   children?: ReactNode;
   className?: string;
 };
 
+/** Brand teal wash for blended photo heroes (not black) */
+const HERO_BLEND = "#1e5f68";
+const HERO_BLEND_RGB = "30,95,104";
+
 /** Soft brand wash behind copy only — no hard corners, image stays clear */
-function TextWash({ children }: { children: ReactNode }) {
+function TextWash({
+  children,
+  soft,
+}: {
+  children: ReactNode;
+  soft?: boolean;
+}) {
+  if (soft) {
+    return (
+      <div className="relative w-fit max-w-full">
+        <div
+          className="pointer-events-none absolute -inset-y-10 -left-10 -right-6 -z-10 sm:-inset-y-12 sm:-left-14 sm:-right-10"
+          style={{
+            background: `radial-gradient(125% 110% at 0% 50%, ${HERO_BLEND}ee 0%, ${HERO_BLEND}99 42%, ${HERO_BLEND}33 68%, transparent 82%)`,
+          }}
+          aria-hidden
+        />
+        {children}
+      </div>
+    );
+  }
+
   return (
     <div className="relative w-fit max-w-full">
       <div
@@ -50,6 +80,9 @@ export function PageHero({
   description,
   image,
   imageAlt = "",
+  imageFit = "cover",
+  imagePosition = "center",
+  imageBlend = false,
   tone,
   children,
   className = "",
@@ -57,6 +90,14 @@ export function PageHero({
   const resolvedTone = tone ?? (image ? "dark" : "light");
   const isDark = resolvedTone === "dark";
   const onPhoto = Boolean(image) && isDark;
+  const fitClass =
+    imageFit === "contain" ? "object-contain" : "object-cover";
+  const positionClass =
+    imagePosition === "right"
+      ? "object-right"
+      : imagePosition === "left"
+        ? "object-left"
+        : "object-center";
 
   const copy = (
     <div className="max-w-2xl min-w-0 px-0.5 py-0.5">
@@ -95,20 +136,51 @@ export function PageHero({
     </div>
   );
 
+  const nightBg = Boolean(image) && (imageFit === "contain" || imageBlend);
+
   return (
     <section
-      className={`relative flex min-h-[clamp(14rem,38vh,18rem)] flex-col justify-center overflow-hidden sm:min-h-[clamp(16rem,42vh,22rem)] md:min-h-[clamp(18rem,46vh,26rem)] ${className}`}
+      className={`relative flex min-h-[clamp(14rem,38vh,18rem)] flex-col justify-center overflow-hidden sm:min-h-[clamp(16rem,42vh,22rem)] md:min-h-[clamp(18rem,46vh,26rem)] ${nightBg ? "bg-[#1e5f68]" : ""} ${className}`}
     >
       {image ? (
-        <Image
-          src={image}
-          alt={imageAlt}
-          fill
-          priority
-          quality={100}
-          sizes="100vw"
-          className="object-cover object-center"
-        />
+        imageBlend && imagePosition === "right" ? (
+          <>
+            {/* Right-anchored original — fade only left of Comtanix sign; logo stays full light */}
+            <div className="absolute top-0 right-0 z-0 h-full w-auto max-w-none">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={image}
+                alt={imageAlt}
+                className="h-full w-auto max-w-none"
+                style={{
+                  WebkitMaskImage:
+                    "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.35) 10%, rgba(0,0,0,0.75) 22%, #000 34%, #000 100%)",
+                  maskImage:
+                    "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.35) 10%, rgba(0,0,0,0.75) 22%, #000 34%, #000 100%)",
+                }}
+                fetchPriority="high"
+                decoding="async"
+              />
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background: `linear-gradient(90deg, ${HERO_BLEND} 0%, rgba(${HERO_BLEND_RGB},0.7) 12%, rgba(${HERO_BLEND_RGB},0.25) 24%, transparent 34%)`,
+                }}
+                aria-hidden
+              />
+            </div>
+          </>
+        ) : (
+          // Native img — fill + class "absolute" so globals.css height:auto rule cannot collapse it
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={image}
+            alt={imageAlt}
+            className={`absolute inset-0 z-0 h-full w-full ${fitClass} ${positionClass}`}
+            fetchPriority="high"
+            decoding="async"
+          />
+        )
       ) : (
         <div
           className="absolute inset-0 bg-[linear-gradient(135deg,var(--deep)_0%,var(--brand)_48%,var(--brand-bright)_100%)]"
@@ -120,7 +192,11 @@ export function PageHero({
       )}
 
       <Container className="relative z-10 py-10 sm:py-12 md:py-14 lg:py-16">
-        {onPhoto ? <TextWash>{copy}</TextWash> : copy}
+        {onPhoto ? (
+          <TextWash soft={imageBlend}>{copy}</TextWash>
+        ) : (
+          copy
+        )}
       </Container>
     </section>
   );

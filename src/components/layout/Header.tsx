@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { BrandLogo } from "@/components/ui/BrandLogo";
@@ -29,7 +29,7 @@ function NavLink({
   shortLabel?: string;
   active?: boolean;
   menu?: boolean;
-  onClick?: () => void;
+  onClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
   overlay?: boolean;
 }) {
   return (
@@ -73,6 +73,11 @@ export function Header() {
 
   const isHome = pathname === "/";
   const overlay = false; // raw hero photo — solid nav for contrast
+
+  const scrollHomeTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setOpen(false);
+  };
 
   useEffect(() => {
     setOpen(false);
@@ -126,6 +131,12 @@ export function Header() {
           href="/"
           className="flex h-8 shrink-0 items-center focus-visible:rounded-sm sm:h-9"
           aria-label={`${SITE.name} home`}
+          onClick={(e) => {
+            if (isHome) {
+              e.preventDefault();
+              scrollHomeTop();
+            }
+          }}
         >
           <BrandLogo
             light={overlay}
@@ -139,6 +150,12 @@ export function Header() {
             label="Home"
             active={pathname === "/"}
             overlay={overlay}
+            onClick={(e) => {
+              if (isHome) {
+                e.preventDefault();
+                scrollHomeTop();
+              }
+            }}
           />
 
           <div className="group relative">
@@ -230,7 +247,20 @@ export function Header() {
       {open ? (
         <div id="mobile-nav" className="border-t border-line bg-surface lg:hidden">
           <Container className="flex max-h-[calc(100dvh-var(--header-h))] flex-col gap-1 overflow-y-auto py-3 pb-[max(1.5rem,env(safe-area-inset-bottom,0px))]">
-            <NavLink menu href="/" label="Home" active={pathname === "/"} onClick={() => setOpen(false)} />
+            <NavLink
+              menu
+              href="/"
+              label="Home"
+              active={pathname === "/"}
+              onClick={(e) => {
+                if (isHome) {
+                  e.preventDefault();
+                  scrollHomeTop();
+                } else {
+                  setOpen(false);
+                }
+              }}
+            />
 
             <button
               type="button"

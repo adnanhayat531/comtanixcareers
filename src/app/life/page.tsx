@@ -68,10 +68,7 @@ export default function LifePage() {
 
       <Section className="border-t border-line bg-white">
         <Container>
-          <SectionHeading
-            title="Google reviews"
-            description="Live Google reviews for Comtanix — tap a card to open the reviewer on Google Maps."
-          />
+          <SectionHeading title="Google reviews" />
           <TestimonialsGrid />
         </Container>
       </Section>
