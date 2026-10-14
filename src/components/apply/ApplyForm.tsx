@@ -12,7 +12,11 @@ import {
   submitJobApplication,
   type UiRole,
 } from "@/lib/api";
-import { EXPERIENCE_OPTIONS, ROLES } from "@/lib/data/roles";
+import {
+  EXPERIENCE_OPTIONS,
+  ROLE_INTEREST_OPTIONS,
+  ROLES,
+} from "@/lib/data/roles";
 
 const fieldClass = "ui-field";
 
@@ -442,7 +446,7 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
             </div>
           </div>
 
-          <ul className="grid divide-y divide-line/80 rounded-xl border border-line/80 bg-canvas/40 sm:grid-cols-1 lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+          <ul className="grid divide-y divide-line/80 rounded-xl border border-line/80 bg-canvas/40 xl:grid-cols-3 xl:divide-x xl:divide-y-0">
             {CONFIRMATIONS.map((c) => (
               <li key={c.id} className="min-w-0">
                 <label
@@ -629,8 +633,9 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
                   <option value="">Select interest</option>
                   {role &&
                   !roles.some((r) => r.title === role) &&
-                  role !== "General / future openings" &&
-                  role !== "Other" ? (
+                  !(ROLE_INTEREST_OPTIONS as readonly string[]).includes(
+                    role,
+                  ) ? (
                     <option value={role}>{role}</option>
                   ) : null}
                   {roles.map((r) => (
@@ -638,10 +643,11 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
                       {r.title}
                     </option>
                   ))}
-                  <option value="General / future openings">
-                    General / future openings
-                  </option>
-                  <option value="Other">Other</option>
+                  {ROLE_INTEREST_OPTIONS.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="min-w-0">
@@ -782,14 +788,13 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
                 {r.title}
               </option>
             ))}
-            {isCv ? (
-              <>
-                <option value="General / future openings">
-                  General / future openings
-                </option>
-                <option value="Other">Other</option>
-              </>
-            ) : null}
+            {isCv
+              ? ROLE_INTEREST_OPTIONS.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))
+              : null}
           </select>
         </div>
         <div className="min-w-0">

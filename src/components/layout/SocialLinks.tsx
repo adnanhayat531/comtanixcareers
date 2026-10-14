@@ -53,7 +53,7 @@ export function SocialLinks({
 
   return (
     <div
-      className={`flex min-w-0 flex-nowrap items-center ${large ? "gap-2 sm:gap-2.5" : "flex-wrap gap-2.5"}`}
+      className={`flex min-w-0 items-center ${large ? "flex-nowrap gap-1.5 min-[380px]:gap-2 sm:gap-2.5" : "flex-wrap gap-2.5"}`}
     >
       {entries.map(([name, url]) => (
         <a
@@ -64,7 +64,7 @@ export function SocialLinks({
           aria-label={name}
           title={name}
           className={`grid shrink-0 place-items-center transition ${
-            large ? "h-10 w-10 sm:h-11 sm:w-11" : "h-10 w-10"
+            large ? "h-9 w-9 min-[380px]:h-10 min-[380px]:w-10 sm:h-11 sm:w-11" : "h-10 w-10"
           } ${circle ? "rounded-full" : "rounded-md"} ${
             light
               ? circle

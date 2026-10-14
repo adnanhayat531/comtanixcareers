@@ -55,3 +55,14 @@ export const EXPERIENCE_OPTIONS = [
   "1 to 3 years",
   "3 or more years",
 ] as const;
+
+/** Extra department interests for Submit CV (not tied to live openings). */
+export const ROLE_INTEREST_OPTIONS = [
+  "Admin",
+  "HR",
+  "Accounts and Finance",
+  "Marketing",
+  "E-commerce",
+  "General / future openings",
+  "Other",
+] as const;

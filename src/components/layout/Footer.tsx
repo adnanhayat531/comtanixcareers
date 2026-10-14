@@ -47,7 +47,7 @@ function FooterColumn({
   links: readonly { href: string; label: string }[];
 }) {
   return (
-    <div className="text-center">
+    <div className="min-w-0 text-left sm:text-center">
       <h3 className="type-eyebrow text-white/90">{title}</h3>
       <ul className="mt-3 space-y-2">
         {links.map((l) => (
@@ -84,7 +84,7 @@ function SubscribeBox() {
   return (
     <div className="w-full min-w-0 shrink-0">
       <h3 className="type-eyebrow text-white/90">Subscribe</h3>
-      <p className="type-meta mt-1 max-w-[15rem] text-[0.75rem] leading-snug text-white/70">
+      <p className="type-meta mt-1 max-w-none text-[0.75rem] leading-snug text-white/70 sm:max-w-[16rem]">
         Hiring updates from {SITE.name}.
       </p>
       <form
@@ -173,8 +173,8 @@ export function Footer() {
     <footer className="relative shrink-0 text-white">
       <div className="bg-footer">
         <Container className="pt-8 pb-6 md:pt-9 md:pb-8">
-          <div className="flex min-w-0 flex-col gap-8 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-stretch lg:gap-8">
-            <div className="flex min-w-0 shrink-0 -mt-0.5 flex-col lg:h-full">
+          <div className="flex min-w-0 flex-col gap-8 md:gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-stretch lg:gap-8">
+            <div className="flex min-w-0 shrink-0 -mt-0.5 flex-col items-start lg:h-full">
               <Link
                 href="/"
                 className="inline-flex max-w-full items-center"
@@ -186,21 +186,21 @@ export function Footer() {
                   }
                 }}
               >
-                <BrandLogo light className="h-9 w-auto max-w-[12rem] sm:h-11 sm:max-w-none" />
+                <BrandLogo light className="h-9 w-auto max-w-[11rem] sm:h-11 sm:max-w-[14rem]" />
               </Link>
-              <div className="mt-8 lg:mt-auto lg:pt-8">
+              <div className="mt-5 w-full max-w-full overflow-x-auto lg:mt-auto lg:pt-8">
                 <SocialLinks light large />
               </div>
             </div>
 
-            <div className="flex min-w-0 flex-wrap justify-center gap-x-10 gap-y-8 sm:gap-x-12 lg:gap-x-14">
+            <div className="grid min-w-0 grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 sm:gap-x-10 lg:flex lg:flex-wrap lg:justify-center lg:gap-x-14">
               {columns.map((col) => (
                 <FooterColumn key={col.title} title={col.title} links={col.links} />
               ))}
             </div>
 
-            <div className="flex w-full min-w-0 max-w-[17rem] flex-col gap-5 lg:ml-auto lg:justify-self-end">
-              <div className="flex flex-col gap-2.5">
+            <div className="flex w-full min-w-0 max-w-md flex-col gap-5 sm:max-w-lg lg:ml-auto lg:max-w-[17rem] lg:justify-self-end">
+              <div className="grid grid-cols-1 gap-2.5 min-[420px]:grid-cols-2 lg:grid-cols-1">
                 <ContactChip
                   compact
                   href={`tel:+${CONFIG.whatsapp}`}

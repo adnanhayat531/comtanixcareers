@@ -54,7 +54,7 @@
   --radius-xl: 1rem;
   --header-h: 3.25rem;
   --sidebar-w: min(15rem, 85vw);
-  --hero-min-h: 90svh;
+  --hero-min-h: min(90svh, 56rem);
 }
 
 /* Very small phones */
@@ -67,7 +67,17 @@
     --h1: clamp(1.2rem, 5.5vw, 1.4rem);
     --h2: clamp(1.125rem, 5vw, 1.35rem);
     --control-h: 2.375rem;
-    --hero-min-h: 90svh;
+    --hero-min-h: min(90svh, 42rem);
+  }
+}
+
+/* Short landscape phones / foldables */
+@media (max-height: 480px) and (orientation: landscape) {
+  :root {
+    --hero-min-h: min(100svh, 28rem);
+    --section-y: 1.25rem;
+    --section-y-lg: 1.5rem;
+    --h1-hero: clamp(1.2rem, 4.5vw, 1.75rem);
   }
 }
 
@@ -126,14 +136,14 @@ canvas {
 @media (min-width: 640px) {
   :root {
     --header-h: 3.5rem;
-    --hero-min-h: 90svh;
+    --hero-min-h: min(90svh, 56rem);
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --header-h: 3.75rem;
-    --hero-min-h: 90svh;
+    --hero-min-h: min(90svh, 56rem);
     --sidebar-w: 15rem;
   }
 }
@@ -166,6 +176,30 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
   min-width: 0;
+}
+
+/* Prevent long emails / URLs / unbroken strings from blowing layout */
+p,
+li,
+td,
+th,
+h1,
+h2,
+h3,
+h4,
+label,
+.type-meta,
+.type-body,
+.type-lede {
+  overflow-wrap: anywhere;
+}
+
+/* Keep form controls usable on all touch sizes */
+@media (max-width: 639px) {
+  .ui-btn,
+  .ui-field {
+    min-height: var(--control-h);
+  }
 }
 
 h1,

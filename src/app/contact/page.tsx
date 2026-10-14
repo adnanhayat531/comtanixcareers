@@ -24,7 +24,7 @@ export default function ContactPage() {
         imageFit="contain"
         imagePosition="right"
         imageBlend
-        className="!min-h-[clamp(11rem,28vw,20rem)] sm:!min-h-[clamp(13rem,30vw,22rem)] md:!min-h-[clamp(14rem,32vw,24rem)]"
+        className="!min-h-[clamp(15rem,48svh,22rem)] sm:!min-h-[clamp(16rem,46svh,24rem)] md:!min-h-[clamp(17rem,42svh,26rem)]"
       >
         <Button href={`mailto:${CONFIG.email}`} variant="white">
           Email us <ArrowRight className="h-4 w-4" aria-hidden />

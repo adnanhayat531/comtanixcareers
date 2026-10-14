@@ -109,7 +109,7 @@ export function PageHero({
         {eyebrow}
       </p>
       <h1
-        className={`type-h1 text-balance ${
+        className={`type-h1 text-pretty text-balance ${
           onPhoto || !image ? "text-white" : "text-ink"
         }`}
       >
@@ -129,7 +129,7 @@ export function PageHero({
         {description}
       </p>
       {children ? (
-        <div className="mt-5 flex w-full max-w-sm flex-col gap-2.5 sm:mt-6 sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-3 [&_a]:w-full sm:[&_a]:w-auto">
+        <div className="mt-5 flex w-full max-w-sm flex-col gap-2.5 min-[420px]:max-w-none min-[420px]:flex-row min-[420px]:flex-wrap sm:mt-6 sm:gap-3 [&_a]:w-full min-[420px]:[&_a]:w-auto">
           {children}
         </div>
       ) : null}
@@ -140,18 +140,18 @@ export function PageHero({
 
   return (
     <section
-      className={`relative flex min-h-[clamp(14rem,38vh,18rem)] flex-col justify-center overflow-hidden sm:min-h-[clamp(16rem,42vh,22rem)] md:min-h-[clamp(18rem,46vh,26rem)] ${nightBg ? "bg-[#1e5f68]" : ""} ${className}`}
+      className={`relative flex min-h-[clamp(16rem,42svh,22rem)] flex-col justify-center overflow-hidden sm:min-h-[clamp(17rem,44svh,24rem)] md:min-h-[clamp(18rem,46svh,26rem)] ${nightBg ? "bg-[#1e5f68]" : ""} ${className}`}
     >
       {image ? (
         imageBlend && imagePosition === "right" ? (
           <>
             {/* Right-anchored original — fade only left of Comtanix sign; logo stays full light */}
-            <div className="absolute top-0 right-0 z-0 h-full w-auto max-w-none">
+            <div className="absolute inset-y-0 right-0 z-0 h-full w-[min(100%,52rem)] max-w-full sm:w-auto sm:max-w-none">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={image}
                 alt={imageAlt}
-                className="h-full w-auto max-w-none"
+                className="h-full w-full object-cover object-right sm:w-auto sm:max-w-none sm:object-contain"
                 style={{
                   WebkitMaskImage:
                     "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.35) 10%, rgba(0,0,0,0.75) 22%, #000 34%, #000 100%)",
@@ -191,7 +191,7 @@ export function PageHero({
         </div>
       )}
 
-      <Container className="relative z-10 py-10 sm:py-12 md:py-14 lg:py-16">
+      <Container className="relative z-10 py-8 sm:py-12 md:py-14 lg:py-16">
         {onPhoto ? (
           <TextWash soft={imageBlend}>{copy}</TextWash>
         ) : (
