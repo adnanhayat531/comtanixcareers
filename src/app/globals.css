@@ -1,27 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  /* Comtanix futuristic dark theme (public site) */
-  --canvas: #050a0a;
-  --ink: #e8f7f8;
-  --muted: #8ec4cb;
-  --brand: #2dd4e0;
-  --brand-bright: #67e8f9;
-  --sea: #2dd4e0;
-  --sea-mid: #14b8c4;
-  --deep: #071518;
-  --footer: #061014;
-  --muted-on-deep: #d7f6f8;
-  --tint: #0b1f24;
-  --line: rgba(45, 212, 224, 0.22);
-  --line-strong: rgba(45, 212, 224, 0.4);
-  --surface: #0d181c;
+  /* Exact Comtanix futuristic palette */
+  --canvas: #061b20; /* page background */
+  --surface: #06343b; /* main panel / card background */
+  --tint: #05222b; /* gradient start / elevated panels */
+  --deep: #08353d; /* gradient end */
+  --footer: #05222b;
+  --ink: #f5ffff; /* heading / primary text */
+  --muted: rgba(230, 248, 250, 0.86); /* description text */
+  --brand: #00eee8; /* icon / accent */
+  --brand-bright: #00eee8;
+  --sea: #00eee8;
+  --sea-mid: #00dfde;
+  --muted-on-deep: #f5ffff;
+  --line: rgba(0, 238, 234, 0.48); /* border */
+  --line-strong: rgba(0, 229, 225, 0.35); /* divider */
   --on-sea: #041014;
+  --icon-bg: rgba(0, 223, 222, 0.055);
+  --glow: rgba(0, 238, 234, 0.12);
+  --gradient-from: #05222b;
+  --gradient-to: #08353d;
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.35);
   --shadow-hover: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.4);
   --shadow-overlay: 0 0.75rem 2rem rgba(0, 0, 0, 0.45);
-  --shadow-brand: 0 0.375rem 1.25rem rgba(45, 212, 224, 0.35);
-  --glow-cyan: 0 0 32px -10px rgba(45, 212, 224, 0.55);
+  --shadow-brand: 0 0 32px -8px rgba(0, 238, 234, 0.12);
+  --glow-cyan: 0 0 40px -12px rgba(0, 238, 234, 0.12);
 
   /*
    * Design system — single typeface, balanced SaaS density.
@@ -80,6 +84,10 @@
   --shadow-overlay: 0 0.75rem 2rem rgba(11, 44, 53, 0.1);
   --shadow-brand: 0 0.375rem 1.25rem rgba(73, 164, 174, 0.3);
   --glow-cyan: none;
+  --icon-bg: rgba(73, 164, 174, 0.08);
+  --glow: rgba(73, 164, 174, 0.12);
+  --gradient-from: #e8f5f6;
+  --gradient-to: #ffffff;
   color: var(--ink);
   background: var(--canvas);
 }
@@ -486,7 +494,7 @@ p {
 }
 
 ::selection {
-  background: rgba(45, 212, 224, 0.35);
+  background: rgba(0, 238, 234, 0.28);
   color: var(--ink);
 }
 
@@ -497,8 +505,13 @@ p {
 
 .glass-card {
   border: 1px solid var(--line);
-  background: color-mix(in srgb, var(--surface) 88%, transparent);
-  box-shadow: var(--glow-cyan), var(--shadow-soft);
+  background: linear-gradient(
+    135deg,
+    var(--gradient-from) 0%,
+    var(--surface) 48%,
+    var(--gradient-to) 100%
+  );
+  box-shadow: 0 0 0 1px var(--glow), var(--glow-cyan), var(--shadow-soft);
   backdrop-filter: blur(10px);
 }
 
@@ -656,9 +669,8 @@ p {
 .site-dark-section {
   position: relative;
   background:
-    radial-gradient(ellipse 80% 50% at 80% 0%, rgba(45, 212, 224, 0.12), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 10% 90%, rgba(20, 120, 130, 0.18), transparent 50%),
-    var(--canvas);
+    radial-gradient(ellipse 80% 50% at 80% 0%, var(--glow), transparent 55%),
+    linear-gradient(160deg, var(--gradient-from) 0%, var(--canvas) 42%, var(--gradient-to) 100%);
   color: var(--ink);
 }
 
@@ -668,10 +680,10 @@ p {
   pointer-events: none;
   position: absolute;
   inset: 0;
-  opacity: 0.22;
+  opacity: 0.18;
   background-image:
-    linear-gradient(rgba(45, 212, 224, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(45, 212, 224, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(0, 238, 234, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 238, 234, 0.08) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
 }

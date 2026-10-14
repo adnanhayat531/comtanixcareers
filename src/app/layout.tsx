@@ -19,7 +19,7 @@ const publicSans = Public_Sans({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#050a0a",
+  themeColor: "#061B20",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",

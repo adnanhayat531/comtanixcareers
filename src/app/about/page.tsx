@@ -74,7 +74,7 @@ export default function AboutPage() {
           <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {VALUES.map((v, i) => (
               <li key={v.title} className="group">
-                <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface shadow-[0_0_28px_-16px_rgba(45,212,224,0.4)]">
+                <div className="glass-card relative mb-3 aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)]">
                   <Image
                     src={v.image}
                     alt=""
@@ -143,7 +143,7 @@ export default function AboutPage() {
               })}
             </ol>
 
-            <div className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[var(--radius-lg)] border border-line shadow-[0_0_40px_-14px_rgba(45,212,224,0.5)] lg:mx-0 lg:max-w-none lg:self-stretch lg:aspect-auto lg:min-h-[28rem]">
+            <div className="glass-card relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[var(--radius-lg)] lg:mx-0 lg:max-w-none lg:self-stretch lg:aspect-auto lg:min-h-[28rem]">
               <Image
                 src="/about/learning-path.jpg"
                 alt="Mentored training session at Comtanix"

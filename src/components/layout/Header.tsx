@@ -121,7 +121,7 @@ export function Header() {
       } ${
         transparent
           ? "border-b border-transparent bg-transparent"
-          : "border-b border-line bg-[#071014]/92 shadow-[0_0_28px_-16px_rgba(45,212,224,0.45)] backdrop-blur-md"
+          : "border-b border-line bg-surface/92 shadow-[0_0_0_1px_var(--glow),var(--glow-cyan)] backdrop-blur-md"
       }`}
     >
       <div className="mx-auto flex h-[var(--header-h)] w-full max-w-none items-center justify-between gap-1.5 py-0 pr-[max(var(--container-pad-x),env(safe-area-inset-right,0px))] pl-[max(0.5rem,env(safe-area-inset-left,0px))] sm:gap-2 sm:pl-2.5 md:pl-3 lg:gap-1 xl:gap-0.5 xl:pl-4">
@@ -210,7 +210,7 @@ export function Header() {
           <Button
             href="/submit-cv"
             variant="primary"
-            className="ml-3 !h-8 !min-h-8 !px-3 !text-xs shadow-[0_0_20px_-6px_rgba(45,212,224,0.75)] xl:ml-4"
+            className="ml-3 !h-8 !min-h-8 !px-3 !text-xs shadow-[0_0_20px_-6px_rgba(0,238,234,0.35)] xl:ml-4"
           >
             Submit CV
           </Button>
