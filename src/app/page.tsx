@@ -1,12 +1,15 @@
 import Image from "next/image";
 import {
   ArrowRight,
+  Calculator,
   Cloud,
   Code2,
+  Megaphone,
   ShieldCheck,
+  ShoppingBag,
   Sparkles,
+  TrendingUp,
 } from "lucide-react";
-import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Section";
 import { CtaBanner } from "@/components/ui/CtaBanner";
@@ -17,14 +20,23 @@ import { WhoWeAre } from "@/components/home/WhoWeAre";
 import { HeadingReveal } from "@/components/motion/Reveal";
 import { CAPABILITIES, WHY_COMTANIX } from "@/lib/data/content";
 
-const CAPABILITY_ICONS = [Sparkles, Code2, Cloud, ShieldCheck] as const;
+const CAPABILITY_ICONS = [
+  Sparkles,
+  Code2,
+  ShieldCheck,
+  Cloud,
+  ShoppingBag,
+  Calculator,
+  TrendingUp,
+  Megaphone,
+] as const;
 
 export default function HomePage() {
   return (
     <>
-      <section className="relative flex min-h-[var(--hero-min-h)] flex-col overflow-hidden supports-[height:100svh]:min-h-[var(--hero-min-h)]">
+      <section className="relative flex min-h-[var(--hero-min-h)] flex-col overflow-hidden bg-[#050a0a] supports-[height:100svh]:min-h-[var(--hero-min-h)]">
         <HeroNetwork />
-        <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-[var(--container-pad-x)] pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] pt-[calc(var(--header-h)+clamp(0.75rem,2.5vh,1.75rem))] text-center sm:pb-[clamp(2.5rem,6vh,4rem)]">
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-start justify-center px-[var(--container-pad-x)] pb-[max(2.5rem,env(safe-area-inset-bottom,0px))] pt-[calc(var(--header-h)+clamp(1.25rem,4vh,2.5rem))] sm:pb-[clamp(3rem,8vh,5rem)]">
           <HeroCopy />
         </div>
       </section>
@@ -34,18 +46,20 @@ export default function HomePage() {
       <WhoWeAre />
 
       {/* What We Do */}
-      <Section id="services" className="scroll-mt-24 bg-canvas md:scroll-mt-28">
+      <Section
+        id="services"
+        className="home-dark-section scroll-mt-24 md:scroll-mt-28"
+      >
         <Container>
-          <HeadingReveal className="mb-5 max-w-xl md:mb-6">
-            <p className="type-eyebrow mb-2 text-brand">What We Do</p>
-            <h2 className="type-h2 mt-0 text-ink">
-              <BrandAccentText>
-                From emerging technology to everyday IT.
-              </BrandAccentText>
+          <HeadingReveal className="mb-5 max-w-2xl md:mb-6">
+            <p className="type-eyebrow mb-2 text-cyan-300">What We Do</p>
+            <h2 className="type-h2 mt-0 text-white">
+              From emerging technology to everyday{" "}
+              <span className="text-cyan-300">business operations.</span>
             </h2>
-            <p className="type-body mt-2.5 max-w-xl text-muted">
-              Whether you need to automate work, build software, strengthen
-              infrastructure, or protect your data, we work with you to get it
+            <p className="type-body mt-2.5 max-w-2xl text-white/70">
+              Whether you need to automate tasks, build software, manage
+              finances, or grow your business, we partner with you to get it
               done.
             </p>
           </HeadingReveal>
@@ -56,9 +70,9 @@ export default function HomePage() {
               return (
                 <li
                   key={c.title}
-                  className="card-lift group min-w-0 overflow-hidden rounded-[var(--radius-lg)] border border-line bg-white"
+                  className="group min-w-0 overflow-hidden rounded-[var(--radius-lg)] border border-cyan-300/20 bg-white/[0.04] shadow-[0_0_28px_-18px_rgba(34,211,238,0.55)] backdrop-blur-sm transition hover:border-cyan-300/40 hover:bg-white/[0.07]"
                 >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-tint">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden">
                     <Image
                       src={c.image}
                       alt=""
@@ -66,15 +80,14 @@ export default function HomePage() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
                       className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050a0a]/85 via-[#050a0a]/25 to-transparent" />
                   </div>
                   <div className="px-4 py-3.5 sm:px-4 sm:py-4">
-                    <span className="grid h-8 w-8 place-items-center rounded-[var(--radius-md)] bg-brand text-white">
+                    <span className="grid h-8 w-8 place-items-center rounded-[var(--radius-md)] border border-cyan-300/35 bg-cyan-400/15 text-cyan-300 shadow-[0_0_16px_-4px_rgba(34,211,238,0.7)]">
                       <Icon className="h-3.5 w-3.5" aria-hidden />
                     </span>
-                    <h3 className="type-h3 mt-2.5 text-ink">
-                      <BrandAccentText>{c.title}</BrandAccentText>
-                    </h3>
-                    <p className="type-meta mt-1.5 text-muted">{c.body}</p>
+                    <h3 className="type-h3 mt-2.5 text-white">{c.title}</h3>
+                    <p className="type-meta mt-1.5 text-white/65">{c.body}</p>
                   </div>
                 </li>
               );
@@ -84,18 +97,18 @@ export default function HomePage() {
       </Section>
 
       {/* Why Comtanix */}
-      <Section className="bg-white">
+      <Section className="home-dark-section !pt-2 md:!pt-4">
         <Container>
-          <HeadingReveal className="mb-5 max-w-xl md:mb-6">
-            <p className="type-eyebrow mb-2 text-brand">Why Comtanix</p>
-            <h2 className="type-h2 mt-0 text-ink">
-              <BrandAccentText>
-                Clear communication. Shared responsibility.
-              </BrandAccentText>
+          <HeadingReveal className="mb-5 max-w-2xl md:mb-6">
+            <p className="type-eyebrow mb-2 text-cyan-300">Why Comtanix</p>
+            <h2 className="type-h2 mt-0 text-white">
+              Beyond technology, a partnership built on{" "}
+              <span className="text-cyan-300">trust.</span>
             </h2>
-            <p className="type-body mt-2.5 max-w-xl text-muted">
-              We work closely with you, take ownership of our work, and keep you
-              informed at every stage.
+            <p className="type-body mt-2.5 max-w-2xl text-white/70">
+              We bring strategic thinking, technical expertise, and clear
+              accountability together to solve complex challenges and deliver
+              meaningful business outcomes.
             </p>
           </HeadingReveal>
 
@@ -103,23 +116,22 @@ export default function HomePage() {
             {WHY_COMTANIX.map((w, i) => (
               <li
                 key={w.title}
-                className="card-lift min-w-0 overflow-hidden rounded-[var(--radius-lg)] border border-line bg-canvas/60"
+                className="min-w-0 overflow-hidden rounded-[1.1rem] border border-cyan-300/25 bg-[linear-gradient(160deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.02)_100%)] shadow-[0_0_36px_-16px_rgba(34,211,238,0.45)] backdrop-blur-md"
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-tint">
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
                   <Image
                     src={w.image}
                     alt=""
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover object-center"
+                    className="object-cover object-center opacity-80"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071218] via-[#071218]/40 to-transparent" />
                 </div>
-                <div className="px-4 py-3.5 sm:px-4 sm:py-4">
-                  <p className="type-eyebrow text-brand">0{i + 1}</p>
-                  <h3 className="type-h3 mt-1.5 text-ink">
-                    <BrandAccentText>{w.title}</BrandAccentText>
-                  </h3>
-                  <p className="type-meta mt-1.5 text-muted">{w.body}</p>
+                <div className="px-4 py-3.5 sm:px-5 sm:py-4">
+                  <p className="type-eyebrow text-cyan-300">0{i + 1}</p>
+                  <h3 className="type-h3 mt-1.5 text-white">{w.title}</h3>
+                  <p className="type-meta mt-1.5 text-white/65">{w.body}</p>
                 </div>
               </li>
             ))}
@@ -128,6 +140,7 @@ export default function HomePage() {
       </Section>
 
       <CtaBanner
+        className="!bg-[#050a0a]"
         eyebrow="Opportunities"
         title="Build your future with Comtanix."
         description="Explore current openings or submit your CV for consideration for future opportunities."

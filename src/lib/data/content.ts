@@ -1,24 +1,24 @@
 export const STATS = [
   {
+    value: 15,
+    suffix: "+",
+    label: "Years in Technology",
+    sub: "Experience delivering technology outcomes",
+  },
+  {
     value: 250,
     suffix: "+",
-    label: "Technology Professionals",
+    label: "Skilled Professionals",
     sub: "Specialists across IT, software, and AI",
   },
   {
-    value: 6,
+    value: 8,
     suffix: "",
     label: "Core Service Areas",
-    sub: "Focused technology practices",
+    sub: "Focused technology and business practices",
   },
   {
-    value: 24,
-    suffix: "/7",
-    label: "Operational Support",
-    sub: "Always-on delivery coverage",
-  },
-  {
-    value: 95,
+    value: 99,
     suffix: "%",
     label: "Client Satisfaction",
     sub: "Consistently achieved standard",
@@ -105,41 +105,61 @@ export const LIFE_ACTIVITIES = [
 export const CAPABILITIES = [
   {
     title: "AI & Automation",
-    body: "Free up time by automating routine tasks and workflows.",
+    body: "Automate routine tasks and streamline everyday workflows.",
     image: "/capabilities/ai-automation.png",
   },
   {
     title: "Software Development",
-    body: "Bring your product ideas to life with web, mobile, and enterprise applications.",
+    body: "Build web, mobile, and enterprise applications for business needs.",
     image: "/capabilities/software-development.png",
   },
   {
+    title: "Cybersecurity & Data",
+    body: "Secure digital assets and turn data into useful insights.",
+    image: "/capabilities/cybersecurity-data.png",
+  },
+  {
     title: "Cloud & Infrastructure",
-    body: "Keep your systems accessible, connected, and ready for changing demands.",
+    body: "Maintain reliable systems, connected networks, and cloud environments.",
     image: "/capabilities/cloud-infrastructure.png",
   },
   {
-    title: "Cybersecurity & Data",
-    body: "Reduce security risks and turn your data into useful insights.",
-    image: "/capabilities/cybersecurity-data.png",
+    title: "E-commerce",
+    body: "Manage online stores, product catalogs, and digital sales operations.",
+    image: "/capabilities/ecommerce.jpg",
+  },
+  {
+    title: "Accounting & Finance",
+    body: "Manage financial records, reporting, and accounting processes.",
+    image: "/capabilities/accounting-finance.jpg",
+  },
+  {
+    title: "Business Development",
+    body: "Assess market opportunities and support business growth strategies.",
+    image: "/capabilities/business-development.jpg",
+  },
+  {
+    title: "Digital Marketing",
+    body: "Strengthen brand visibility through digital campaigns and content.",
+    image: "/capabilities/digital-marketing.jpg",
   },
 ] as const;
 
 /** Home — Why Comtanix */
 export const WHY_COMTANIX = [
   {
-    title: "Quality First",
-    body: "Careful execution, thorough testing, and attention to the details that affect results.",
+    title: "Built for Real Operations",
+    body: "Technology designed around your existing systems, everyday workflows, and practical business needs.",
     image: "/why/quality-first.png",
   },
   {
-    title: "Security & Trust",
-    body: "Protecting your systems, data, and intellectual property through sound security practices.",
+    title: "Intelligence With Accountability",
+    body: "AI-driven efficiency guided by human judgment, rigorous testing, and responsible implementation.",
     image: "/why/security-trust.png",
   },
   {
-    title: "Working as One Team",
-    body: "Working within your tools and processes, with clear responsibilities and open communication.",
+    title: "Committed Beyond Delivery",
+    body: "Ongoing collaboration, clear ownership, and solutions that adapt as your business evolves.",
     image: "/why/working-as-one-team.png",
   },
 ] as const;

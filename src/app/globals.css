@@ -613,6 +613,28 @@ p {
   border-bottom: 0;
 }
 
+.home-dark-section {
+  position: relative;
+  background:
+    radial-gradient(ellipse 80% 50% at 80% 0%, rgba(34, 211, 238, 0.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 10% 90%, rgba(20, 120, 130, 0.18), transparent 50%),
+    #050a0a;
+  color: #fff;
+}
+
+.home-dark-section::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+}
+
 .stats-overlap {
   margin-top: -1.5rem;
 }
