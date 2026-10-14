@@ -52,7 +52,7 @@
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
-  --header-h: 3.25rem;
+  --header-h: 2.75rem;
   --sidebar-w: min(15rem, 85vw);
   --hero-min-h: min(90svh, 56rem);
 }
@@ -135,14 +135,14 @@ canvas {
 
 @media (min-width: 640px) {
   :root {
-    --header-h: 3.5rem;
+    --header-h: 3rem;
     --hero-min-h: min(90svh, 56rem);
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --header-h: 3.75rem;
+    --header-h: 3.25rem;
     --hero-min-h: min(90svh, 56rem);
     --sidebar-w: 15rem;
   }
