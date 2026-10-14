@@ -34,7 +34,7 @@ export default function LifePage() {
         </Button>
       </PageHero>
 
-      <Section className="bg-tint">
+      <Section className="site-dark-section">
         <Container>
           <SectionHeading
             eyebrow="Everyday culture"
@@ -44,7 +44,7 @@ export default function LifePage() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {LIFE_ACTIVITIES.map((a) => (
               <article key={a.title} className="group flex flex-col">
-                <div className="relative mb-3 aspect-[16/10] overflow-hidden rounded-[var(--radius-lg)] bg-white">
+                <div className="relative mb-3 aspect-[16/10] overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface shadow-[0_0_28px_-16px_rgba(45,212,224,0.4)]">
                   <Image
                     src={a.image}
                     alt=""
@@ -52,7 +52,7 @@ export default function LifePage() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition duration-500 group-hover:scale-[1.03]"
                   />
-                  <span className="absolute bottom-2.5 left-2.5 z-10 grid h-8 w-8 place-items-center rounded-[var(--radius-md)] bg-white text-brand shadow-soft">
+                  <span className="absolute bottom-2.5 left-2.5 z-10 grid h-8 w-8 place-items-center rounded-[var(--radius-md)] border border-brand/30 bg-surface text-brand shadow-[0_0_16px_-4px_rgba(45,212,224,0.65)]">
                     <LifeIcon name={a.icon} className="h-3.5 w-3.5" />
                   </span>
                 </div>
@@ -66,7 +66,7 @@ export default function LifePage() {
         </Container>
       </Section>
 
-      <Section className="border-t border-line bg-white">
+      <Section className="site-dark-section border-t border-line">
         <Container>
           <SectionHeading title="Google reviews" />
           <TestimonialsGrid />

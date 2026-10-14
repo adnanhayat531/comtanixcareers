@@ -70,7 +70,7 @@ export function FacilitiesBenefits() {
   return (
     <Section
       id="facilities"
-      className="scroll-mt-24 border-t border-line bg-tint md:scroll-mt-28 [--fb:var(--brand)] [--fb-d:var(--deep)] [--fb-l:var(--tint)] [--fb-ink:var(--ink)] [--fb-card:#ffffff] [--fb-line:var(--line-strong)]"
+      className="site-dark-section scroll-mt-24 border-t border-line md:scroll-mt-28 [--fb:var(--brand)] [--fb-d:var(--deep)] [--fb-l:var(--tint)] [--fb-ink:var(--ink)] [--fb-card:var(--surface)] [--fb-line:var(--line-strong)]"
     >
       <Container>
         <div className="mx-auto w-full max-w-none">
@@ -85,11 +85,11 @@ export function FacilitiesBenefits() {
             {BENEFITS.map((b) => (
               <li
                 key={b.title}
-                className="group relative flex min-h-[7.5rem] min-w-0 flex-col items-center overflow-hidden rounded-[var(--radius-lg)] border border-[var(--fb-line)] bg-white px-2.5 py-3.5 text-center shadow-soft transition duration-300 hover:-translate-y-0.5 hover:shadow-hover sm:min-h-[9rem] sm:px-3.5 sm:py-5 md:min-h-[10rem]"
+                className="group relative flex min-h-[7.5rem] min-w-0 flex-col items-center overflow-hidden rounded-[var(--radius-lg)] border border-[var(--fb-line)] bg-[var(--fb-card)] px-2.5 py-3.5 text-center shadow-[0_0_28px_-16px_rgba(45,212,224,0.4)] transition duration-300 hover:-translate-y-0.5 hover:shadow-hover sm:min-h-[9rem] sm:px-3.5 sm:py-5 md:min-h-[10rem]"
               >
                 <span
                   aria-hidden
-                  className="absolute inset-x-0 top-0 h-1 bg-white"
+                  className="absolute inset-x-0 top-0 h-1 bg-brand"
                 />
 
                 <div className="mx-auto mb-2.5 grid h-12 w-12 place-items-center rounded-full bg-[var(--fb-l)] shadow-soft transition-colors duration-300 group-hover:bg-[var(--fb)] sm:mb-3 sm:h-14 sm:w-14 md:h-16 md:w-16">

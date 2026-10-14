@@ -40,7 +40,7 @@ export function HowWeHire() {
   return (
     <Section
       id="how-we-hire"
-      className="scroll-mt-24 bg-white md:scroll-mt-28 [--hire:var(--brand)] [--hire-d:var(--deep)] [--hire-l:var(--tint)] [--hire-ink:var(--ink)] [--hire-mute:var(--muted)] [--hire-line:var(--line-strong)]"
+      className="site-dark-section scroll-mt-24 md:scroll-mt-28 [--hire:var(--brand)] [--hire-d:var(--deep)] [--hire-l:var(--tint)] [--hire-ink:var(--ink)] [--hire-mute:var(--muted)] [--hire-line:var(--line-strong)]"
     >
       <Container>
         <div className="mx-auto w-full max-w-none">
@@ -74,7 +74,7 @@ export function HowWeHire() {
                   />
                 </div>
 
-                <div className="mt-[-1.1rem] flex h-full w-full flex-col rounded-[var(--radius-lg)] border border-[var(--hire-line)] bg-white px-3.5 pt-8 pb-4 text-center shadow-soft sm:px-3 sm:pt-9 lg:mt-[-1.25rem] lg:px-2.5 lg:pt-10 xl:px-3">
+                <div className="glass-card mt-[-1.1rem] flex h-full w-full flex-col rounded-[var(--radius-lg)] px-3.5 pt-8 pb-4 text-center sm:px-3 sm:pt-9 lg:mt-[-1.25rem] lg:px-2.5 lg:pt-10 xl:px-3">
                   <p className="type-eyebrow mb-1.5 text-[var(--hire)]">
                     Step {step.n}
                   </p>

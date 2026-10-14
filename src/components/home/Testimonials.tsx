@@ -34,7 +34,7 @@ function GoogleMark({ className = "" }: { className?: string }) {
 
 function ReviewCard({ review }: { review: GoogleReview }) {
   return (
-    <article className="flex h-full min-w-0 flex-col rounded-md border border-line bg-white px-5 py-5">
+    <article className="glass-card flex h-full min-w-0 flex-col rounded-md px-5 py-5">
       <div className="flex items-start gap-3">
         <a
           href={review.authorUrl}
@@ -144,7 +144,7 @@ export function TestimonialsGrid() {
           href={GOOGLE_MAPS_PLACE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-4 rounded-md border border-line bg-white px-4 py-3 transition hover:border-brand/40 hover:shadow-soft"
+          className="glass-card group inline-flex items-center gap-4 rounded-md px-4 py-3 transition hover:border-brand/50"
         >
           <div>
             <p className="type-stat text-ink">

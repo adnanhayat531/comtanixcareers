@@ -6,13 +6,13 @@ import { type ReactNode } from "react";
  */
 const variants = {
   primary:
-    "bg-brand text-white shadow-brand hover:brightness-110 active:brightness-95",
+    "bg-brand text-on-sea shadow-brand hover:brightness-110 active:brightness-95",
   secondary:
     "bg-transparent text-brand border border-brand/80 hover:bg-tint active:bg-tint",
   ghost:
     "bg-transparent text-ink border border-transparent hover:bg-tint hover:text-brand active:bg-tint",
   white:
-    "bg-white text-brand shadow-soft hover:bg-white/95 active:bg-tint",
+    "bg-white text-[#0b2c35] shadow-soft hover:bg-white/95 active:bg-white/90",
   outlineLight:
     "bg-white/10 text-white border border-white/80 backdrop-blur-sm hover:bg-white/18 active:bg-white/25",
   text: "bg-transparent text-brand px-0 py-0 h-auto min-h-0 border-0 hover:underline underline-offset-4",

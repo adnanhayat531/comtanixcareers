@@ -30,7 +30,7 @@ export default function SubmitCvPage() {
         </Button>
       </PageHero>
 
-      <Section id="cv-form" className="scroll-mt-24 bg-canvas md:scroll-mt-28">
+      <Section id="cv-form" className="site-dark-section scroll-mt-24 md:scroll-mt-28">
         <Container>
           <div className="w-full min-w-0">
             <div className="mb-6 max-w-3xl sm:mb-8">
@@ -49,7 +49,7 @@ export default function SubmitCvPage() {
               </p>
             </div>
 
-            <div className="w-full rounded-2xl border border-line/80 bg-white p-5 sm:p-7 md:p-8 lg:p-10">
+            <div className="glass-card w-full rounded-2xl p-5 sm:p-7 md:p-8 lg:p-10">
               <Suspense
                 fallback={
                   <p className="text-center text-muted" role="status">

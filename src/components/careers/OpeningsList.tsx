@@ -49,7 +49,7 @@ export async function OpeningsList() {
 
   if (!roles.length) {
     return (
-      <div className="rounded-[var(--radius-xl)] border border-line bg-white px-6 py-12 text-center">
+      <div className="glass-card rounded-[var(--radius-xl)] px-6 py-12 text-center">
         <p className="type-h3 text-ink">No open roles right now</p>
         <p className="type-meta mx-auto mt-2 max-w-md text-muted">
           Submit your CV to our talent pool and we will reach out when a matching
@@ -75,24 +75,24 @@ export async function OpeningsList() {
 
         return (
           <li key={role.id}>
-            <article className="card-lift flex h-full flex-col rounded-[var(--radius-xl)] border border-line bg-white p-5 sm:p-6">
+            <article className="glass-card card-lift flex h-full flex-col rounded-[var(--radius-xl)] p-5 sm:p-6">
               <div className="min-w-0 flex-1">
                 <h2 className="type-h3 text-balance text-ink">{role.title}</h2>
 
                 <ul className="mt-3 flex flex-wrap gap-2">
-                  <li className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-brand/40 bg-white px-2.5 py-1 type-meta text-brand">
+                  <li className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-brand/40 bg-tint px-2.5 py-1 type-meta text-brand">
                     <Clock className="h-3.5 w-3.5 shrink-0" aria-hidden />
                     {shift}
                   </li>
-                  <li className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-brand/40 bg-white px-2.5 py-1 type-meta text-brand">
+                  <li className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-brand/40 bg-tint px-2.5 py-1 type-meta text-brand">
                     Onsite
                   </li>
-                  <li className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-brand/40 bg-white px-2.5 py-1 type-meta text-brand">
+                  <li className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-brand/40 bg-tint px-2.5 py-1 type-meta text-brand">
                     <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden />
                     Bahria Town Phase 8, Rawalpindi
                   </li>
                   {deadline ? (
-                    <li className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-brand/40 bg-white px-2.5 py-1 type-meta text-brand">
+                    <li className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-brand/40 bg-tint px-2.5 py-1 type-meta text-brand">
                       <CalendarDays className="h-3.5 w-3.5 shrink-0" aria-hidden />
                       Apply by {deadline}
                     </li>

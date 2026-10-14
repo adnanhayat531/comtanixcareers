@@ -72,7 +72,9 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   const isHome = pathname === "/";
-  const overlay = isHome && !scrolled && !open;
+  const transparent = isHome && !scrolled && !open;
+  /** Public site nav is always light-on-dark for the futuristic theme */
+  const overlay = true;
 
   const scrollHomeTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -107,13 +109,9 @@ export function Header() {
 
   const desktopLink = (active: boolean) =>
     `type-nav relative inline-flex min-h-8 items-center gap-1 px-2 transition-colors xl:px-2.5 ${
-      overlay
-        ? active
-          ? "text-white after:absolute after:right-2 after:bottom-1 after:left-2 after:h-0.5 after:rounded-full after:bg-white xl:after:right-2.5 xl:after:left-2.5"
-          : "text-white/90 hover:text-white"
-        : active
-          ? "text-brand after:absolute after:right-2 after:bottom-1 after:left-2 after:h-0.5 after:rounded-full after:bg-brand xl:after:right-2.5 xl:after:left-2.5"
-          : "text-ink/80 hover:text-brand"
+      active
+        ? "text-brand-bright after:absolute after:right-2 after:bottom-1 after:left-2 after:h-0.5 after:rounded-full after:bg-brand-bright xl:after:right-2.5 xl:after:left-2.5"
+        : "text-white/90 hover:text-white"
     }`;
 
   return (
@@ -121,9 +119,9 @@ export function Header() {
       className={`z-50 overflow-visible transition-[background-color,box-shadow,border-color] duration-300 ${
         isHome ? "fixed inset-x-0 top-0" : "sticky top-0"
       } ${
-        overlay
+        transparent
           ? "border-b border-transparent bg-transparent"
-          : "border-b border-line bg-surface/95 shadow-soft backdrop-blur-md"
+          : "border-b border-line bg-[#071014]/92 shadow-[0_0_28px_-16px_rgba(45,212,224,0.45)] backdrop-blur-md"
       }`}
     >
       <div className="mx-auto flex h-[var(--header-h)] w-full max-w-none items-center justify-between gap-1.5 py-0 pr-[max(var(--container-pad-x),env(safe-area-inset-right,0px))] pl-[max(0.5rem,env(safe-area-inset-left,0px))] sm:gap-2 sm:pl-2.5 md:pl-3 lg:gap-1 xl:gap-0.5 xl:pl-4">
@@ -139,7 +137,7 @@ export function Header() {
           }}
         >
           <BrandLogo
-            light={overlay}
+            light
             className="h-6 w-auto max-w-[9rem] sm:h-7 sm:max-w-[10.5rem] lg:max-w-[11.5rem]"
           />
         </Link>
@@ -211,8 +209,8 @@ export function Header() {
 
           <Button
             href="/submit-cv"
-            variant={overlay ? "white" : "primary"}
-            className="ml-3 !h-8 !min-h-8 !px-3 !text-xs xl:ml-4"
+            variant="primary"
+            className="ml-3 !h-8 !min-h-8 !px-3 !text-xs shadow-[0_0_20px_-6px_rgba(45,212,224,0.75)] xl:ml-4"
           >
             Submit CV
           </Button>
@@ -221,18 +219,14 @@ export function Header() {
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 lg:hidden">
           <Button
             href="/submit-cv"
-            variant={overlay ? "white" : "primary"}
+            variant="primary"
             className="!hidden !h-8 !min-h-8 !px-3 !text-xs min-[380px]:!inline-flex"
           >
             Submit CV
           </Button>
           <button
             type="button"
-            className={`inline-flex h-[var(--control-h-sm)] min-h-[var(--control-h-sm)] w-[var(--control-h-sm)] items-center justify-center rounded-[var(--radius-md)] border text-sm font-semibold transition sm:w-auto sm:gap-2 sm:px-3 ${
-              overlay
-                ? "border-white/40 text-white hover:bg-white/10"
-                : "border-line text-ink hover:bg-tint"
-            }`}
+            className="inline-flex h-[var(--control-h-sm)] min-h-[var(--control-h-sm)] w-[var(--control-h-sm)] items-center justify-center rounded-[var(--radius-md)] border border-white/40 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto sm:gap-2 sm:px-3"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}

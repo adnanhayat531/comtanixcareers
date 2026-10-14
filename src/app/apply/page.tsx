@@ -30,7 +30,7 @@ export default function ApplyPage() {
         </Button>
       </PageHero>
 
-      <Section id="application" className="scroll-mt-24 bg-canvas md:scroll-mt-28">
+      <Section id="application" className="site-dark-section scroll-mt-24 md:scroll-mt-28">
         <Container>
           <div className="w-full min-w-0">
             <div className="mb-5 max-w-3xl sm:mb-7">
@@ -49,7 +49,7 @@ export default function ApplyPage() {
               </p>
             </div>
 
-            <div className="w-full rounded-[var(--radius-xl)] border border-line bg-white p-4 shadow-soft sm:p-6 md:p-8 lg:p-10">
+            <div className="glass-card w-full rounded-[var(--radius-xl)] p-4 sm:p-6 md:p-8 lg:p-10">
               <Suspense
                 fallback={
                   <p className="text-muted" role="status">

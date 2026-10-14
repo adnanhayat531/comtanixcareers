@@ -47,7 +47,7 @@ const contactRows = [
 
 export function GetInTouch() {
   return (
-    <Section className="bg-tint">
+    <Section className="site-dark-section">
       <Container>
         <div className="mb-6 md:mb-8">
           <p className="type-eyebrow text-brand">Get in touch</p>
@@ -74,7 +74,7 @@ export function GetInTouch() {
             ))}
           </ul>
 
-          <div className="min-w-0 w-full rounded-[var(--radius-lg)] border border-line bg-white p-4 shadow-soft sm:p-5">
+          <div className="glass-card min-w-0 w-full rounded-[var(--radius-lg)] p-4 sm:p-5">
             <ContactForm />
           </div>
         </div>

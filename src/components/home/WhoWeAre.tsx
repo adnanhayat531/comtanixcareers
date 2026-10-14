@@ -4,13 +4,13 @@ import { Container, Section } from "@/components/ui/Section";
 import { WHO_WE_ARE_POINTS } from "@/lib/data/content";
 
 /**
- * Who We Are — compact two-column block under StatsBar.
+ * Who We Are — white text panel + teal-lit photo.
  */
 export function WhoWeAre() {
   return (
     <Section
       id="who-we-are"
-      className="relative scroll-mt-24 overflow-x-clip !py-6 bg-white md:scroll-mt-28 md:!py-8"
+      className="theme-light relative scroll-mt-24 overflow-x-clip !py-6 bg-white md:scroll-mt-28 md:!py-8"
     >
       <div
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
@@ -72,7 +72,6 @@ export function WhoWeAre() {
 
           <div className="relative w-full min-w-0">
             <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[var(--radius-lg)] bg-tint ring-1 ring-line/70 sm:rounded-[var(--radius-xl)]">
-              {/* Native img — avoids Next optimizer issues with new public assets */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/who-we-are-office.jpg"
@@ -80,7 +79,20 @@ export function WhoWeAre() {
                 width={1920}
                 height={1080}
                 decoding="async"
-                className="absolute inset-0 h-full w-full object-cover object-[center_45%]"
+                className="absolute inset-0 h-full w-full object-cover object-[center_45%] brightness-[0.72] contrast-[1.1] saturate-[0.9]"
+              />
+              {/* Same image — teal cinematic lighting only */}
+              <div
+                className="absolute inset-0 bg-[#0a3d48]/50 mix-blend-color"
+                aria-hidden
+              />
+              <div
+                className="absolute inset-0 bg-[radial-gradient(ellipse_at_35%_35%,rgba(34,211,238,0.4)_0%,transparent_50%)] mix-blend-screen opacity-70"
+                aria-hidden
+              />
+              <div
+                className="absolute inset-0 bg-[linear-gradient(145deg,rgba(0,24,32,0.55)_0%,rgba(0,90,100,0.2)_40%,rgba(0,16,22,0.5)_100%)]"
+                aria-hidden
               />
             </div>
           </div>

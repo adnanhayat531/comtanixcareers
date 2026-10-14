@@ -20,9 +20,9 @@ type PageHeroProps = {
   className?: string;
 };
 
-/** Brand teal wash for blended photo heroes (not black) */
-const HERO_BLEND = "#1e5f68";
-const HERO_BLEND_RGB = "30,95,104";
+/** Dark cyan wash for blended photo heroes */
+const HERO_BLEND = "#071518";
+const HERO_BLEND_RGB = "7,21,24";
 
 /** Soft brand wash behind copy only — no hard corners, image stays clear */
 function TextWash({
@@ -53,7 +53,7 @@ function TextWash({
         className="pointer-events-none absolute -inset-y-6 -left-6 -right-2 -z-10 sm:-inset-y-8 sm:-left-10 sm:-right-6"
         style={{
           background:
-            "radial-gradient(115% 95% at 8% 50%, rgba(22, 74, 81, 0.92) 0%, rgba(47, 122, 132, 0.62) 38%, rgba(73, 164, 174, 0.28) 62%, transparent 78%)",
+            "radial-gradient(115% 95% at 8% 50%, rgba(5, 16, 20, 0.94) 0%, rgba(8, 40, 48, 0.7) 38%, rgba(45, 212, 224, 0.22) 62%, transparent 78%)",
         }}
         aria-hidden
       />
@@ -61,7 +61,7 @@ function TextWash({
         className="pointer-events-none absolute -inset-y-3 -left-3 right-8 -z-10 sm:-left-5"
         style={{
           background:
-            "linear-gradient(90deg, rgba(22, 74, 81, 0.55) 0%, rgba(22, 74, 81, 0.22) 55%, transparent 100%)",
+            "linear-gradient(90deg, rgba(5, 16, 20, 0.65) 0%, rgba(5, 16, 20, 0.28) 55%, transparent 100%)",
         }}
         aria-hidden
       />
@@ -115,7 +115,7 @@ export function PageHero({
       >
         <BrandAccentText
           accentClassName={
-            onPhoto || !image ? "text-[#9fe0e6]" : "text-brand"
+            onPhoto || !image ? "text-brand-bright" : "text-brand"
           }
         >
           {title}
@@ -140,7 +140,7 @@ export function PageHero({
 
   return (
     <section
-      className={`relative flex min-h-[clamp(16rem,42svh,22rem)] flex-col justify-center overflow-hidden sm:min-h-[clamp(17rem,44svh,24rem)] md:min-h-[clamp(18rem,46svh,26rem)] ${nightBg ? "bg-[#1e5f68]" : ""} ${className}`}
+      className={`relative flex min-h-[clamp(16rem,42svh,22rem)] flex-col justify-center overflow-hidden sm:min-h-[clamp(17rem,44svh,24rem)] md:min-h-[clamp(18rem,46svh,26rem)] ${nightBg ? "bg-[#071518]" : "bg-canvas"} ${className}`}
     >
       {image ? (
         imageBlend && imagePosition === "right" ? (

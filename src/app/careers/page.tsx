@@ -54,7 +54,7 @@ export default function CareersPage() {
         </Button>
       </PageHero>
 
-      <Section id="openings" className="scroll-mt-24 bg-canvas md:scroll-mt-28">
+      <Section id="openings" className="site-dark-section scroll-mt-24 md:scroll-mt-28">
         <Container>
           <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
             <div className="min-w-0">
@@ -69,7 +69,7 @@ export default function CareersPage() {
                   (tag) => (
                     <li
                       key={tag}
-                      className="inline-flex items-center rounded-[var(--radius-md)] border border-brand/40 bg-white px-2.5 py-1 type-meta text-brand"
+                      className="inline-flex items-center rounded-[var(--radius-md)] border border-brand/40 bg-tint px-2.5 py-1 type-meta text-brand"
                     >
                       {tag}
                     </li>
@@ -90,7 +90,7 @@ export default function CareersPage() {
         </Container>
       </Section>
 
-      <Section className="border-t border-line bg-tint">
+      <Section className="site-dark-section border-t border-line">
         <Container>
           <SectionHeading title="Why grow your career with us" />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
