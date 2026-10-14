@@ -74,6 +74,7 @@ export async function adminLogin(email: string, password: string) {
     body: JSON.stringify({ email, password }),
   });
   setAdminToken(data.access_token);
+  cacheAdminUser(data.admin);
   return data.admin;
 }
 
@@ -84,10 +85,14 @@ export async function adminLogout() {
     /* ignore */
   }
   setAdminToken(null);
+  cacheAdminUser(null);
 }
 
 export function adminMe() {
-  return adminFetch<AdminUser>("/api/admin/me");
+  return adminFetch<AdminUser>("/api/admin/me").then((user) => {
+    cacheAdminUser(user);
+    return user;
+  });
 }
 
 export function adminDashboard() {
@@ -237,27 +242,83 @@ export type AdminCv = {
   updated_at: string;
 };
 
+const cvCache = new Map<string, AdminCv>();
+const cvInflight = new Map<string, Promise<AdminCv>>();
+let cachedAdmin: AdminUser | null = null;
+
+export function peekCachedAdmin() {
+  return cachedAdmin;
+}
+
+export function cacheAdminUser(user: AdminUser | null) {
+  cachedAdmin = user;
+}
+
+export function peekAdminCv(id: string) {
+  return cvCache.get(id) ?? null;
+}
+
+export function cacheAdminCv(cv: AdminCv) {
+  cvCache.set(cv.id, cv);
+}
+
+export function cacheAdminCvs(items: AdminCv[]) {
+  for (const item of items) cvCache.set(item.id, item);
+}
+
 export function adminListCvs(params: Record<string, string | number | undefined>) {
   const qs = new URLSearchParams();
   Object.entries(params).forEach(([k, v]) => {
     if (v !== undefined && v !== "") qs.set(k, String(v));
   });
-  return adminFetch<Paginated<AdminCv>>(`/api/admin/cvs?${qs}`);
+  return adminFetch<Paginated<AdminCv>>(`/api/admin/cvs?${qs}`).then((data) => {
+    cacheAdminCvs(data.items);
+    return data;
+  });
 }
 
 export function adminGetCv(id: string) {
-  return adminFetch<AdminCv>(`/api/admin/cvs/${id}`);
+  const inflight = cvInflight.get(id);
+  if (inflight) return inflight;
+
+  const request = adminFetch<AdminCv>(`/api/admin/cvs/${id}`)
+    .then((cv) => {
+      cacheAdminCv(cv);
+      return cv;
+    })
+    .finally(() => {
+      cvInflight.delete(id);
+    });
+
+  cvInflight.set(id, request);
+  return request;
+}
+
+/** Warm cache before navigation so the detail page paints instantly. */
+export function adminPrefetchCv(id: string) {
+  if (cvCache.has(id) || cvInflight.has(id)) return;
+  void adminGetCv(id).catch(() => {
+    /* ignore prefetch errors */
+  });
 }
 
 export function adminPatchCvStatus(id: string, status: string) {
   return adminFetch<AdminCv>(`/api/admin/cvs/${id}/status`, {
     method: "PATCH",
     body: JSON.stringify({ status }),
+  }).then((cv) => {
+    cacheAdminCv(cv);
+    return cv;
   });
 }
 
 export function adminDeleteCv(id: string) {
-  return adminFetch<null>(`/api/admin/cvs/${id}`, { method: "DELETE" });
+  return adminFetch<null>(`/api/admin/cvs/${id}`, { method: "DELETE" }).then(
+    (result) => {
+      cvCache.delete(id);
+      return result;
+    },
+  );
 }
 
 export function adminCvFileUrl(id: string) {

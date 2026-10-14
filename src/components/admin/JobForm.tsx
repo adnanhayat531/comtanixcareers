@@ -178,12 +178,19 @@ export function JobForm({ initial, mode }: Props) {
           </div>
           <div>
             <label className="type-label mb-1.5 block">Status</label>
-            <select name="status" className="ui-field" defaultValue={initial?.status || "draft"}>
-              <option value="draft">Draft</option>
-              <option value="published">Published</option>
+            <select
+              name="status"
+              className="ui-field"
+              defaultValue={initial?.status || "published"}
+            >
+              <option value="draft">Draft (hidden on site)</option>
+              <option value="published">Published (shows in openings)</option>
               <option value="closed">Closed</option>
               <option value="archived">Archived</option>
             </select>
+            <p className="type-meta mt-1.5 text-muted">
+              Only <strong>Published</strong> jobs appear on the Careers openings list.
+            </p>
           </div>
         </div>
       </section>
@@ -198,17 +205,29 @@ export function JobForm({ initial, mode }: Props) {
         >
           {pending ? "Saving…" : mode === "create" ? "Save job" : "Save changes"}
         </button>
-        {mode === "create" ? (
+        {(mode === "create" || initial?.status !== "published") ? (
           <button
             type="button"
             disabled={pending}
             className="ui-btn border border-brand text-brand"
             onClick={(e) => {
               const form = (e.currentTarget as HTMLButtonElement).form;
-              if (form) onSubmit({ preventDefault() {}, currentTarget: form } as FormEvent<HTMLFormElement>, "published");
+              if (form) {
+                const statusField = form.elements.namedItem("status");
+                if (statusField instanceof HTMLSelectElement) {
+                  statusField.value = "published";
+                }
+                onSubmit(
+                  {
+                    preventDefault() {},
+                    currentTarget: form,
+                  } as FormEvent<HTMLFormElement>,
+                  "published",
+                );
+              }
             }}
           >
-            Publish
+            Publish to site
           </button>
         ) : null}
       </div>

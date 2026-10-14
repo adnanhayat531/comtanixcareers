@@ -9,22 +9,38 @@ import {
   adminGetCv,
   adminPatchCvStatus,
   downloadAdminFile,
+  peekAdminCv,
   type AdminCv,
 } from "@/lib/admin-api";
 
 export default function CvDetailPage() {
   const params = useParams<{ id: string }>();
   const router = useRouter();
-  const [row, setRow] = useState<AdminCv | null>(null);
+  const id = params.id;
+  const [row, setRow] = useState<AdminCv | null>(() => peekAdminCv(id));
   const [error, setError] = useState("");
 
   useEffect(() => {
-    adminGetCv(params.id)
-      .then(setRow)
-      .catch((e) => setError(e instanceof Error ? e.message : "Failed to load"));
-  }, [params.id]);
+    const cached = peekAdminCv(id);
+    if (cached) setRow(cached);
 
-  if (error) return <p className="text-red-700">{error}</p>;
+    let cancelled = false;
+    adminGetCv(id)
+      .then((data) => {
+        if (!cancelled) setRow(data);
+      })
+      .catch((e) => {
+        if (!cancelled) {
+          setError(e instanceof Error ? e.message : "Failed to load");
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [id]);
+
+  if (error && !row) return <p className="text-red-700">{error}</p>;
   if (!row) return <p className="text-muted">Loading…</p>;
 
   return (

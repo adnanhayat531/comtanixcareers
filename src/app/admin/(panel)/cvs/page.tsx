@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { StatusBadge } from "@/components/admin/AdminShell";
-import { adminListCvs, type AdminCv } from "@/lib/admin-api";
+import {
+  adminListCvs,
+  adminPrefetchCv,
+  type AdminCv,
+} from "@/lib/admin-api";
 
 export default function AdminCvsPage() {
   const [items, setItems] = useState<AdminCv[]>([]);
@@ -76,7 +80,15 @@ export default function AdminCvsPage() {
                 <td className="text-muted">{new Date(c.created_at).toLocaleDateString()}</td>
                 <td><StatusBadge status={c.status} /></td>
                 <td>
-                  <Link href={`/admin/cvs/${c.id}`} className="text-brand hover:underline">View</Link>
+                  <Link
+                    href={`/admin/cvs/${c.id}`}
+                    className="text-brand hover:underline"
+                    onMouseEnter={() => adminPrefetchCv(c.id)}
+                    onFocus={() => adminPrefetchCv(c.id)}
+                    onTouchStart={() => adminPrefetchCv(c.id)}
+                  >
+                    View
+                  </Link>
                 </td>
               </tr>
             ))}

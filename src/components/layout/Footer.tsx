@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, type FormEvent } from "react";
-import { ArrowRight, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Section";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { CONFIG, SITE } from "@/lib/config";
@@ -34,11 +33,6 @@ const columns = [
   },
 ] as const;
 
-const legalLinks = [
-  { href: "/about", label: "About Us" },
-  { href: "/contact", label: "Contact Us" },
-];
-
 function FooterColumn({
   title,
   links,
@@ -47,7 +41,7 @@ function FooterColumn({
   links: readonly { href: string; label: string }[];
 }) {
   return (
-    <div className="min-w-0 text-left sm:text-center">
+    <div className="min-w-0 text-left">
       <h3 className="type-eyebrow text-white/90">{title}</h3>
       <ul className="mt-3 space-y-2">
         {links.map((l) => (
@@ -61,57 +55,6 @@ function FooterColumn({
           </li>
         ))}
       </ul>
-    </div>
-  );
-}
-
-function SubscribeBox() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("");
-
-  function onSubmit(e: FormEvent) {
-    e.preventDefault();
-    if (!email.trim()) return;
-    const subject = encodeURIComponent(`${SITE.name} careers updates`);
-    const body = encodeURIComponent(
-      `Please add me to ${SITE.name} career updates.\nEmail: ${email.trim()}`,
-    );
-    window.location.href = `mailto:${CONFIG.careersEmail}?subject=${subject}&body=${body}`;
-    setStatus("Opening your email app…");
-    setEmail("");
-  }
-
-  return (
-    <div className="w-full min-w-0 shrink-0">
-      <h3 className="type-eyebrow text-white/90">Subscribe</h3>
-      <p className="type-meta mt-1 max-w-none text-[0.75rem] leading-snug text-white/70 sm:max-w-[16rem]">
-        Hiring updates from {SITE.name}.
-      </p>
-      <form
-        onSubmit={onSubmit}
-        className="mt-2.5 flex w-full min-w-0 items-center rounded-[var(--radius-md)] bg-white py-0.5 pr-0.5 pl-2.5"
-      >
-        <label className="sr-only" htmlFor="footer-email">
-          Email
-        </label>
-        <input
-          id="footer-email"
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Your email"
-          className="type-meta min-w-0 flex-1 border-0 bg-transparent py-1.5 text-[0.8125rem] text-ink outline-none placeholder:text-muted"
-        />
-        <button
-          type="submit"
-          className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-brand text-white transition hover:bg-ink"
-          aria-label="Subscribe"
-        >
-          <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-        </button>
-      </form>
-      {status ? <p className="type-meta mt-1.5 text-white">{status}</p> : null}
     </div>
   );
 }
@@ -174,7 +117,7 @@ export function Footer() {
       <div className="bg-footer">
         <Container className="pt-8 pb-6 md:pt-9 md:pb-8">
           <div className="flex min-w-0 flex-col gap-8 md:gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-stretch lg:gap-8">
-            <div className="flex min-w-0 shrink-0 -mt-0.5 flex-col items-start lg:h-full">
+            <div className="flex min-w-0 shrink-0 flex-col items-start pt-3 sm:pt-4 lg:h-full lg:pt-5">
               <Link
                 href="/"
                 className="inline-flex max-w-full items-center"
@@ -193,14 +136,14 @@ export function Footer() {
               </div>
             </div>
 
-            <div className="grid min-w-0 grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 sm:gap-x-10 lg:flex lg:flex-wrap lg:justify-center lg:gap-x-14">
+            <div className="grid min-w-0 grid-cols-2 gap-x-6 gap-y-8 text-left sm:grid-cols-3 sm:gap-x-10 lg:flex lg:flex-wrap lg:justify-start lg:gap-x-14">
               {columns.map((col) => (
                 <FooterColumn key={col.title} title={col.title} links={col.links} />
               ))}
             </div>
 
             <div className="flex w-full min-w-0 max-w-md flex-col gap-5 sm:max-w-lg lg:ml-auto lg:max-w-[17rem] lg:justify-self-end">
-              <div className="grid grid-cols-1 gap-2.5 min-[420px]:grid-cols-2 lg:grid-cols-1">
+              <div className="grid grid-cols-1 gap-5 min-[420px]:grid-cols-2 min-[420px]:gap-2.5 lg:grid-cols-1 lg:gap-5">
                 <ContactChip
                   compact
                   href={`tel:+${CONFIG.whatsapp}`}
@@ -216,29 +159,16 @@ export function Footer() {
                   icon={Mail}
                 />
               </div>
-              <SubscribeBox />
             </div>
           </div>
-
         </Container>
       </div>
 
       <div className="border-t border-white/10 bg-deep">
-        <Container className="type-meta flex flex-col justify-center gap-2 py-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))] text-white/65 sm:flex-row sm:items-center sm:justify-between">
-          <p className="pr-16 sm:pr-20 md:pr-0">
+        <Container className="type-meta py-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))] text-center text-white/65">
+          <p>
             © {year} {SITE.name}. All rights reserved.
           </p>
-          <nav className="flex flex-wrap gap-x-4 gap-y-1" aria-label="Legal">
-            {legalLinks.map((l) => (
-              <Link
-                key={l.label}
-                href={l.href}
-                className="underline-offset-4 transition-colors hover:text-white hover:underline"
-              >
-                {l.label}
-              </Link>
-            ))}
-          </nav>
         </Container>
       </div>
     </footer>

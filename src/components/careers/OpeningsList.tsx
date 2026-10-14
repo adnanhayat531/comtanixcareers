@@ -29,7 +29,8 @@ function formatDeadline(value: string | null | undefined) {
 
 async function loadOpenings(): Promise<UiRole[]> {
   try {
-    const jobs = await fetchJobs({ next: { revalidate: 60 } });
+    // Always hit the API so admin publish/create shows immediately.
+    const jobs = await fetchJobs({ cache: "no-store" });
     if (!jobs.length) return staticRoles();
     return jobs.map(jobToRole);
   } catch {

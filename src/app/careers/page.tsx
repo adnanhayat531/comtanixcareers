@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     "Open roles at Comtanix for freshers and experienced professionals across global IT teams.",
 };
 
+/** Openings come from the live jobs API — never serve a stale static snapshot. */
+export const dynamic = "force-dynamic";
+
 const WHY = [
   {
     title: "Paid training",

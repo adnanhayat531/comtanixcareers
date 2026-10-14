@@ -18,6 +18,7 @@ import {
   adminLogout,
   adminMe,
   getAdminToken,
+  peekCachedAdmin,
   type AdminUser,
 } from "@/lib/admin-api";
 
@@ -42,6 +43,13 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       router.replace("/admin/login");
       return;
     }
+
+    const cached = peekCachedAdmin();
+    if (cached) {
+      setAdmin(cached);
+      setReady(true);
+    }
+
     adminMe()
       .then((user) => {
         setAdmin(user);
