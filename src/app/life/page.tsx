@@ -66,7 +66,7 @@ export default function LifePage() {
         </Container>
       </Section>
 
-      <Section className="site-dark-section border-t border-line">
+      <Section className="theme-light site-light-section border-t border-line">
         <Container>
           <SectionHeading title="Google reviews" />
           <TestimonialsGrid />
@@ -74,6 +74,7 @@ export default function LifePage() {
       </Section>
 
       <CtaBanner
+        tone="dark"
         eyebrow="Join the team"
         title="See open roles and apply today."
         description="Night-shift, onsite careers with paid training and clear progression."

@@ -10,7 +10,7 @@ export function WhoWeAre() {
   return (
     <Section
       id="who-we-are"
-      className="theme-light relative scroll-mt-24 overflow-x-clip !py-6 bg-white md:scroll-mt-28 md:!py-8"
+      className="theme-light site-light-section relative scroll-mt-24 overflow-x-clip !py-6 md:scroll-mt-28 md:!py-8"
     >
       <div
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"

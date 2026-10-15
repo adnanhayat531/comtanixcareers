@@ -147,9 +147,17 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-h) + 0.5rem);
+  scroll-padding-top: calc(var(--header-h) + 0.75rem);
   overflow-x: clip;
   font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Keep inline media from forcing horizontal scroll (heroes/logos use utility sizing) */
@@ -515,10 +523,6 @@ p {
   backdrop-filter: blur(10px);
 }
 
-.geometric-grid {
-  background-image: none;
-}
-
 .geometric-mesh {
   background-image: radial-gradient(
     circle at 1px 1px,
@@ -652,19 +656,6 @@ p {
   }
 }
 
-.list-row {
-  border-bottom: 1px solid var(--line);
-  transition: background-color 160ms ease;
-}
-
-.list-row:hover {
-  background-color: rgba(232, 242, 243, 0.95);
-}
-
-.list-row:last-child {
-  border-bottom: 0;
-}
-
 .home-dark-section,
 .site-dark-section {
   position: relative;
@@ -688,18 +679,9 @@ p {
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
 }
 
-.stats-overlap {
-  margin-top: -1.5rem;
-}
-
-@media (min-width: 768px) {
-  .stats-overlap {
-    margin-top: -1.75rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .stats-overlap {
-    margin-top: -2rem;
-  }
+/* Alternating white band — uses .theme-light token set for readable ink/muted */
+.site-light-section {
+  position: relative;
+  background: #ffffff;
+  color: var(--ink);
 }

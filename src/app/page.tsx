@@ -100,8 +100,8 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Why Comtanix */}
-      <Section className="home-dark-section !pt-2 md:!pt-4">
+      {/* Why Comtanix — white after dark What We Do */}
+      <Section className="theme-light site-light-section !pt-2 md:!pt-4">
         <Container>
           <HeadingReveal className="mb-5 max-w-2xl md:mb-6">
             <p className="type-eyebrow mb-2 text-brand">Why Comtanix</p>
@@ -128,9 +128,11 @@ export default function HomePage() {
                     alt=""
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover object-center opacity-80"
+                    className="object-cover object-center"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" />
+                  {/* Teal grade only — never white wash on photos */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#05222B]/75 via-[#06343B]/30 to-transparent" />
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(0,238,234,0.14)_0%,transparent_55%)]" />
                 </div>
                 <div className="px-4 py-3.5 sm:px-5 sm:py-4">
                   <p className="type-eyebrow text-brand">0{i + 1}</p>
@@ -144,7 +146,7 @@ export default function HomePage() {
       </Section>
 
       <CtaBanner
-        className="!bg-canvas"
+        tone="dark"
         eyebrow="Opportunities"
         title="Build your future with Comtanix."
         description="Explore current openings or submit your CV for consideration for future opportunities."

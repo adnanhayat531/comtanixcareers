@@ -3,25 +3,21 @@ export const STATS = [
     value: 15,
     suffix: "+",
     label: "Years in Technology",
-    sub: "Experience delivering technology outcomes",
   },
   {
     value: 250,
     suffix: "+",
     label: "Skilled Professionals",
-    sub: "Specialists across IT, software, and AI",
   },
   {
     value: 8,
     suffix: "",
     label: "Core Service Areas",
-    sub: "Focused technology and business practices",
   },
   {
     value: 99,
     suffix: "%",
     label: "Client Satisfaction",
-    sub: "Consistently achieved standard",
   },
 ] as const;
 
@@ -164,35 +160,9 @@ export const WHY_COMTANIX = [
   },
 ] as const;
 
-/** Home life preview */
-export const LIFE_PREVIEW = [
-  {
-    title: "Working Together",
-    body: "Exchange ideas, share knowledge, and contribute alongside colleagues with different skills and perspectives.",
-    image: "/home/life-teams.jpg",
-  },
-  {
-    title: "Learning Through Work",
-    body: "Develop practical skills through hands-on experience, ongoing learning, and exposure to new technologies.",
-    image: "/home/life-learning.jpg",
-  },
-  {
-    title: "Room to Grow",
-    body: "Find opportunities to develop, connect with colleagues, and maintain a healthy balance between work and life.",
-    image: "/home/life-balance.jpg",
-  },
-] as const;
-
 export const WHO_WE_ARE_POINTS = [
   "Technical specialists across IT, software, and AI",
   "Delivery across markets and time zones",
   "Teams integrated with client environments",
   "Long-term partnerships based on trust",
-] as const;
-
-export const CAREER_POINTS = [
-  "Paid induction and role-specific onboarding",
-  "Mentorship from experienced technology teams",
-  "Clear progression from associate to leadership",
-  "Structured night shifts with clear schedules",
 ] as const;

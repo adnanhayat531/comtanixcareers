@@ -70,7 +70,7 @@ export function FacilitiesBenefits() {
   return (
     <Section
       id="facilities"
-      className="site-dark-section scroll-mt-24 border-t border-line md:scroll-mt-28 [--fb:var(--brand)] [--fb-d:var(--deep)] [--fb-l:var(--tint)] [--fb-ink:var(--ink)] [--fb-card:var(--surface)] [--fb-line:var(--line-strong)]"
+      className="theme-light site-light-section scroll-mt-24 border-t border-line md:scroll-mt-28 [--fb:var(--brand)] [--fb-d:var(--deep)] [--fb-l:var(--tint)] [--fb-ink:var(--ink)] [--fb-card:var(--surface)] [--fb-line:var(--line-strong)]"
     >
       <Container>
         <div className="mx-auto w-full max-w-none">

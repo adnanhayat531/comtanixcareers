@@ -164,8 +164,8 @@ export function Footer() {
         </Container>
       </div>
 
-      <div className="border-t border-white/10 bg-deep">
-        <Container className="type-meta py-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))] text-center text-white/65">
+      <div className="theme-light border-t border-line bg-white">
+        <Container className="type-meta py-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))] text-center text-muted">
           <p>
             © {year} {SITE.name}. All rights reserved.
           </p>

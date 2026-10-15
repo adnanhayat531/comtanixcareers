@@ -33,7 +33,7 @@ export default function AboutPage() {
         </Button>
       </PageHero>
 
-      <Section id="story" className="site-dark-section scroll-mt-24 md:scroll-mt-28">
+      <Section id="story" className="theme-light site-light-section scroll-mt-24 md:scroll-mt-28">
         <Container className="grid min-w-0 items-center gap-6 lg:grid-cols-2 lg:gap-10">
           <div className="order-2 min-w-0 lg:order-1">
             <SectionHeading
@@ -96,7 +96,7 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      <Section id="learning" className="site-dark-section scroll-mt-24 md:scroll-mt-28">
+      <Section id="learning" className="theme-light site-light-section scroll-mt-24 md:scroll-mt-28">
         <Container>
           <SectionHeading
             eyebrow="Training"
@@ -157,6 +157,7 @@ export default function AboutPage() {
       </Section>
 
       <CtaBanner
+        tone="dark"
         eyebrow="Careers"
         title="Ready to grow with Comtanix?"
         description="Explore open roles or submit your CV for future opportunities."

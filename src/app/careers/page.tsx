@@ -90,7 +90,7 @@ export default function CareersPage() {
         </Container>
       </Section>
 
-      <Section className="site-dark-section border-t border-line">
+      <Section className="theme-light site-light-section border-t border-line">
         <Container>
           <SectionHeading title="Why grow your career with us" />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">

@@ -85,8 +85,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sora.variable} ${publicSans.variable}`}>
-      <body className="flex min-h-dvh min-w-0 flex-col overflow-x-clip bg-canvas font-sans text-ink antialiased [overflow-wrap:anywhere]">
+    <html
+      lang="en"
+      className={`${sora.variable} ${publicSans.variable} scroll-smooth`}
+    >
+      <body className="flex min-h-dvh min-w-0 flex-col overflow-x-clip overscroll-y-none bg-canvas font-sans text-ink antialiased [overflow-wrap:anywhere] [-webkit-overflow-scrolling:touch]">
         <SiteChrome>{children}</SiteChrome>
       </body>
     </html>

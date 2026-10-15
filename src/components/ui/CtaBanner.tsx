@@ -7,6 +7,8 @@ type CtaBannerProps = {
   description?: string;
   children: ReactNode;
   className?: string;
+  /** Outer band tone for teal/white page rhythm. Default dark. */
+  tone?: "dark" | "light";
 };
 
 /** Full-width CTA band used at the end of marketing pages. */
@@ -16,9 +18,14 @@ export function CtaBanner({
   description,
   children,
   className = "",
+  tone = "dark",
 }: CtaBannerProps) {
+  const band =
+    tone === "light"
+      ? "theme-light site-light-section"
+      : "site-dark-section";
   return (
-    <Section className={`bg-tint ${className}`}>
+    <Section className={`${band} ${className}`}>
       <Container>
         <div className="relative overflow-hidden rounded-[var(--radius-lg)] bg-[linear-gradient(115deg,#05222B_0%,#06343B_45%,#08353D_100%)] px-4 py-6 text-[#F5FFFF] shadow-[0_0_0_1px_rgba(0,238,234,0.12),0_0_40px_-14px_rgba(0,238,234,0.12)] ring-1 ring-[rgba(0,238,234,0.48)] sm:rounded-[var(--radius-xl)] sm:px-7 sm:py-9 md:px-9 md:py-10">
           <div
