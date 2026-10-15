@@ -12,15 +12,15 @@ import { LEARNING, VALUES } from "@/lib/data/content";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Trusted technology professionals delivering innovative, enterprise-grade IT services and measurable business value worldwide.",
+    "A global technology company — trusted professionals delivering innovative, enterprise-grade IT services and measurable business value worldwide.",
 };
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="Company"
-        title="About Us"
+        eyebrow="About Us"
+        title="A Global Technology Company"
         description="Trusted technology professionals delivering innovative, enterprise-grade IT services and measurable business value worldwide."
         image="/about/hero.png?v=3"
         imageAlt="Comtanix team collaborating in the office"

@@ -55,7 +55,7 @@ export function GetInTouch() {
             <span className="text-brand">Contact</span>
           </h2>
           <p className="type-body mt-2.5 max-w-xl text-muted">
-            Reach hiring or partnerships — we respond during business hours.
+            Reach hiring or partnerships. We respond during business hours.
           </p>
         </div>
 

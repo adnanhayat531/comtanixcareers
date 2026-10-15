@@ -13,7 +13,7 @@ import { LIFE_ACTIVITIES } from "@/lib/data/content";
 export const metadata: Metadata = {
   title: "Life at Comtanix",
   description:
-    "Team trips, sports, awards, and everyday culture — how Comtanix people work and grow together beyond the desk.",
+    "Our teams share the milestones, the achievements, and the culture that make Comtanix more than a place to work.",
 };
 
 export default function LifePage() {
@@ -21,8 +21,8 @@ export default function LifePage() {
     <>
       <PageHero
         eyebrow="Life at Comtanix"
-        title="Work hard. Climb higher. Stay together."
-        description="Our teams share the grind, the wins, and the moments that make Comtanix feel like more than a workplace."
+        title="Grow Through Work. Thrive Together."
+        description="Our teams share the milestones, the achievements, and the culture that make Comtanix more than a place to work."
         image="/life/hero-team.png?v=4"
         imageAlt="Comtanix team collaborating in the office"
         imageFit="cover"
@@ -40,9 +40,9 @@ export default function LifePage() {
       <Section className="site-dark-section">
         <Container>
           <SectionHeading
-            eyebrow="Everyday culture"
-            title="How we live the work week"
-            description="Facilities, recognition, and team activities designed around real shift patterns."
+            eyebrow="Culture"
+            title="A Workplace That Invests in You"
+            description="Wellness, recognition, and team experiences designed around how our people work."
           />
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {LIFE_ACTIVITIES.map((a) => (

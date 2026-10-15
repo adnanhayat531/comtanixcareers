@@ -120,8 +120,8 @@ export function Header() {
         isHome ? "fixed inset-x-0 top-0" : "sticky top-0"
       } ${
         transparent
-          ? "border-b border-transparent bg-transparent"
-          : "border-b border-line bg-surface/92 shadow-[0_0_0_1px_var(--glow),var(--glow-cyan)] backdrop-blur-md"
+          ? "bg-transparent"
+          : "bg-surface/92 shadow-[var(--glow-cyan)] backdrop-blur-md"
       }`}
     >
       <div className="mx-auto flex h-[var(--header-h)] w-full max-w-none items-center justify-between gap-1.5 py-0 pr-[max(var(--container-pad-x),env(safe-area-inset-right,0px))] pl-[max(0.5rem,env(safe-area-inset-left,0px))] sm:gap-2 sm:pl-2.5 md:pl-3 lg:gap-1 xl:gap-0.5 xl:pl-4">

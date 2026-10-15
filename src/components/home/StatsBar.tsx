@@ -44,7 +44,6 @@ export function StatsBar() {
       <div className="mx-auto w-full max-w-6xl px-[var(--container-pad-x)]">
         <div className="w-full overflow-hidden rounded-[var(--radius-lg)] border border-line bg-gradient-to-br from-[var(--gradient-from)] to-[var(--gradient-to)] py-2 shadow-[0_0_0_1px_var(--glow),0_18px_48px_-20px_rgba(0,0,0,0.55),var(--glow-cyan)] sm:rounded-[var(--radius-xl)]">
           <div className="flex w-full flex-col bg-surface lg:flex-row lg:items-center">
-            {/* Use div, not h2 — global h2 { font-size: var(--h2) } was forcing tall card */}
             <div className="flex w-full shrink-0 flex-col items-center justify-center gap-0 border-b border-[var(--line-strong)] px-2.5 py-2.5 text-center lg:w-[min(20%,16rem)] lg:border-r lg:border-b-0 lg:px-3 lg:py-2">
               <p className="text-sm font-semibold !leading-tight text-ink sm:text-[0.9375rem]">
                 <BrandAccentText accentClassName="text-brand">
