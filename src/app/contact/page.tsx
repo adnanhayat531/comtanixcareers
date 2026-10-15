@@ -17,7 +17,7 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Let's talk. We're ready to help."
+        title="Let's Connect"
         description="Reach the Comtanix team for careers, partnerships, or general questions by phone, email, or the form below."
         image="/contact/hero-building.jpg?v=wide"
         imageAlt="Comtanix office building at night, Bahria Town"
