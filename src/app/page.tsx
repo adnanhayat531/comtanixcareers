@@ -34,14 +34,18 @@ const CAPABILITY_ICONS = [
 export default function HomePage() {
   return (
     <>
-      <section className="relative flex min-h-[var(--hero-min-h)] flex-col overflow-hidden bg-canvas supports-[height:100svh]:min-h-[var(--hero-min-h)]">
+      <section className="relative flex h-[var(--hero-min-h)] min-h-[100svh] flex-col overflow-hidden bg-canvas supports-[height:100dvh]:h-[100dvh] supports-[height:100dvh]:min-h-[100dvh]">
         <HeroNetwork />
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-start justify-center px-[var(--container-pad-x)] pb-[max(2.5rem,env(safe-area-inset-bottom,0px))] pt-[calc(var(--header-h)+clamp(1.25rem,4vh,2.5rem))] sm:pb-[clamp(3rem,8vh,5rem)]">
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-start justify-center px-[var(--container-pad-x)] pb-4 pt-[calc(var(--header-h)+clamp(1.25rem,4vh,2.5rem))] sm:pb-5">
           <HeroCopy />
         </div>
+        <div
+          className="relative z-20 mt-auto h-fit max-h-fit w-full flex-none self-end pb-[max(0.75rem,env(safe-area-inset-bottom,0px))]"
+          style={{ height: "max-content" }}
+        >
+          <StatsBar />
+        </div>
       </section>
-
-      <StatsBar />
 
       <WhoWeAre />
 

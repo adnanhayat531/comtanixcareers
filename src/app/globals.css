@@ -59,7 +59,7 @@
   --radius-xl: 1rem;
   --header-h: 2.75rem;
   --sidebar-w: min(15rem, 85vw);
-  --hero-min-h: min(90svh, 56rem);
+  --hero-min-h: 100svh;
 }
 
 /* Admin + light islands keep the original bright system */
@@ -102,7 +102,7 @@
     --h1: clamp(1.2rem, 5.5vw, 1.4rem);
     --h2: clamp(1.125rem, 5vw, 1.35rem);
     --control-h: 2.375rem;
-    --hero-min-h: min(90svh, 42rem);
+    --hero-min-h: 100svh;
   }
 }
 
@@ -171,14 +171,14 @@ canvas {
 @media (min-width: 640px) {
   :root {
     --header-h: 3rem;
-    --hero-min-h: min(90svh, 56rem);
+    --hero-min-h: 100svh;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --header-h: 3.25rem;
-    --hero-min-h: min(90svh, 56rem);
+    --hero-min-h: 100svh;
     --sidebar-w: 15rem;
   }
 }
