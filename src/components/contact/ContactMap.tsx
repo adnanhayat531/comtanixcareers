@@ -48,7 +48,7 @@ export function ContactMap() {
         href={mapsLink()}
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-3 left-3 z-20 inline-flex max-w-[min(100%-1.5rem,22rem)] items-start gap-2 rounded-md border border-line bg-white/95 px-3 py-2.5 text-left shadow-soft backdrop-blur-sm transition hover:bg-white sm:bottom-4 sm:left-4"
+        className="theme-light absolute bottom-3 left-3 z-20 inline-flex max-w-[min(100%-1.5rem,22rem)] items-start gap-2 rounded-md border border-line bg-white px-3 py-2.5 text-left shadow-soft transition hover:bg-white sm:bottom-4 sm:left-4"
       >
         <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-md bg-brand text-white">
           <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
@@ -57,10 +57,10 @@ export function ContactMap() {
         </span>
         <span className="min-w-0">
           <span className="type-eyebrow block text-brand">Our location</span>
-          <span className="type-meta mt-0.5 block font-semibold leading-snug text-ink">
+          <span className="type-meta mt-0.5 block font-semibold leading-snug text-[#0b2c35]">
             {CONFIG.address}
           </span>
-          <span className="type-meta mt-1 block font-medium text-muted">
+          <span className="type-meta mt-1 block font-medium text-[#3a8a93]">
             Open in Google Maps
           </span>
         </span>

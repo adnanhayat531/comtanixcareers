@@ -9,7 +9,7 @@ import { CONFIG } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Comtanix. Call, email, or visit our office. Find us on the map.",
+    "Interested in joining Comtanix or working with us? Our team is available by phone and email to guide you.",
 };
 
 export default function ContactPage() {
@@ -18,7 +18,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Let's Connect"
-        description="Reach the Comtanix team for careers, partnerships, or general questions by phone, email, or the form below."
+        description="Interested in joining Comtanix or working with us? Our team is available by phone and email to guide you."
         image="/contact/hero-building.jpg?v=wide"
         imageAlt="Comtanix office building at night, Bahria Town"
         imageFit="contain"
