@@ -47,16 +47,25 @@ export default function AboutPage() {
             />
             <div className="type-body space-y-4 text-muted">
               <p>
-                We have supported organizations across global markets with
-                skilled technology teams and dependable delivery. Our people
-                earn trust through reliability, bringing measurable value to
-                every engagement.
+                Comtanix was built around a clear ambition: bringing expertise,
+                technology, and people together to solve complex business
+                challenges. As enterprise needs have evolved, so have our
+                capabilities across software development, AI and automation,
+                cybersecurity, e-commerce, finance, and specialized business
+                services.
               </p>
               <p>
-                Clients stay with us because results are consistent and
-                expectations are met. That satisfaction underpins every
-                long-term partnership we hold, and we remain focused on earning
-                that trust, year after year.
+                Today, we help organizations address complex technical needs,
+                strengthen operations, and pursue new opportunities. Our
+                approach remains rooted in understanding client objectives,
+                building the right capabilities, and maintaining accountability
+                in every engagement.
+              </p>
+              <p>
+                As technology advances, so do we. Through continuous learning,
+                emerging technologies, and investment in our people, we help
+                enterprises navigate change and build capabilities for what
+                comes next.
               </p>
             </div>
             <Button href="/careers#openings" className="mt-7 w-full sm:w-auto">

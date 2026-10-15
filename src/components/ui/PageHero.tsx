@@ -38,7 +38,7 @@ function TextWash({
         <div
           className="pointer-events-none absolute -inset-y-10 -left-10 -right-6 -z-10 sm:-inset-y-12 sm:-left-14 sm:-right-10"
           style={{
-            background: `radial-gradient(125% 110% at 0% 50%, ${HERO_BLEND}ee 0%, ${HERO_BLEND}99 42%, ${HERO_BLEND}33 68%, transparent 82%)`,
+            background: `radial-gradient(125% 110% at 0% 50%, ${HERO_BLEND}aa 0%, ${HERO_BLEND}66 42%, ${HERO_BLEND}28 68%, transparent 85%)`,
           }}
           aria-hidden
         />
@@ -174,7 +174,7 @@ export function PageHero({
               <div
                 className="pointer-events-none absolute inset-0"
                 style={{
-                  background: `linear-gradient(90deg, ${HERO_BLEND} 0%, rgba(${HERO_BLEND_RGB},0.7) 12%, rgba(${HERO_BLEND_RGB},0.25) 24%, transparent 34%)`,
+                  background: `linear-gradient(90deg, rgba(${HERO_BLEND_RGB},0.72) 0%, rgba(${HERO_BLEND_RGB},0.42) 14%, rgba(${HERO_BLEND_RGB},0.16) 28%, transparent 42%)`,
                 }}
                 aria-hidden
               />
