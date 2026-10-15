@@ -23,7 +23,7 @@ export default function LifePage() {
         eyebrow="Life at Comtanix"
         title="Together in Every Milestone."
         description="Our teams share the experiences, the achievements, and the culture that make Comtanix more than a place to work."
-        image="/life/hero-team.png?v=5"
+        image="/life/hero-team.png?v=7"
         imageAlt="Comtanix team collaborating in the office"
         imageFit="cover"
         imagePosition="faces"
