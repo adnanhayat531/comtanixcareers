@@ -23,8 +23,11 @@ export default function LifePage() {
         eyebrow="Life at Comtanix"
         title="Work hard. Climb higher. Stay together."
         description="Our teams share the grind, the wins, and the moments that make Comtanix feel like more than a workplace."
-        image="/life/hero-team.jpg"
-        imageAlt="Comtanix team together outdoors"
+        image="/life/hero-team.png?v=4"
+        imageAlt="Comtanix team collaborating in the office"
+        imageFit="cover"
+        imagePosition="faces"
+        className="!h-[min(48svh,28rem)] !min-h-[16rem] !max-h-[32rem]"
       >
         <Button href="/careers" variant="white">
           View openings <ArrowRight className="h-4 w-4" aria-hidden />

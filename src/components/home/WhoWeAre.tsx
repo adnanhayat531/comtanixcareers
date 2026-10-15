@@ -74,8 +74,8 @@ export function WhoWeAre() {
             <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[var(--radius-lg)] bg-tint ring-1 ring-line/70 sm:rounded-[var(--radius-xl)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/who-we-are-office.jpg"
-                alt="Bright modern Comtanix workspace with open desks and glass meeting room"
+                src="/who-we-are-capability.png"
+                alt="Comtanix team collaborating — a global technology company built around capability"
                 width={1920}
                 height={1080}
                 decoding="async"

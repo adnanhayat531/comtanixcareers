@@ -2,10 +2,12 @@ import Image from "next/image";
 
 export function OfficeIllustration({
   caption,
+  src = "/about/embedded-teams.png",
   className = "rounded-2xl border border-line shadow-soft",
   aspectClassName = "aspect-[4/3] sm:aspect-[3/2]",
 }: {
   caption?: string;
+  src?: string;
   className?: string;
   aspectClassName?: string;
 }) {
@@ -17,8 +19,8 @@ export function OfficeIllustration({
         className={`relative w-full max-w-full overflow-hidden ${aspectClassName}`}
       >
         <Image
-          src="/hero-comtanix.png"
-          alt="Comtanix office building at night — Bahria Town Phase 8, Rawalpindi"
+          src={src}
+          alt={caption || "Comtanix team at work"}
           fill
           className="object-cover object-center"
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 55vw, 640px"

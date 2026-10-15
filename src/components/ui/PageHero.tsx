@@ -10,8 +10,8 @@ type PageHeroProps = {
   imageAlt?: string;
   /** cover crops to fill; contain shows the full original (no zoom). */
   imageFit?: "cover" | "contain";
-  /** object-position for the photo. */
-  imagePosition?: "center" | "right" | "left";
+  /** object-position for the photo. `faces` keeps heads in frame while filling. */
+  imagePosition?: "center" | "right" | "left" | "faces";
   /** Soft left→right fade so letterbox edge blends into the hero (no hard cut). */
   imageBlend?: boolean;
   /** Prefer light text on photo heroes. Default when image is set. */
@@ -97,7 +97,13 @@ export function PageHero({
       ? "object-right"
       : imagePosition === "left"
         ? "object-left"
-        : "object-center";
+        : imagePosition === "faces"
+          ? "object-[center_30%]"
+          : "object-center";
+  const imgStyle =
+    imagePosition === "faces"
+      ? ({ objectPosition: "center 30%" } as const)
+      : undefined;
 
   const copy = (
     <div className="max-w-2xl min-w-0 px-0.5 py-0.5">
@@ -177,6 +183,7 @@ export function PageHero({
             src={image}
             alt={imageAlt}
             className={`absolute inset-0 z-0 h-full w-full ${fitClass} ${positionClass}`}
+            style={imgStyle}
             fetchPriority="high"
             decoding="async"
           />

@@ -10,9 +10,9 @@ import { OfficeIllustration } from "@/components/ui/OfficeIllustration";
 import { LEARNING, VALUES } from "@/lib/data/content";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Us",
   description:
-    "Our story, core values, and learning pathways at Comtanix — building careers that serve global enterprises.",
+    "Trusted technology professionals delivering innovative, enterprise-grade IT services and measurable business value worldwide.",
 };
 
 export default function AboutPage() {
@@ -20,10 +20,13 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="Company"
-        title="About Comtanix"
-        description="Pakistan delivery teams supporting global enterprise software and IT operations."
-        image="/hero-comtanix.png"
-        imageAlt="Comtanix office building at night"
+        title="About Us"
+        description="Trusted technology professionals delivering innovative, enterprise-grade IT services and measurable business value worldwide."
+        image="/about/hero.png?v=3"
+        imageAlt="Comtanix team collaborating in the office"
+        imageFit="cover"
+        imagePosition="faces"
+        className="!h-[min(48svh,28rem)] !min-h-[16rem] !max-h-[32rem]"
       >
         <Button href="/careers#openings" variant="white">
           View openings <ArrowRight className="h-4 w-4" aria-hidden />
@@ -38,20 +41,22 @@ export default function AboutPage() {
           <div className="order-2 min-w-0 lg:order-1">
             <SectionHeading
               compact
-              eyebrow="Our story"
-              title="Embedded teams for global IT delivery"
-              description="Pakistan delivery teams supporting global enterprise software and IT operations."
+              eyebrow="Our Story"
+              title="15 Years of Progress. A Commitment to Excellence."
               className="mb-6"
             />
             <div className="type-body space-y-4 text-muted">
               <p>
-                Comtanix builds IT and engineering capacity for clients worldwide that need
-                embedded teams — not transactional call-center volume. Delivery
-                follows the client&apos;s tools, processes, and quality bar.
+                We have supported organizations across global markets with
+                skilled technology teams and dependable delivery. Our people
+                earn trust through reliability, bringing measurable value to
+                every engagement.
               </p>
               <p>
-                Associates are trained to that standard before going live. Retention
-                on both sides comes from fit, not slogans.
+                Clients stay with us because results are consistent and
+                expectations are met. That satisfaction underpins every
+                long-term partnership we hold, and we remain focused on earning
+                that trust, year after year.
               </p>
             </div>
             <Button href="/careers#openings" className="mt-7 w-full sm:w-auto">
@@ -59,7 +64,10 @@ export default function AboutPage() {
             </Button>
           </div>
           <div className="order-1 min-w-0 w-full lg:order-2">
-            <OfficeIllustration caption="Comtanix office — Bahria Town Phase 8" />
+            <OfficeIllustration
+              src="/about/embedded-teams.png"
+              caption="15 years of progress — a commitment to excellence"
+            />
           </div>
         </Container>
       </Section>
@@ -68,8 +76,8 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             eyebrow="Values"
-            title="Operating principles"
-            description="Standards we hold for hiring, training, and client delivery."
+            title="Building Teams. Setting Standards"
+            description="Our approach to talent, performance, and professional conduct is guided by clear expectations at every stage."
           />
           <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {VALUES.map((v, i) => (
@@ -99,9 +107,9 @@ export default function AboutPage() {
       <Section id="learning" className="theme-light site-light-section scroll-mt-24 md:scroll-mt-28">
         <Container>
           <SectionHeading
-            eyebrow="Training"
-            title="Learning path"
-            description="From paid induction through tooling and leadership tracks."
+            eyebrow="Growth"
+            title="From Learning to Leadership"
+            description="Professional growth at Comtanix is shaped by practical experience, continuous learning, and opportunities to take on new challenges."
           />
           <div className="grid min-w-0 items-center gap-8 lg:grid-cols-2 lg:gap-12">
             <ol className="relative min-w-0 space-y-5 md:space-y-6">
@@ -145,8 +153,8 @@ export default function AboutPage() {
 
             <div className="glass-card relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[var(--radius-lg)] lg:mx-0 lg:max-w-none lg:self-stretch lg:aspect-auto lg:min-h-[28rem]">
               <Image
-                src="/about/learning-path.jpg"
-                alt="Mentored training session at Comtanix"
+                src="/about/learning-path.png"
+                alt="Team collaborating during a learning session at Comtanix"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-center"

@@ -43,8 +43,11 @@ export default function CareersPage() {
         eyebrow="Careers"
         title="Build your career on real global IT work."
         description="Open roles across engineering and IT support — with paid training, clear progression, and teams that deliver for businesses worldwide."
-        image="/careers/hero-desk.jpg"
-        imageAlt="Comtanix careers — innovation, teamwork, and growth"
+        image="/careers/hero-desk.png?v=3"
+        imageAlt="Comtanix team collaborating in a careers workshop"
+        imageFit="cover"
+        imagePosition="faces"
+        className="!h-[min(48svh,28rem)] !min-h-[16rem] !max-h-[32rem]"
       >
         <Button href="#openings" variant="white">
           View openings <ArrowRight className="h-4 w-4" aria-hidden />
