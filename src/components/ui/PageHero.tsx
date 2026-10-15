@@ -116,12 +116,16 @@ export function PageHero({
       </p>
       <h1
         className={`type-h1 text-pretty text-balance ${
-          onPhoto || !image ? "text-white" : "text-ink"
+          onPhoto || !image
+            ? "text-white [text-shadow:0_2px_18px_rgba(0,0,0,0.75)]"
+            : "text-ink"
         }`}
       >
         <BrandAccentText
           accentClassName={
-            onPhoto || !image ? "text-brand-bright" : "text-brand"
+            onPhoto || !image
+              ? "inline-block text-brand-bright [text-shadow:0_2px_16px_rgba(0,0,0,0.9),0_0_2px_rgba(0,0,0,1)]"
+              : "text-brand"
           }
         >
           {title}

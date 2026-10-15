@@ -1,5 +1,4 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { CheckCircle2 } from "lucide-react";
 import { Container, Section } from "@/components/ui/Section";
 import { WHO_WE_ARE_POINTS } from "@/lib/data/content";
 
@@ -57,17 +56,6 @@ export function WhoWeAre() {
                 </li>
               ))}
             </ul>
-
-            <div className="mt-5">
-              <Button
-                href="#services"
-                variant="secondary"
-                className="w-full sm:w-auto"
-              >
-                Explore Our Services
-                <ArrowRight className="h-3.5 w-3.5 shrink-0" aria-hidden />
-              </Button>
-            </div>
           </div>
 
           <div className="relative w-full min-w-0">

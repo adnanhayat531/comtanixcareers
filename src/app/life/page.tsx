@@ -13,7 +13,7 @@ import { LIFE_ACTIVITIES } from "@/lib/data/content";
 export const metadata: Metadata = {
   title: "Life at Comtanix",
   description:
-    "Our teams share the milestones, the achievements, and the culture that make Comtanix more than a place to work.",
+    "Our teams share the experiences, the achievements, and the culture that make Comtanix more than a place to work.",
 };
 
 export default function LifePage() {
@@ -21,13 +21,13 @@ export default function LifePage() {
     <>
       <PageHero
         eyebrow="Life at Comtanix"
-        title="Grow Through Work. Thrive Together."
-        description="Our teams share the milestones, the achievements, and the culture that make Comtanix more than a place to work."
+        title="Together in Every Milestone."
+        description="Our teams share the experiences, the achievements, and the culture that make Comtanix more than a place to work."
         image="/life/hero-team.png?v=5"
         imageAlt="Comtanix team collaborating in the office"
         imageFit="cover"
         imagePosition="faces"
-        className="!h-[min(48svh,28rem)] !min-h-[16rem] !max-h-[32rem]"
+        className="!h-[min(48svh,28rem)] !min-h-[16rem] !max-h-[32rem] [&_h1]:max-w-[16ch] sm:[&_h1]:max-w-[18ch]"
       >
         <Button href="/careers" variant="white">
           View openings <ArrowRight className="h-4 w-4" aria-hidden />
