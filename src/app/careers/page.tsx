@@ -11,7 +11,7 @@ import { Container, Section, SectionHeading } from "@/components/ui/Section";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "Open roles at Comtanix for freshers and experienced professionals across global IT teams.",
+    "Explore opportunities across AI, software engineering, cybersecurity, and IT operations, with paid training, structured development, and opportunities to contribute to global projects.",
 };
 
 /** Openings come from the live jobs API — never serve a stale static snapshot. */
@@ -42,7 +42,7 @@ export default function CareersPage() {
       <PageHero
         eyebrow="Careers"
         title="Build your career on real global IT work."
-        description="Open roles across engineering and IT support — with paid training, clear progression, and teams that deliver for businesses worldwide."
+        description="Explore opportunities across AI, software engineering, cybersecurity, and IT operations, with paid training, structured development, and opportunities to contribute to global projects."
         image="/careers/hero-desk.png?v=3"
         imageAlt="Comtanix team collaborating in a careers workshop"
         imageFit="cover"
