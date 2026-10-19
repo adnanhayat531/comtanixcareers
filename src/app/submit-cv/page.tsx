@@ -21,6 +21,7 @@ export default function SubmitCvPage() {
         description="Share your profile for upcoming roles. We review every CV and reach out when there is a strong match."
         image="/careers-collab.jpg"
         imageAlt="Submit your CV to Comtanix for future opportunities"
+        imagePosition="faces"
       >
         <Button href="#cv-form" variant="white">
           Submit CV <ArrowRight className="h-4 w-4" aria-hidden />

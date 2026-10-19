@@ -98,11 +98,11 @@ export function PageHero({
       : imagePosition === "left"
         ? "object-left"
         : imagePosition === "faces"
-          ? "object-[center_30%]"
+          ? "object-[center_20%]"
           : "object-center";
   const imgStyle =
     imagePosition === "faces"
-      ? ({ objectPosition: "center 30%" } as const)
+      ? ({ objectPosition: "center 20%" } as const)
       : undefined;
 
   const copy = (
