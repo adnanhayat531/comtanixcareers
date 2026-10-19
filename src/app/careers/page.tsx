@@ -43,10 +43,10 @@ export default function CareersPage() {
         eyebrow="Careers"
         title="Be Part of What's Next in Technology."
         description="Explore roles across AI, software development, cybersecurity, and IT operations, with paid training, structured career growth, and the opportunity to work on projects for global enterprises."
-        image="/careers/hero-desk.png?v=5"
+        image="/careers/hero-desk.png"
         imageAlt="Comtanix team collaborating in a careers workshop"
         imageFit="cover"
-        imagePosition="faces"
+        objectPosition="center 62%"
         className="!h-[min(48svh,28rem)] !min-h-[16rem] !max-h-[32rem]"
       >
         <Button href="#openings" variant="white">

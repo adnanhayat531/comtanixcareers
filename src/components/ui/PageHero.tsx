@@ -12,6 +12,8 @@ type PageHeroProps = {
   imageFit?: "cover" | "contain";
   /** object-position for the photo. `faces` keeps heads in frame while filling. */
   imagePosition?: "center" | "right" | "left" | "faces";
+  /** Optional CSS object-position override (e.g. "center 55%"). */
+  objectPosition?: string;
   /** Soft left→right fade so letterbox edge blends into the hero (no hard cut). */
   imageBlend?: boolean;
   /** Prefer light text on photo heroes. Default when image is set. */
@@ -82,6 +84,7 @@ export function PageHero({
   imageAlt = "",
   imageFit = "cover",
   imagePosition = "center",
+  objectPosition,
   imageBlend = false,
   tone,
   children,
@@ -92,18 +95,24 @@ export function PageHero({
   const onPhoto = Boolean(image) && isDark;
   const fitClass =
     imageFit === "contain" ? "object-contain" : "object-cover";
+  const resolvedObjectPosition =
+    objectPosition ??
+    (imagePosition === "faces"
+      ? "center 20%"
+      : imagePosition === "right"
+        ? "right center"
+        : imagePosition === "left"
+          ? "left center"
+          : "center center");
   const positionClass =
-    imagePosition === "right"
-      ? "object-right"
-      : imagePosition === "left"
-        ? "object-left"
-        : imagePosition === "faces"
-          ? "object-[center_20%]"
+    objectPosition || imagePosition === "faces"
+      ? ""
+      : imagePosition === "right"
+        ? "object-right"
+        : imagePosition === "left"
+          ? "object-left"
           : "object-center";
-  const imgStyle =
-    imagePosition === "faces"
-      ? ({ objectPosition: "center 20%" } as const)
-      : undefined;
+  const imgStyle = { objectPosition: resolvedObjectPosition } as const;
 
   const copy = (
     <div className="max-w-2xl min-w-0 px-0.5 py-0.5">

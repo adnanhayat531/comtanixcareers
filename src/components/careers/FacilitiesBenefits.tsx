@@ -90,7 +90,7 @@ export function FacilitiesBenefits() {
             {BENEFITS.map((b) => (
               <li
                 key={b.title}
-                className="group relative flex min-h-[14rem] flex-col items-center overflow-hidden rounded-[1.35rem] border border-[#cfe3e8] bg-gradient-to-b from-[#eef6f8] to-white px-4 pb-5 pt-2 shadow-[0_12px_28px_-18px_rgba(15,40,48,0.28)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_34px_-16px_rgba(15,40,48,0.34)] sm:min-h-[15rem] sm:px-5 sm:pb-6"
+                className="group relative flex min-h-[14rem] flex-col items-center overflow-hidden rounded-[1.35rem] border border-[#cfe3e8] bg-gradient-to-b from-[#eef6f8] to-white px-4 pb-5 pt-2 shadow-[0_12px_28px_-18px_rgba(15,40,48,0.28)] transition duration-300 hover:-translate-y-0.5 hover:border-brand/35 hover:bg-gradient-to-b hover:from-[#dff4f5] hover:to-white hover:shadow-[0_18px_40px_-14px_rgba(13,148,136,0.45),0_0_0_1px_rgba(45,212,224,0.25)] sm:min-h-[15rem] sm:px-5 sm:pb-6"
               >
                 <div className="relative mt-1 flex h-[7.5rem] w-full items-center justify-center sm:h-[8.25rem]">
                   <div className="relative z-10 -ml-6 h-[6.75rem] w-[6.75rem] overflow-hidden rounded-full bg-white shadow-[0_10px_22px_-12px_rgba(15,40,48,0.45)] ring-[3px] ring-white sm:-ml-8 sm:h-[7.5rem] sm:w-[7.5rem]">
