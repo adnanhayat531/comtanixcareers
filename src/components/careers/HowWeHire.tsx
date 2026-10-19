@@ -86,7 +86,7 @@ export function HowWeHire() {
                       {step.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-md bg-[var(--hire-l)] px-2 py-0.5 type-meta font-medium text-[var(--hire-d)]"
+                          className="rounded-md border border-brand/45 bg-brand/20 px-2 py-0.5 type-meta font-semibold text-brand-bright"
                         >
                           {tag}
                         </span>
