@@ -1,62 +1,70 @@
+import Image from "next/image";
 import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Container, Section } from "@/components/ui/Section";
 
 const BENEFITS = [
   {
     title: "Market-Competitive Salary",
+    image: "/careers/benefits/salary.jpg",
     icon: (
-      <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
-        <rect className="fill-a" x="4" y="12" width="40" height="24" rx="4" />
-        <circle cx="24" cy="24" r="6" />
-        <path d="M10 18v.01M38 30v.01" />
+      <svg viewBox="0 0 24 24" aria-hidden className="h-full w-full">
+        <path d="M5 19V9.5L10 7l5 2.5V19" />
+        <path d="M7.5 19v-5h5V19M8.5 11h.01M12 11h.01" />
+        <path d="M15.5 8.5V19h3.5V10.5L15.5 8.5z" />
+        <circle cx="18.2" cy="6.2" r="2.8" />
+        <path d="M18.2 5v2.4M17.2 6.2h2" />
       </svg>
     ),
   },
   {
     title: "Medical Coverage for Employees and Eligible Dependents",
+    image: "/careers/benefits/medical.jpg",
     icon: (
-      <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
-        <path
-          className="fill-a"
-          d="M24 41S6 30 6 17a9 9 0 0 1 18-3 9 9 0 0 1 18 3c0 13-18 24-18 24z"
-        />
-        <path d="M12 24h7l3-6 4 10 3-4h7" />
+      <svg viewBox="0 0 24 24" aria-hidden className="h-full w-full">
+        <path d="M12 20.5S5.5 15.8 5.5 10.2A3.9 3.9 0 0 1 12 7.8a3.9 3.9 0 0 1 6.5 2.4c0 5.6-6.5 10.3-6.5 10.3z" />
+        <path d="M8 12h2.1l1.1-1.8 1.5 2.8 1-1.5H16" />
       </svg>
     ),
   },
   {
     title: "Performance-Based Bonuses",
+    image: "/careers/benefits/bonuses.jpg",
     icon: (
-      <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
-        <circle className="fill-a" cx="24" cy="20" r="13" />
-        <path d="M24 13l2 4 4.5.6-3.3 3.1.8 4.4-4-2.1-4 2.1.8-4.4-3.3-3.1 4.5-.6zM17 31l-4 12 11-5 11 5-4-12" />
+      <svg viewBox="0 0 24 24" aria-hidden className="h-full w-full">
+        <circle cx="12" cy="9" r="5.5" />
+        <path d="M12 5.8l1 2 2.2.3-1.6 1.5.4 2.2L12 10.7 9.9 11.8l.4-2.2-1.6-1.5 2.2-.3z" />
+        <path d="M8.8 14.2 7.5 20l4.5-2 4.5 2-1.3-5.8" />
       </svg>
     ),
   },
   {
     title: "Professional Learning & Development",
+    image: "/careers/benefits/learning.jpg",
     icon: (
-      <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
-        <path className="fill-a" d="M6 18l18-8 18 8-18 8-18-8z" />
-        <path d="M14 22v8c0 4 4.5 7 10 7s10-3 10-7v-8M38 20v12" />
+      <svg viewBox="0 0 24 24" aria-hidden className="h-full w-full">
+        <path d="M3.5 10.5 12 6.5l8.5 4-8.5 4-8.5-4z" />
+        <path d="M7.5 12.5v3.8c0 1.5 2 2.7 4.5 2.7s4.5-1.2 4.5-2.7v-3.8M19.5 11.2v5.5" />
       </svg>
     ),
   },
   {
     title: "Gym Membership",
+    image: "/careers/benefits/gym.jpg",
     icon: (
-      <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
-        <path d="M8 18v12M12 16v16M36 16v16M40 18v12M14 24h20" />
-        <circle className="fill-a" cx="24" cy="24" r="4" />
+      <svg viewBox="0 0 24 24" aria-hidden className="h-full w-full">
+        <path d="M4 9.5v5M6.5 8v8M17.5 8v8M20 9.5v5M7.5 12h9" />
       </svg>
     ),
   },
   {
     title: "Sports & Recreational Activities",
+    image: "/careers/benefits/sports.jpg",
     icon: (
-      <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
-        <circle className="fill-a" cx="24" cy="24" r="16" />
-        <path d="M24 8c4 4 6 10 6 16s-2 12-6 16M24 8c-4 4-6 10-6 16s2 12 6 16M8 24h32M11 16h26M11 32h26" />
+      <svg viewBox="0 0 24 24" aria-hidden className="h-full w-full">
+        <circle cx="9.5" cy="10.5" r="5.5" />
+        <path d="M9.5 5c1.6 1.6 2.4 3.7 2.4 5.5S11.1 15.4 9.5 17M9.5 5C7.9 6.6 7.1 8.7 7.1 10.5S7.9 15.4 9.5 17M4.5 10.5h10M5.6 7.5h7.8M5.6 13.5h7.8" />
+        <circle cx="16.8" cy="16" r="3" />
+        <path d="M16.8 13.5v5M15 14.6l3.6 2.2M15 17.4l3.6-2.2" />
       </svg>
     ),
   },
@@ -66,7 +74,7 @@ export function FacilitiesBenefits() {
   return (
     <Section
       id="facilities"
-      className="theme-light site-light-section scroll-mt-24 border-t border-line md:scroll-mt-28 [--fb:var(--brand)] [--fb-d:var(--deep)] [--fb-l:var(--tint)] [--fb-ink:var(--ink)] [--fb-card:var(--surface)] [--fb-line:var(--line-strong)]"
+      className="theme-light site-light-section scroll-mt-24 border-t border-line md:scroll-mt-28"
     >
       <Container>
         <div className="mx-auto w-full max-w-none">
@@ -78,24 +86,31 @@ export function FacilitiesBenefits() {
             professional growth, and work-life balance.
           </p>
 
-          <ul className="mt-6 grid grid-cols-2 gap-2.5 sm:mt-8 sm:gap-3 md:grid-cols-3 md:gap-4">
+          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:mt-10 lg:grid-cols-3 lg:gap-5">
             {BENEFITS.map((b) => (
               <li
                 key={b.title}
-                className="group relative flex min-h-[7.5rem] min-w-0 flex-col items-center overflow-hidden rounded-[var(--radius-lg)] border border-[var(--fb-line)] bg-[var(--fb-card)] px-2.5 py-3.5 text-center shadow-[0_0_28px_-16px_rgba(45,212,224,0.4)] transition duration-300 hover:-translate-y-0.5 hover:shadow-hover sm:min-h-[9rem] sm:px-3.5 sm:py-5 md:min-h-[10rem]"
+                className="group relative flex min-h-[14rem] flex-col items-center overflow-hidden rounded-[1.35rem] border border-[#cfe3e8] bg-gradient-to-b from-[#eef6f8] to-white px-4 pb-5 pt-2 shadow-[0_12px_28px_-18px_rgba(15,40,48,0.28)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_34px_-16px_rgba(15,40,48,0.34)] sm:min-h-[15rem] sm:px-5 sm:pb-6"
               >
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 top-0 h-1 bg-brand"
-                />
-
-                <div className="mx-auto mb-2.5 grid h-12 w-12 place-items-center rounded-full bg-[var(--fb-l)] shadow-soft transition-colors duration-300 group-hover:bg-[var(--fb)] sm:mb-3 sm:h-14 sm:w-14 md:h-16 md:w-16">
-                  <span className="block h-6 w-6 text-[var(--fb)] transition-colors duration-300 group-hover:text-white sm:h-7 sm:w-7 md:h-8 md:w-8 [&_svg]:h-full [&_svg]:w-full [&_svg]:fill-none [&_svg]:stroke-current [&_svg]:stroke-[2.4] [&_svg]:[stroke-linecap:round] [&_svg]:[stroke-linejoin:round] [&_.fill-a]:fill-current [&_.fill-a]:opacity-20">
-                    {b.icon}
-                  </span>
+                <div className="relative mt-1 flex h-[7.5rem] w-full items-center justify-center sm:h-[8.25rem]">
+                  <div className="relative z-10 -ml-6 h-[6.75rem] w-[6.75rem] overflow-hidden rounded-full bg-white shadow-[0_10px_22px_-12px_rgba(15,40,48,0.45)] ring-[3px] ring-white sm:-ml-8 sm:h-[7.5rem] sm:w-[7.5rem]">
+                    <Image
+                      src={b.image}
+                      alt=""
+                      fill
+                      sizes="160px"
+                      quality={92}
+                      className="object-cover object-center transition duration-500 group-hover:scale-[1.04]"
+                    />
+                  </div>
+                  <div className="relative z-20 -ml-4 grid h-12 w-12 place-items-center rounded-full bg-[#3f4f56] text-[#b7e4e2] shadow-[0_10px_18px_-10px_rgba(15,40,48,0.55)] ring-[3px] ring-white sm:-ml-5 sm:h-[3.25rem] sm:w-[3.25rem]">
+                    <span className="block h-[1.35rem] w-[1.35rem] sm:h-6 sm:w-6 [&_svg]:h-full [&_svg]:w-full [&_svg]:fill-none [&_svg]:stroke-current [&_svg]:stroke-[1.7] [&_svg]:[stroke-linecap:round] [&_svg]:[stroke-linejoin:round]">
+                      {b.icon}
+                    </span>
+                  </div>
                 </div>
 
-                <h3 className="type-h3 text-ink">
+                <h3 className="type-h3 mt-auto max-w-[16rem] text-center text-ink">
                   <BrandAccentText>{b.title}</BrandAccentText>
                 </h3>
               </li>
