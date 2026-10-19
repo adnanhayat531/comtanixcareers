@@ -6,19 +6,19 @@ const STEPS = [
   {
     n: "01",
     title: "Application Received",
-    body: "We receive your application and CV.",
+    body: "We receive your application and consider your details for the role.",
     icon: "/careers/hire/step-01.png",
   },
   {
     n: "02",
-    title: "Shortlisted After Review",
-    body: "Our team reviews your profile against the role.",
+    title: "Shortlisting",
+    body: "We assess your experience, skills, and suitability against the role requirements.",
     icon: "/careers/hire/step-02.png",
   },
   {
     n: "03",
     title: "Online Assessment",
-    body: "A short test of your skills for the role.",
+    body: "Complete a role-relevant assessment to demonstrate your skills and knowledge.",
     icon: "/careers/hire/step-03.png",
   },
   {
@@ -31,7 +31,7 @@ const STEPS = [
   {
     n: "05",
     title: "Final Evaluation",
-    body: "Shortlisted candidates move to the final interview.",
+    body: "Shortlisted candidates proceed to a final interview to assess overall suitability for the role.",
     icon: "/careers/hire/step-05.png",
   },
 ] as const;
@@ -47,9 +47,9 @@ export function HowWeHire() {
           <h2 className="type-h2 text-center text-[var(--hire-ink)]">
             <BrandAccentText>How We Hire</BrandAccentText>
           </h2>
-          <p className="type-body mx-auto mt-2 max-w-lg px-1 text-center text-[var(--hire-mute)]">
-            A clear, fair path from your application to your first day at
-            Comtanix.
+          <p className="type-body mx-auto mt-2 max-w-2xl px-1 text-center text-[var(--hire-mute)]">
+            A transparent, structured process to help you take the next step in
+            your career at Comtanix.
           </p>
 
           <ol className="relative mt-8 grid grid-cols-1 gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 lg:mt-12 lg:grid-cols-3 lg:gap-4 xl:grid-cols-5 xl:gap-3">

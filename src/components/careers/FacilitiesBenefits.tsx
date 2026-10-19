@@ -3,7 +3,7 @@ import { Container, Section } from "@/components/ui/Section";
 
 const BENEFITS = [
   {
-    title: "Market-leading Salary",
+    title: "Market-Competitive Salary",
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
         <rect className="fill-a" x="4" y="12" width="40" height="24" rx="4" />
@@ -13,7 +13,7 @@ const BENEFITS = [
     ),
   },
   {
-    title: "Medical Coverage Self & Dependents",
+    title: "Medical Coverage for Employees and Eligible Dependents",
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
         <path
@@ -25,28 +25,7 @@ const BENEFITS = [
     ),
   },
   {
-    title: "Parents Medical Coverage",
-    icon: (
-      <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
-        <circle className="fill-a" cx="15" cy="11" r="5" />
-        <circle className="fill-a" cx="33" cy="11" r="5" />
-        <path d="M8 41V29a7 7 0 0 1 14 0v12M26 41V29a7 7 0 0 1 14 0v12M4 28v13" />
-      </svg>
-    ),
-  },
-  {
-    title: "Provident Fund",
-    icon: (
-      <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
-        <path d="M6 40V30M14 40V24M22 40V32" />
-        <path d="M30 22V8M24 14l6-6 6 6" />
-        <circle className="fill-a" cx="35" cy="35" r="8" />
-        <path d="M35 31v8" />
-      </svg>
-    ),
-  },
-  {
-    title: "Employee Performance-Based Bonuses",
+    title: "Performance-Based Bonuses",
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
         <circle className="fill-a" cx="24" cy="20" r="13" />
@@ -55,12 +34,29 @@ const BENEFITS = [
     ),
   },
   {
-    title: "Profit Sharing Plan",
+    title: "Professional Learning & Development",
+    icon: (
+      <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
+        <path className="fill-a" d="M6 18l18-8 18 8-18 8-18-8z" />
+        <path d="M14 22v8c0 4 4.5 7 10 7s10-3 10-7v-8M38 20v12" />
+      </svg>
+    ),
+  },
+  {
+    title: "Gym Membership",
+    icon: (
+      <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
+        <path d="M8 18v12M12 16v16M36 16v16M40 18v12M14 24h20" />
+        <circle className="fill-a" cx="24" cy="24" r="4" />
+      </svg>
+    ),
+  },
+  {
+    title: "Sports & Recreational Activities",
     icon: (
       <svg viewBox="0 0 48 48" aria-hidden className="h-full w-full">
         <circle className="fill-a" cx="24" cy="24" r="16" />
-        <path d="M24 8v16l13.6 8" />
-        <path d="M30 5a19 19 0 0 1 13 13H30z" />
+        <path d="M24 8c4 4 6 10 6 16s-2 12-6 16M24 8c-4 4-6 10-6 16s2 12 6 16M8 24h32M11 16h26M11 32h26" />
       </svg>
     ),
   },
@@ -77,8 +73,9 @@ export function FacilitiesBenefits() {
           <h2 className="type-h2 text-center text-ink">
             <BrandAccentText>Facilities & Benefits</BrandAccentText>
           </h2>
-          <p className="type-eyebrow mt-2.5 text-center text-ink/70">
-            Because your growth matters
+          <p className="type-body mx-auto mt-2.5 max-w-2xl text-center text-muted">
+            Resources and perks designed to support your well-being,
+            professional growth, and work-life balance.
           </p>
 
           <ul className="mt-6 grid grid-cols-2 gap-2.5 sm:mt-8 sm:gap-3 md:grid-cols-3 md:gap-4">

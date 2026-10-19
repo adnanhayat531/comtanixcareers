@@ -12,7 +12,7 @@ import { LEARNING, VALUES } from "@/lib/data/content";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "A global technology company — trusted professionals delivering innovative, enterprise-grade IT services and measurable business value worldwide.",
+    "Technology expertise for modern enterprises — trusted professionals delivering innovative, enterprise-grade IT services and measurable business value worldwide.",
 };
 
 export default function AboutPage() {
@@ -20,7 +20,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About Us"
-        title="A Global Technology Company"
+        title="Technology Expertise for Modern Enterprises"
         description="Trusted technology professionals delivering innovative, enterprise-grade IT services and measurable business value worldwide."
         image="/about/hero.png?v=3"
         imageAlt="Comtanix team collaborating in the office"
@@ -47,19 +47,19 @@ export default function AboutPage() {
             />
             <div className="type-body space-y-4 text-muted">
               <p>
-                Comtanix was built around a clear ambition: bringing expertise,
-                technology, and people together to solve complex business
-                challenges. As enterprise needs have evolved, so have our
-                capabilities across software development, AI and automation,
-                cybersecurity, e-commerce, finance, and specialized business
-                services.
+                Comtanix was founded on a clear ambition: to bring together
+                technology, expertise, and people to address complex business
+                challenges. Over the years, our capabilities have evolved
+                alongside the needs of global organizations, spanning software
+                development, AI and automation, cybersecurity, e-commerce,
+                finance, and specialized business services.
               </p>
               <p>
-                Today, we help organizations address complex technical needs,
-                strengthen operations, and pursue new opportunities. Our
-                approach remains rooted in understanding client objectives,
-                building the right capabilities, and maintaining accountability
-                in every engagement.
+                Today, we support organizations in advancing their technology
+                initiatives, strengthening business operations, and responding
+                to evolving market demands. Our approach combines an
+                understanding of business priorities with the right expertise,
+                disciplined execution, and accountability at every stage.
               </p>
               <p>
                 As technology advances, so do we. Through continuous learning,
@@ -85,8 +85,8 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             eyebrow="Values"
-            title="Building Teams. Setting Standards"
-            description="Our approach to talent, performance, and professional conduct is guided by clear expectations at every stage."
+            title="Principles That Define Who We Are"
+            description="Our values establish the foundation for responsible decisions, trusted relationships, and a sustained commitment to professional excellence."
           />
           <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {VALUES.map((v, i) => (

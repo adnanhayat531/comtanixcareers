@@ -23,18 +23,18 @@ export const STATS = [
 
 export const VALUES = [
   {
-    title: "Merit & Potential",
-    body: "We assess capability, professional conduct, and growth potential to build teams suited to the work.",
+    title: "Integrity in Practice",
+    body: "We act with honesty, uphold ethical principles, and ensure our conduct reflects the trust placed in us.",
     image: "/values/recruit-well-v2.png",
   },
   {
-    title: "Professional Excellence",
-    body: "We uphold defined quality standards, clear communication, and disciplined execution across assignments.",
+    title: "Excellence in Execution",
+    body: "We combine technical knowledge, sound judgment, and disciplined execution to uphold quality across our work and relationships.",
     image: "/values/train-fully-v2.png",
   },
   {
-    title: "Continuous Improvement",
-    body: "We use feedback, performance insights, and shared learning to strengthen how our teams work.",
+    title: "Growth Through Innovation",
+    body: "We embrace new perspectives, advance our capabilities, and continually seek better ways to address evolving business and technology needs.",
     image: "/values/deliver-results-v2.png",
   },
 ] as const;

@@ -120,7 +120,7 @@ export default function HomePage() {
             {WHY_COMTANIX.map((w, i) => (
               <li
                 key={w.title}
-                className="glass-card min-w-0 overflow-hidden rounded-[1.1rem]"
+                className="glass-card group min-w-0 overflow-hidden rounded-[1.1rem] transition hover:shadow-[0_0_0_1px_var(--glow),var(--glow-cyan)]"
               >
                 <div className="relative aspect-[16/10] w-full overflow-hidden">
                   <Image
@@ -128,7 +128,7 @@ export default function HomePage() {
                     alt=""
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover object-center"
+                    className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
                   />
                   {/* Teal grade only — never white wash on photos */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#05222B]/75 via-[#06343B]/30 to-transparent" />

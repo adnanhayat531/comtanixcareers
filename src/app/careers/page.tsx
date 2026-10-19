@@ -19,20 +19,20 @@ export const dynamic = "force-dynamic";
 
 const WHY = [
   {
-    title: "Paid training",
-    body: "Induction covers process, tools, and professional communication before live queues.",
+    title: "Structured Onboarding",
+    body: "Gain role-specific training, practical guidance, and a clear understanding of expectations.",
   },
   {
-    title: "Defined progression",
-    body: "Agent → senior → team lead → manager, with scheduled reviews.",
+    title: "Career Progression",
+    body: "Strengthen your expertise, take on new responsibilities, and advance professionally.",
   },
   {
-    title: "Performance pay",
-    body: "Monthly incentives tied to published SLA and quality metrics.",
+    title: "Meaningful Recognition",
+    body: "Get recognized for your contributions, achievements, and commitment to quality.",
   },
   {
-    title: "Office standards",
-    body: "Workstations, network stability, access control, and on-floor support.",
+    title: "Supportive Workplace",
+    body: "Thrive in a culture of collaboration, respect, and shared accountability.",
   },
 ] as const;
 
@@ -95,7 +95,7 @@ export default function CareersPage() {
 
       <Section className="theme-light site-light-section border-t border-line">
         <Container>
-          <SectionHeading title="Why grow your career with us" />
+          <SectionHeading title="Why Build Your Career With Us" />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {WHY.map((w, i) => (
               <div key={w.title}>
