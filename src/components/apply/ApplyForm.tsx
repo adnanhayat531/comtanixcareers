@@ -2,7 +2,7 @@
 
 import { useEffect, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
-import { ArrowRight, FileUp } from "lucide-react";
+import { ArrowRight, FileUp, RefreshCw, X } from "lucide-react";
 import {
   fetchJobBySlug,
   fetchJobs,
@@ -68,6 +68,7 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [cvName, setCvName] = useState("");
+  const [cvFile, setCvFile] = useState<File | null>(null);
   const [status, setStatus] = useState("");
   const [statusError, setStatusError] = useState(false);
   const [cvErr, setCvErr] = useState("");
@@ -75,6 +76,7 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
   const [pending, setPending] = useState(false);
   const [parsing, setParsing] = useState(false);
   const [parseNote, setParseNote] = useState("");
+  const [cvInputKey, setCvInputKey] = useState(0);
   const [checks, setChecks] = useState({
     confirmNight: false,
     confirmOnsite: false,
@@ -82,11 +84,14 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
   });
 
   const isCv = mode === "cv";
+  const idPrefix = isCv ? "cv" : "apply";
+  const cvInputId = `${idPrefix}-cv-file`;
   const allChecked =
     checks.confirmNight && checks.confirmOnsite && checks.confirmLocation;
 
   function resetCvFields() {
     setCvName("");
+    setCvFile(null);
     setCvErr("");
     setFullName("");
     setEmail("");
@@ -95,6 +100,15 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
     setExp("");
     setParseNote("");
     setParsing(false);
+    setCvInputKey((k) => k + 1);
+  }
+
+  function changeCvFile() {
+    setCvErr("");
+    const input = document.getElementById(cvInputId) as HTMLInputElement | null;
+    if (!input) return;
+    input.value = "";
+    input.click();
   }
 
   function mapExperience(raw: string): string {
@@ -138,13 +152,12 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
     setCvErr("");
     setParseNote("");
     if (!file) {
-      resetCvFields();
+      // Picker cancelled — keep the previously selected CV if any
+      if (!cvFile) resetCvFields();
       return;
     }
-    // Show details section immediately after file pick
     setCvName(file.name);
-    if (!isCv) return;
-
+    setCvFile(file);
     setParsing(true);
     setParseNote("Reading your CV…");
     try {
@@ -152,8 +165,17 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
       setFullName(parsed.name || "");
       setEmail(parsed.email || "");
       setPhone(parsed.phone || "");
-      setRoleOverride(parsed.role || "General / future openings");
       setExp(mapExperience(parsed.exp));
+      if (isCv) {
+        setRoleOverride(parsed.role || "General / future openings");
+      } else if (!role && parsed.role) {
+        const match = roles.find(
+          (r) =>
+            r.title.toLowerCase() === parsed.role.toLowerCase() ||
+            r.slug.toLowerCase() === parsed.role.toLowerCase(),
+        );
+        if (match) setRoleOverride(match.title);
+      }
       const filled = [parsed.name, parsed.email, parsed.phone].filter(Boolean)
         .length;
       setParseNote(
@@ -169,7 +191,6 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
       );
     } finally {
       setParsing(false);
-      // Ensure details section is visible after parse
       requestAnimationFrame(() => {
         document.getElementById("cv-details")?.scrollIntoView({
           behavior: "smooth",
@@ -263,19 +284,23 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
       setPending(false);
       return;
     }
-    if (isCv) {
-      if (!String(fd.get("name") ?? fullName).trim()) {
-        setStatusError(true);
-        setStatus("Please enter your full name.");
-        setPending(false);
-        return;
-      }
-      if (!String(fd.get("phone") ?? phone).trim()) {
-        setStatusError(true);
-        setStatus("Please enter your phone number.");
-        setPending(false);
-        return;
-      }
+    if (!String(fd.get("name") ?? fullName).trim()) {
+      setStatusError(true);
+      setStatus("Please enter your full name.");
+      setPending(false);
+      return;
+    }
+    if (!String(fd.get("phone") ?? phone).trim()) {
+      setStatusError(true);
+      setStatus("Please enter your phone number.");
+      setPending(false);
+      return;
+    }
+    if (!isCv && !String(fd.get("role") ?? role).trim()) {
+      setStatusError(true);
+      setStatus("Please select an open role.");
+      setPending(false);
+      return;
     }
 
     if (
@@ -292,7 +317,14 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
       return;
     }
 
-    const cv = fd.get("cv");
+    let cv = fd.get("cv");
+    if (
+      (!(cv instanceof File) || !cv.name || cv.size === 0) &&
+      cvFile
+    ) {
+      fd.set("cv", cvFile);
+      cv = cvFile;
+    }
     const hasCv = cv instanceof File && cv.name.length > 0 && cv.size > 0;
 
     if (!hasCv) {
@@ -342,7 +374,9 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
       setEmail("");
       setPhone("");
       setCvName("");
+      setCvFile(null);
       setParseNote("");
+      setCvInputKey((k) => k + 1);
       setChecks({
         confirmNight: false,
         confirmOnsite: false,
@@ -373,133 +407,135 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
     }
   }
 
-  const confirmFieldset = (
-    <fieldset className="min-w-0 rounded-[var(--radius-md)] border border-line bg-tint/50 px-4 py-4">
-      <legend className="type-label px-1 text-ink">Confirm before you apply</legend>
-      <p className="type-meta mt-1 text-muted">
-        Please read and check each point. Only apply if all three fit you.
-      </p>
-      <ul className="mt-3 space-y-2.5">
-        {CONFIRMATIONS.map((c) => (
-          <li key={c.id}>
-            <label
-              htmlFor={`${mode}-${c.id}`}
-              className="type-meta flex cursor-pointer items-start gap-2.5 leading-snug text-ink"
-            >
-              <input
-                id={`${mode}-${c.id}`}
-                name={c.name}
-                type="checkbox"
-                required
-                checked={checks[c.name]}
-                onChange={(e) => {
-                  setConfirmErr("");
-                  setChecks((prev) => ({
-                    ...prev,
-                    [c.name]: e.target.checked,
-                  }));
-                  if (!e.target.checked) {
-                    setCvName("");
-                    setCvErr("");
-                  }
-                }}
-                className="mt-0.5 h-4 w-4 shrink-0 rounded border-line text-brand accent-brand focus:ring-brand/30"
-              />
-              <span>{c.label}</span>
-            </label>
-          </li>
-        ))}
-      </ul>
-      {confirmErr ? (
-        <p className="type-meta mt-2.5 font-medium text-red-700" role="alert">
-          {confirmErr}
-        </p>
-      ) : null}
-    </fieldset>
-  );
+  return (
+    <form
+      onSubmit={onSubmit}
+      className="grid w-full max-w-none gap-8 lg:gap-10"
+      noValidate
+    >
+      <input
+        type="hidden"
+        name="intent"
+        value={isCv ? "cv-future" : "apply-current"}
+      />
 
-  if (isCv) {
-    return (
-      <form
-        onSubmit={onSubmit}
-        className="grid w-full max-w-none gap-8 lg:gap-10"
-        noValidate
-      >
-        <input type="hidden" name="intent" value="cv-future" />
+      <section className="min-w-0">
+        <div className="mb-4 flex items-center gap-3">
+          <span
+            className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-[0.75rem] font-semibold ${
+              allChecked
+                ? "bg-brand text-white"
+                : "bg-tint text-brand ring-1 ring-brand/25"
+            }`}
+          >
+            1
+          </span>
+          <div className="min-w-0">
+            <h3 className="type-label text-ink">Confirm role basics</h3>
+            <p className="type-meta text-muted">
+              All three required before upload
+            </p>
+          </div>
+        </div>
 
-        <section className="min-w-0">
-          <div className="mb-4 flex items-center gap-3">
-            <span
-              className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-[0.75rem] font-semibold ${
-                allChecked
-                  ? "bg-brand text-white"
-                  : "bg-tint text-brand ring-1 ring-brand/25"
-              }`}
-            >
-              1
+        <ul className="grid divide-y divide-line/80 rounded-xl border border-line/80 bg-canvas/40 xl:grid-cols-3 xl:divide-x xl:divide-y-0">
+          {CONFIRMATIONS.map((c) => (
+            <li key={c.id} className="min-w-0">
+              <label
+                htmlFor={`${idPrefix}-${c.id}`}
+                className="flex h-full cursor-pointer items-start gap-3 px-4 py-4 transition hover:bg-tint/50 sm:px-5"
+              >
+                <input
+                  id={`${idPrefix}-${c.id}`}
+                  name={c.name}
+                  type="checkbox"
+                  required
+                  checked={checks[c.name]}
+                  onChange={(e) => {
+                    setConfirmErr("");
+                    setChecks((prev) => ({
+                      ...prev,
+                      [c.name]: e.target.checked,
+                    }));
+                    if (!e.target.checked) resetCvFields();
+                  }}
+                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-line text-brand accent-brand focus:ring-brand/30"
+                />
+                <span className="type-meta leading-snug text-ink">
+                  {c.label}
+                </span>
+              </label>
+            </li>
+          ))}
+        </ul>
+        {confirmErr ? (
+          <p className="type-meta mt-2.5 font-medium text-red-700" role="alert">
+            {confirmErr}
+          </p>
+        ) : null}
+      </section>
+
+      <section className="min-w-0">
+        <div className="mb-4 flex items-center gap-3">
+          <span
+            className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-[0.75rem] font-semibold ${
+              allChecked
+                ? "bg-brand text-white"
+                : "bg-canvas text-muted ring-1 ring-line"
+            }`}
+          >
+            2
+          </span>
+          <div className="min-w-0">
+            <h3 className="type-label text-ink">Upload CV</h3>
+            <p className="type-meta text-muted">PDF or Word · max 5 MB</p>
+          </div>
+        </div>
+
+        {cvName && !parsing ? (
+          <div className="flex min-h-[10rem] flex-col items-center justify-center gap-3 rounded-xl border border-brand/30 bg-tint/25 px-6 py-8 text-center sm:min-h-[11rem]">
+            <span className="grid h-12 w-12 place-items-center rounded-full bg-white text-brand shadow-soft">
+              <FileUp className="h-5 w-5" aria-hidden />
             </span>
-            <div className="min-w-0">
-              <h3 className="type-label text-ink">Confirm role basics</h3>
-              <p className="type-meta text-muted">
-                All three required before upload
+            <div className="min-w-0 max-w-full">
+              <p className="type-body truncate font-medium text-ink">{cvName}</p>
+              <p className="type-meta mt-0.5 text-muted">
+                Selected — you can change it anytime
               </p>
             </div>
-          </div>
-
-          <ul className="grid divide-y divide-line/80 rounded-xl border border-line/80 bg-canvas/40 xl:grid-cols-3 xl:divide-x xl:divide-y-0">
-            {CONFIRMATIONS.map((c) => (
-              <li key={c.id} className="min-w-0">
-                <label
-                  htmlFor={`cv-${c.id}`}
-                  className="flex h-full cursor-pointer items-start gap-3 px-4 py-4 transition hover:bg-tint/50 sm:px-5"
-                >
-                  <input
-                    id={`cv-${c.id}`}
-                    name={c.name}
-                    type="checkbox"
-                    required
-                    checked={checks[c.name]}
-                    onChange={(e) => {
-                      setConfirmErr("");
-                      setChecks((prev) => ({
-                        ...prev,
-                        [c.name]: e.target.checked,
-                      }));
-                      if (!e.target.checked) resetCvFields();
-                    }}
-                    className="mt-0.5 h-4 w-4 shrink-0 rounded border-line text-brand accent-brand focus:ring-brand/30"
-                  />
-                  <span className="type-meta leading-snug text-ink">{c.label}</span>
-                </label>
-              </li>
-            ))}
-          </ul>
-          {confirmErr ? (
-            <p className="type-meta mt-2.5 font-medium text-red-700" role="alert">
-              {confirmErr}
-            </p>
-          ) : null}
-        </section>
-
-        <section className="min-w-0">
-          <div className="mb-4 flex items-center gap-3">
-            <span
-              className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-[0.75rem] font-semibold ${
-                allChecked
-                  ? "bg-brand text-white"
-                  : "bg-canvas text-muted ring-1 ring-line"
-              }`}
-            >
-              2
-            </span>
-            <div className="min-w-0">
-              <h3 className="type-label text-ink">Upload CV</h3>
-              <p className="type-meta text-muted">PDF or Word · max 5 MB</p>
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <button
+                type="button"
+                onClick={changeCvFile}
+                className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] bg-brand px-3.5 py-2 type-meta font-semibold text-white transition hover:bg-deep"
+              >
+                <RefreshCw className="h-3.5 w-3.5" aria-hidden />
+                Change CV
+              </button>
+              <button
+                type="button"
+                onClick={resetCvFields}
+                className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-line bg-white px-3.5 py-2 type-meta font-medium text-ink transition hover:border-brand/40 hover:bg-tint/40"
+              >
+                <X className="h-3.5 w-3.5" aria-hidden />
+                Remove
+              </button>
             </div>
+            <input
+              key={`cv-selected-${cvInputKey}`}
+              id={cvInputId}
+              type="file"
+              name="cv"
+              accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              className="sr-only"
+              onChange={(e) => {
+                void handleCvFile(e.target.files?.[0]);
+              }}
+            />
           </div>
-
+        ) : (
           <label
-            htmlFor="apply-cv"
+            htmlFor={cvInputId}
             aria-disabled={!allChecked}
             className={`flex min-h-[10rem] flex-col items-center justify-center gap-2 rounded-xl border border-dashed px-6 py-10 text-center transition sm:min-h-[11rem] ${
               allChecked
@@ -509,7 +545,9 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
           >
             <span
               className={`grid h-12 w-12 place-items-center rounded-full ${
-                allChecked ? "bg-white text-brand shadow-soft" : "bg-white/70 text-muted"
+                allChecked
+                  ? "bg-white text-brand shadow-soft"
+                  : "bg-white/70 text-muted"
               }`}
             >
               <FileUp className="h-5 w-5" aria-hidden />
@@ -517,17 +555,20 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
             <span className="type-body font-medium text-ink">
               {parsing
                 ? "Reading your CV…"
-                : cvName ||
-                  (allChecked
-                    ? "Choose a file, or drop it here"
-                    : "Unlocks after you confirm above")}
+                : allChecked
+                  ? "Choose a file, or drop it here"
+                  : "Unlocks after you confirm above"}
             </span>
-            {!cvName && allChecked && !parsing ? (
+            {!parsing && allChecked ? (
               <span className="type-meta text-muted">Browse your device</span>
             ) : null}
             <input
-              key={allChecked ? "cv-open" : "cv-locked"}
-              id="apply-cv"
+              key={
+                allChecked
+                  ? `cv-open-${cvInputKey}`
+                  : `cv-locked-${cvInputKey}`
+              }
+              id={cvInputId}
               type="file"
               name="cv"
               required={allChecked}
@@ -539,360 +580,169 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
               }}
             />
           </label>
-          {cvErr ? (
-            <p className="type-meta mt-2.5 font-medium text-red-700" role="alert">
-              {cvErr}
+        )}
+        {cvErr ? (
+          <p className="type-meta mt-2.5 font-medium text-red-700" role="alert">
+            {cvErr}
+          </p>
+        ) : null}
+      </section>
+
+      {cvName || parsing ? (
+        <section className="min-w-0" id="cv-details">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand text-[0.75rem] font-semibold text-white">
+              3
+            </span>
+            <div className="min-w-0">
+              <h3 className="type-label text-ink">Your details</h3>
+              <p className="type-meta text-muted">
+                Auto-filled from CV — edit if anything is wrong
+              </p>
+            </div>
+          </div>
+
+          {parseNote ? (
+            <p className="type-meta mb-4 rounded-lg bg-tint/60 px-3 py-2 text-ink/80">
+              {parseNote}
             </p>
+          ) : null}
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+            <div className="min-w-0">
+              <label className={labelClass} htmlFor={`${idPrefix}-name`}>
+                Full name
+              </label>
+              <input
+                id={`${idPrefix}-name`}
+                name="name"
+                type="text"
+                required
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                autoComplete="name"
+                placeholder="Your full name"
+                className={fieldClass}
+              />
+            </div>
+            <div className="min-w-0">
+              <label className={labelClass} htmlFor={`${idPrefix}-email`}>
+                Email address
+              </label>
+              <input
+                id={`${idPrefix}-email`}
+                name="email"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                autoComplete="email"
+                placeholder="name@example.com"
+                className={fieldClass}
+              />
+            </div>
+            <div className="min-w-0 sm:col-span-2 lg:col-span-1">
+              <label className={labelClass} htmlFor={`${idPrefix}-phone`}>
+                Phone number
+              </label>
+              <input
+                id={`${idPrefix}-phone`}
+                name="phone"
+                type="tel"
+                required
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                autoComplete="tel"
+                placeholder="03xx xxxxxxx"
+                className={fieldClass}
+              />
+            </div>
+          </div>
+
+          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-5">
+            <div className="min-w-0">
+              <label className={labelClass} htmlFor={`${idPrefix}-role`}>
+                {isCv ? "Role interest" : "Open role"}
+              </label>
+              <select
+                id={`${idPrefix}-role`}
+                name="role"
+                required
+                value={role}
+                onChange={(e) => setRoleOverride(e.target.value)}
+                className={`${fieldClass} ${role ? "text-ink" : "text-muted/65"}`}
+              >
+                <option value="">
+                  {isCv ? "Select interest" : "Select open role"}
+                </option>
+                {role &&
+                !roles.some((r) => r.title === role) &&
+                (isCv
+                  ? !(ROLE_INTEREST_OPTIONS as readonly string[]).includes(role)
+                  : true) ? (
+                  <option value={role}>{role}</option>
+                ) : null}
+                {roles.map((r) => (
+                  <option key={r.id} value={r.title}>
+                    {r.title}
+                  </option>
+                ))}
+                {isCv
+                  ? ROLE_INTEREST_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
+                    ))
+                  : null}
+              </select>
+            </div>
+            <div className="min-w-0">
+              <label className={labelClass} htmlFor={`${idPrefix}-exp`}>
+                Experience
+              </label>
+              <select
+                id={`${idPrefix}-exp`}
+                name="exp"
+                required
+                value={exp}
+                onChange={(e) => setExp(e.target.value)}
+                className={`${fieldClass} ${exp ? "text-ink" : "text-muted/65"}`}
+              >
+                <option value="" disabled>
+                  Select experience
+                </option>
+                {exp &&
+                !(EXPERIENCE_OPTIONS as readonly string[]).includes(exp) ? (
+                  <option value={exp}>{exp}</option>
+                ) : null}
+                {EXPERIENCE_OPTIONS.map((o) => (
+                  <option key={o} value={o}>
+                    {o}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {!isCv ? (
+            <div className="mt-4 min-w-0">
+              <label className={labelClass} htmlFor={`${idPrefix}-msg`}>
+                Message{" "}
+                <span className="font-normal text-muted">(optional)</span>
+              </label>
+              <textarea
+                id={`${idPrefix}-msg`}
+                name="msg"
+                rows={4}
+                placeholder="Anything you’d like us to know"
+                className={`${fieldClass} h-auto min-h-[110px] resize-y py-3 leading-relaxed`}
+              />
+            </div>
           ) : null}
         </section>
-
-        {cvName || parsing ? (
-          <section className="min-w-0" id="cv-details">
-            <div className="mb-4 flex items-center gap-3">
-              <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand text-[0.75rem] font-semibold text-white">
-                3
-              </span>
-              <div className="min-w-0">
-                <h3 className="type-label text-ink">Your details</h3>
-                <p className="type-meta text-muted">
-                  Auto-filled from CV — edit if anything is wrong
-                </p>
-              </div>
-            </div>
-
-            {parseNote ? (
-              <p className="type-meta mb-4 rounded-lg bg-tint/60 px-3 py-2 text-ink/80">
-                {parseNote}
-              </p>
-            ) : null}
-
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-              <div className="min-w-0">
-                <label className={labelClass} htmlFor="cv-name">
-                  Full name
-                </label>
-                <input
-                  id="cv-name"
-                  name="name"
-                  type="text"
-                  required
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  autoComplete="name"
-                  placeholder="Your full name"
-                  className={fieldClass}
-                />
-              </div>
-              <div className="min-w-0">
-                <label className={labelClass} htmlFor="cv-email">
-                  Email address
-                </label>
-                <input
-                  id="cv-email"
-                  name="email"
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  autoComplete="email"
-                  placeholder="name@example.com"
-                  className={fieldClass}
-                />
-              </div>
-              <div className="min-w-0 sm:col-span-2 lg:col-span-1">
-                <label className={labelClass} htmlFor="cv-phone">
-                  Phone number
-                </label>
-                <input
-                  id="cv-phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  autoComplete="tel"
-                  placeholder="03xx xxxxxxx"
-                  className={fieldClass}
-                />
-              </div>
-            </div>
-
-            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-5">
-              <div className="min-w-0">
-                <label className={labelClass} htmlFor="cv-role">
-                  Role interest
-                </label>
-                <select
-                  id="cv-role"
-                  name="role"
-                  required
-                  value={role}
-                  onChange={(e) => setRoleOverride(e.target.value)}
-                  className={`${fieldClass} ${role ? "text-ink" : "text-muted/65"}`}
-                >
-                  <option value="">Select interest</option>
-                  {role &&
-                  !roles.some((r) => r.title === role) &&
-                  !(ROLE_INTEREST_OPTIONS as readonly string[]).includes(
-                    role,
-                  ) ? (
-                    <option value={role}>{role}</option>
-                  ) : null}
-                  {roles.map((r) => (
-                    <option key={r.id} value={r.title}>
-                      {r.title}
-                    </option>
-                  ))}
-                  {ROLE_INTEREST_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt}>
-                      {opt}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="min-w-0">
-                <label className={labelClass} htmlFor="cv-exp">
-                  Experience
-                </label>
-                <select
-                  id="cv-exp"
-                  name="exp"
-                  required
-                  value={exp}
-                  onChange={(e) => setExp(e.target.value)}
-                  className={`${fieldClass} ${exp ? "text-ink" : "text-muted/65"}`}
-                >
-                  <option value="" disabled>
-                    Select experience
-                  </option>
-                  {exp &&
-                  !(EXPERIENCE_OPTIONS as readonly string[]).includes(exp) ? (
-                    <option value={exp}>{exp}</option>
-                  ) : null}
-                  {EXPERIENCE_OPTIONS.map((o) => (
-                    <option key={o} value={o}>
-                      {o}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </section>
-        ) : null}
-
-        <div className="flex flex-col gap-3 border-t border-line/80 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          {status ? (
-            <p
-              className={`type-meta ${statusError ? "font-medium text-red-700" : "text-brand"}`}
-              role={statusError ? "alert" : "status"}
-            >
-              {status}
-            </p>
-          ) : (
-            <p className="type-meta text-muted">
-              {!allChecked
-                ? "Complete step 1 to continue."
-                : !cvName
-                  ? "Upload your CV to continue."
-                  : parsing
-                    ? "Reading your CV…"
-                    : "Review the fields, then submit."}
-            </p>
-          )}
-          <button
-            type="submit"
-            disabled={
-              pending ||
-              parsing ||
-              !allChecked ||
-              !cvName ||
-              !fullName.trim() ||
-              !email.trim() ||
-              !phone.trim()
-            }
-            className="ui-btn ui-btn-primary w-full disabled:cursor-not-allowed disabled:opacity-45 sm:min-w-[12rem] sm:w-auto"
-          >
-            {pending ? "Submitting…" : "Submit CV"}
-            {!pending ? <ArrowRight className="h-4 w-4" aria-hidden /> : null}
-          </button>
-        </div>
-      </form>
-    );
-  }
-
-  const detailsFields = (
-    <>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-        <div className="min-w-0">
-          <label className={labelClass} htmlFor="apply-name">
-            Full name
-          </label>
-          <input
-            id="apply-name"
-            name="name"
-            type="text"
-            required
-            autoComplete="name"
-            placeholder="Your full name"
-            className={fieldClass}
-          />
-        </div>
-        <div className="min-w-0">
-          <label className={labelClass} htmlFor="apply-email">
-            Email address
-          </label>
-          <input
-            id="apply-email"
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            placeholder="name@example.com"
-            className={fieldClass}
-          />
-        </div>
-        <div className="min-w-0 sm:col-span-2 lg:col-span-1">
-          <label className={labelClass} htmlFor="apply-phone">
-            Phone number
-          </label>
-          <input
-            id="apply-phone"
-            name="phone"
-            type="tel"
-            required
-            autoComplete="tel"
-            placeholder="03xx xxxxxxx"
-            className={fieldClass}
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-5">
-        <div className="min-w-0">
-          <label className={labelClass} htmlFor="apply-role">
-            {isCv ? "Role interest" : "Open role"}
-          </label>
-          <select
-            id="apply-role"
-            name="role"
-            required
-            value={role}
-            onChange={(e) => setRoleOverride(e.target.value)}
-            className={`${fieldClass} ${role ? "text-ink" : "text-muted/65"}`}
-          >
-            <option value="">
-              {isCv ? "Select interest" : "Select open role"}
-            </option>
-            {roles.map((r) => (
-              <option key={r.id} value={r.title}>
-                {r.title}
-              </option>
-            ))}
-            {isCv
-              ? ROLE_INTEREST_OPTIONS.map((opt) => (
-                  <option key={opt} value={opt}>
-                    {opt}
-                  </option>
-                ))
-              : null}
-          </select>
-        </div>
-        <div className="min-w-0">
-          <label className={labelClass} htmlFor="apply-exp">
-            Experience
-          </label>
-          <select
-            id="apply-exp"
-            name="exp"
-            required
-            value={exp}
-            onChange={(e) => setExp(e.target.value)}
-            className={`${fieldClass} ${exp ? "text-ink" : "text-muted/65"}`}
-          >
-            <option value="" disabled>
-              Select experience
-            </option>
-            {EXPERIENCE_OPTIONS.map((o) => (
-              <option key={o} value={o}>
-                {o}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-    </>
-  );
-
-  const cvUpload = (
-    <div className="min-w-0">
-      <span className={labelClass} id="apply-cv-label">
-        Upload CV
-      </span>
-      <label
-        htmlFor="apply-cv"
-        aria-labelledby="apply-cv-label"
-        className="flex min-h-[5.5rem] cursor-pointer flex-col items-center justify-center gap-3 rounded-[var(--radius-md)] border border-dashed border-line bg-canvas/60 px-3.5 py-5 text-center transition hover:border-brand/50 hover:bg-tint/50 focus-within:border-brand focus-within:ring-1 focus-within:ring-brand/25 sm:flex-row sm:text-left"
-      >
-        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-tint text-brand">
-          <FileUp className="h-5 w-5" aria-hidden />
-        </span>
-        <span className="min-w-0">
-          <span className="type-body block truncate font-medium text-ink">
-            {cvName || "Drop your CV here, or browse"}
-          </span>
-          {!cvName ? (
-            <span className="type-meta mt-0.5 block text-muted">
-              PDF or Word · max 5 MB
-            </span>
-          ) : null}
-        </span>
-        <input
-          id="apply-cv"
-          type="file"
-          name="cv"
-          required
-          accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-          className="sr-only"
-          onChange={(e) => {
-            setCvErr("");
-            const file = e.target.files?.[0];
-            setCvName(file?.name ?? "");
-          }}
-        />
-      </label>
-      {cvErr ? (
-        <p className="type-meta mt-1.5 font-medium text-red-700" role="alert">
-          {cvErr}
-        </p>
       ) : null}
-    </div>
-  );
 
-  return (
-    <form
-      onSubmit={onSubmit}
-      className="grid w-full max-w-none gap-5 lg:gap-6"
-      noValidate
-    >
-      <input type="hidden" name="intent" value="apply-current" />
-
-      {detailsFields}
-      {cvUpload}
-      <div className="min-w-0">
-        <label className={labelClass} htmlFor="apply-msg">
-          Message <span className="font-normal text-muted">(optional)</span>
-        </label>
-        <textarea
-          id="apply-msg"
-          name="msg"
-          rows={5}
-          placeholder="Anything you’d like us to know"
-          className={`${fieldClass} h-auto min-h-[120px] resize-y py-3 leading-relaxed`}
-        />
-      </div>
-      {confirmFieldset}
-
-      <div className="flex flex-col gap-3 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 border-t border-line/80 pt-6 sm:flex-row sm:items-center sm:justify-between">
         {status ? (
           <p
             className={`type-meta ${statusError ? "font-medium text-red-700" : "text-brand"}`}
@@ -902,15 +752,34 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
           </p>
         ) : (
           <p className="type-meta text-muted">
-            We’ll confirm next steps after review.
+            {!allChecked
+              ? "Complete step 1 to continue."
+              : !cvName
+                ? "Upload your CV to continue."
+                : parsing
+                  ? "Reading your CV…"
+                  : "Review the fields, then submit."}
           </p>
         )}
         <button
           type="submit"
-          disabled={pending || !allChecked}
-          className="ui-btn ui-btn-primary w-full sm:min-w-[11rem] sm:w-auto"
+          disabled={
+            pending ||
+            parsing ||
+            !allChecked ||
+            !cvName ||
+            !fullName.trim() ||
+            !email.trim() ||
+            !phone.trim() ||
+            (!isCv && !role.trim())
+          }
+          className="ui-btn ui-btn-primary w-full disabled:cursor-not-allowed disabled:opacity-45 sm:min-w-[12rem] sm:w-auto"
         >
-          {pending ? "Submitting…" : "Submit application"}
+          {pending
+            ? "Submitting…"
+            : isCv
+              ? "Submit CV"
+              : "Submit application"}
           {!pending ? <ArrowRight className="h-4 w-4" aria-hidden /> : null}
         </button>
       </div>

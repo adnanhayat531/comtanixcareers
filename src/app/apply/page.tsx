@@ -41,8 +41,8 @@ export default function ApplyPage() {
               <p className="type-eyebrow text-brand">Your details</p>
               <h2 className="type-h2 mt-2 text-ink">Application form</h2>
               <p className="type-body mt-2.5 text-muted">
-                Apply for a current open role and attach a PDF or Word CV. No
-                matching role yet?{" "}
+                Confirm the role basics, upload your CV, then review auto-filled
+                details before submitting. No matching role yet?{" "}
                 <a
                   href="/submit-cv"
                   className="font-semibold text-brand underline-offset-2 hover:underline"
