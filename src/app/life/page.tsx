@@ -23,11 +23,11 @@ export default function LifePage() {
         eyebrow="Life at Comtanix"
         title="Together in Every Milestone."
         description="Our teams share the experiences, the achievements, and the culture that make Comtanix more than a place to work."
-        image="/life/hero-team.png?v=7"
-        imageAlt="Comtanix team collaborating in the office"
+        image="/life/hero-v3.jpg"
+        imageAlt="Colleagues collaborating at a conference table in the Comtanix office"
         imageFit="cover"
-        imagePosition="faces"
-        className="!h-[min(48svh,28rem)] !min-h-[16rem] !max-h-[32rem] [&_h1]:max-w-[16ch] sm:[&_h1]:max-w-[18ch]"
+        objectPosition="50% 48%"
+        className="!h-[min(34svh,18rem)] !min-h-[12rem] !max-h-[20rem] [&_h1]:max-w-[16ch] sm:[&_h1]:max-w-[18ch]"
       >
         <Button href="/careers" variant="white">
           View openings <ArrowRight className="h-4 w-4" aria-hidden />

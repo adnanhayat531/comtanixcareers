@@ -607,6 +607,48 @@ p {
   animation: wa-gentle-pulse 2.8s ease-in-out infinite;
 }
 
+@keyframes scrollUpPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes scrollUpChevron {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Entrance when scroll-up button rises from below */
+@keyframes scrollUpEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(1.75rem) scale(0.72);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-0.2rem) scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.scroll-up-enter {
+  animation:
+    scrollUpEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both,
+    scrollUpPulse 2.2s ease-in-out 0.55s infinite;
+}
+
 .reveal {
   animation: cx-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -648,6 +690,7 @@ p {
   .reveal-delay-2,
   .reveal-delay-3,
   .wa-gentle-pulse,
+  .scroll-up-enter,
   .reviews-marquee-track {
     animation: none !important;
     opacity: 1 !important;

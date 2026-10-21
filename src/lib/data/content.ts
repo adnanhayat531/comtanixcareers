@@ -72,10 +72,10 @@ export const LIFE_ACTIVITIES = [
     image: "/life/weekend-sports.png",
   },
   {
-    title: "Recognition & Achievement",
+    title: "Awards and Achievements",
     body: "Celebrating individual contributions, strong performance, and milestones that reflect quality and teamwork.",
     icon: "star" as const,
-    image: "/life/star-month.png",
+    image: "/life/awards-achievements-v3.jpg",
   },
   {
     title: "Learning & Development",
@@ -107,7 +107,7 @@ export const CAPABILITIES = [
   {
     title: "Software Development",
     body: "Build web, mobile, and enterprise applications for business needs.",
-    image: "/capabilities/software-development-v2.png",
+    image: "/capabilities/software-development-v3.jpg",
   },
   {
     title: "Cybersecurity & Data",
@@ -127,7 +127,7 @@ export const CAPABILITIES = [
   {
     title: "Accounting & Finance",
     body: "Manage financial records, reporting, and accounting processes.",
-    image: "/capabilities/accounting-finance.jpg",
+    image: "/capabilities/accounting-finance-v3.jpg",
   },
   {
     title: "Business Development",

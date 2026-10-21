@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
@@ -18,6 +19,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
       <Header />
       <main className="min-w-0 flex-1 overflow-x-clip">{children}</main>
       <Footer />
+      <ScrollToTop />
       <WhatsAppFloat />
     </>
   );
