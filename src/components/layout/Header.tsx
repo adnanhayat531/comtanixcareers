@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type MouseEvent } from "react";
-import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { Container } from "@/components/ui/Section";
 import { SITE } from "@/lib/config";
@@ -206,24 +205,9 @@ export function Header() {
             active={pathname.startsWith("/contact")}
             overlay={overlay}
           />
-
-          <Button
-            href="/submit-cv"
-            variant="primary"
-            className="ml-3 !h-8 !min-h-8 !px-3 !text-xs shadow-[0_0_20px_-6px_rgba(0,238,234,0.35)] xl:ml-4"
-          >
-            Submit CV
-          </Button>
         </nav>
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 lg:hidden">
-          <Button
-            href="/submit-cv"
-            variant="primary"
-            className="!hidden !h-8 !min-h-8 !px-3 !text-xs min-[380px]:!inline-flex"
-          >
-            Submit CV
-          </Button>
           <button
             type="button"
             className="inline-flex h-[var(--control-h-sm)] min-h-[var(--control-h-sm)] w-[var(--control-h-sm)] items-center justify-center rounded-[var(--radius-md)] border border-white/40 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto sm:gap-2 sm:px-3"
@@ -290,9 +274,6 @@ export function Header() {
             <NavLink menu href="/careers" label="Careers" onClick={() => setOpen(false)} />
             <NavLink menu href="/life" label={`Life at ${SITE.name}`} onClick={() => setOpen(false)} />
             <NavLink menu href="/contact" label="Contact" onClick={() => setOpen(false)} />
-            <Button href="/submit-cv" className="mt-4 w-full">
-              Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
-            </Button>
           </Container>
         </div>
       ) : null}
