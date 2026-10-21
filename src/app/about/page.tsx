@@ -22,11 +22,11 @@ export default function AboutPage() {
         eyebrow="About Us"
         title="Your Partner in Technology and Innovation."
         description="Trusted technology professionals delivering innovative, enterprise-grade IT services and measurable business value worldwide."
-        image="/about/hero-v3.jpg"
+        image="/about/hero-v4.jpg"
         imageAlt="Comtanix team collaborating around a laptop in the office"
         imageFit="cover"
         objectPosition="70% 50%"
-        className="!h-[min(34svh,18rem)] !min-h-[12rem] !max-h-[20rem]"
+        className="!h-[37vh] !min-h-[20vh] !max-h-[40vh]"
       >
         <Button href="/careers#openings" variant="white">
           View openings <ArrowRight className="h-4 w-4" aria-hidden />

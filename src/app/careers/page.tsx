@@ -47,7 +47,7 @@ export default function CareersPage() {
         imageAlt="Developer focused on dual monitors in the Comtanix office"
         imageFit="cover"
         objectPosition="75% 50%"
-        className="!h-[min(34svh,18rem)] !min-h-[12rem] !max-h-[20rem]"
+        className="!h-[37vh] !min-h-[20vh] !max-h-[40vh]"
       >
         <Button href="#openings" variant="white">
           View openings <ArrowRight className="h-4 w-4" aria-hidden />
