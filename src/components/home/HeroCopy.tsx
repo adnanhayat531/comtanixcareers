@@ -1,8 +1,5 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/Button";
-
 export function HeroCopy() {
   return (
     <div className="relative flex w-full min-w-0 max-w-2xl flex-col items-start text-left">
@@ -26,23 +23,6 @@ export function HeroCopy() {
         and solve complex technical challenges with teams that work around your
         needs.
       </p>
-
-      <div className="reveal-delay-2 relative z-10 mt-5 flex w-full max-w-md flex-col items-stretch gap-2.5 min-[400px]:max-w-none min-[400px]:flex-row min-[400px]:flex-wrap min-[400px]:items-center sm:mt-7 sm:gap-3">
-        <Button
-          href="/about#story"
-          variant="primary"
-          className="w-full !bg-[#08222b] !text-white shadow-[0_10px_28px_-10px_rgba(0,0,0,0.55)] hover:!bg-[#0a2c38] min-[400px]:w-auto"
-        >
-          Explore <ArrowRight className="h-4 w-4" aria-hidden />
-        </Button>
-        <Button
-          href="/careers"
-          variant="outlineLight"
-          className="w-full border-[rgba(0,238,234,0.48)] bg-[rgba(0,223,222,0.055)] min-[400px]:w-auto"
-        >
-          Build Your Career <ArrowRight className="h-4 w-4" aria-hidden />
-        </Button>
-      </div>
     </div>
   );
 }
