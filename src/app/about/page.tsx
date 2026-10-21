@@ -25,8 +25,8 @@ export default function AboutPage() {
         image="/about/hero-v4.jpg"
         imageAlt="Comtanix team collaborating around a laptop in the office"
         imageFit="cover"
-        objectPosition="70% 50%"
-        className="!h-[37vh] !min-h-[20vh] !max-h-[40vh]"
+        objectPosition="70% 40%"
+        className="!aspect-[1440/369] !h-auto !min-h-0 !max-h-none"
       >
         <Button href="/careers#openings" variant="white">
           View openings <ArrowRight className="h-4 w-4" aria-hidden />

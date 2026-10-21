@@ -22,8 +22,8 @@ export default function ContactPage() {
         image="/contact/hero-v3.jpg"
         imageAlt="Comtanix office building at night, Bahria Town"
         imageFit="cover"
-        objectPosition="70% 42%"
-        className="!h-[min(34svh,18rem)] !min-h-[12rem] !max-h-[20rem]"
+        objectPosition="70% 40%"
+        className="!aspect-[870/371] !h-auto !min-h-0 !max-h-none"
       >
         <Button href={`mailto:${CONFIG.email}`} variant="white">
           Email us <ArrowRight className="h-4 w-4" aria-hidden />
