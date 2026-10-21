@@ -21,7 +21,9 @@ export default function ApplyPage() {
         description="Choose a listed opening, confirm the job facts, and send your application. Looking for later roles? Use Submit CV for the talent pool."
         image="/careers-collab.jpg"
         imageAlt="Apply to a current Comtanix opening"
+        imageFit="cover"
         imagePosition="faces"
+        className="w-full !h-[clamp(13.5rem,42vw,37vh)] !min-h-[13.5rem] !max-h-[42vh]"
       >
         <Button href="#application" variant="white">
           Apply now <ArrowRight className="h-4 w-4" aria-hidden />

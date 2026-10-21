@@ -112,12 +112,15 @@ export function PageHero({
         : imagePosition === "left"
           ? "object-left"
           : "object-center";
-  const imgStyle = { objectPosition: resolvedObjectPosition } as const;
+  /** Mobile centers faces; sm+ uses the page-specific focal point. */
+  const imgStyle = {
+    ["--hero-pos" as string]: resolvedObjectPosition,
+  };
 
   const copy = (
     <div className="max-w-2xl min-w-0 px-0.5 py-0.5">
       <p
-        className={`type-eyebrow mb-2 ${
+        className={`type-eyebrow mb-1.5 sm:mb-2 ${
           onPhoto || !image ? "text-white/90" : "text-brand"
         }`}
       >
@@ -141,14 +144,14 @@ export function PageHero({
         </BrandAccentText>
       </h1>
       <p
-        className={`type-lede mt-3 max-w-xl text-pretty ${
+        className={`type-lede mt-2 max-w-xl text-pretty sm:mt-3 line-clamp-3 sm:line-clamp-none ${
           onPhoto || !image ? "text-white/95" : "text-ink/85"
         }`}
       >
         {description}
       </p>
       {children ? (
-        <div className="mt-5 flex w-full max-w-sm flex-col gap-2.5 min-[420px]:max-w-none min-[420px]:flex-row min-[420px]:flex-wrap sm:mt-6 sm:gap-3 [&_a]:w-full min-[420px]:[&_a]:w-auto">
+        <div className="mt-3.5 flex w-full max-w-sm flex-col gap-2 min-[420px]:max-w-none min-[420px]:flex-row min-[420px]:flex-wrap sm:mt-5 sm:gap-3 [&_a]:w-full min-[420px]:[&_a]:w-auto">
           {children}
         </div>
       ) : null}
@@ -159,7 +162,7 @@ export function PageHero({
 
   return (
     <section
-      className={`relative flex min-h-[clamp(16rem,42svh,22rem)] flex-col justify-center overflow-hidden sm:min-h-[clamp(17rem,44svh,24rem)] md:min-h-[clamp(18rem,46svh,26rem)] ${nightBg ? "bg-[#071518]" : "bg-canvas"} ${className}`}
+      className={`relative flex w-full min-w-0 flex-col justify-center overflow-hidden min-h-[clamp(13.5rem,42svh,22rem)] sm:min-h-[clamp(15rem,44svh,24rem)] md:min-h-[clamp(16rem,46svh,26rem)] ${nightBg ? "bg-[#071518]" : "bg-canvas"} ${className}`}
     >
       {image ? (
         imageBlend && imagePosition === "right" ? (
@@ -195,7 +198,7 @@ export function PageHero({
           <img
             src={image}
             alt={imageAlt}
-            className={`absolute inset-0 z-0 h-full w-full ${fitClass} ${positionClass}`}
+            className={`absolute inset-0 z-0 h-full w-full ${fitClass} ${positionClass} [object-position:center_32%] sm:[object-position:var(--hero-pos)]`}
             style={imgStyle}
             fetchPriority="high"
             decoding="async"
@@ -211,7 +214,7 @@ export function PageHero({
         </div>
       )}
 
-      <Container className="relative z-10 py-8 sm:py-12 md:py-14 lg:py-16">
+      <Container className="relative z-10 py-5 sm:py-7 md:py-10 lg:py-12">
         {onPhoto ? (
           <TextWash soft={imageBlend}>{copy}</TextWash>
         ) : (

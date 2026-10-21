@@ -27,7 +27,7 @@ export default function LifePage() {
         imageAlt="Colleagues collaborating at a conference table in the Comtanix office"
         imageFit="cover"
         objectPosition="55% 40%"
-        className="!aspect-[1440/369] !h-auto !min-h-0 !max-h-none [&_h1]:max-w-[16ch] sm:[&_h1]:max-w-[18ch]"
+        className="w-full !h-[clamp(13.5rem,42vw,37vh)] !min-h-[13.5rem] !max-h-[42vh] [&_h1]:max-w-[16ch] sm:[&_h1]:max-w-[18ch]"
       >
         <Button href="/careers" variant="white">
           View openings <ArrowRight className="h-4 w-4" aria-hidden />
