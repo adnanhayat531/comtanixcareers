@@ -28,9 +28,6 @@ export default function AboutPage() {
         objectPosition="72% 42%"
         className="page-hero-banner w-full !aspect-[1440/369] !h-auto !min-h-0 !max-h-none max-sm:!min-h-[15rem] max-sm:!aspect-auto max-sm:!h-[min(34vh,15rem)]"
       >
-        <Button href="/careers#openings" variant="white">
-          View openings <ArrowRight className="h-4 w-4" aria-hidden />
-        </Button>
         <Button href="/contact" variant="outlineLight">
           Contact us <ArrowRight className="h-4 w-4" aria-hidden />
         </Button>
@@ -68,15 +65,9 @@ export default function AboutPage() {
                 comes next.
               </p>
             </div>
-            <Button href="/careers#openings" className="mt-7 w-full sm:w-auto">
-              View openings <ArrowRight className="h-4 w-4" aria-hidden />
-            </Button>
           </div>
           <div className="order-1 min-w-0 w-full lg:order-2">
-            <OfficeIllustration
-              src="/about/embedded-teams.png"
-              caption="15 years of progress — a commitment to excellence"
-            />
+            <OfficeIllustration src="/about/embedded-teams.png" />
           </div>
         </Container>
       </Section>
@@ -88,8 +79,8 @@ export default function AboutPage() {
             title="Principles That Define Who We Are"
             description="Our values establish the foundation for responsible decisions, trusted relationships, and a sustained commitment to professional excellence."
           />
-          <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-            {VALUES.map((v, i) => (
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+            {VALUES.map((v) => (
               <li key={v.title} className="group">
                 <div className="glass-card relative mb-3 aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)]">
                   <Image
@@ -99,9 +90,6 @@ export default function AboutPage() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
                   />
-                  <span className="type-eyebrow absolute bottom-3 left-3 z-10 text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.7)]">
-                    0{i + 1}
-                  </span>
                 </div>
                 <h3 className="type-h3 text-ink">
                   <BrandAccentText>{v.title}</BrandAccentText>
@@ -109,7 +97,7 @@ export default function AboutPage() {
                 <p className="type-meta mt-2 text-muted">{v.body}</p>
               </li>
             ))}
-          </ol>
+          </ul>
         </Container>
       </Section>
 
@@ -179,9 +167,6 @@ export default function AboutPage() {
         title="Ready to grow with Comtanix?"
         description="Explore open roles or submit your CV for future opportunities."
       >
-        <Button href="/careers" variant="white">
-          View openings <ArrowRight className="h-4 w-4" aria-hidden />
-        </Button>
         <Button href="/submit-cv" variant="outlineLight">
           Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
         </Button>

@@ -17,19 +17,13 @@ const STEPS = [
   },
   {
     n: "03",
-    title: "Online Assessment",
-    body: "Complete a role-relevant assessment to demonstrate your skills and knowledge.",
-    icon: "/careers/hire/step-03.png",
-  },
-  {
-    n: "04",
     title: "Interviews",
     body: "Technical rounds may be more than one, based on business unit needs.",
     icon: "/careers/hire/step-04.png",
     tags: ["Technical", "HR"] as const,
   },
   {
-    n: "05",
+    n: "04",
     title: "Final Evaluation",
     body: "Shortlisted candidates proceed to a final interview to assess overall suitability for the role.",
     icon: "/careers/hire/step-05.png",
@@ -52,7 +46,7 @@ export function HowWeHire() {
             your career at Comtanix.
           </p>
 
-          <ol className="relative mt-8 grid grid-cols-1 gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 lg:mt-12 lg:grid-cols-3 lg:gap-4 xl:grid-cols-5 xl:gap-3">
+          <ol className="relative mt-8 grid grid-cols-1 gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 lg:mt-12 lg:grid-cols-4 lg:gap-4 xl:gap-3">
             <div
               aria-hidden
               className="pointer-events-none absolute top-[1.75rem] right-[4%] left-[4%] z-0 hidden border-t-2 border-dashed border-[var(--hire)] opacity-45 xl:block"

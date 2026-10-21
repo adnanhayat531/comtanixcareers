@@ -1,6 +1,5 @@
 import Image from "next/image";
 import {
-  ArrowRight,
   Calculator,
   Cloud,
   Code2,
@@ -10,9 +9,7 @@ import {
   Sparkles,
   TrendingUp,
 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import { Container, Section } from "@/components/ui/Section";
-import { CtaBanner } from "@/components/ui/CtaBanner";
 import { HeroNetwork } from "@/components/home/HeroNetwork";
 import { HeroCopy } from "@/components/home/HeroCopy";
 import { StatsBar } from "@/components/home/StatsBar";
@@ -141,20 +138,6 @@ export default function HomePage() {
           </ul>
         </Container>
       </Section>
-
-      <CtaBanner
-        tone="dark"
-        eyebrow="Opportunities"
-        title="Build your future with Comtanix."
-        description="Explore current openings or submit your CV for consideration for future opportunities."
-      >
-        <Button href="/careers" variant="white">
-          View Openings <ArrowRight className="h-4 w-4" aria-hidden />
-        </Button>
-        <Button href="/submit-cv" variant="outlineLight">
-          Submit Your CV <ArrowRight className="h-4 w-4" aria-hidden />
-        </Button>
-      </CtaBanner>
     </>
   );
 }
