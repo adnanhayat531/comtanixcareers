@@ -117,12 +117,12 @@ export const CAPABILITIES = [
   {
     title: "Cloud & Infrastructure",
     body: "Maintain reliable systems, connected networks, and cloud environments.",
-    image: "/capabilities/cloud-infrastructure-v2.png",
+    image: "/capabilities/cloud-infrastructure-v3.jpg",
   },
   {
     title: "E-commerce",
     body: "Manage online stores, product catalogs, and digital sales operations.",
-    image: "/capabilities/ecommerce.jpg",
+    image: "/capabilities/ecommerce-v2.jpg",
   },
   {
     title: "Accounting & Finance",
@@ -132,12 +132,12 @@ export const CAPABILITIES = [
   {
     title: "Business Development",
     body: "Assess market opportunities and support business growth strategies.",
-    image: "/capabilities/business-development.jpg",
+    image: "/capabilities/business-development-v2.jpg",
   },
   {
     title: "Digital Marketing",
     body: "Strengthen brand visibility through digital campaigns and content.",
-    image: "/capabilities/digital-marketing.jpg",
+    image: "/capabilities/digital-marketing-v2.jpg",
   },
 ] as const;
 
