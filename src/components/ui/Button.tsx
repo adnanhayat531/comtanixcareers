@@ -6,7 +6,7 @@ import { type ReactNode } from "react";
  */
 const variants = {
   primary:
-    "bg-brand text-on-sea shadow-brand hover:brightness-110 active:brightness-95",
+    "bg-[#08222b] text-white shadow-[0_8px_20px_-10px_rgba(8,34,43,0.55)] hover:bg-[#0a2c38] active:bg-[#061820]",
   secondary:
     "bg-transparent text-brand border border-brand/80 hover:bg-tint active:bg-tint",
   ghost:

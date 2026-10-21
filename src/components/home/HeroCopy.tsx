@@ -31,7 +31,7 @@ export function HeroCopy() {
         <Button
           href="/about#story"
           variant="primary"
-          className="w-full shadow-[0_0_28px_-6px_rgba(0,238,234,0.45)] min-[400px]:w-auto"
+          className="w-full !bg-[#08222b] !text-white shadow-[0_10px_28px_-10px_rgba(0,0,0,0.55)] hover:!bg-[#0a2c38] min-[400px]:w-auto"
         >
           Explore <ArrowRight className="h-4 w-4" aria-hidden />
         </Button>
