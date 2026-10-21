@@ -146,17 +146,17 @@ export const WHY_COMTANIX = [
   {
     title: "Built for Real Operations",
     body: "Technology designed around your existing systems, everyday workflows, and practical business needs.",
-    image: "/why/quality-first-v2.png",
+    image: "/why/built-for-operations-v6.jpg",
   },
   {
     title: "Intelligence With Accountability",
     body: "AI-driven efficiency guided by human judgment, rigorous testing, and responsible implementation.",
-    image: "/why/security-trust-v2.png",
+    image: "/why/intelligence-accountability-v6.jpg",
   },
   {
     title: "Committed Beyond Delivery",
     body: "Ongoing collaboration, clear ownership, and solutions that adapt as your business evolves.",
-    image: "/why/working-as-one-team-v2.png",
+    image: "/why/committed-beyond-delivery-v6.jpg",
   },
 ] as const;
 

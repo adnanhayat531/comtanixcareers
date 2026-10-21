@@ -76,15 +76,15 @@ export default function HomePage() {
                   key={c.title}
                   className="glass-card group min-w-0 overflow-hidden rounded-[var(--radius-lg)] transition hover:shadow-[0_0_0_1px_var(--glow),var(--glow-cyan)]"
                 >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface">
                     <Image
                       src={c.image}
                       alt=""
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                      quality={100}
                       className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-canvas/90 via-canvas/30 to-transparent" />
                   </div>
                   <div className="px-4 py-3.5 sm:px-4 sm:py-4">
                     <span className="grid h-8 w-8 place-items-center rounded-[var(--radius-md)] border border-line bg-[var(--icon-bg)] text-brand shadow-[0_0_16px_-4px_rgba(0,238,234,0.35)]">
@@ -122,17 +122,15 @@ export default function HomePage() {
                 key={w.title}
                 className="glass-card group min-w-0 overflow-hidden rounded-[1.1rem] transition hover:shadow-[0_0_0_1px_var(--glow),var(--glow-cyan)]"
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface">
                   <Image
                     src={w.image}
                     alt=""
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    quality={100}
                     className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
                   />
-                  {/* Teal grade only — never white wash on photos */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#05222B]/75 via-[#06343B]/30 to-transparent" />
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(0,238,234,0.14)_0%,transparent_55%)]" />
                 </div>
                 <div className="px-4 py-3.5 sm:px-5 sm:py-4">
                   <p className="type-eyebrow text-brand">0{i + 1}</p>

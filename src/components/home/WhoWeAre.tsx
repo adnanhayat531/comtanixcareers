@@ -3,7 +3,7 @@ import { Container, Section } from "@/components/ui/Section";
 import { WHO_WE_ARE_POINTS } from "@/lib/data/content";
 
 /**
- * Who We Are — white text panel + teal-lit photo.
+ * Who We Are — white text panel + real office photo.
  */
 export function WhoWeAre() {
   return (
@@ -67,20 +67,7 @@ export function WhoWeAre() {
                 width={1920}
                 height={1080}
                 decoding="async"
-                className="absolute inset-0 h-full w-full object-cover object-[center_45%] brightness-[0.72] contrast-[1.1] saturate-[0.9]"
-              />
-              {/* Same image — teal cinematic lighting only */}
-              <div
-                className="absolute inset-0 bg-[#0a3d48]/50 mix-blend-color"
-                aria-hidden
-              />
-              <div
-                className="absolute inset-0 bg-[radial-gradient(ellipse_at_35%_35%,rgba(34,211,238,0.4)_0%,transparent_50%)] mix-blend-screen opacity-70"
-                aria-hidden
-              />
-              <div
-                className="absolute inset-0 bg-[linear-gradient(145deg,rgba(0,24,32,0.55)_0%,rgba(0,90,100,0.2)_40%,rgba(0,16,22,0.5)_100%)]"
-                aria-hidden
+                className="absolute inset-0 h-full w-full object-cover object-[center_45%]"
               />
             </div>
           </div>

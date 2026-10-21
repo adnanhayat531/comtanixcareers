@@ -16,7 +16,7 @@ function easeOutCubic(t: number) {
   return 1 - (1 - t) ** 3;
 }
 
-/** Counts 0 → target whenever `playId` changes (and playId > 0). */
+/** Counts 0 Ã¢ÂÂ target whenever `playId` changes (and playId > 0). */
 function useCountUp(target: number, playId: number, durationMs = 1400) {
   const [value, setValue] = useState(0);
 
@@ -119,10 +119,10 @@ export function StatsBar() {
     >
       <div className="mx-auto w-full max-w-6xl px-[var(--container-pad-x)]">
         <div
-          className="group/bar w-full overflow-hidden rounded-[var(--radius-lg)] border border-line bg-gradient-to-br from-[var(--gradient-from)] to-[var(--gradient-to)] py-2 shadow-[0_0_0_1px_var(--glow),0_18px_48px_-20px_rgba(0,0,0,0.55),var(--glow-cyan)] transition-[box-shadow,border-color,transform] duration-300 ease-out hover:-translate-y-0.5 hover:border-brand/45 hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand)_40%,transparent),0_22px_52px_-18px_rgba(0,0,0,0.6),0_0_28px_-8px_color-mix(in_srgb,var(--brand)_35%,transparent)] sm:rounded-[var(--radius-xl)]"
+          className="group/bar w-full overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface shadow-[var(--glow-cyan)] transition-[box-shadow,border-color,transform] duration-300 ease-out hover:-translate-y-0.5 hover:border-brand/45 hover:shadow-[0_0_28px_-8px_color-mix(in_srgb,var(--brand)_35%,transparent)] sm:rounded-[var(--radius-xl)]"
           onMouseEnter={replay}
         >
-          <div className="flex w-full flex-col bg-surface lg:flex-row lg:items-center">
+          <div className="flex w-full flex-col lg:flex-row lg:items-center">
             <div className="flex w-full shrink-0 flex-col items-center justify-center gap-0 border-b border-[var(--line-strong)] px-2.5 py-2.5 text-center lg:w-[min(20%,16rem)] lg:border-r lg:border-b-0 lg:px-3 lg:py-2">
               <p className="text-sm font-semibold !leading-tight text-ink sm:text-[0.9375rem]">
                 <BrandAccentText accentClassName="text-brand">
