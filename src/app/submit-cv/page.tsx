@@ -19,9 +19,11 @@ export default function SubmitCvPage() {
         eyebrow="Future openings"
         title="Submit your CV."
         description="Share your profile for upcoming roles. We review every CV and reach out when there is a strong match."
-        image="/careers-collab.jpg"
-        imageAlt="Submit your CV to Comtanix for future opportunities"
-        imagePosition="faces"
+        image="/submit-cv/hero-v1.jpg"
+        imageAlt="Candidate submitting a CV during an interview at Comtanix"
+        imageFit="cover"
+        objectPosition="60% 40%"
+        className="!aspect-[1440/369] !h-auto !min-h-0 !max-h-none"
       >
         <Button href="#cv-form" variant="white">
           Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
