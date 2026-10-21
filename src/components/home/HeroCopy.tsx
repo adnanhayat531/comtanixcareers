@@ -17,12 +17,6 @@ export function HeroCopy() {
         </span>
         <span className="block text-brand">expertise.</span>
       </h1>
-
-      <p className="reveal-delay-1 type-lede relative z-10 mt-4 w-full max-w-xl text-pretty text-muted [text-shadow:0_1px_12px_rgba(0,0,0,0.35)] sm:mt-5">
-        Comtanix helps you integrate AI, develop software, modernize IT systems,
-        and solve complex technical challenges with teams that work around your
-        needs.
-      </p>
     </div>
   );
 }
