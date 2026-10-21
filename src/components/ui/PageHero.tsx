@@ -26,44 +26,14 @@ type PageHeroProps = {
 const HERO_BLEND = "#071518";
 const HERO_BLEND_RGB = "7,21,24";
 
-/** Soft brand wash behind copy only — no hard corners, image stays clear */
-function TextWash({
-  children,
-  soft,
-}: {
-  children: ReactNode;
-  soft?: boolean;
-}) {
-  if (soft) {
-    return (
-      <div className="relative w-fit max-w-full">
-        <div
-          className="pointer-events-none absolute -inset-y-10 -left-10 -right-6 -z-10 sm:-inset-y-12 sm:-left-14 sm:-right-10"
-          style={{
-            background: `radial-gradient(125% 110% at 0% 50%, ${HERO_BLEND}aa 0%, ${HERO_BLEND}66 42%, ${HERO_BLEND}28 68%, transparent 85%)`,
-          }}
-          aria-hidden
-        />
-        {children}
-      </div>
-    );
-  }
-
+/** Single soft wash behind copy — one layer only (no double transparent). */
+function TextWash({ children }: { children: ReactNode }) {
   return (
     <div className="relative w-fit max-w-full">
       <div
-        className="pointer-events-none absolute -inset-y-6 -left-6 -right-2 -z-10 sm:-inset-y-8 sm:-left-10 sm:-right-6"
+        className="pointer-events-none absolute -inset-y-8 -left-8 -right-4 -z-10 sm:-inset-y-10 sm:-left-12 sm:-right-8"
         style={{
-          background:
-            "radial-gradient(115% 95% at 8% 50%, rgba(5, 16, 20, 0.94) 0%, rgba(8, 40, 48, 0.7) 38%, rgba(45, 212, 224, 0.22) 62%, transparent 78%)",
-        }}
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -inset-y-3 -left-3 right-8 -z-10 sm:-left-5"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(5, 16, 20, 0.65) 0%, rgba(5, 16, 20, 0.28) 55%, transparent 100%)",
+          background: `radial-gradient(120% 100% at 0% 50%, ${HERO_BLEND}cc 0%, ${HERO_BLEND}88 36%, ${HERO_BLEND}33 62%, transparent 82%)`,
         }}
         aria-hidden
       />
@@ -215,11 +185,7 @@ export function PageHero({
       )}
 
       <Container className="relative z-10 py-5 sm:py-7 md:py-10 lg:py-12">
-        {onPhoto ? (
-          <TextWash soft={imageBlend}>{copy}</TextWash>
-        ) : (
-          copy
-        )}
+        {onPhoto ? <TextWash>{copy}</TextWash> : copy}
       </Container>
     </section>
   );

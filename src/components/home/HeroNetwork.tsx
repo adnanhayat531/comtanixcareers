@@ -7,16 +7,16 @@ export function HeroNetwork() {
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/hero-home-v4.jpg?v=1"
+        src="/hero-home-v5.jpg?v=1"
         alt=""
-        width={1280}
-        height={720}
+        width={1024}
+        height={689}
         decoding="async"
         fetchPriority="high"
         draggable={false}
-        className="absolute inset-0 h-full w-full object-cover object-[center_40%] max-md:object-[center_32%]"
+        className="absolute inset-0 h-full w-full object-cover object-[center_38%] max-md:object-[center_30%]"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(6,27,32,0.52)_0%,rgba(5,34,43,0.30)_45%,rgba(8,53,61,0.14)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(6,27,32,0.50)_0%,rgba(5,34,43,0.28)_45%,rgba(8,53,61,0.12)_100%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(0,238,234,0.06)_0%,transparent_55%)]" />
     </div>
   );

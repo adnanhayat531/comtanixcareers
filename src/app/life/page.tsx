@@ -3,7 +3,6 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Button } from "@/components/ui/Button";
-import { CtaBanner } from "@/components/ui/CtaBanner";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import { LifeIcon } from "@/components/ui/Icons";
@@ -75,20 +74,6 @@ export default function LifePage() {
           <TestimonialsGrid />
         </Container>
       </Section>
-
-      <CtaBanner
-        tone="dark"
-        eyebrow="Join the team"
-        title="See open roles and apply today."
-        description="Night-shift, onsite careers with paid training and clear progression."
-      >
-        <Button href="/careers" variant="white">
-          View openings <ArrowRight className="h-4 w-4" aria-hidden />
-        </Button>
-        <Button href="/apply" variant="outlineLight">
-          Apply now <ArrowRight className="h-4 w-4" aria-hidden />
-        </Button>
-      </CtaBanner>
     </>
   );
 }
