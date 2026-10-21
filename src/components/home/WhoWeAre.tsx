@@ -67,7 +67,7 @@ export function WhoWeAre() {
                 width={1920}
                 height={1080}
                 decoding="async"
-                className="absolute inset-0 h-full w-full object-cover object-[center_45%]"
+                className="absolute inset-0 h-full w-full object-cover object-[center_28%] max-md:object-[center_22%]"
               />
             </div>
           </div>

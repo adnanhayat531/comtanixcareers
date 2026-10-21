@@ -46,8 +46,8 @@ export default function CareersPage() {
         image="/careers/hero-v3.jpg"
         imageAlt="Developer focused on dual monitors in the Comtanix office"
         imageFit="cover"
-        objectPosition="75% 40%"
-        className="w-full !h-[clamp(13.5rem,42vw,37vh)] !min-h-[13.5rem] !max-h-[42vh]"
+        objectPosition="75% 42%"
+        className="page-hero-banner w-full !aspect-[1440/369] !h-auto !min-h-0 !max-h-none max-sm:!min-h-[15rem] max-sm:!aspect-auto max-sm:!h-[min(34vh,15rem)]"
       >
         <Button href="#openings" variant="white">
           View openings <ArrowRight className="h-4 w-4" aria-hidden />

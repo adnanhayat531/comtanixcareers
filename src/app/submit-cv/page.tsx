@@ -22,8 +22,8 @@ export default function SubmitCvPage() {
         image="/submit-cv/hero-v1.jpg"
         imageAlt="Candidate submitting a CV during an interview at Comtanix"
         imageFit="cover"
-        objectPosition="60% 40%"
-        className="w-full !h-[clamp(13.5rem,42vw,37vh)] !min-h-[13.5rem] !max-h-[42vh]"
+        objectPosition="62% 42%"
+        className="page-hero-banner w-full !aspect-[1440/369] !h-auto !min-h-0 !max-h-none max-sm:!min-h-[15rem] max-sm:!aspect-auto max-sm:!h-[min(34vh,15rem)]"
       >
         <Button href="#cv-form" variant="white">
           Submit CV <ArrowRight className="h-4 w-4" aria-hidden />

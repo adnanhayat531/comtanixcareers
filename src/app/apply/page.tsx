@@ -23,7 +23,8 @@ export default function ApplyPage() {
         imageAlt="Apply to a current Comtanix opening"
         imageFit="cover"
         imagePosition="faces"
-        className="w-full !h-[clamp(13.5rem,42vw,37vh)] !min-h-[13.5rem] !max-h-[42vh]"
+        objectPosition="60% 42%"
+        className="page-hero-banner w-full !aspect-[1440/369] !h-auto !min-h-0 !max-h-none max-sm:!min-h-[15rem] max-sm:!aspect-auto max-sm:!h-[min(34vh,15rem)]"
       >
         <Button href="#application" variant="white">
           Apply now <ArrowRight className="h-4 w-4" aria-hidden />

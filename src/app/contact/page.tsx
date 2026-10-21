@@ -22,8 +22,8 @@ export default function ContactPage() {
         image="/contact/hero-v5.jpg"
         imageAlt="Comtanix office building at night with BankIslami ground floor"
         imageFit="cover"
-        objectPosition="center 45%"
-        className="w-full !h-[clamp(13.5rem,42vw,37vh)] !min-h-[13.5rem] !max-h-[42vh]"
+        objectPosition="center 42%"
+        className="page-hero-banner w-full !aspect-[1280/546] !h-auto !min-h-0 !max-h-none max-sm:!min-h-[15rem] max-sm:!aspect-auto max-sm:!h-[min(34vh,15rem)]"
       >
         <Button href={`mailto:${CONFIG.email}`} variant="white">
           Email us <ArrowRight className="h-4 w-4" aria-hidden />

@@ -98,12 +98,12 @@ export function PageHero({
   const resolvedObjectPosition =
     objectPosition ??
     (imagePosition === "faces"
-      ? "center 20%"
+      ? "center 22%"
       : imagePosition === "right"
-        ? "right center"
+        ? "right 22%"
         : imagePosition === "left"
-          ? "left center"
-          : "center center");
+          ? "left 22%"
+          : "center 22%");
   const positionClass =
     objectPosition || imagePosition === "faces"
       ? ""
@@ -198,7 +198,7 @@ export function PageHero({
           <img
             src={image}
             alt={imageAlt}
-            className={`absolute inset-0 z-0 h-full w-full ${fitClass} ${positionClass} [object-position:center_32%] sm:[object-position:var(--hero-pos)]`}
+            className={`absolute inset-0 z-0 h-full w-full ${fitClass} ${positionClass} [object-position:var(--hero-pos,center_42%)] max-sm:[object-position:center_28%] sm:[object-position:var(--hero-pos)]`}
             style={imgStyle}
             fetchPriority="high"
             decoding="async"
