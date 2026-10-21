@@ -78,7 +78,7 @@ function ContactChip({
       className={`group flex min-w-0 items-center ${compact ? "gap-2" : "gap-3"}`}
     >
       <span
-        className={`grid shrink-0 place-items-center rounded-md bg-white text-brand transition group-hover:bg-white/90 ${
+        className={`grid shrink-0 place-items-center rounded-md bg-white text-[#08222b] transition group-hover:bg-white/90 ${
           compact ? "h-7 w-7" : "h-10 w-10 rounded-lg"
         }`}
       >
