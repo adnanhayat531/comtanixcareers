@@ -116,8 +116,8 @@ export default function HomePage() {
             </p>
           </HeadingReveal>
 
-          <ol className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4 lg:grid-cols-3">
-            {WHY_COMTANIX.map((w, i) => (
+          <ul className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4 lg:grid-cols-3">
+            {WHY_COMTANIX.map((w) => (
               <li
                 key={w.title}
                 className="glass-card group min-w-0 overflow-hidden rounded-[1.1rem] transition hover:shadow-[0_0_0_1px_var(--glow),var(--glow-cyan)]"
@@ -133,13 +133,12 @@ export default function HomePage() {
                   />
                 </div>
                 <div className="px-4 py-3.5 sm:px-5 sm:py-4">
-                  <p className="type-eyebrow text-brand">0{i + 1}</p>
-                  <h3 className="type-h3 mt-1.5 text-ink">{w.title}</h3>
+                  <h3 className="type-h3 text-ink">{w.title}</h3>
                   <p className="type-meta mt-1.5 text-muted">{w.body}</p>
                 </div>
               </li>
             ))}
-          </ol>
+          </ul>
         </Container>
       </Section>
 
