@@ -14,9 +14,6 @@ export const metadata: Metadata = {
     "Explore roles across AI, software development, cybersecurity, and IT operations, with paid training, structured career growth, and the opportunity to work on projects for global enterprises.",
 };
 
-/** Openings come from the live jobs API — never serve a stale static snapshot. */
-export const dynamic = "force-dynamic";
-
 const WHY = [
   {
     title: "Structured Onboarding",

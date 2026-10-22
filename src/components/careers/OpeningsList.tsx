@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { ArrowRight, CalendarDays, Clock, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { fetchJobs, jobToRole, type UiRole } from "@/lib/api";
@@ -27,43 +30,30 @@ function formatDeadline(value: string | null | undefined) {
   });
 }
 
-async function loadOpenings(): Promise<UiRole[]> {
-  try {
-    // Always hit the API so admin publish/create shows immediately.
-    const jobs = await fetchJobs({ cache: "no-store" });
-    if (!jobs.length) return staticRoles();
-    return jobs.map(jobToRole);
-  } catch {
-    return staticRoles();
-  }
-}
-
 function displayTags(tags: string[]) {
   return tags
     .filter((t) => !/night\s*shift/i.test(t))
     .slice(0, 3);
 }
 
-export async function OpeningsList() {
-  const roles = await loadOpenings();
-
-  if (!roles.length) {
-    return (
-      <div className="glass-card rounded-[var(--radius-xl)] px-6 py-12 text-center">
-        <p className="type-h3 text-ink">No open roles right now</p>
-        <p className="type-meta mx-auto mt-2 max-w-md text-muted">
-          Submit your CV to our talent pool and we will reach out when a matching
-          role opens.
-        </p>
-        <div className="mt-5">
-          <Button href="/submit-cv" variant="secondary">
-            Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
-          </Button>
-        </div>
+function OpeningsEmpty() {
+  return (
+    <div className="glass-card rounded-[var(--radius-xl)] px-6 py-12 text-center">
+      <p className="type-h3 text-ink">No open roles right now</p>
+      <p className="type-meta mx-auto mt-2 max-w-md text-muted">
+        Submit your CV to our talent pool and we will reach out when a matching
+        role opens.
+      </p>
+      <div className="mt-5">
+        <Button href="/submit-cv" variant="secondary">
+          Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
+        </Button>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
+function OpeningsGrid({ roles }: { roles: UiRole[] }) {
   return (
     <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-5">
       {roles.map((role) => {
@@ -131,4 +121,32 @@ export async function OpeningsList() {
       })}
     </ul>
   );
+}
+
+/**
+ * Renders static openings immediately so /careers never blocks on the API.
+ * Live admin-published jobs replace the list when the backend responds.
+ */
+export function OpeningsList() {
+  const [roles, setRoles] = useState<UiRole[]>(() => staticRoles());
+
+  useEffect(() => {
+    let cancelled = false;
+
+    fetchJobs({ cache: "no-store" })
+      .then((jobs) => {
+        if (cancelled || !jobs.length) return;
+        setRoles(jobs.map(jobToRole));
+      })
+      .catch(() => {
+        /* keep static fallback when API is down */
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (!roles.length) return <OpeningsEmpty />;
+  return <OpeningsGrid roles={roles} />;
 }

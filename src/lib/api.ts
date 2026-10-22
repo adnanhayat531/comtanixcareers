@@ -103,6 +103,9 @@ export async function parseApiError(
 const NETWORK_ERROR =
   "Could not reach the server. Make sure the API is running, then try again.";
 
+/** Keep Careers / job reads snappy when the API is down or unreachable. */
+const READ_TIMEOUT_MS = 1000;
+
 async function safeFetch(input: string, init?: RequestInit): Promise<Response> {
   try {
     return await fetch(input, init);
@@ -111,9 +114,16 @@ async function safeFetch(input: string, init?: RequestInit): Promise<Response> {
   }
 }
 
+function withReadTimeout(init?: RequestInit): RequestInit {
+  return {
+    ...init,
+    signal: init?.signal ?? AbortSignal.timeout(READ_TIMEOUT_MS),
+  };
+}
+
 export async function fetchJobs(init?: RequestInit): Promise<ApiJob[]> {
   const res = await safeFetch(apiUrl("/api/jobs"), {
-    ...init,
+    ...withReadTimeout(init),
     headers: { Accept: "application/json", ...init?.headers },
   });
   if (!res.ok) {
@@ -128,7 +138,7 @@ export async function fetchJobBySlug(
   init?: RequestInit,
 ): Promise<ApiJob | null> {
   const res = await safeFetch(apiUrl(`/api/jobs/${encodeURIComponent(slug)}`), {
-    ...init,
+    ...withReadTimeout(init),
     headers: { Accept: "application/json", ...init?.headers },
   });
   if (res.status === 404) return null;
