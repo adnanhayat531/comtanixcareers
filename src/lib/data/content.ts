@@ -1,6 +1,6 @@
 export const STATS = [
   {
-    value: 15,
+    value: 10,
     suffix: "+",
     label: "Years in Technology",
   },
