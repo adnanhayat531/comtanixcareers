@@ -160,10 +160,11 @@ html {
   }
 }
 
-/* Keep inline media from forcing horizontal scroll (heroes/logos use utility sizing) */
+/* Keep inline media from forcing horizontal scroll (heroes/logos use utility sizing).
+   Do NOT force height:auto on sized Lucide/UI SVGs — that collapses icon glyphs. */
 img:not([class*="absolute"]):not([class*="h-"]),
 video:not([class*="absolute"]),
-svg,
+svg:not([class*="h-"]):not([class*="size-"]),
 canvas {
   max-width: 100%;
   height: auto;

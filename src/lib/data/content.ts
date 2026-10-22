@@ -97,66 +97,55 @@ export const LIFE_ACTIVITIES = [
   },
 ] as const;
 
-/** Home — What We Do */
+/** Home — What We Do (icon-led cards; no photo headers) */
 export const CAPABILITIES = [
   {
     title: "AI & Automation",
     body: "Automate routine tasks and streamline everyday workflows.",
-    image: "/capabilities/ai-automation-v2.png",
   },
   {
     title: "Software Development",
     body: "Build web, mobile, and enterprise applications for business needs.",
-    image: "/capabilities/software-development-v3.jpg",
   },
   {
     title: "Cybersecurity & Data",
     body: "Secure digital assets and turn data into useful insights.",
-    image: "/capabilities/cybersecurity-data-v2.png",
   },
   {
     title: "Cloud & Infrastructure",
     body: "Maintain reliable systems, connected networks, and cloud environments.",
-    image: "/capabilities/cloud-infrastructure-v3.jpg",
   },
   {
     title: "E-commerce",
     body: "Manage online stores, product catalogs, and digital sales operations.",
-    image: "/capabilities/ecommerce-v2.jpg",
   },
   {
     title: "Accounting & Finance",
     body: "Manage financial records, reporting, and accounting processes.",
-    image: "/capabilities/accounting-finance-v3.jpg",
   },
   {
     title: "Business Development",
     body: "Assess market opportunities and support business growth strategies.",
-    image: "/capabilities/business-development-v2.jpg",
   },
   {
     title: "Digital Marketing",
     body: "Strengthen brand visibility through digital campaigns and content.",
-    image: "/capabilities/digital-marketing-v2.jpg",
   },
 ] as const;
 
-/** Home — Why Comtanix */
+/** Home — Why Comtanix (icon-led cards; no photo headers) */
 export const WHY_COMTANIX = [
   {
     title: "Built for Real Operations",
     body: "Technology designed around your existing systems, everyday workflows, and practical business needs.",
-    image: "/why/quality-first-v2.png",
   },
   {
     title: "Intelligence With Accountability",
     body: "AI-driven efficiency guided by human judgment, rigorous testing, and responsible implementation.",
-    image: "/why/security-trust-v2.png",
   },
   {
     title: "Committed Beyond Delivery",
     body: "Ongoing collaboration, clear ownership, and solutions that adapt as your business evolves.",
-    image: "/why/working-as-one-team-v2.png",
   },
 ] as const;
 

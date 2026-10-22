@@ -1,14 +1,7 @@
-import Image from "next/image";
 import {
-  Calculator,
-  Cloud,
-  Code2,
-  Megaphone,
-  ShieldCheck,
-  ShoppingBag,
-  Sparkles,
-  TrendingUp,
-} from "lucide-react";
+  CAPABILITY_ILLUSTRATIONS,
+  WHY_ILLUSTRATIONS,
+} from "@/components/home/CapabilityIcons";
 import { Container, Section } from "@/components/ui/Section";
 import { HeroNetwork } from "@/components/home/HeroNetwork";
 import { HeroCopy } from "@/components/home/HeroCopy";
@@ -16,17 +9,6 @@ import { StatsBar } from "@/components/home/StatsBar";
 import { WhoWeAre } from "@/components/home/WhoWeAre";
 import { HeadingReveal } from "@/components/motion/Reveal";
 import { CAPABILITIES, WHY_COMTANIX } from "@/lib/data/content";
-
-const CAPABILITY_ICONS = [
-  Sparkles,
-  Code2,
-  ShieldCheck,
-  Cloud,
-  ShoppingBag,
-  Calculator,
-  TrendingUp,
-  Megaphone,
-] as const;
 
 export default function HomePage() {
   return (
@@ -46,7 +28,7 @@ export default function HomePage() {
 
       <WhoWeAre />
 
-      {/* What We Do */}
+      {/* What We Do — illustrative duotone icons */}
       <Section
         id="services"
         className="home-dark-section scroll-mt-24 md:scroll-mt-28"
@@ -67,29 +49,17 @@ export default function HomePage() {
 
           <ul className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 sm:gap-4 xl:grid-cols-4">
             {CAPABILITIES.map((c, i) => {
-              const Icon = CAPABILITY_ICONS[i] ?? Code2;
+              const Illustration = CAPABILITY_ILLUSTRATIONS[i];
               return (
                 <li
                   key={c.title}
-                  className="glass-card group min-w-0 overflow-hidden rounded-[var(--radius-lg)] transition hover:shadow-[0_0_0_1px_var(--glow),var(--glow-cyan)]"
+                  className="theme-light group flex min-w-0 flex-col rounded-[1rem] border border-[#0b2c35]/12 bg-white px-5 py-5 shadow-[0_10px_28px_-18px_rgba(11,44,53,0.4)] transition duration-300 hover:-translate-y-0.5 hover:border-[#49a4ae]/4 hover:shadow-[0_16px_32px_-14px_rgba(73,164,174,0.45)] sm:px-5 sm:py-6"
                 >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface">
-                    <Image
-                      src={c.image}
-                      alt=""
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                      quality={100}
-                      className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <div className="px-4 py-3.5 sm:px-4 sm:py-4">
-                    <span className="grid h-8 w-8 place-items-center rounded-[var(--radius-md)] border border-line bg-[var(--icon-bg)] text-brand shadow-[0_0_16px_-4px_rgba(0,238,234,0.35)]">
-                      <Icon className="h-3.5 w-3.5" aria-hidden />
-                    </span>
-                    <h3 className="type-h3 mt-2.5 text-ink">{c.title}</h3>
-                    <p className="type-meta mt-1.5 text-muted">{c.body}</p>
-                  </div>
+                  {Illustration ? (
+                    <Illustration className="mb-5 h-[5.25rem] w-full max-w-[8.5rem] shrink-0 self-start" />
+                  ) : null}
+                  <h3 className="type-h3 text-[#0b2c35]">{c.title}</h3>
+                  <p className="type-meta mt-1.5 leading-snug text-[#3a8a93]">{c.body}</p>
                 </li>
               );
             })}
@@ -97,8 +67,8 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Why Comtanix — white after dark What We Do */}
-      <Section className="theme-light site-light-section !pt-2 md:!pt-4">
+      {/* Why Comtanix — same illustrative icon language */}
+      <Section className="home-dark-section !pt-2 md:!pt-4">
         <Container>
           <HeadingReveal className="mb-5 max-w-2xl md:mb-6">
             <p className="type-eyebrow mb-2 text-brand">Why Comtanix</p>
@@ -113,28 +83,22 @@ export default function HomePage() {
             </p>
           </HeadingReveal>
 
-          <ul className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4 lg:grid-cols-3">
-            {WHY_COMTANIX.map((w) => (
-              <li
-                key={w.title}
-                className="glass-card group min-w-0 overflow-hidden rounded-[1.1rem] transition hover:shadow-[0_0_0_1px_var(--glow),var(--glow-cyan)]"
-              >
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface">
-                  <Image
-                    src={w.image}
-                    alt=""
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    quality={100}
-                    className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
-                  />
-                </div>
-                <div className="px-4 py-3.5 sm:px-5 sm:py-4">
-                  <h3 className="type-h3 text-ink">{w.title}</h3>
-                  <p className="type-meta mt-1.5 text-muted">{w.body}</p>
-                </div>
-              </li>
-            ))}
+          <ul className="grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-4">
+            {WHY_COMTANIX.map((w, i) => {
+              const Illustration = WHY_ILLUSTRATIONS[i];
+              return (
+                <li
+                  key={w.title}
+                  className="theme-light group flex min-w-0 flex-col rounded-[1rem] border border-[#0b2c35]/12 bg-white px-5 py-5 shadow-[0_10px_28px_-18px_rgba(11,44,53,0.4)] transition duration-300 hover:-translate-y-0.5 hover:border-[#49a4ae]/4 hover:shadow-[0_16px_32px_-14px_rgba(73,164,174,0.45)] sm:px-5 sm:py-6"
+                >
+                  {Illustration ? (
+                    <Illustration className="mb-5 h-[5.25rem] w-full max-w-[8.5rem] shrink-0 self-start" />
+                  ) : null}
+                  <h3 className="type-h3 text-[#0b2c35]">{w.title}</h3>
+                  <p className="type-meta mt-1.5 leading-snug text-[#3a8a93]">{w.body}</p>
+                </li>
+              );
+            })}
           </ul>
         </Container>
       </Section>
