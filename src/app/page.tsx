@@ -67,8 +67,8 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Why Comtanix — same illustrative icon language */}
-      <Section className="home-dark-section !pt-2 md:!pt-4">
+      {/* Why Comtanix — white band + illustrative icons */}
+      <Section className="theme-light site-light-section !pt-2 md:!pt-4">
         <Container>
           <HeadingReveal className="mb-5 max-w-2xl md:mb-6">
             <p className="type-eyebrow mb-2 text-brand">Why Comtanix</p>
@@ -89,13 +89,13 @@ export default function HomePage() {
               return (
                 <li
                   key={w.title}
-                  className="theme-light group flex min-w-0 flex-col rounded-[1rem] border border-[#0b2c35]/12 bg-white px-5 py-5 shadow-[0_10px_28px_-18px_rgba(11,44,53,0.4)] transition duration-300 hover:-translate-y-0.5 hover:border-[#49a4ae]/4 hover:shadow-[0_16px_32px_-14px_rgba(73,164,174,0.45)] sm:px-5 sm:py-6"
+                  className="group flex min-w-0 flex-col rounded-[1rem] border border-[#0b2c35]/12 bg-[#f4fafb] px-5 py-5 shadow-[0_10px_28px_-18px_rgba(11,44,53,0.22)] transition duration-300 hover:-translate-y-0.5 hover:border-[#49a4ae]/4 hover:shadow-[0_16px_32px_-14px_rgba(73,164,174,0.35)] sm:px-5 sm:py-6"
                 >
                   {Illustration ? (
                     <Illustration className="mb-5 h-[5.25rem] w-full max-w-[8.5rem] shrink-0 self-start" />
                   ) : null}
-                  <h3 className="type-h3 text-[#0b2c35]">{w.title}</h3>
-                  <p className="type-meta mt-1.5 leading-snug text-[#3a8a93]">{w.body}</p>
+                  <h3 className="type-h3 text-ink">{w.title}</h3>
+                  <p className="type-meta mt-1.5 leading-snug text-muted">{w.body}</p>
                 </li>
               );
             })}
