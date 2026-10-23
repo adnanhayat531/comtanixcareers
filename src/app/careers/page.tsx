@@ -57,8 +57,8 @@ export default function CareersPage() {
             <div className="min-w-0">
               <SectionHeading
                 compact
-                eyebrow="Open roles"
-                title="Current openings"
+                eyebrow="Join our team"
+                title="Career Opportunities"
                 className="mb-0"
               />
             </div>

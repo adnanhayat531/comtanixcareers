@@ -26,7 +26,7 @@ const CONFIRMATIONS = [
   {
     id: "confirm-night",
     name: "confirmNight",
-    label: "I understand this is a night-shift role.",
+    label: "I understand this is a US-shift role.",
   },
   {
     id: "confirm-onsite",
@@ -314,8 +314,8 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
     ) {
       setConfirmErr(
         isCv
-          ? "Please confirm night shift, onsite work, and Bahria Town Phase 8 location before submitting your CV."
-          : "Please confirm night shift, onsite work, and Bahria Town Phase 8 location before applying.",
+          ? "Please confirm US shift, onsite work, and Bahria Town Phase 8 location before submitting your CV."
+          : "Please confirm US shift, onsite work, and Bahria Town Phase 8 location before applying.",
       );
       setPending(false);
       return;

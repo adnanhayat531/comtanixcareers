@@ -61,7 +61,10 @@ export default function LifePage() {
 
       <Section className="theme-light site-light-section border-t border-line">
         <Container>
-          <SectionHeading title="Google reviews" />
+          <SectionHeading
+            eyebrow="Google Reviews"
+            title="What Our Valued Employees Say"
+          />
           <TestimonialsGrid />
         </Container>
       </Section>

@@ -9,7 +9,7 @@ import { Container, Section } from "@/components/ui/Section";
 export const metadata: Metadata = {
   title: "Apply",
   description:
-    "Apply to a current open role at Comtanix. Night shift, onsite, Bahria Town Phase 8.",
+    "Apply to a current open role at Comtanix. US shift, onsite, Bahria Town Phase 8.",
 };
 
 export default function ApplyPage() {

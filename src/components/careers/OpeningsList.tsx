@@ -49,11 +49,14 @@ function formatDeadline(value: string | null | undefined) {
 }
 
 function shiftLabel(tags: string[]) {
-  return tags.find((t) => /night|day|shift/i.test(t)) ?? "Night shift";
+  const raw =
+    tags.find((t) => /us\s*shift|night\s*shift|day\s*shift|\bshift\b/i.test(t)) ??
+    "US shift";
+  return /night\s*shift/i.test(raw) ? "US shift" : raw;
 }
 
 function displayTags(tags: string[]) {
-  return tags.filter((t) => !/night\s*shift/i.test(t)).slice(0, 3);
+  return tags.filter((t) => !/(us|night)\s*shift/i.test(t)).slice(0, 3);
 }
 
 function roleCapsules(role: UiRole) {

@@ -18,7 +18,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Sara Malik",
     role: "Cloud Support Engineer",
     quote:
-      "Working direct night shifts with international DevOps engineers expanded my systems engineering skills 10x compared to standard local firms. Compensation is always on time.",
+      "Working direct US shifts with international DevOps engineers expanded my systems engineering skills 10x compared to standard local firms. Compensation is always on time.",
   },
   {
     initials: "HB",
