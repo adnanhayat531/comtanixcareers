@@ -47,9 +47,9 @@ export function StatsBar() {
       className="relative z-20 w-full min-w-0 pb-[max(1.25rem,env(safe-area-inset-bottom,0px))]"
       aria-label="Company footprint"
     >
-      <div className="mx-auto w-full max-w-6xl px-[var(--container-pad-x)]">
-        <div className="flex w-full items-stretch overflow-hidden rounded-2xl border border-white/15 bg-[rgba(4,28,34,0.78)] shadow-[0_20px_60px_-24px_rgba(0,0,0,0.7)] backdrop-blur-xl">
-          <div className="flex w-[10.5rem] shrink-0 flex-col items-start justify-center border-r border-white/12 px-4 py-4 sm:w-[13rem] sm:px-5 md:w-[14.5rem] md:px-6">
+      <div className="mx-auto w-full min-w-0 max-w-none px-[var(--container-pad-x)]">
+        <div className="flex w-full items-stretch overflow-hidden rounded-2xl border border-white/15 bg-[rgba(4,28,34,0.78)] shadow-[0_20px_60px_-24px_rgba(0,0,0,0.7)] backdrop-blur-xl max-sm:flex-col">
+          <div className="flex w-full shrink-0 flex-col items-start justify-center border-white/12 px-4 py-3.5 max-sm:border-b sm:w-[12rem] sm:border-r sm:px-5 sm:py-4 md:w-[14.5rem] md:px-6 md:py-5">
             <p className="text-[0.88rem] font-semibold leading-snug text-ink sm:text-[1.05rem]">
               <BrandAccentText accentClassName="text-brand">
                 Growing with purpose.
@@ -60,26 +60,26 @@ export function StatsBar() {
             </p>
           </div>
 
-          <div className="grid min-w-0 flex-1 grid-cols-4 divide-x divide-white/12">
+          <div className="grid min-w-0 flex-1 grid-cols-2 divide-x divide-y divide-white/12 sm:grid-cols-4 sm:divide-y-0">
             {STATS.map((s, i) => {
               const Icon = STAT_ICONS[i] ?? Award;
               const display = Math.round(s.value * progress);
               return (
                 <div
                   key={s.label}
-                  className="flex min-w-0 flex-col items-center justify-center gap-1 px-2 py-3.5 text-center sm:gap-1.5 sm:px-3 sm:py-4"
+                  className="flex min-w-0 flex-col items-center justify-center gap-1 px-2 py-3 text-center sm:gap-1.5 sm:px-3 sm:py-4 md:py-5"
                 >
                   <Icon
                     className="h-3.5 w-3.5 shrink-0 text-brand sm:h-4 sm:w-4"
                     aria-hidden
                   />
-                  <div className="font-display text-[1.3rem] leading-none font-bold tracking-tight tabular-nums text-ink sm:text-[1.65rem] md:text-[1.85rem]">
+                  <div className="font-display text-[1.25rem] leading-none font-bold tracking-tight tabular-nums text-ink sm:text-[1.65rem] md:text-[1.85rem] lg:text-[2rem]">
                     <span>{display}</span>
                     {s.suffix ? (
                       <span className="text-brand">{s.suffix}</span>
                     ) : null}
                   </div>
-                  <p className="max-w-[8.5rem] text-[0.58rem] font-semibold leading-tight tracking-[0.08em] text-white/65 uppercase sm:text-[0.64rem]">
+                  <p className="max-w-[9rem] text-[0.55rem] font-semibold leading-tight tracking-[0.08em] text-white/65 uppercase sm:text-[0.64rem]">
                     {s.label}
                   </p>
                 </div>

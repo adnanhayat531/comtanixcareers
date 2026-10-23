@@ -97,66 +97,66 @@ export const LIFE_ACTIVITIES = [
   },
 ] as const;
 
-/** Home — What We Do (concept photo cards; no faces) */
+/** Home — What We Do (editorial workspace photos) */
 export const CAPABILITIES = [
   {
     title: "AI & Automation",
     body: "Automate routine tasks and streamline everyday workflows.",
-    image: "/capabilities/ai-automation-concept.jpg",
+    image: "/capabilities/ai-automation-pro.jpg",
   },
   {
     title: "Software Development",
     body: "Build web, mobile, and enterprise applications for business needs.",
-    image: "/capabilities/software-development-concept.jpg",
+    image: "/capabilities/software-development-pro.jpg",
   },
   {
     title: "Cybersecurity & Data",
     body: "Secure digital assets and turn data into useful insights.",
-    image: "/capabilities/cybersecurity-concept.jpg",
+    image: "/capabilities/cybersecurity-pro.jpg",
   },
   {
     title: "Cloud & Infrastructure",
     body: "Maintain reliable systems, connected networks, and cloud environments.",
-    image: "/capabilities/cloud-concept.jpg",
+    image: "/capabilities/cloud-pro.jpg",
   },
   {
     title: "E-commerce",
     body: "Manage online stores, product catalogs, and digital sales operations.",
-    image: "/capabilities/ecommerce-concept.jpg",
+    image: "/capabilities/ecommerce-pro.jpg",
   },
   {
     title: "Accounting & Finance",
     body: "Manage financial records, reporting, and accounting processes.",
-    image: "/capabilities/finance-concept.jpg",
+    image: "/capabilities/finance-pro.jpg",
   },
   {
     title: "Business Development",
     body: "Assess market opportunities and support business growth strategies.",
-    image: "/capabilities/business-concept.jpg",
+    image: "/capabilities/business-pro.jpg",
   },
   {
     title: "Digital Marketing",
     body: "Strengthen brand visibility through digital campaigns and content.",
-    image: "/capabilities/marketing-concept.jpg",
+    image: "/capabilities/marketing-pro.jpg",
   },
 ] as const;
 
-/** Home — Why Comtanix (concept photo cards; no faces) */
+/** Home — Why Comtanix (editorial workspace photos) */
 export const WHY_COMTANIX = [
   {
     title: "Built for Real Operations",
     body: "Technology designed around your existing systems, everyday workflows, and practical business needs.",
-    image: "/why/why-operations-concept.jpg",
+    image: "/why/why-operations-pro.jpg",
   },
   {
     title: "Intelligence With Accountability",
     body: "AI-driven efficiency guided by human judgment, rigorous testing, and responsible implementation.",
-    image: "/why/why-intelligence-concept.jpg",
+    image: "/why/why-intelligence-pro.jpg",
   },
   {
     title: "Committed Beyond Delivery",
     body: "Ongoing collaboration, clear ownership, and solutions that adapt as your business evolves.",
-    image: "/why/why-commitment-concept.jpg",
+    image: "/why/why-commitment-pro.jpg",
   },
 ] as const;
 
