@@ -75,7 +75,7 @@ export const LIFE_ACTIVITIES = [
     title: "Awards and Achievements",
     body: "Celebrating individual contributions, strong performance, and milestones that reflect quality and teamwork.",
     icon: "star" as const,
-    image: "/life/awards-achievements-v3.jpg",
+    image: "/life/awards-achievements-v4.png",
   },
   {
     title: "Learning & Development",
