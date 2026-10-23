@@ -7,7 +7,7 @@ export function HeroNetwork() {
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/hero-home-v5.jpg?v=2"
+        src="/hero-home-v5.jpg"
         alt=""
         width={1920}
         height={1080}

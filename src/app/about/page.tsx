@@ -107,56 +107,27 @@ export default function AboutPage() {
             title="From Learning to Leadership"
             description="Professional growth at Comtanix is shaped by practical experience, continuous learning, and opportunities to take on new challenges."
           />
-          <div className="grid min-w-0 items-center gap-8 lg:grid-cols-2 lg:gap-12">
-            <ol className="relative min-w-0 space-y-5 md:space-y-6">
-              {LEARNING.map((l, i) => {
-                const offset = [
-                  "ml-0",
-                  "ml-3 sm:ml-6 md:ml-8",
-                  "ml-6 sm:ml-12 md:ml-16",
-                  "ml-9 sm:ml-16 md:ml-24",
-                ][i] ?? "ml-0";
-
-                return (
-                  <li
-                    key={l.title}
-                    className={`relative flex gap-3.5 sm:gap-4 ${offset}`}
-                  >
-                    <span
-                      className="type-eyebrow mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-[var(--radius-sm)] bg-brand !normal-case !tracking-normal text-white shadow-[0_8px_20px_-10px_rgba(13,148,136,0.55)]"
-                      aria-hidden
-                    >
-                      {i + 1}
-                    </span>
-                    <div
-                      className={`min-w-0 ${
-                        i < LEARNING.length - 1
-                          ? "border-b border-brand/15 pb-5 md:pb-6"
-                          : ""
-                      }`}
-                    >
-                      <h3 className="type-h3 text-ink">
-                        <BrandAccentText>{l.title}</BrandAccentText>
-                      </h3>
-                      <p className="type-meta mt-1.5 max-w-xl text-muted">
-                        {l.body}
-                      </p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
-
-            <div className="glass-card relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[var(--radius-lg)] lg:mx-0 lg:max-w-none lg:self-stretch lg:aspect-auto lg:min-h-[28rem]">
-              <Image
-                src="/about/learning-path.png"
-                alt="Team collaborating during a learning session at Comtanix"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-center"
-              />
-            </div>
-          </div>
+          <ol className="relative grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
+            {LEARNING.map((l, i) => (
+              <li
+                key={l.title}
+                className="group relative flex min-w-0 gap-4 rounded-[1.15rem] border border-line bg-surface px-4 py-4 shadow-[0_10px_28px_-20px_rgba(7,21,24,0.28)] transition duration-300 hover:-translate-y-0.5 hover:border-brand/35 hover:shadow-[0_16px_34px_-16px_rgba(13,148,136,0.35)] sm:gap-4 sm:px-5 sm:py-5"
+              >
+                <span
+                  className="type-eyebrow mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand !normal-case !tracking-normal text-white shadow-[0_8px_20px_-10px_rgba(13,148,136,0.55)]"
+                  aria-hidden
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="min-w-0">
+                  <h3 className="type-h3 text-ink">
+                    <BrandAccentText>{l.title}</BrandAccentText>
+                  </h3>
+                  <p className="type-meta mt-1.5 text-muted">{l.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </Container>
       </Section>
     </>
