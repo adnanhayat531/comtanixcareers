@@ -30,8 +30,6 @@ export const CONFIG = {
     Facebook: "https://www.facebook.com/",
     LinkedIn: "https://www.linkedin.com/",
     Instagram: "https://www.instagram.com/",
-    YouTube: "https://www.youtube.com/",
-    X: "https://x.com/",
   } as Record<string, string>,
   address:
     "Plaza No. 610, Noor Heights, 2nd Floor, Business District South, Bahria Town Phase 8, Rawalpindi",

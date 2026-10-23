@@ -42,7 +42,7 @@ function FooterColumn({
 }) {
   return (
     <div className="min-w-0 text-left">
-      <h3 className="type-eyebrow text-white/90">{title}</h3>
+      <h3 className="type-eyebrow !font-extrabold tracking-[0.14em] text-white">{title}</h3>
       <ul className="mt-3 space-y-2">
         {links.map((l) => (
           <li key={`${title}-${l.label}`}>
