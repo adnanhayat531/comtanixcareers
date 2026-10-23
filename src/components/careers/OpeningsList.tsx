@@ -30,9 +30,9 @@ function staticRoles(): UiRole[] {
     slug: role.id,
     jobId: "",
     applicationDeadline: null as string | null,
-    location: DEFAULT_LOCATION,
-    salary: null as string | null,
-    employmentType: null as string | null,
+    location: role.location || DEFAULT_LOCATION,
+    salary: role.salary ?? null,
+    employmentType: role.employmentType ?? null,
     department: null as string | null,
   }));
 }
@@ -75,11 +75,131 @@ function roleCapsules(role: UiRole) {
   return caps;
 }
 
-function descriptionParagraphs(text: string) {
-  return text
-    .split(/\n{2,}/)
-    .map((p) => p.trim())
-    .filter(Boolean);
+const JD_SECTION_HEADINGS = [
+  "About Comtanix",
+  "Core Responsibilities",
+  "Required Qualifications & Skills",
+  "Preferred Skills",
+] as const;
+
+type JdSection = {
+  title: string;
+  body: string;
+  items: string[];
+};
+
+type ParsedJobDescription = {
+  intro: string;
+  facts: { label: string; value: string }[];
+  sections: JdSection[];
+  footerFacts: { label: string; value: string }[];
+};
+
+function parseJobDescription(text: string): ParsedJobDescription {
+  const normalized = text.replace(/\r\n/g, "\n").trim();
+  const lines = normalized.split("\n").map((l) => l.trimEnd());
+
+  const factLabels = [
+    "Pay",
+    "Location",
+    "Timings",
+    "Work Arrangement",
+    "Work Location",
+  ];
+
+  const introLines: string[] = [];
+  const facts: { label: string; value: string }[] = [];
+  const footerFacts: { label: string; value: string }[] = [];
+  const sections: JdSection[] = [];
+
+  let i = 0;
+  // Intro until first fact or section heading
+  while (i < lines.length) {
+    const line = lines[i].trim();
+    if (!line) {
+      i += 1;
+      continue;
+    }
+    const fact = factLabels.find((f) => line.startsWith(`${f}:`));
+    if (fact || (JD_SECTION_HEADINGS as readonly string[]).includes(line)) break;
+    introLines.push(line);
+    i += 1;
+  }
+
+  // Opening facts block
+  while (i < lines.length) {
+    const line = lines[i].trim();
+    if (!line) {
+      i += 1;
+      continue;
+    }
+    const fact = factLabels.find((f) => line.startsWith(`${f}:`));
+    if (!fact) break;
+    facts.push({ label: fact, value: line.slice(fact.length + 1).trim() });
+    i += 1;
+  }
+
+  // Sections
+  while (i < lines.length) {
+    const line = lines[i].trim();
+    if (!line) {
+      i += 1;
+      continue;
+    }
+    if ((JD_SECTION_HEADINGS as readonly string[]).includes(line)) {
+      const title = line;
+      i += 1;
+      const bodyLines: string[] = [];
+      const items: string[] = [];
+      while (i < lines.length) {
+        const next = lines[i].trim();
+        if (!next) {
+          i += 1;
+          continue;
+        }
+        if ((JD_SECTION_HEADINGS as readonly string[]).includes(next)) break;
+        const foot = factLabels.find((f) => next.startsWith(`${f}:`));
+        if (foot && title !== "About Comtanix") break;
+        if (title === "About Comtanix") {
+          bodyLines.push(next);
+        } else {
+          items.push(next.replace(/^[-•*]\s*/, ""));
+        }
+        i += 1;
+      }
+      sections.push({
+        title,
+        body: bodyLines.join(" ").trim(),
+        items,
+      });
+      continue;
+    }
+
+    const foot = factLabels.find((f) => line.startsWith(`${f}:`));
+    if (foot) {
+      footerFacts.push({
+        label: foot,
+        value: line.slice(foot.length + 1).trim(),
+      });
+      i += 1;
+      continue;
+    }
+
+    // Unrecognized trailing lines — attach to last section body if any
+    if (sections.length) {
+      const last = sections[sections.length - 1];
+      if (last.items.length) last.items.push(line.replace(/^[-•*]\s*/, ""));
+      else last.body = [last.body, line].filter(Boolean).join(" ");
+    }
+    i += 1;
+  }
+
+  return {
+    intro: introLines.join(" ").trim(),
+    facts,
+    sections,
+    footerFacts,
+  };
 }
 
 function syncJobQuery(slug: string) {
@@ -221,7 +341,7 @@ function JobDetail({
   const deadline = formatDeadline(role.applicationDeadline);
   const shift = shiftLabel(role.tags);
   const employment = role.employmentType || "Full-time";
-  const paragraphs = descriptionParagraphs(role.detail || role.summary);
+  const jd = parseJobDescription(role.detail || role.summary);
   const metaLine = [location, role.salary, employment].filter(Boolean).join(" · ");
 
   const share = useCallback(async () => {
@@ -286,51 +406,95 @@ function JobDetail({
       </div>
 
       <div className="p-5 sm:p-6">
+        {jd.intro ? (
+          <p className="type-meta mb-5 font-medium text-brand">{jd.intro}</p>
+        ) : null}
+
         <h3 className="type-eyebrow text-brand">Job details</h3>
         <ul className="mt-3 space-y-2.5">
-          {role.salary ? (
-            <li className="flex items-center gap-2.5 type-meta text-ink">
-              <Wallet className="h-4 w-4 shrink-0 text-brand" aria-hidden />
-              {role.salary}
+          {(jd.facts.length
+            ? jd.facts
+            : [
+                role.salary
+                  ? { label: "Pay", value: role.salary }
+                  : null,
+                { label: "Location", value: location },
+                {
+                  label: "Timings",
+                  value: [employment, shift].filter(Boolean).join(" | "),
+                },
+                { label: "Work Arrangement", value: "Onsite" },
+              ].filter(Boolean) as { label: string; value: string }[]
+          ).map((f) => (
+            <li key={f.label} className="flex items-start gap-2.5 type-meta text-ink">
+              {f.label === "Pay" ? (
+                <Wallet className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden />
+              ) : f.label === "Location" || f.label === "Work Location" ? (
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden />
+              ) : f.label === "Timings" ? (
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden />
+              ) : (
+                <CalendarDays
+                  className="mt-0.5 h-4 w-4 shrink-0 text-brand"
+                  aria-hidden
+                />
+              )}
+              <span>
+                <span className="font-semibold text-ink">{f.label}: </span>
+                <span className="text-muted">{f.value}</span>
+              </span>
             </li>
-          ) : null}
-          <li className="flex items-center gap-2.5 type-meta text-ink">
-            <Clock className="h-4 w-4 shrink-0 text-brand" aria-hidden />
-            {employment}
-            {shift ? ` · ${shift}` : ""}
-          </li>
-          <li className="flex items-center gap-2.5 type-meta text-ink">
-            <MapPin className="h-4 w-4 shrink-0 text-brand" aria-hidden />
-            {location}
-          </li>
+          ))}
           {deadline ? (
-            <li className="flex items-center gap-2.5 type-meta text-ink">
-              <CalendarDays className="h-4 w-4 shrink-0 text-brand" aria-hidden />
-              Apply by {deadline}
+            <li className="flex items-start gap-2.5 type-meta text-ink">
+              <CalendarDays
+                className="mt-0.5 h-4 w-4 shrink-0 text-brand"
+                aria-hidden
+              />
+              <span>
+                <span className="font-semibold text-ink">Apply by: </span>
+                <span className="text-muted">{deadline}</span>
+              </span>
             </li>
           ) : null}
         </ul>
 
-        <h3 className="type-eyebrow mt-8 text-brand">Full job description</h3>
-        <div className="mt-3 space-y-3">
-          {paragraphs.map((p, i) => (
-            <p key={i} className="type-body whitespace-pre-line text-muted">
-              {p}
-            </p>
+        <div className="mt-8 space-y-7">
+          {jd.sections.map((section) => (
+            <section key={section.title}>
+              <h3 className="type-eyebrow text-brand">{section.title}</h3>
+              {section.body ? (
+                <p className="type-body mt-2.5 text-muted">{section.body}</p>
+              ) : null}
+              {section.items.length ? (
+                <ul className="mt-3 space-y-2">
+                  {section.items.map((item) => (
+                    <li
+                      key={item}
+                      className="type-body flex gap-2.5 text-muted"
+                    >
+                      <span
+                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
+                        aria-hidden
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </section>
           ))}
         </div>
 
-        {role.tags.length ? (
-          <div className="mt-6 flex flex-wrap gap-1.5">
-            {role.tags.map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-line px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-muted uppercase"
-              >
-                {t}
-              </span>
+        {jd.footerFacts.length ? (
+          <ul className="mt-8 space-y-2 border-t border-line pt-5">
+            {jd.footerFacts.map((f) => (
+              <li key={`${f.label}-${f.value}`} className="type-meta text-ink">
+                <span className="font-semibold">{f.label}: </span>
+                <span className="text-muted">{f.value}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         ) : null}
       </div>
     </article>
