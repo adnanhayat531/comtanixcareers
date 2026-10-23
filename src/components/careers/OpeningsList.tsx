@@ -6,6 +6,7 @@ import {
   ArrowLeft,
   ArrowRight,
   CalendarDays,
+  ChevronRight,
   Clock,
   Link2,
   MapPin,
@@ -113,7 +114,10 @@ function JobCard({
   selected: boolean;
   onSelect: () => void;
 }) {
-  const capsules = roleCapsules(role);
+  const shift = shiftLabel(role.tags);
+  const capsules = roleCapsules(role)
+    .filter((c) => c.toLowerCase() !== shift.toLowerCase())
+    .slice(0, 3);
   const location = role.location || DEFAULT_LOCATION;
 
   return (
@@ -121,30 +125,83 @@ function JobCard({
       type="button"
       onClick={onSelect}
       aria-pressed={selected}
-      className={`w-full rounded-[var(--radius-xl)] border p-4 text-left transition-[border-color,background-color,box-shadow] sm:p-5 ${
+      className={`group relative w-full overflow-hidden rounded-[var(--radius-lg)] text-left transition-[background-color,box-shadow,transform] duration-200 ${
         selected
-          ? "border-brand bg-tint/60 shadow-[0_0_0_1px_var(--color-brand)]"
-          : "glass-card border-line hover:border-brand/50"
+          ? "bg-[linear-gradient(135deg,rgba(0,238,232,0.14)_0%,rgba(10,61,66,0.95)_45%,rgba(4,36,38,0.98)_100%)] shadow-[inset_0_0_0_1px_rgba(0,238,232,0.55),0_0_28px_-10px_rgba(0,238,232,0.35)]"
+          : "bg-surface/70 shadow-[inset_0_0_0_1px_rgba(0,238,232,0.18)] hover:bg-surface hover:shadow-[inset_0_0_0_1px_rgba(0,238,232,0.4)]"
       }`}
     >
-      <h3 className="type-h3 text-balance text-ink">{role.title}</h3>
-      <p className="type-meta mt-1 text-muted">{SITE.name}</p>
-      <p className="type-meta mt-0.5 flex items-start gap-1.5 text-muted">
-        <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden />
-        <span>{location}</span>
-      </p>
-      {capsules.length ? (
-        <ul className="mt-3 flex flex-wrap gap-1.5">
-          {capsules.map((c) => (
-            <li
-              key={c}
-              className="rounded-[var(--radius-md)] border border-line bg-surface/40 px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-muted"
+      {/* Brand rail */}
+      <span
+        aria-hidden
+        className={`absolute inset-y-0 left-0 w-1 transition-colors ${
+          selected ? "bg-brand" : "bg-brand/25 group-hover:bg-brand/60"
+        }`}
+      />
+
+      <div className="flex gap-3 py-4 pr-3 pl-4 sm:gap-4 sm:py-5 sm:pr-4 sm:pl-5">
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <span
+              className={`rounded-sm px-1.5 py-0.5 text-[10px] font-semibold tracking-[0.08em] uppercase ${
+                selected
+                  ? "bg-brand text-[var(--on-sea)]"
+                  : "bg-brand/15 text-brand"
+              }`}
             >
-              {c}
-            </li>
-          ))}
-        </ul>
-      ) : null}
+              {shift}
+            </span>
+            {role.salary ? (
+              <span className="type-meta text-muted">{role.salary}</span>
+            ) : null}
+          </div>
+
+          <h3
+            className={`mt-2 font-display text-[0.98rem] leading-snug font-semibold text-balance sm:text-[1.05rem] ${
+              selected ? "text-brand-bright" : "text-ink"
+            }`}
+          >
+            {role.title}
+          </h3>
+
+          <p className="type-meta mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-muted">
+            <span className="font-medium text-ink/80">{SITE.name}</span>
+            <span className="text-brand/40" aria-hidden>
+              ·
+            </span>
+            <span className="inline-flex items-center gap-1">
+              <MapPin className="h-3 w-3 shrink-0 opacity-70" aria-hidden />
+              {location}
+            </span>
+          </p>
+
+          {capsules.length ? (
+            <ul className="mt-3 flex flex-wrap gap-1.5">
+              {capsules.map((c) => (
+                <li
+                  key={c}
+                  className={`rounded-full px-2.5 py-0.5 text-[11px] font-medium tracking-wide ${
+                    selected
+                      ? "bg-brand/15 text-brand"
+                      : "bg-deep/50 text-muted ring-1 ring-line/60"
+                  }`}
+                >
+                  {c}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+
+        <ChevronRight
+          className={`mt-1 h-5 w-5 shrink-0 self-center transition-transform duration-200 ${
+            selected
+              ? "translate-x-0.5 text-brand"
+              : "text-muted/50 group-hover:translate-x-0.5 group-hover:text-brand"
+          }`}
+          aria-hidden
+        />
+      </div>
     </button>
   );
 }
