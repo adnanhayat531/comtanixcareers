@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { BrandAccentText } from "@/components/ui/BrandAccentText";
-import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import { LifeIcon } from "@/components/ui/Icons";
@@ -27,14 +25,7 @@ export default function LifePage() {
         imageFit="cover"
         objectPosition="55% 42%"
         className="page-hero-banner w-full !aspect-[1440/369] !h-auto !min-h-0 !max-h-none max-sm:!min-h-[15rem] max-sm:!aspect-auto max-sm:!h-[min(34vh,15rem)] [&_h1]:max-w-[16ch] sm:[&_h1]:max-w-[18ch]"
-      >
-        <Button href="/careers" variant="white">
-          View openings <ArrowRight className="h-4 w-4" aria-hidden />
-        </Button>
-        <Button href="/submit-cv" variant="outlineLight">
-          Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
-        </Button>
-      </PageHero>
+      />
 
       <Section className="site-dark-section">
         <Container>

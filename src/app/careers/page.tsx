@@ -45,14 +45,7 @@ export default function CareersPage() {
         imageFit="cover"
         objectPosition="75% 42%"
         className="page-hero-banner w-full !aspect-[1440/369] !h-auto !min-h-0 !max-h-none max-sm:!min-h-[15rem] max-sm:!aspect-auto max-sm:!h-[min(34vh,15rem)]"
-      >
-        <Button href="#openings" variant="white">
-          View openings <ArrowRight className="h-4 w-4" aria-hidden />
-        </Button>
-        <Button href="/submit-cv" variant="outlineLight">
-          Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
-        </Button>
-      </PageHero>
+      />
 
       <Section id="openings" className="site-dark-section scroll-mt-24 md:scroll-mt-28">
         <Container>
