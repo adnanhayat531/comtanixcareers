@@ -154,5 +154,10 @@ export const GOOGLE_REVIEWS: GoogleReview[] = RAW.map((r, i) => ({
   mapsUrl: GOOGLE_MAPS_PLACE_URL,
 }));
 
+/** 4★ and 5★ only — used on the public reviews orbit. */
+export const POSITIVE_GOOGLE_REVIEWS: GoogleReview[] = GOOGLE_REVIEWS.filter(
+  (r) => r.rating >= 4,
+);
+
 /** @deprecated use GOOGLE_REVIEWS */
 export const GOOGLE_REVIEWS_FALLBACK = GOOGLE_REVIEWS;

@@ -5,7 +5,7 @@ import { Star, ExternalLink } from "lucide-react";
 import {
   GOOGLE_MAPS_PLACE_URL,
   GOOGLE_RATING,
-  GOOGLE_REVIEWS,
+  POSITIVE_GOOGLE_REVIEWS,
   type GoogleReview,
 } from "@/lib/data/google-reviews";
 
@@ -34,53 +34,46 @@ function GoogleMark({ className = "" }: { className?: string }) {
 
 function ReviewCard({ review }: { review: GoogleReview }) {
   return (
-    <article className="glass-card flex h-full min-w-0 flex-col rounded-md px-5 py-5">
-      <div className="flex items-start gap-3">
-        <a
-          href={review.authorUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-tint ring-1 ring-line"
-          aria-label={`${review.author} on Google`}
-        >
-          {review.photoUrl ? (
-            <Image
-              src={review.photoUrl}
-              alt={review.author}
-              fill
-              sizes="44px"
-              className="object-cover"
-              unoptimized
-            />
-          ) : (
-            <span className="grid h-full w-full place-items-center text-sm font-semibold text-brand">
-              {review.initials}
-            </span>
-          )}
-        </a>
-        <div className="min-w-0 flex-1">
-          <a
-            href={review.authorUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="type-meta block truncate font-bold text-ink hover:text-brand hover:underline"
-          >
-            {review.author}
-          </a>
-          <div className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5">
-            <span className="type-eyebrow inline-flex items-center gap-1 normal-case tracking-normal text-muted">
-              <GoogleMark className="h-3.5 w-3.5" />
-              Google review
-            </span>
-            {review.dateLabel ? (
-              <span className="type-meta text-muted">{review.dateLabel}</span>
-            ) : null}
-          </div>
-        </div>
-      </div>
+    <article className="reviews-circle-card glass-card relative flex h-full min-h-[16.5rem] w-[min(78vw,18.5rem)] shrink-0 flex-col items-center rounded-[1.75rem] px-5 py-5 text-center sm:w-[20rem] sm:px-6 sm:py-6">
+      <a
+        href={review.authorUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-tint ring-2 ring-brand/25 shadow-[0_8px_20px_-10px_rgba(13,148,136,0.45)]"
+        aria-label={`${review.author} on Google`}
+      >
+        {review.photoUrl ? (
+          <Image
+            src={review.photoUrl}
+            alt={review.author}
+            fill
+            sizes="56px"
+            className="object-cover"
+            unoptimized
+          />
+        ) : (
+          <span className="grid h-full w-full place-items-center text-sm font-semibold text-brand">
+            {review.initials}
+          </span>
+        )}
+      </a>
+
+      <a
+        href={review.authorUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="type-meta mt-3 block max-w-full truncate font-bold text-ink hover:text-brand hover:underline"
+      >
+        {review.author}
+      </a>
+      <span className="type-eyebrow mt-1 inline-flex items-center gap-1 normal-case tracking-normal text-muted">
+        <GoogleMark className="h-3.5 w-3.5" />
+        Google review
+        {review.dateLabel ? ` · ${review.dateLabel}` : null}
+      </span>
 
       <div
-        className="mt-3 flex gap-0.5"
+        className="mt-2.5 flex justify-center gap-0.5"
         aria-label={`${review.rating} out of 5 stars`}
       >
         {Array.from({ length: 5 }).map((_, i) => (
@@ -96,7 +89,7 @@ function ReviewCard({ review }: { review: GoogleReview }) {
         ))}
       </div>
 
-      <q className="type-body mt-3 block flex-1 text-ink/90 [quotes:none]">
+      <q className="type-meta mt-3 line-clamp-4 flex-1 text-ink/90 [quotes:none]">
         {review.quote}
       </q>
 
@@ -104,7 +97,7 @@ function ReviewCard({ review }: { review: GoogleReview }) {
         href={review.authorUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-5 inline-flex items-center gap-1 border-t border-line pt-4 text-xs font-semibold text-brand hover:underline"
+        className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand hover:underline"
       >
         Verify on Google
         <ExternalLink className="h-3.5 w-3.5" aria-hidden />
@@ -123,19 +116,14 @@ function ReviewTrack({
   return (
     <div className="flex shrink-0 gap-4 pe-4">
       {reviews.map((review) => (
-        <div
-          key={`${keyPrefix}-${review.id}`}
-          className="w-[min(85vw,20rem)] shrink-0 sm:w-[22rem]"
-        >
-          <ReviewCard review={review} />
-        </div>
+        <ReviewCard key={`${keyPrefix}-${review.id}`} review={review} />
       ))}
     </div>
   );
 }
 
 export function TestimonialsGrid() {
-  const reviews = GOOGLE_REVIEWS;
+  const reviews = POSITIVE_GOOGLE_REVIEWS;
 
   return (
     <div className="min-w-0">
@@ -171,11 +159,14 @@ export function TestimonialsGrid() {
             <ExternalLink className="h-4 w-4 text-brand" aria-hidden />
           </span>
         </a>
+        <p className="type-meta text-muted">Positive reviews · 4★ &amp; 5★</p>
       </div>
 
-      {/* News-ticker style marquee: right → left, continuous */}
+      {/* Sideways marquee with circular card feel */}
       <div className="reviews-marquee group relative -mx-[var(--container-pad-x)] overflow-hidden px-[var(--container-pad-x)]">
-        <div className="reviews-marquee-track flex w-max">
+        <div className="reviews-marquee-fade pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[var(--surface,#fff)] to-transparent sm:w-16" />
+        <div className="reviews-marquee-fade pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[var(--surface,#fff)] to-transparent sm:w-16" />
+        <div className="reviews-marquee-track flex w-max py-2">
           <ReviewTrack reviews={reviews} keyPrefix="a" />
           <ReviewTrack reviews={reviews} keyPrefix="b" />
         </div>
