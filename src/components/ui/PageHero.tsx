@@ -132,7 +132,7 @@ export function PageHero({
 
   return (
     <section
-      className={`relative flex w-full min-w-0 flex-col justify-center overflow-hidden min-h-[clamp(13.5rem,42svh,22rem)] sm:min-h-[clamp(15rem,44svh,24rem)] md:min-h-[clamp(16rem,46svh,26rem)] ${nightBg ? "bg-[#071518]" : "bg-canvas"} ${className}`}
+      className={`relative flex w-full min-w-0 flex-col justify-center overflow-hidden min-h-[clamp(13.5rem,42svh,22rem)] sm:min-h-[clamp(15rem,44svh,24rem)] md:min-h-[clamp(16rem,46svh,26rem)] ${nightBg ? "site-petrol-gradient" : "bg-canvas"} ${className}`}
     >
       {image ? (
         imageBlend && imagePosition === "right" ? (

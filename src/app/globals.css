@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  /* Exact Comtanix futuristic palette */
-  --canvas: #061b20; /* page background */
-  --surface: #06343b; /* main panel / card background */
-  --tint: #05222b; /* gradient start / elevated panels */
-  --deep: #08353d; /* gradient end */
-  --footer: #05222b;
+  /* Petrol-teal palette (site dark surfaces) */
+  --canvas: #06373a; /* page background */
+  --surface: #0a3d42; /* main panel / card background */
+  --tint: #0a3d42; /* gradient start / elevated panels */
+  --deep: #042426; /* gradient end */
+  --footer: #06373a;
   --ink: #f5ffff; /* heading / primary text */
   --muted: rgba(230, 248, 250, 0.86); /* description text */
   --brand: #00eee8; /* icon / accent */
@@ -19,8 +19,9 @@
   --on-sea: #041014;
   --icon-bg: rgba(0, 223, 222, 0.055);
   --glow: rgba(0, 238, 234, 0.12);
-  --gradient-from: #05222b;
-  --gradient-to: #08353d;
+  --gradient-from: #0a3d42;
+  --gradient-to: #042426;
+  --petrol-mid: #06373a;
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.35);
   --shadow-hover: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.4);
   --shadow-overlay: 0 0.75rem 2rem rgba(0, 0, 0, 0.45);
@@ -700,12 +701,16 @@ p {
   }
 }
 
+/* Shared petrol-teal gradient for all dark bands (sections, footer, services) */
 .home-dark-section,
-.site-dark-section {
+.site-dark-section,
+.services-gradient-section,
+.site-petrol-gradient {
   position: relative;
   background:
-    radial-gradient(ellipse 80% 50% at 80% 0%, var(--glow), transparent 55%),
-    linear-gradient(160deg, var(--gradient-from) 0%, var(--canvas) 42%, var(--gradient-to) 100%);
+    radial-gradient(ellipse 75% 55% at 85% 0%, rgba(0, 238, 234, 0.1), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 8% 100%, rgba(0, 200, 190, 0.06), transparent 50%),
+    linear-gradient(160deg, var(--gradient-from) 0%, var(--petrol-mid) 42%, var(--gradient-to) 100%);
   color: var(--ink);
 }
 
@@ -715,7 +720,7 @@ p {
   pointer-events: none;
   position: absolute;
   inset: 0;
-  opacity: 0.18;
+  opacity: 0.14;
   background-image:
     linear-gradient(rgba(0, 238, 234, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 238, 234, 0.08) 1px, transparent 1px);

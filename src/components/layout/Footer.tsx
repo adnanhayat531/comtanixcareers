@@ -114,7 +114,7 @@ export function Footer() {
 
   return (
     <footer className="relative shrink-0 text-white">
-      <div className="bg-footer">
+      <div className="site-petrol-gradient">
         <Container className="pt-8 pb-6 md:pt-9 md:pb-8">
           <div className="flex min-w-0 flex-col gap-8 md:gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-stretch lg:gap-8">
             <div className="flex min-w-0 shrink-0 flex-col items-start pt-3 sm:pt-4 lg:h-full lg:pt-5">

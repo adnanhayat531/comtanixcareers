@@ -3,7 +3,6 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { Button } from "@/components/ui/Button";
-import { CtaBanner } from "@/components/ui/CtaBanner";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import { OfficeIllustration } from "@/components/ui/OfficeIllustration";
@@ -160,17 +159,6 @@ export default function AboutPage() {
           </div>
         </Container>
       </Section>
-
-      <CtaBanner
-        tone="dark"
-        eyebrow="Careers"
-        title="Ready to grow with Comtanix?"
-        description="Explore open roles or submit your CV for future opportunities."
-      >
-        <Button href="/submit-cv" variant="outlineLight">
-          Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
-        </Button>
-      </CtaBanner>
     </>
   );
 }

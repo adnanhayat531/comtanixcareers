@@ -18,7 +18,7 @@ const CAPABILITY_PHOTOS: Partial<Record<string, string>> = {
 export default function HomePage() {
   return (
     <>
-      <section className="relative flex h-[var(--hero-min-h)] min-h-[100svh] flex-col overflow-hidden bg-canvas supports-[height:100dvh]:h-[100dvh] supports-[height:100dvh]:min-h-[100dvh]">
+      <section className="site-petrol-gradient relative flex h-[var(--hero-min-h)] min-h-[100svh] flex-col overflow-hidden supports-[height:100dvh]:h-[100dvh] supports-[height:100dvh]:min-h-[100dvh]">
         <HeroNetwork />
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-start justify-center px-[var(--container-pad-x)] pb-4 pt-[calc(var(--header-h)+clamp(1.25rem,4vh,2.5rem))] sm:pb-5">
           <HeroCopy />
@@ -33,10 +33,10 @@ export default function HomePage() {
 
       <WhoWeAre />
 
-      {/* What We Do — illustrative duotone icons */}
+      {/* What We Do — deep petrol-teal gradient */}
       <Section
         id="services"
-        className="home-dark-section scroll-mt-24 md:scroll-mt-28"
+        className="services-gradient-section scroll-mt-24 md:scroll-mt-28"
       >
         <Container>
           <HeadingReveal className="mb-5 max-w-2xl md:mb-6">
