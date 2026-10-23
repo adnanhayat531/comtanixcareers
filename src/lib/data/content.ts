@@ -25,7 +25,7 @@ export const VALUES = [
   {
     title: "Integrity in Practice",
     body: "We act with honesty, uphold ethical principles, and ensure our conduct reflects the trust placed in us.",
-    image: "/values/recruit-well-v2.png",
+    image: "/values/integrity-practice.png",
   },
   {
     title: "Excellence in Execution",
@@ -63,7 +63,7 @@ export const LIFE_ACTIVITIES = [
     title: "Wellness & Fitness",
     body: "Fitness opportunities that support healthy routines, physical well-being, and work-life balance.",
     icon: "gym" as const,
-    image: "/life/gym.png",
+    image: "/life/wellness-fitness.png",
   },
   {
     title: "Team Sports & Activities",
