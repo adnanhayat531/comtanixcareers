@@ -1,10 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ArrowRight, CalendarDays, Clock, MapPin } from "lucide-react";
+import { useEffect, useState, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
+import {
+  ArrowLeft,
+  ArrowRight,
+  CalendarDays,
+  Clock,
+  Link2,
+  MapPin,
+  Share2,
+  Wallet,
+} from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { fetchJobs, jobToRole, type UiRole } from "@/lib/api";
+import { SITE } from "@/lib/config";
 import { ROLES } from "@/lib/data/roles";
+
+const DEFAULT_LOCATION = "Bahria Town Phase 8, Rawalpindi";
 
 function staticRoles(): UiRole[] {
   return ROLES.map((role) => ({
@@ -16,6 +29,10 @@ function staticRoles(): UiRole[] {
     slug: role.id,
     jobId: "",
     applicationDeadline: null as string | null,
+    location: DEFAULT_LOCATION,
+    salary: null as string | null,
+    employmentType: null as string | null,
+    department: null as string | null,
   }));
 }
 
@@ -30,10 +47,44 @@ function formatDeadline(value: string | null | undefined) {
   });
 }
 
+function shiftLabel(tags: string[]) {
+  return tags.find((t) => /night|day|shift/i.test(t)) ?? "Night shift";
+}
+
 function displayTags(tags: string[]) {
-  return tags
-    .filter((t) => !/night\s*shift/i.test(t))
-    .slice(0, 3);
+  return tags.filter((t) => !/night\s*shift/i.test(t)).slice(0, 3);
+}
+
+function roleCapsules(role: UiRole) {
+  const caps: string[] = [];
+  if (role.salary) caps.push(role.salary);
+  if (role.employmentType) caps.push(role.employmentType);
+  else caps.push("Onsite");
+  const shift = shiftLabel(role.tags);
+  if (shift && !caps.some((c) => c.toLowerCase() === shift.toLowerCase())) {
+    caps.push(shift);
+  }
+  for (const t of displayTags(role.tags)) {
+    if (caps.length >= 4) break;
+    if (!caps.some((c) => c.toLowerCase() === t.toLowerCase())) caps.push(t);
+  }
+  return caps;
+}
+
+function descriptionParagraphs(text: string) {
+  return text
+    .split(/\n{2,}/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+}
+
+function syncJobQuery(slug: string) {
+  if (typeof window === "undefined") return;
+  const url = new URL(window.location.href);
+  if (url.searchParams.get("job") === slug) return;
+  url.searchParams.set("job", slug);
+  // Keep existing hash; never inject #openings here — that can jump/freeze scroll.
+  window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
 }
 
 function OpeningsEmpty() {
@@ -53,73 +104,243 @@ function OpeningsEmpty() {
   );
 }
 
-function OpeningsGrid({ roles }: { roles: UiRole[] }) {
+function JobCard({
+  role,
+  selected,
+  onSelect,
+}: {
+  role: UiRole;
+  selected: boolean;
+  onSelect: () => void;
+}) {
+  const capsules = roleCapsules(role);
+  const location = role.location || DEFAULT_LOCATION;
+
   return (
-    <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-5">
-      {roles.map((role) => {
-        const shift =
-          role.tags.find((t) => /night/i.test(t)) ?? "Night shift";
-        const deadline = formatDeadline(role.applicationDeadline);
-        const tags = displayTags(role.tags);
-        const blurb = role.summary || role.detail;
+    <button
+      type="button"
+      onClick={onSelect}
+      aria-pressed={selected}
+      className={`w-full rounded-[var(--radius-xl)] border p-4 text-left transition-[border-color,background-color,box-shadow] sm:p-5 ${
+        selected
+          ? "border-brand bg-tint/60 shadow-[0_0_0_1px_var(--color-brand)]"
+          : "glass-card border-line hover:border-brand/50"
+      }`}
+    >
+      <h3 className="type-h3 text-balance text-ink">{role.title}</h3>
+      <p className="type-meta mt-1 text-muted">{SITE.name}</p>
+      <p className="type-meta mt-0.5 flex items-start gap-1.5 text-muted">
+        <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden />
+        <span>{location}</span>
+      </p>
+      {capsules.length ? (
+        <ul className="mt-3 flex flex-wrap gap-1.5">
+          {capsules.map((c) => (
+            <li
+              key={c}
+              className="rounded-[var(--radius-md)] border border-line bg-surface/40 px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-muted"
+            >
+              {c}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </button>
+  );
+}
 
-        return (
-          <li key={role.id}>
-            <article className="glass-card card-lift flex h-full flex-col rounded-[var(--radius-xl)] p-5 sm:p-6">
-              <div className="min-w-0 flex-1">
-                <h2 className="type-h3 text-balance text-ink">{role.title}</h2>
+function JobDetail({
+  role,
+  onBack,
+}: {
+  role: UiRole;
+  onBack?: () => void;
+}) {
+  const [copied, setCopied] = useState(false);
+  const location = role.location || DEFAULT_LOCATION;
+  const deadline = formatDeadline(role.applicationDeadline);
+  const shift = shiftLabel(role.tags);
+  const employment = role.employmentType || "Full-time";
+  const paragraphs = descriptionParagraphs(role.detail || role.summary);
+  const metaLine = [location, role.salary, employment].filter(Boolean).join(" · ");
 
-                <ul className="mt-3 flex flex-wrap gap-2">
-                  <li className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-brand/40 bg-tint px-2.5 py-1 type-meta text-brand">
-                    <Clock className="h-3.5 w-3.5 shrink-0" aria-hidden />
-                    {shift}
-                  </li>
-                  <li className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-brand/40 bg-tint px-2.5 py-1 type-meta text-brand">
-                    Onsite
-                  </li>
-                  <li className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-brand/40 bg-tint px-2.5 py-1 type-meta text-brand">
-                    <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden />
-                    Bahria Town Phase 8, Rawalpindi
-                  </li>
-                  {deadline ? (
-                    <li className="inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-brand/40 bg-tint px-2.5 py-1 type-meta text-brand">
-                      <CalendarDays className="h-3.5 w-3.5 shrink-0" aria-hidden />
-                      Apply by {deadline}
-                    </li>
-                  ) : null}
-                </ul>
+  const share = useCallback(async () => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("job", role.slug);
+    url.hash = "openings";
+    const href = url.toString();
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: role.title, url: href });
+        return;
+      }
+    } catch {
+      /* fall through to clipboard */
+    }
+    try {
+      await navigator.clipboard.writeText(href);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* ignore */
+    }
+  }, [role.slug, role.title]);
 
-                <p className="type-meta mt-4 line-clamp-3 text-muted">
-                  {blurb}
-                </p>
+  return (
+    <article className="glass-card flex flex-col rounded-[var(--radius-xl)] border border-line">
+      <div className="border-b border-line p-5 sm:p-6">
+        <button
+          type="button"
+          onClick={onBack}
+          className="mb-4 inline-flex items-center gap-1.5 type-meta text-brand transition-opacity hover:opacity-80 lg:hidden"
+        >
+          <ArrowLeft className="h-4 w-4" aria-hidden />
+          Back to openings
+        </button>
 
-                {tags.length ? (
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {tags.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-line px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-muted uppercase"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
+        <h2 className="type-h2 text-balance text-ink">{role.title}</h2>
+        <p className="type-meta mt-2 text-muted">{SITE.name}</p>
+        <p className="type-meta mt-1 text-muted">{metaLine}</p>
 
-              <div className="mt-5 border-t border-line pt-4">
-                <Button
-                  href={`/apply?role=${encodeURIComponent(role.title)}`}
-                  className="w-full sm:w-auto"
-                >
-                  Apply now <ArrowRight className="h-4 w-4" aria-hidden />
-                </Button>
-              </div>
-            </article>
+        <div className="mt-5 flex flex-wrap items-center gap-2">
+          <Button
+            href={`/apply?role=${encodeURIComponent(role.title)}`}
+            className="w-full sm:w-auto"
+          >
+            Apply now <ArrowRight className="h-4 w-4" aria-hidden />
+          </Button>
+          <button
+            type="button"
+            onClick={share}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border border-line text-ink transition-colors hover:border-brand hover:text-brand"
+            aria-label={copied ? "Link copied" : "Share job"}
+            title={copied ? "Link copied" : "Share"}
+          >
+            {copied ? (
+              <Link2 className="h-4 w-4" aria-hidden />
+            ) : (
+              <Share2 className="h-4 w-4" aria-hidden />
+            )}
+          </button>
+        </div>
+      </div>
+
+      <div className="p-5 sm:p-6">
+        <h3 className="type-eyebrow text-brand">Job details</h3>
+        <ul className="mt-3 space-y-2.5">
+          {role.salary ? (
+            <li className="flex items-center gap-2.5 type-meta text-ink">
+              <Wallet className="h-4 w-4 shrink-0 text-brand" aria-hidden />
+              {role.salary}
+            </li>
+          ) : null}
+          <li className="flex items-center gap-2.5 type-meta text-ink">
+            <Clock className="h-4 w-4 shrink-0 text-brand" aria-hidden />
+            {employment}
+            {shift ? ` · ${shift}` : ""}
           </li>
-        );
-      })}
-    </ul>
+          <li className="flex items-center gap-2.5 type-meta text-ink">
+            <MapPin className="h-4 w-4 shrink-0 text-brand" aria-hidden />
+            {location}
+          </li>
+          {deadline ? (
+            <li className="flex items-center gap-2.5 type-meta text-ink">
+              <CalendarDays className="h-4 w-4 shrink-0 text-brand" aria-hidden />
+              Apply by {deadline}
+            </li>
+          ) : null}
+        </ul>
+
+        <h3 className="type-eyebrow mt-8 text-brand">Full job description</h3>
+        <div className="mt-3 space-y-3">
+          {paragraphs.map((p, i) => (
+            <p key={i} className="type-body whitespace-pre-line text-muted">
+              {p}
+            </p>
+          ))}
+        </div>
+
+        {role.tags.length ? (
+          <div className="mt-6 flex flex-wrap gap-1.5">
+            {role.tags.map((t) => (
+              <span
+                key={t}
+                className="rounded-full border border-line px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-muted uppercase"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    </article>
+  );
+}
+
+function OpeningsBoard({ roles }: { roles: UiRole[] }) {
+  const searchParams = useSearchParams();
+  const jobParam = searchParams.get("job");
+
+  const initialSlug =
+    (jobParam && roles.find((r) => r.slug === jobParam)?.slug) ||
+    roles[0]?.slug ||
+    "";
+
+  const [selectedSlug, setSelectedSlug] = useState(initialSlug);
+  const [mobileDetail, setMobileDetail] = useState(Boolean(jobParam));
+
+  useEffect(() => {
+    if (!roles.length) return;
+    const fromUrl = jobParam && roles.find((r) => r.slug === jobParam);
+    if (fromUrl) {
+      setSelectedSlug(fromUrl.slug);
+      return;
+    }
+    setSelectedSlug((prev) =>
+      roles.some((r) => r.slug === prev) ? prev : roles[0].slug,
+    );
+  }, [roles, jobParam]);
+
+  const selected =
+    roles.find((r) => r.slug === selectedSlug) ?? roles[0] ?? null;
+
+  const selectRole = (slug: string, openMobile = true) => {
+    setSelectedSlug(slug);
+    syncJobQuery(slug);
+    if (openMobile) setMobileDetail(true);
+  };
+
+  if (!selected) return null;
+
+  return (
+    <div className="lg:grid lg:grid-cols-[minmax(0,38%)_minmax(0,62%)] lg:items-start lg:gap-5">
+      {/* List — no nested overflow; page scroll only (avoids wheel trap / hang) */}
+      <div className={mobileDetail ? "hidden lg:block" : "block"}>
+        <ul className="flex flex-col gap-3">
+          {roles.map((role) => (
+            <li key={role.id}>
+              <JobCard
+                role={role}
+                selected={role.slug === selected.slug}
+                onSelect={() => selectRole(role.slug)}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Detail sticks while scrolling the list; height follows content */}
+      <div
+        className={`${
+          mobileDetail ? "block" : "hidden lg:block"
+        } lg:sticky lg:top-24 lg:self-start`}
+      >
+        <JobDetail
+          role={selected}
+          onBack={() => setMobileDetail(false)}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -148,5 +369,5 @@ export function OpeningsList() {
   }, []);
 
   if (!roles.length) return <OpeningsEmpty />;
-  return <OpeningsGrid roles={roles} />;
+  return <OpeningsBoard roles={roles} />;
 }

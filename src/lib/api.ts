@@ -49,6 +49,10 @@ export function jobToRole(job: ApiJob) {
     slug: job.slug,
     jobId: job.id,
     applicationDeadline: job.application_deadline ?? null,
+    location: job.location?.trim() || "Bahria Town Phase 8, Rawalpindi",
+    salary: job.salary?.trim() || null,
+    employmentType: job.employment_type?.trim() || null,
+    department: job.department?.trim() || null,
   };
 }
 

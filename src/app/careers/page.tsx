@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { ArrowRight } from "lucide-react";
 import { FacilitiesBenefits } from "@/components/careers/FacilitiesBenefits";
 import { HowWeHire } from "@/components/careers/HowWeHire";
@@ -47,7 +48,10 @@ export default function CareersPage() {
         className="page-hero-banner w-full !aspect-[1440/369] !h-auto !min-h-0 !max-h-none max-sm:!min-h-[15rem] max-sm:!aspect-auto max-sm:!h-[min(34vh,15rem)]"
       />
 
-      <Section id="openings" className="site-dark-section scroll-mt-24 md:scroll-mt-28">
+      <Section
+        id="openings"
+        className="site-dark-section scroll-mt-24 md:scroll-mt-28"
+      >
         <Container>
           <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
             <div className="min-w-0">
@@ -67,7 +71,13 @@ export default function CareersPage() {
             </Button>
           </div>
 
-          <OpeningsList />
+          <Suspense
+            fallback={
+              <div className="glass-card min-h-[28rem] animate-pulse rounded-[var(--radius-xl)]" />
+            }
+          >
+            <OpeningsList />
+          </Suspense>
         </Container>
       </Section>
 

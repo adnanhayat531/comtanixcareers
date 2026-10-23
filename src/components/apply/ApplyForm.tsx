@@ -53,6 +53,10 @@ function fallbackRoles(): UiRole[] {
     slug: role.id,
     jobId: "",
     applicationDeadline: null as string | null,
+    location: "Bahria Town Phase 8, Rawalpindi",
+    salary: null as string | null,
+    employmentType: null as string | null,
+    department: null as string | null,
   }));
 }
 
