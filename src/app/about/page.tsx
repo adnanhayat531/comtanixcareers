@@ -39,7 +39,7 @@ export default function AboutPage() {
             <SectionHeading
               compact
               eyebrow="Our Story"
-              title="15 Years of Progress. A Commitment to Excellence."
+              title="10+ Years of Progress. A Commitment to Excellence."
               className="mb-6"
             />
             <div className="type-body space-y-4 text-muted">

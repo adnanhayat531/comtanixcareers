@@ -234,7 +234,7 @@ export function IconAccounting({ className }: IconProps) {
   );
 }
 
-/** Handshake + rising chart */
+/** Handshake + rising chart (photo card used on home for Business Development) */
 export function IconBusinessDev({ className }: IconProps) {
   return (
     <Svg className={className}>

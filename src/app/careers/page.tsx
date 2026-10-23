@@ -64,18 +64,6 @@ export default function CareersPage() {
                 title="Current openings"
                 className="mb-0"
               />
-              <ul className="mt-3 flex flex-wrap gap-2" aria-label="Role highlights">
-                {["Night shift", "Onsite", "Bahria Town Phase 8, Rawalpindi"].map(
-                  (tag) => (
-                    <li
-                      key={tag}
-                      className="inline-flex items-center rounded-[var(--radius-md)] border border-brand/40 bg-tint px-2.5 py-1 type-meta text-brand"
-                    >
-                      {tag}
-                    </li>
-                  ),
-                )}
-              </ul>
             </div>
             <Button
               href="/submit-cv"
