@@ -141,22 +141,22 @@ export const CAPABILITIES = [
   },
 ] as const;
 
-/** Home — Why Comtanix (editorial workspace photos) */
+/** Home — Why Comtanix (team / faces photos) */
 export const WHY_COMTANIX = [
   {
     title: "Built for Real Operations",
     body: "Technology designed around your existing systems, everyday workflows, and practical business needs.",
-    image: "/why/why-operations-pro.jpg",
+    image: "/why/quality-first-v2.png",
   },
   {
     title: "Intelligence With Accountability",
     body: "AI-driven efficiency guided by human judgment, rigorous testing, and responsible implementation.",
-    image: "/why/why-intelligence-pro.jpg",
+    image: "/why/security-trust-v2.png",
   },
   {
     title: "Committed Beyond Delivery",
     body: "Ongoing collaboration, clear ownership, and solutions that adapt as your business evolves.",
-    image: "/why/why-commitment-pro.jpg",
+    image: "/why/working-as-one-team-v2.png",
   },
 ] as const;
 
