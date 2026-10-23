@@ -3,16 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type MouseEvent } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { Container } from "@/components/ui/Section";
 import { SITE } from "@/lib/config";
-
-const aboutLinks = [
-  { href: "/about#story", label: "Our Story" },
-  { href: "/about#values", label: "Core Values" },
-  { href: "/about#learning", label: "Learning & Development" },
-];
 
 function NavLink({
   href,
@@ -67,7 +61,6 @@ function NavLink({
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const isHome = pathname === "/";
@@ -82,7 +75,6 @@ export function Header() {
 
   useEffect(() => {
     setOpen(false);
-    setAboutOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -103,16 +95,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [isHome]);
 
-  const dropLink =
-    "type-meta flex min-h-[var(--control-h)] items-center rounded-[var(--radius-md)] px-3 font-medium text-ink transition-colors hover:bg-tint hover:text-brand";
-
-  const desktopLink = (active: boolean) =>
-    `type-nav relative inline-flex min-h-8 items-center gap-1 px-2 transition-colors xl:px-2.5 ${
-      active
-        ? "text-brand-bright after:absolute after:right-2 after:bottom-1 after:left-2 after:h-0.5 after:rounded-full after:bg-brand-bright xl:after:right-2.5 xl:after:left-2.5"
-        : "text-white/90 hover:text-white"
-    }`;
-
   return (
     <header
       className={`z-50 overflow-visible transition-[background-color,box-shadow,border-color] duration-300 ${
@@ -120,7 +102,7 @@ export function Header() {
       } ${
         transparent
           ? "bg-transparent"
-          : "bg-surface/92 shadow-[var(--glow-cyan)] backdrop-blur-md"
+          : "border-b border-white/10 bg-surface/94 shadow-[var(--glow-cyan)] backdrop-blur-md"
       }`}
     >
       <div className="mx-auto flex h-[var(--header-h)] w-full max-w-none items-center justify-between gap-1.5 py-0 pr-[max(var(--container-pad-x),env(safe-area-inset-right,0px))] pl-[max(0.5rem,env(safe-area-inset-left,0px))] sm:gap-2 sm:pl-2.5 md:pl-3 lg:gap-1 xl:gap-0.5 xl:pl-4">
@@ -154,38 +136,12 @@ export function Header() {
               }
             }}
           />
-
-          <div className="group relative">
-            <Link
-              href="/about"
-              className={desktopLink(pathname.startsWith("/about"))}
-              aria-current={pathname.startsWith("/about") ? "page" : undefined}
-              aria-haspopup="menu"
-            >
-              About
-              <ChevronDown
-                className="h-3.5 w-3.5 opacity-70 transition group-hover:rotate-180 group-focus-within:rotate-180"
-                aria-hidden
-              />
-            </Link>
-            <div
-              id="about-menu"
-              role="menu"
-              className="invisible absolute left-0 top-full z-[60] min-w-[240px] pt-2 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
-            >
-              <div className="rounded-xl border border-line bg-surface p-2 shadow-overlay">
-                <Link href="/about" className={dropLink} role="menuitem">
-                  About Us
-                </Link>
-                {aboutLinks.map((l) => (
-                  <Link key={l.href} href={l.href} className={dropLink} role="menuitem">
-                    {l.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-
+          <NavLink
+            href="/about"
+            label="About"
+            active={pathname.startsWith("/about")}
+            overlay={overlay}
+          />
           <NavLink
             href="/careers"
             label="Careers"
@@ -239,38 +195,13 @@ export function Header() {
                 }
               }}
             />
-
-            <button
-              type="button"
-              className="type-nav flex min-h-[var(--control-h)] items-center justify-between rounded-[var(--radius-md)] px-3 text-left text-ink"
-              onClick={() => setAboutOpen((v) => !v)}
-              aria-expanded={aboutOpen}
-            >
-              About
-              <ChevronDown className={`h-4 w-4 transition ${aboutOpen ? "rotate-180" : ""}`} />
-            </button>
-            {aboutOpen ? (
-              <div className="grid">
-                <Link
-                  href="/about"
-                  onClick={() => setOpen(false)}
-                  className="type-meta flex min-h-11 items-center rounded-lg px-5 text-muted hover:bg-tint hover:text-brand"
-                >
-                  About Us
-                </Link>
-                {aboutLinks.map((l) => (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="type-meta flex min-h-11 items-center rounded-lg px-5 text-muted hover:bg-tint hover:text-brand"
-                  >
-                    {l.label}
-                  </Link>
-                ))}
-              </div>
-            ) : null}
-
+            <NavLink
+              menu
+              href="/about"
+              label="About"
+              active={pathname.startsWith("/about")}
+              onClick={() => setOpen(false)}
+            />
             <NavLink menu href="/careers" label="Careers" onClick={() => setOpen(false)} />
             <NavLink menu href="/life" label={`Life at ${SITE.name}`} onClick={() => setOpen(false)} />
             <NavLink menu href="/contact" label="Contact" onClick={() => setOpen(false)} />
