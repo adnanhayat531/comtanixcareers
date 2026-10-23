@@ -10,15 +10,13 @@ import { CAPABILITIES, WHY_COMTANIX } from "@/lib/data/content";
 export default function HomePage() {
   return (
     <>
-      <section className="site-petrol-gradient relative flex h-[var(--hero-min-h)] min-h-[100svh] flex-col overflow-hidden supports-[height:100dvh]:h-[100dvh] supports-[height:100dvh]:min-h-[100dvh]">
+      <section className="relative flex h-[100svh] min-h-[100svh] flex-col overflow-hidden supports-[height:100dvh]:h-[100dvh]">
         <HeroNetwork />
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-start justify-start px-[var(--container-pad-x)] pb-6 pt-[calc(var(--header-h)+clamp(2.75rem,9vh,5.5rem))] sm:pb-8">
+        {/* Copy sits upper-left over the wash; stats float at bottom */}
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-start justify-start px-[var(--container-pad-x)] pt-[calc(var(--header-h)+clamp(3.5rem,10vh,6.5rem))]">
           <HeroCopy />
         </div>
-        <div
-          className="relative z-20 mt-auto h-fit max-h-fit w-full flex-none self-end pb-[max(0.75rem,env(safe-area-inset-bottom,0px))]"
-          style={{ height: "max-content" }}
-        >
+        <div className="relative z-20 mt-auto w-full flex-none">
           <StatsBar />
         </div>
       </section>

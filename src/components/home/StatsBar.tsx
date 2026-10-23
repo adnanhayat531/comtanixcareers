@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Award, Briefcase, CalendarDays, Users } from "lucide-react";
 import { BrandAccentText } from "@/components/ui/BrandAccentText";
 import { STATS } from "@/lib/data/content";
@@ -11,120 +11,80 @@ function easeOutCubic(t: number) {
   return 1 - (1 - t) ** 3;
 }
 
-/** Counts 0 → target whenever `playId` changes (and playId > 0). */
-function useCountUp(target: number, playId: number, durationMs = 1400) {
-  const [value, setValue] = useState(0);
+/** Floating glass stats ribbon — matches design: purpose + iconed metrics */
+export function StatsBar() {
+  const [progress, setProgress] = useState(1);
 
   useEffect(() => {
-    if (playId <= 0) {
-      setValue(0);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setProgress(1);
       return;
     }
 
-    let frame = 0;
+    setProgress(0);
+    let raf = 0;
+    let cancelled = false;
     const start = performance.now();
-    setValue(0);
+    const duration = 1400;
 
     const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / durationMs);
-      setValue(Math.round(easeOutCubic(t) * target));
-      if (t < 1) frame = requestAnimationFrame(tick);
+      if (cancelled) return;
+      const t = Math.min(1, (now - start) / duration);
+      setProgress(easeOutCubic(t));
+      if (t < 1) raf = requestAnimationFrame(tick);
     };
 
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [playId, target, durationMs]);
-
-  return value;
-}
-
-function StatItem({
-  value,
-  suffix,
-  label,
-  icon: Icon,
-  playId,
-}: {
-  value: number;
-  suffix: string;
-  label: string;
-  icon: (typeof STAT_ICONS)[number];
-  playId: number;
-}) {
-  const display = useCountUp(value, playId);
-
-  return (
-    <div className="flex min-w-0 flex-col items-center gap-0 py-0 text-center leading-none">
-      <span className="mb-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-[0.2rem] bg-[var(--icon-bg)]">
-        <Icon className="h-2.5 w-2.5 text-brand" aria-hidden />
-      </span>
-      <div className="text-xl font-bold leading-none tracking-tight tabular-nums text-ink sm:text-2xl">
-        <span>{display}</span>
-        {suffix ? <span className="text-brand">{suffix}</span> : null}
-      </div>
-      <p className="mt-0.5 max-w-[9rem] text-[9px] !leading-tight font-semibold break-words uppercase tracking-[0.04em] text-muted">
-        {label}
-      </p>
-    </div>
-  );
-}
-
-export function StatsBar() {
-  const rootRef = useRef<HTMLElement>(null);
-  const [playId, setPlayId] = useState(0);
-  const ranRef = useRef(false);
-
-  useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting && !ranRef.current) {
-          ranRef.current = true;
-          setPlayId(1);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.35 },
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
     <section
-      ref={rootRef}
-      className="relative z-20 w-full min-w-0"
+      className="relative z-20 w-full min-w-0 pb-[max(1.25rem,env(safe-area-inset-bottom,0px))]"
       aria-label="Company footprint"
     >
       <div className="mx-auto w-full max-w-6xl px-[var(--container-pad-x)]">
-        <div className="relative w-full overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface shadow-[var(--glow-cyan)] sm:rounded-[var(--radius-xl)]">
-          <div className="flex w-full flex-col lg:flex-row lg:items-center">
-            <div className="flex w-full shrink-0 flex-col items-center justify-center gap-0 border-b border-[var(--line-strong)] px-2.5 py-2.5 text-center lg:w-[min(20%,16rem)] lg:border-r lg:border-b-0 lg:px-3 lg:py-2">
-              <p className="text-sm font-semibold !leading-tight text-ink sm:text-[0.9375rem]">
-                <BrandAccentText accentClassName="text-brand">
-                  Growing with purpose.
-                </BrandAccentText>
-              </p>
-              <p className="text-[10px] !leading-tight text-muted">
-                Delivering with impact.
-              </p>
-            </div>
+        <div className="flex w-full items-stretch overflow-hidden rounded-2xl border border-white/15 bg-[rgba(4,28,34,0.78)] shadow-[0_20px_60px_-24px_rgba(0,0,0,0.7)] backdrop-blur-xl">
+          <div className="flex w-[10.5rem] shrink-0 flex-col items-start justify-center border-r border-white/12 px-4 py-4 sm:w-[13rem] sm:px-5 md:w-[14.5rem] md:px-6">
+            <p className="text-[0.88rem] font-semibold leading-snug text-ink sm:text-[1.05rem]">
+              <BrandAccentText accentClassName="text-brand">
+                Growing with purpose.
+              </BrandAccentText>
+            </p>
+            <p className="mt-0.5 text-[0.7rem] leading-snug text-white/60 sm:text-[0.78rem]">
+              Delivering with impact.
+            </p>
+          </div>
 
-            <div className="grid min-w-0 flex-1 grid-cols-2 items-center gap-x-2 gap-y-0 px-1 py-2 sm:grid-cols-4 sm:gap-x-3 sm:px-1.5 sm:py-2">
-              {STATS.map((s, i) => (
-                <StatItem
+          <div className="grid min-w-0 flex-1 grid-cols-4 divide-x divide-white/12">
+            {STATS.map((s, i) => {
+              const Icon = STAT_ICONS[i] ?? Award;
+              const display = Math.round(s.value * progress);
+              return (
+                <div
                   key={s.label}
-                  value={s.value}
-                  suffix={s.suffix}
-                  label={s.label}
-                  icon={STAT_ICONS[i] ?? Award}
-                  playId={playId}
-                />
-              ))}
-            </div>
+                  className="flex min-w-0 flex-col items-center justify-center gap-1 px-2 py-3.5 text-center sm:gap-1.5 sm:px-3 sm:py-4"
+                >
+                  <Icon
+                    className="h-3.5 w-3.5 shrink-0 text-brand sm:h-4 sm:w-4"
+                    aria-hidden
+                  />
+                  <div className="font-display text-[1.3rem] leading-none font-bold tracking-tight tabular-nums text-ink sm:text-[1.65rem] md:text-[1.85rem]">
+                    <span>{display}</span>
+                    {s.suffix ? (
+                      <span className="text-brand">{s.suffix}</span>
+                    ) : null}
+                  </div>
+                  <p className="max-w-[8.5rem] text-[0.58rem] font-semibold leading-tight tracking-[0.08em] text-white/65 uppercase sm:text-[0.64rem]">
+                    {s.label}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

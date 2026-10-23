@@ -1,4 +1,4 @@
-/** Full-bleed hero — clean office photo (no mockup/UI screenshot) */
+/** Full-bleed office photo — pre-framed desk + city (matches design crop) */
 export function HeroNetwork() {
   return (
     <div
@@ -7,17 +7,18 @@ export function HeroNetwork() {
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/hero-home-v6.jpg"
+        src="/hero-home-v9.jpg"
         alt=""
         width={1920}
         height={1080}
         decoding="async"
         fetchPriority="high"
         draggable={false}
-        className="absolute inset-0 h-full w-full object-cover object-[68%_45%] max-sm:object-[70%_40%]"
+        className="absolute inset-0 h-full w-full object-cover object-center max-sm:object-[70%_40%]"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(4,22,28,0.72)_0%,rgba(5,34,43,0.4)_48%,rgba(8,53,61,0.14)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_72%_40%,rgba(0,238,234,0.05)_0%,transparent_50%)]" />
+      {/* Left wash for type — keep desk + sunset city visible on the right */}
+      <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(2,14,18,0.8)_0%,rgba(3,20,26,0.55)_18%,rgba(4,28,34,0.22)_42%,rgba(5,36,42,0.05)_65%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,14,18,0.25)_0%,transparent_12%,transparent_75%,rgba(2,14,18,0.38)_100%)]" />
     </div>
   );
 }
