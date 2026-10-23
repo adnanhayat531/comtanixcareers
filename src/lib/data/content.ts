@@ -97,55 +97,66 @@ export const LIFE_ACTIVITIES = [
   },
 ] as const;
 
-/** Home — What We Do (icon-led cards; no photo headers) */
+/** Home — What We Do (concept photo cards; no faces) */
 export const CAPABILITIES = [
   {
     title: "AI & Automation",
     body: "Automate routine tasks and streamline everyday workflows.",
+    image: "/capabilities/ai-automation-concept.jpg",
   },
   {
     title: "Software Development",
     body: "Build web, mobile, and enterprise applications for business needs.",
+    image: "/capabilities/software-development-concept.jpg",
   },
   {
     title: "Cybersecurity & Data",
     body: "Secure digital assets and turn data into useful insights.",
+    image: "/capabilities/cybersecurity-concept.jpg",
   },
   {
     title: "Cloud & Infrastructure",
     body: "Maintain reliable systems, connected networks, and cloud environments.",
+    image: "/capabilities/cloud-concept.jpg",
   },
   {
     title: "E-commerce",
     body: "Manage online stores, product catalogs, and digital sales operations.",
+    image: "/capabilities/ecommerce-concept.jpg",
   },
   {
     title: "Accounting & Finance",
     body: "Manage financial records, reporting, and accounting processes.",
+    image: "/capabilities/finance-concept.jpg",
   },
   {
     title: "Business Development",
     body: "Assess market opportunities and support business growth strategies.",
+    image: "/capabilities/business-concept.jpg",
   },
   {
     title: "Digital Marketing",
     body: "Strengthen brand visibility through digital campaigns and content.",
+    image: "/capabilities/marketing-concept.jpg",
   },
 ] as const;
 
-/** Home — Why Comtanix (icon-led cards; no photo headers) */
+/** Home — Why Comtanix (concept photo cards; no faces) */
 export const WHY_COMTANIX = [
   {
     title: "Built for Real Operations",
     body: "Technology designed around your existing systems, everyday workflows, and practical business needs.",
+    image: "/why/why-operations-concept.jpg",
   },
   {
     title: "Intelligence With Accountability",
     body: "AI-driven efficiency guided by human judgment, rigorous testing, and responsible implementation.",
+    image: "/why/why-intelligence-concept.jpg",
   },
   {
     title: "Committed Beyond Delivery",
     body: "Ongoing collaboration, clear ownership, and solutions that adapt as your business evolves.",
+    image: "/why/why-commitment-concept.jpg",
   },
 ] as const;
 

@@ -1,8 +1,4 @@
 import Image from "next/image";
-import {
-  CAPABILITY_ILLUSTRATIONS,
-  WHY_ILLUSTRATIONS,
-} from "@/components/home/CapabilityIcons";
 import { Container, Section } from "@/components/ui/Section";
 import { HeroNetwork } from "@/components/home/HeroNetwork";
 import { HeroCopy } from "@/components/home/HeroCopy";
@@ -10,10 +6,6 @@ import { StatsBar } from "@/components/home/StatsBar";
 import { WhoWeAre } from "@/components/home/WhoWeAre";
 import { HeadingReveal } from "@/components/motion/Reveal";
 import { CAPABILITIES, WHY_COMTANIX } from "@/lib/data/content";
-
-const CAPABILITY_PHOTOS: Partial<Record<string, string>> = {
-  "Business Development": "/capabilities/business-development.jpg",
-};
 
 export default function HomePage() {
   return (
@@ -33,7 +25,7 @@ export default function HomePage() {
 
       <WhoWeAre />
 
-      {/* What We Do — deep petrol-teal gradient */}
+      {/* What We Do — concept photos (no faces), text overlay */}
       <Section
         id="services"
         className="services-gradient-section scroll-mt-24 md:scroll-mt-28"
@@ -53,58 +45,36 @@ export default function HomePage() {
           </HeadingReveal>
 
           <ul className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 sm:gap-4 xl:grid-cols-4">
-            {CAPABILITIES.map((c, i) => {
-              const photo = CAPABILITY_PHOTOS[c.title];
-              const Illustration = CAPABILITY_ILLUSTRATIONS[i];
-
-              if (photo) {
-                return (
-                  <li
-                    key={c.title}
-                    className="group relative min-h-[14.5rem] min-w-0 overflow-hidden rounded-[1rem] border border-[#0b2c35]/12 shadow-[0_10px_28px_-18px_rgba(11,44,53,0.4)] transition duration-300 hover:-translate-y-0.5 hover:border-[#49a4ae]/4 hover:shadow-[0_16px_32px_-14px_rgba(73,164,174,0.45)] sm:min-h-[15.5rem]"
-                  >
-                    <Image
-                      src={photo}
-                      alt=""
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                      quality={90}
-                      className="object-cover object-[center_20%] transition duration-500 group-hover:scale-[1.04]"
-                    />
-                    <div
-                      className="absolute inset-0 bg-gradient-to-t from-[#041216]/92 via-[#041216]/45 to-[#041216]/15"
-                      aria-hidden
-                    />
-                    <div className="relative z-10 flex h-full min-h-[14.5rem] flex-col justify-end px-5 py-5 sm:min-h-[15.5rem] sm:px-5 sm:py-6">
-                      <h3 className="type-h3 text-white">{c.title}</h3>
-                      <p className="type-meta mt-1.5 leading-snug text-white/85">
-                        {c.body}
-                      </p>
-                    </div>
-                  </li>
-                );
-              }
-
-              return (
-                <li
-                  key={c.title}
-                  className="theme-light group flex min-w-0 flex-col rounded-[1rem] border border-[#0b2c35]/12 bg-white px-5 py-5 shadow-[0_10px_28px_-18px_rgba(11,44,53,0.4)] transition duration-300 hover:-translate-y-0.5 hover:border-[#49a4ae]/4 hover:shadow-[0_16px_32px_-14px_rgba(73,164,174,0.45)] sm:px-5 sm:py-6"
-                >
-                  {Illustration ? (
-                    <Illustration className="mb-5 h-[5.25rem] w-full max-w-[8.5rem] shrink-0 self-start" />
-                  ) : null}
-                  <h3 className="type-h3 text-[#0b2c35]">{c.title}</h3>
-                  <p className="type-meta mt-1.5 leading-snug text-[#3a8a93]">
+            {CAPABILITIES.map((c) => (
+              <li
+                key={c.title}
+                className="group relative min-h-[14.5rem] min-w-0 overflow-hidden rounded-[1rem] border border-white/10 shadow-[0_10px_28px_-18px_rgba(0,0,0,0.45)] transition duration-300 hover:-translate-y-0.5 hover:border-brand/35 hover:shadow-[0_16px_32px_-14px_rgba(0,238,234,0.25)] sm:min-h-[15.5rem]"
+              >
+                <Image
+                  src={c.image}
+                  alt=""
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                  quality={90}
+                  className="object-cover object-center transition duration-500 group-hover:scale-[1.04]"
+                />
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-[#041216]/92 via-[#041216]/45 to-[#041216]/10"
+                  aria-hidden
+                />
+                <div className="relative z-10 flex h-full min-h-[14.5rem] flex-col justify-end px-5 py-5 sm:min-h-[15.5rem] sm:px-5 sm:py-6">
+                  <h3 className="type-h3 text-white">{c.title}</h3>
+                  <p className="type-meta mt-1.5 leading-snug text-white/85">
                     {c.body}
                   </p>
-                </li>
-              );
-            })}
+                </div>
+              </li>
+            ))}
           </ul>
         </Container>
       </Section>
 
-      {/* Why Comtanix — white band + illustrative icons */}
+      {/* Why Comtanix — concept photos (no faces), text overlay */}
       <Section className="theme-light site-light-section !pt-2 md:!pt-4">
         <Container>
           <HeadingReveal className="mb-5 max-w-2xl md:mb-6">
@@ -121,21 +91,31 @@ export default function HomePage() {
           </HeadingReveal>
 
           <ul className="grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-4">
-            {WHY_COMTANIX.map((w, i) => {
-              const Illustration = WHY_ILLUSTRATIONS[i];
-              return (
-                <li
-                  key={w.title}
-                  className="group flex min-w-0 flex-col rounded-[1rem] border border-[#0b2c35]/12 bg-[#f4fafb] px-5 py-5 shadow-[0_10px_28px_-18px_rgba(11,44,53,0.22)] transition duration-300 hover:-translate-y-0.5 hover:border-[#49a4ae]/4 hover:shadow-[0_16px_32px_-14px_rgba(73,164,174,0.35)] sm:px-5 sm:py-6"
-                >
-                  {Illustration ? (
-                    <Illustration className="mb-5 h-[5.25rem] w-full max-w-[8.5rem] shrink-0 self-start" />
-                  ) : null}
-                  <h3 className="type-h3 text-ink">{w.title}</h3>
-                  <p className="type-meta mt-1.5 leading-snug text-muted">{w.body}</p>
-                </li>
-              );
-            })}
+            {WHY_COMTANIX.map((w) => (
+              <li
+                key={w.title}
+                className="group relative min-h-[15rem] min-w-0 overflow-hidden rounded-[1rem] border border-[#0b2c35]/10 shadow-[0_10px_28px_-18px_rgba(11,44,53,0.28)] transition duration-300 hover:-translate-y-0.5 hover:border-[#49a4ae]/4 hover:shadow-[0_16px_32px_-14px_rgba(73,164,174,0.35)] sm:min-h-[16.5rem]"
+              >
+                <Image
+                  src={w.image}
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  quality={90}
+                  className="object-cover object-center transition duration-500 group-hover:scale-[1.04]"
+                />
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-[#041216]/92 via-[#041216]/45 to-[#041216]/10"
+                  aria-hidden
+                />
+                <div className="relative z-10 flex h-full min-h-[15rem] flex-col justify-end px-5 py-5 sm:min-h-[16.5rem] sm:px-5 sm:py-6">
+                  <h3 className="type-h3 text-white">{w.title}</h3>
+                  <p className="type-meta mt-1.5 leading-snug text-white/85">
+                    {w.body}
+                  </p>
+                </div>
+              </li>
+            ))}
           </ul>
         </Container>
       </Section>
