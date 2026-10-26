@@ -69,7 +69,7 @@ export const LIFE_ACTIVITIES = [
     title: "Team Sports & Activities",
     body: "Friendly matches and shared activities that strengthen team connections and offer time to recharge.",
     icon: "trophy" as const,
-    image: "/life/weekend-sports.png",
+    image: "/life/weekend-sports-v5.jpg",
   },
   {
     title: "Awards and Achievements",
