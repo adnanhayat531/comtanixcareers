@@ -5,7 +5,6 @@ import { FacilitiesBenefits } from "@/components/careers/FacilitiesBenefits";
 import { HowWeHire } from "@/components/careers/HowWeHire";
 import { OpeningsList } from "@/components/careers/OpeningsList";
 import { BrandAccentText } from "@/components/ui/BrandAccentText";
-import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 
@@ -53,23 +52,12 @@ export default function CareersPage() {
         className="site-dark-section scroll-mt-24 md:scroll-mt-28"
       >
         <Container>
-          <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
-            <div className="min-w-0">
-              <SectionHeading
-                compact
-                eyebrow="Join our team"
-                title="Career Opportunities"
-                className="mb-0"
-              />
-            </div>
-            <Button
-              href="/submit-cv"
-              variant="secondary"
-              className="shrink-0 self-start sm:self-auto"
-            >
-              Submit CV <ArrowRight className="h-4 w-4" aria-hidden />
-            </Button>
-          </div>
+          <SectionHeading
+            compact
+            eyebrow="Join our team"
+            title="Career Opportunities"
+            className="mb-6 sm:mb-8"
+          />
 
           <Suspense
             fallback={
@@ -78,6 +66,30 @@ export default function CareersPage() {
           >
             <OpeningsList />
           </Suspense>
+
+          <a
+            href="/submit-cv"
+            className="mt-6 flex flex-col gap-4 rounded-[var(--radius-xl)] px-5 py-5 shadow-[0_12px_32px_-18px_rgba(0,40,44,0.55)] transition hover:brightness-105 sm:mt-8 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-7 sm:py-6"
+            style={{
+              background:
+                "linear-gradient(135deg, #004848 0%, #003B3B 55%, #002E2E 100%)",
+            }}
+          >
+            <div className="min-w-0 text-left">
+              <p className="text-[1.05rem] font-bold leading-snug text-white sm:text-lg">
+                Don&apos;t see your specific role?
+              </p>
+              <p className="mt-1.5 max-w-2xl text-[0.8125rem] leading-relaxed text-white/80 sm:text-sm">
+                We are constantly expanding our team. Send us your resume
+                through an open application and we&apos;ll reach out when a
+                suitable position matches your profile.
+              </p>
+            </div>
+            <span className="inline-flex h-11 shrink-0 items-center justify-center gap-2 self-start rounded-[var(--radius-md)] bg-white px-5 text-sm font-semibold text-[#003B3B] shadow-sm transition hover:bg-white/95 sm:self-auto">
+              Send Open Application
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </span>
+          </a>
         </Container>
       </Section>
 

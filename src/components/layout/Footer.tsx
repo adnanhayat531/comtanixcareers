@@ -217,13 +217,13 @@ export function Footer() {
               <div className="flex w-full max-w-[18rem] flex-1 flex-col gap-6 sm:gap-7">
                 <ContactRow
                   href={`tel:+${CONFIG.whatsapp}`}
-                  label="Talk to HR"
+                  label="Get in Touch"
                   value={CONFIG.whatsappShow}
                   icon={Phone}
                 />
                 <ContactRow
                   href={`mailto:${CONFIG.email}`}
-                  label="Have any questions?"
+                  label="Email Us"
                   value={CONFIG.email}
                   icon={Mail}
                 />
