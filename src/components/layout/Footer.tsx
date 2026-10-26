@@ -188,12 +188,12 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Company — centered in middle column */}
+            {/* Company — fill middle column free space */}
             <div
-              className="min-w-0 lg:flex lg:justify-center lg:border-r lg:px-8 xl:px-12"
+              className="min-w-0 lg:border-r lg:px-8 xl:px-12"
               style={{ borderColor: `${CYAN}33` }}
             >
-              <div className="min-w-0">
+              <div className="min-w-0 w-full">
                 <h3 className="text-[0.6875rem] font-extrabold tracking-[0.16em] text-white uppercase">
                   Company
                 </h3>
@@ -202,12 +202,12 @@ export function Footer() {
                   style={{ backgroundColor: CYAN }}
                   aria-hidden
                 />
-                <ul className="mt-3.5 space-y-1.5">
+                <ul className="mt-3.5 grid grid-cols-2 gap-x-6 gap-y-2 sm:gap-x-8 sm:gap-y-2.5">
                   {COMPANY_LINKS.map((l) => (
-                    <li key={l.label}>
+                    <li key={l.label} className="min-w-0">
                       <Link
                         href={l.href}
-                        className="inline-block text-[0.8125rem] leading-snug text-white/85 transition-colors hover:text-white"
+                        className="inline-block max-w-full text-[0.8125rem] leading-snug text-white/85 transition-colors hover:text-white"
                       >
                         {l.label}
                       </Link>
