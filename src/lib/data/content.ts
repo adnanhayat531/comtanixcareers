@@ -122,17 +122,17 @@ export const CAPABILITIES = [
   {
     title: "E-commerce",
     body: "Manage online stores, product catalogs, and digital sales operations.",
-    image: "/capabilities/ecommerce-v3.jpg",
+    image: "/capabilities/ecommerce-v4.jpg",
   },
   {
     title: "Accounting & Finance",
     body: "Manage financial records, reporting, and accounting processes.",
-    image: "/capabilities/finance-v3.jpg",
+    image: "/capabilities/finance-v6.jpg",
   },
   {
     title: "Business Development",
     body: "Assess market opportunities and support business growth strategies.",
-    image: "/capabilities/business-v3.jpg",
+    image: "/capabilities/business-v4.jpg",
   },
   {
     title: "Digital Marketing",
