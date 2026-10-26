@@ -49,13 +49,13 @@ export function StatsBar() {
     >
       <div className="mx-auto w-full min-w-0 max-w-none px-[var(--container-pad-x)]">
         <div className="flex w-full items-stretch overflow-hidden rounded-2xl border border-white/15 bg-[rgba(4,28,34,0.78)] shadow-[0_20px_60px_-24px_rgba(0,0,0,0.7)] backdrop-blur-xl max-sm:flex-col">
-          <div className="flex w-full shrink-0 flex-col items-start justify-center border-white/12 px-4 py-3.5 max-sm:border-b sm:w-[12rem] sm:border-r sm:px-5 sm:py-4 md:w-[14.5rem] md:px-6 md:py-5">
-            <p className="text-[0.88rem] font-semibold leading-snug text-ink sm:text-[1.05rem]">
+          <div className="flex w-full shrink-0 flex-col items-start justify-center border-white/12 px-4 py-2.5 max-sm:border-b sm:w-[12rem] sm:border-r sm:px-5 sm:py-3 md:w-[14.5rem] md:px-6 md:py-3.5">
+            <p className="text-[0.82rem] font-semibold leading-snug text-ink sm:text-[0.95rem]">
               <BrandAccentText accentClassName="text-brand">
                 Growing with purpose.
               </BrandAccentText>
             </p>
-            <p className="mt-0.5 text-[0.7rem] leading-snug text-white/60 sm:text-[0.78rem]">
+            <p className="mt-0.5 text-[0.65rem] leading-snug text-white/60 sm:text-[0.72rem]">
               Delivering with impact.
             </p>
           </div>
@@ -67,19 +67,19 @@ export function StatsBar() {
               return (
                 <div
                   key={s.label}
-                  className="flex min-w-0 flex-col items-center justify-center gap-1 px-2 py-3 text-center sm:gap-1.5 sm:px-3 sm:py-4 md:py-5"
+                  className="flex min-w-0 flex-col items-center justify-center gap-0.5 px-2 py-2 text-center sm:gap-1 sm:px-3 sm:py-2.5 md:py-3"
                 >
                   <Icon
-                    className="h-3.5 w-3.5 shrink-0 text-brand sm:h-4 sm:w-4"
+                    className="h-3 w-3 shrink-0 text-brand sm:h-3.5 sm:w-3.5"
                     aria-hidden
                   />
-                  <div className="font-display text-[1.25rem] leading-none font-bold tracking-tight tabular-nums text-ink sm:text-[1.65rem] md:text-[1.85rem] lg:text-[2rem]">
+                  <div className="font-display text-[1.1rem] leading-none font-bold tracking-tight tabular-nums text-ink sm:text-[1.4rem] md:text-[1.55rem] lg:text-[1.7rem]">
                     <span>{display}</span>
                     {s.suffix ? (
                       <span className="text-brand">{s.suffix}</span>
                     ) : null}
                   </div>
-                  <p className="max-w-[9rem] text-[0.55rem] font-semibold leading-tight tracking-[0.08em] text-white/65 uppercase sm:text-[0.64rem]">
+                  <p className="max-w-[9rem] text-[0.5rem] font-semibold leading-tight tracking-[0.08em] text-white/65 uppercase sm:text-[0.58rem]">
                     {s.label}
                   </p>
                 </div>
