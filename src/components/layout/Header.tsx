@@ -108,7 +108,7 @@ export function Header() {
       <div className="mx-auto flex h-[var(--header-h)] w-full max-w-none items-center justify-between gap-1.5 py-0 pr-[max(var(--container-pad-x),env(safe-area-inset-right,0px))] pl-[max(0.5rem,env(safe-area-inset-left,0px))] sm:gap-2 sm:pl-2.5 md:pl-3 lg:gap-1 xl:gap-0.5 xl:pl-4">
         <Link
           href="/"
-          className="flex h-7 shrink-0 items-center focus-visible:rounded-sm sm:h-8"
+          className="relative z-10 flex shrink-0 -translate-y-1 items-center focus-visible:rounded-sm sm:-translate-y-1.5"
           aria-label={`${SITE.name} home`}
           onClick={(e) => {
             if (isHome) {
@@ -119,7 +119,7 @@ export function Header() {
         >
           <BrandLogo
             light
-            className="h-6 w-auto max-w-[9rem] sm:h-7 sm:max-w-[10.5rem] lg:max-w-[11.5rem]"
+            className="!h-8 w-auto max-w-[11rem] object-contain object-left object-top sm:!h-9 sm:max-w-[12.5rem] lg:!h-9 lg:max-w-[13.5rem]"
           />
         </Link>
 

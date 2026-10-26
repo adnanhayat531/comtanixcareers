@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { BrandAccentText } from "@/components/ui/BrandAccentText";
+import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import { LifeIcon } from "@/components/ui/Icons";
@@ -20,12 +22,16 @@ export default function LifePage() {
         eyebrow="Life at Comtanix"
         title="Together in Every Milestone."
         description="Our teams share the experiences, the achievements, and the culture that make Comtanix more than a place to work."
-        image="/life/hero-v3.jpg"
-        imageAlt="Colleagues collaborating at a conference table in the Comtanix office"
+        image="/life/hero-banner.jpg"
+        imageAlt="Colleagues collaborating around a laptop in the Comtanix office"
         imageFit="cover"
-        objectPosition="55% 42%"
-        className="page-hero-banner w-full !aspect-[1440/369] !h-auto !min-h-0 !max-h-none max-sm:!min-h-[15rem] max-sm:!aspect-auto max-sm:!h-[min(34vh,15rem)] [&_h1]:max-w-[16ch] sm:[&_h1]:max-w-[18ch]"
-      />
+        objectPosition="center 45%"
+        className="page-hero-banner w-full !aspect-[1440/369] !h-auto !min-h-0 !max-h-none max-sm:!min-h-[15rem] max-sm:!aspect-auto max-sm:!h-[min(34vh,15rem)]"
+      >
+        <Button href="/careers" variant="outlineLight">
+          View openings <ArrowRight className="h-4 w-4" aria-hidden />
+        </Button>
+      </PageHero>
 
       <Section className="site-dark-section">
         <Container>
