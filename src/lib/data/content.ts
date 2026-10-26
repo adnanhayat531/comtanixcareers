@@ -112,12 +112,12 @@ export const CAPABILITIES = [
   {
     title: "Cybersecurity & Data",
     body: "Secure digital assets and turn data into useful insights.",
-    image: "/capabilities/cybersecurity-v9.jpg",
+    image: "/capabilities/cybersecurity-v18.jpg",
   },
   {
     title: "Cloud & Infrastructure",
     body: "Maintain reliable systems, connected networks, and cloud environments.",
-    image: "/capabilities/cloud-v9.jpg",
+    image: "/capabilities/cloud-v13.jpg",
   },
   {
     title: "E-commerce",
