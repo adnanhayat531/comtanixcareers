@@ -385,7 +385,8 @@ function JobDetail({
         <div className="mt-5 flex flex-wrap items-center gap-2">
           <Button
             href={`/apply?role=${encodeURIComponent(role.title)}`}
-            className="w-full sm:w-auto"
+            variant="white"
+            className="w-full border border-line sm:w-auto"
           >
             Apply now <ArrowRight className="h-4 w-4" aria-hidden />
           </Button>
