@@ -159,7 +159,6 @@ export function TestimonialsGrid() {
             <ExternalLink className="h-4 w-4 text-brand" aria-hidden />
           </span>
         </a>
-        <p className="type-meta text-muted">Positive reviews · 4★ &amp; 5★</p>
       </div>
 
       {/* Sideways marquee with circular card feel */}
