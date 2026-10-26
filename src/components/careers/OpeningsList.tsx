@@ -49,14 +49,17 @@ function formatDeadline(value: string | null | undefined) {
 }
 
 function shiftLabel(tags: string[]) {
-  const raw =
-    tags.find((t) => /us\s*shift|night\s*shift|day\s*shift|\bshift\b/i.test(t)) ??
-    "US shift";
-  return /night\s*shift/i.test(raw) ? "US shift" : raw;
+  const joined = tags.join(" ");
+  if (/uk\s*shift|uk\s*business/i.test(joined)) return "UK shift";
+  if (/us\s*shift|us\s*business|night\s*shift/i.test(joined)) return "US shift";
+  const raw = tags.find((t) => /\bshift\b/i.test(t));
+  return raw ?? "US shift";
 }
 
 function displayTags(tags: string[]) {
-  return tags.filter((t) => !/(us|night)\s*shift/i.test(t)).slice(0, 3);
+  return tags
+    .filter((t) => !/(uk|us|night)\s*shift|(uk|us)\s*business/i.test(t))
+    .slice(0, 3);
 }
 
 function roleCapsules(role: UiRole) {
@@ -81,6 +84,15 @@ const JD_SECTION_HEADINGS = [
   "Required Qualifications & Skills",
   "Preferred Skills",
 ] as const;
+
+/** Match JD headings even when written with a trailing colon */
+function matchJdHeading(line: string): string | null {
+  const cleaned = line.replace(/:+\s*$/, "").trim();
+  const found = (JD_SECTION_HEADINGS as readonly string[]).find(
+    (h) => h.toLowerCase() === cleaned.toLowerCase(),
+  );
+  return found ?? null;
+}
 
 type JdSection = {
   title: string;
@@ -121,7 +133,7 @@ function parseJobDescription(text: string): ParsedJobDescription {
       continue;
     }
     const fact = factLabels.find((f) => line.startsWith(`${f}:`));
-    if (fact || (JD_SECTION_HEADINGS as readonly string[]).includes(line)) break;
+    if (fact || matchJdHeading(line)) break;
     introLines.push(line);
     i += 1;
   }
@@ -146,8 +158,9 @@ function parseJobDescription(text: string): ParsedJobDescription {
       i += 1;
       continue;
     }
-    if ((JD_SECTION_HEADINGS as readonly string[]).includes(line)) {
-      const title = line;
+    const heading = matchJdHeading(line);
+    if (heading) {
+      const title = heading;
       i += 1;
       const bodyLines: string[] = [];
       const items: string[] = [];
@@ -157,7 +170,7 @@ function parseJobDescription(text: string): ParsedJobDescription {
           i += 1;
           continue;
         }
-        if ((JD_SECTION_HEADINGS as readonly string[]).includes(next)) break;
+        if (matchJdHeading(next)) break;
         const foot = factLabels.find((f) => next.startsWith(`${f}:`));
         if (foot && title !== "About Comtanix") break;
         if (title === "About Comtanix") {
