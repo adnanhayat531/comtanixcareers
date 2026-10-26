@@ -187,7 +187,11 @@ export function PageHero({
             <img
               src={image}
               alt={imageAlt}
-              className={`absolute inset-0 z-[1] h-full w-full ${fitClass} ${positionClass} [object-position:var(--hero-pos,center_42%)] max-sm:[object-position:center_28%] sm:[object-position:var(--hero-pos)]`}
+              className={`absolute inset-0 z-[1] h-full w-full ${fitClass} ${positionClass} [object-position:var(--hero-pos,center_32%)] ${
+                objectPosition
+                  ? "[object-position:var(--hero-pos)]"
+                  : "max-sm:[object-position:center_26%] sm:[object-position:var(--hero-pos)]"
+              }`}
               style={imgStyle}
               fetchPriority="high"
               decoding="async"
