@@ -81,7 +81,7 @@ export const LIFE_ACTIVITIES = [
     title: "Learning & Development",
     body: "Building communication skills, expanding technical knowledge, and supporting continued career growth.",
     icon: "graduation" as const,
-    image: "/life/skill-sessions.png",
+    image: "/life/skill-sessions-v2.png",
   },
   {
     title: "Celebrations & Traditions",
@@ -93,7 +93,7 @@ export const LIFE_ACTIVITIES = [
     title: "Spaces to Recharge",
     body: "Welcoming spaces to take a break, connect with colleagues, and return refreshed.",
     icon: "game" as const,
-    image: "/life/breakroom.png",
+    image: "/life/breakroom-v2.png",
   },
 ] as const;
 
