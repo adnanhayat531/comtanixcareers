@@ -37,10 +37,11 @@ export function WhoWeAre() {
             </h2>
 
             <p className="type-meta mt-3 max-w-prose text-muted">
-              From software and AI to everyday IT, we help you manage critical
-              technology needs with skilled professionals and AI-enabled
-              solutions. Our teams work with your people, systems, and processes
-              to support your operations and keep projects on track.
+              We bring together software, AI, and practical IT expertise to help
+              businesses simplify complexity and move forward with confidence.
+              Our skilled professionals and AI-enabled solutions support your
+              teams, systems, and processes to streamline operations, solve
+              challenges, and keep projects on track.
             </p>
 
             <ul className="mt-4 space-y-2.5 sm:mt-5">
