@@ -16,6 +16,11 @@ type PageHeroProps = {
   objectPosition?: string;
   /** Soft left→right fade so letterbox edge blends into the hero (no hard cut). */
   imageBlend?: boolean;
+  /**
+   * With contain: fill side gaps with a blurred cover of the same photo
+   * so width looks full without zooming the sharp image.
+   */
+  fillLetterbox?: boolean;
   /** Prefer light text on photo heroes. Default when image is set. */
   tone?: "dark" | "light";
   children?: ReactNode;
@@ -56,6 +61,7 @@ export function PageHero({
   imagePosition = "center",
   objectPosition,
   imageBlend = false,
+  fillLetterbox = false,
   tone,
   children,
   className = "",
@@ -163,16 +169,30 @@ export function PageHero({
             </div>
           </>
         ) : (
-          // Native img — fill + class "absolute" so globals.css height:auto rule cannot collapse it
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={image}
-            alt={imageAlt}
-            className={`absolute inset-0 z-0 h-full w-full ${fitClass} ${positionClass} [object-position:var(--hero-pos,center_42%)] max-sm:[object-position:center_28%] sm:[object-position:var(--hero-pos)]`}
-            style={imgStyle}
-            fetchPriority="high"
-            decoding="async"
-          />
+          <>
+            {fillLetterbox && imageFit === "contain" ? (
+              // Soft side fill — full width look without zooming the sharp photo
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={image}
+                alt=""
+                aria-hidden
+                className="absolute inset-0 z-0 h-full w-full scale-110 object-cover opacity-80 blur-2xl"
+                fetchPriority="high"
+                decoding="async"
+              />
+            ) : null}
+            {/* Native img — fill + class "absolute" so globals.css height:auto rule cannot collapse it */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={image}
+              alt={imageAlt}
+              className={`absolute inset-0 z-[1] h-full w-full ${fitClass} ${positionClass} [object-position:var(--hero-pos,center_42%)] max-sm:[object-position:center_28%] sm:[object-position:var(--hero-pos)]`}
+              style={imgStyle}
+              fetchPriority="high"
+              decoding="async"
+            />
+          </>
         )
       ) : (
         <div

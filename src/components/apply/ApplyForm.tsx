@@ -37,7 +37,7 @@ const CONFIRMATIONS = [
     id: "confirm-location",
     name: "confirmLocation",
     label:
-      "I can commute to Bahria Town Phase 8, Rawalpindi (Noor Heights).",
+      "I can commute to Bahria Town Phase 8, Rawalpindi.",
   },
 ] as const;
 
