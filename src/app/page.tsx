@@ -100,8 +100,9 @@ export default function HomePage() {
                     alt=""
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    quality={90}
-                    className="object-cover object-[center_45%] transition duration-500 group-hover:scale-[1.03]"
+                    quality={100}
+                    unoptimized
+                    className="object-cover object-[center_40%] transition duration-500 group-hover:scale-[1.02]"
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-1 px-4 py-3.5 sm:px-5 sm:py-4">
