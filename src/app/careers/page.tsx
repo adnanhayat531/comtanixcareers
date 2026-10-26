@@ -85,10 +85,9 @@ export default function CareersPage() {
         <Container>
           <SectionHeading title="Why Build Your Career With Us" />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-            {WHY.map((w, i) => (
+            {WHY.map((w) => (
               <div key={w.title}>
-                <p className="type-eyebrow text-brand">0{i + 1}</p>
-                <h3 className="type-h3 mt-1.5 text-ink">
+                <h3 className="type-h3 text-ink">
                   <BrandAccentText>{w.title}</BrandAccentText>
                 </h3>
                 <p className="type-meta mt-2 text-muted">{w.body}</p>

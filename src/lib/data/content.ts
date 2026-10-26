@@ -75,7 +75,7 @@ export const LIFE_ACTIVITIES = [
     title: "Awards and Achievements",
     body: "Celebrating individual contributions, strong performance, and milestones that reflect quality and teamwork.",
     icon: "star" as const,
-    image: "/life/awards-achievements-v4.png",
+    image: "/life/awards-achievements-v5.png",
   },
   {
     title: "Learning & Development",
@@ -87,7 +87,7 @@ export const LIFE_ACTIVITIES = [
     title: "Celebrations & Traditions",
     body: "Recognizing birthdays, cultural occasions, and team milestones that bring colleagues together.",
     icon: "party" as const,
-    image: "/life/festivals.png",
+    image: "/life/celebrations-traditions-v2.png",
   },
   {
     title: "Spaces to Recharge",
