@@ -20,9 +20,13 @@ const COMPANY_LINKS = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
-const SOCIAL_ORDER = ["LinkedIn", "Facebook", "Instagram"] as const;
+const LEGAL_LINKS = [
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms of Service" },
+  { href: "/sitemap.xml", label: "Sitemap" },
+] as const;
 
-const FOOTER_TAGLINE = "Technology. People. Progress.";
+const SOCIAL_ORDER = ["LinkedIn", "Facebook", "Instagram"] as const;
 
 const SOCIAL_PATHS: Record<string, string> = {
   Facebook:
@@ -56,43 +60,18 @@ function FooterSocialIcon({ name }: { name: (typeof SOCIAL_ORDER)[number] }) {
   );
 }
 
-/** Hex mark paths (logo geometry) — reused for multi-shade stack */
-const MARK_HEX =
-  "M16 0 L51 0 L68 29 L52 59 L15 59 L0 28 Z M43 14 L52 30 L42 45 L34 30 Z";
-const MARK_FACET = "M26 14 L43 14 L34 30 L42 45 L25 45 L16 30 Z";
-
-/** Drawn mark + left multi-shade layers (chevron / offset hexs) */
-function FooterBrandMark() {
-  const layers = [
-    { x: -118, body: "#00363C", facet: "#004248", opacity: 0.55 },
-    { x: -78, body: "#003E44", facet: "#004E54", opacity: 0.7 },
-    { x: -40, body: "#004A50", facet: "#005C64", opacity: 0.85 },
-    { x: 0, body: "#00555C", facet: "#006B74", opacity: 1 },
-  ] as const;
-
+function SectionLabel({ children }: { children: string }) {
   return (
-    <div
-      className="pointer-events-none absolute inset-y-0 -left-[220%] right-0 flex items-center justify-end xl:-left-[260%]"
-      aria-hidden
-    >
-      <svg
-        viewBox="-130 0 210 60"
-        className="h-[min(100%,15rem)] w-auto max-w-none select-none"
-        preserveAspectRatio="xMaxYMid meet"
-      >
-        {layers.map((layer) => (
-          <g key={layer.x} transform={`translate(${layer.x} 0)`} opacity={layer.opacity}>
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              fill={layer.body}
-              d={MARK_HEX}
-            />
-            <path fill={layer.facet} d={MARK_FACET} />
-          </g>
-        ))}
-      </svg>
-    </div>
+    <>
+      <h3 className="text-[0.6875rem] font-extrabold tracking-[0.16em] text-white uppercase">
+        {children}
+      </h3>
+      <span
+        className="mt-2 block h-0.5 w-7 rounded-full"
+        style={{ backgroundColor: CYAN }}
+        aria-hidden
+      />
+    </>
   );
 }
 
@@ -108,18 +87,18 @@ function ContactRow({
   icon: typeof Phone;
 }) {
   return (
-    <a href={href} className="group flex min-w-0 items-center gap-3">
+    <a href={href} className="group flex min-w-0 items-start gap-3">
       <span
-        className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-white transition group-hover:brightness-110"
+        className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full text-white transition group-hover:brightness-110"
         style={{ backgroundColor: CYAN }}
       >
         <Icon className="h-3.5 w-3.5" strokeWidth={2.25} aria-hidden />
       </span>
-      <span className="min-w-0">
-        <span className="block text-[0.8125rem] font-bold tracking-wide text-white">
+      <span className="min-w-0 pt-0.5">
+        <span className="block text-[0.8125rem] font-semibold tracking-wide text-white">
           {label}
         </span>
-        <span className="mt-0.5 block break-words text-[0.8125rem] leading-snug text-white/75 transition group-hover:text-white">
+        <span className="mt-0.5 block break-words text-[0.8125rem] leading-snug text-white/70 transition group-hover:text-white/90">
           {value}
         </span>
       </span>
@@ -144,18 +123,38 @@ export function Footer() {
           background: `linear-gradient(165deg, ${TEAL_MID} 0%, ${TEAL_DEEP} 48%, #002929 100%)`,
         }}
       >
-        <Container className="relative z-[1] py-7 md:py-8">
-          <div className="relative grid min-w-0 w-full grid-cols-1 items-start gap-8 sm:gap-10 lg:grid-cols-[72%_28%] lg:items-stretch lg:gap-0">
-            {/* Content block — stays above decorative mark layers */}
-            <div className="relative z-[1] grid min-w-0 grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)_minmax(0,1.15fr)] lg:items-stretch lg:gap-0">
-            {/* Brand — left */}
-            <div
-              className="flex min-w-0 flex-col items-start lg:border-r lg:pr-6 xl:pr-8"
-              style={{ borderColor: `${CYAN}33` }}
-            >
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-[min(28%,18rem)] opacity-[0.06] lg:block"
+          aria-hidden
+        >
+          <svg viewBox="0 0 200 320" className="h-full w-full" preserveAspectRatio="xMaxYMid meet">
+            <path
+              d="M40 40 L160 160 L40 280"
+              fill="none"
+              stroke={CYAN}
+              strokeWidth="28"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M5 55 L110 160 L5 265"
+              fill="none"
+              stroke={CYAN}
+              strokeWidth="14"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity="0.55"
+            />
+          </svg>
+        </div>
+
+        <Container className="relative z-[1] py-10 md:py-12">
+          <div className="grid min-w-0 w-full grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 xl:gap-16">
+            {/* Brand + socials */}
+            <div className="min-w-0 sm:col-span-2 lg:col-span-1">
               <Link
                 href="/"
-                className="inline-flex max-w-full items-center self-start"
+                className="inline-flex max-w-full items-center"
                 aria-label={`${SITE.name} home`}
                 onClick={(e) => {
                   if (pathname === "/") {
@@ -166,55 +165,50 @@ export function Footer() {
               >
                 <BrandLogo
                   light
-                  className="h-8 w-auto max-w-[10.5rem] object-left sm:h-9 sm:max-w-[12rem]"
+                  className="h-8 w-auto max-w-[10.5rem] sm:h-9 sm:max-w-[12rem]"
                 />
               </Link>
-              <p className="mt-3 text-[0.875rem] font-medium tracking-wide text-white">
-                {FOOTER_TAGLINE}
-              </p>
-              <span
-                className="mt-2.5 block h-px w-9"
-                style={{ backgroundColor: CYAN }}
-                aria-hidden
-              />
-              <p className="mt-2.5 max-w-[16.5rem] text-[0.75rem] leading-snug text-white/70">
-                Technology and operational expertise spanning AI, software,
-                cloud, cybersecurity, and core business functions.
-              </p>
-            </div>
-
-            {/* Company — middle */}
-            <div
-              className="min-w-0 lg:flex lg:justify-start lg:border-r lg:pl-6 lg:pr-4 xl:pl-8 xl:pr-6"
-              style={{ borderColor: `${CYAN}33` }}
-            >
-              <div className="min-w-0 text-left">
-                <h3 className="text-[0.6875rem] font-extrabold leading-none tracking-[0.16em] text-white uppercase">
-                  Company
-                </h3>
-                <span
-                  className="mt-1 ml-0 block h-0.5 w-8 self-start rounded-full"
-                  style={{ backgroundColor: CYAN }}
-                  aria-hidden
-                />
-                <ul className="mt-1.5 space-y-1">
-                  {COMPANY_LINKS.map((l) => (
-                    <li key={l.label} className="leading-snug">
-                      <Link
-                        href={l.href}
-                        className="inline-block text-[0.8125rem] leading-snug text-white/85 underline-offset-4 transition-colors hover:text-white hover:underline"
-                      >
-                        {l.label}
-                      </Link>
-                    </li>
+              {socials.length > 0 ? (
+                <div className="mt-6 flex items-center gap-2.5" aria-label="Social links">
+                  {socials.map(({ name, url }) => (
+                    <a
+                      key={name}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={name}
+                      title={name}
+                      className="grid h-9 w-9 place-items-center rounded-full border transition hover:bg-white/10"
+                      style={{ borderColor: `${CYAN}88`, color: CYAN }}
+                    >
+                      <FooterSocialIcon name={name} />
+                    </a>
                   ))}
-                </ul>
-              </div>
+                </div>
+              ) : null}
             </div>
 
-            {/* Contact + socials near divider — right side kept open for logo design */}
-            <div className="relative flex min-w-0 flex-col lg:h-full lg:items-start lg:pl-6 xl:pl-8">
-              <div className="flex w-full max-w-[18rem] flex-1 flex-col gap-6 sm:gap-7">
+            {/* Company */}
+            <div className="min-w-0">
+              <SectionLabel>Company</SectionLabel>
+              <ul className="mt-4 grid grid-cols-2 gap-x-8 gap-y-2.5">
+                {COMPANY_LINKS.map((l) => (
+                  <li key={l.label} className="min-w-0">
+                    <Link
+                      href={l.href}
+                      className="text-[0.875rem] leading-snug text-white/80 transition-colors hover:text-white"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div className="min-w-0">
+              <SectionLabel>Get in touch</SectionLabel>
+              <div className="mt-4 flex flex-col gap-5">
                 <ContactRow
                   href={`tel:+${CONFIG.whatsapp}`}
                   label="Talk to HR"
@@ -227,44 +221,36 @@ export function Footer() {
                   value={CONFIG.email}
                   icon={Mail}
                 />
-                <div className="mt-auto flex items-center justify-start gap-2">
-                  {socials.map(({ name, url }) => (
-                    <a
-                      key={name}
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={name}
-                      title={name}
-                      className="grid h-8 w-8 place-items-center rounded-full border transition hover:bg-white/10 sm:h-9 sm:w-9"
-                      style={{ borderColor: `${CYAN}99`, color: CYAN }}
-                    >
-                      <FooterSocialIcon name={name} />
-                    </a>
-                  ))}
-                </div>
               </div>
-            </div>
-            </div>
-
-            {/* Large brand mark + multi-shade stack into left empty zone */}
-            <div
-              className="pointer-events-none relative z-0 hidden min-h-0 min-w-0 items-center justify-center self-stretch overflow-visible lg:flex"
-              aria-hidden
-            >
-              <FooterBrandMark />
             </div>
           </div>
         </Container>
 
         <div
           className="relative z-[1] border-t"
-          style={{ borderColor: `${CYAN}28`, backgroundColor: TEAL_BAR }}
+          style={{ borderColor: `${CYAN}22`, backgroundColor: TEAL_BAR }}
         >
-          <Container className="py-3 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] text-center">
-            <p className="text-[0.75rem] text-white/65">
+          <Container className="flex flex-col gap-3 py-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))] sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+            <p className="text-[0.75rem] text-white/55">
               © {year} {SITE.name}. All rights reserved.
             </p>
+            <nav
+              className="flex flex-wrap items-center gap-x-1 text-[0.75rem] text-white/55"
+              aria-label="Legal"
+            >
+              {LEGAL_LINKS.map((l, i) => (
+                <span key={l.label} className="inline-flex items-center">
+                  {i > 0 ? (
+                    <span className="mx-2.5 text-white/25" aria-hidden>
+                      |
+                    </span>
+                  ) : null}
+                  <Link href={l.href} className="transition-colors hover:text-white/85">
+                    {l.label}
+                  </Link>
+                </span>
+              ))}
+            </nav>
           </Container>
         </div>
       </div>

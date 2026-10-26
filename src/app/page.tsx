@@ -10,10 +10,10 @@ import { CAPABILITIES, WHY_COMTANIX } from "@/lib/data/content";
 export default function HomePage() {
   return (
     <>
-      <section className="relative flex min-h-[100svh] w-full flex-col overflow-hidden supports-[height:100dvh]:min-h-[100dvh] md:h-[100svh] md:supports-[height:100dvh]:h-[100dvh] max-md:min-h-[100svh]">
+      <section className="relative flex h-[100svh] min-h-[100svh] w-full flex-col overflow-hidden supports-[height:100dvh]:h-[100dvh] supports-[height:100dvh]:min-h-[100dvh]">
         <HeroNetwork />
         {/* Copy sits upper-left over the wash; stats float at bottom */}
-        <div className="relative z-10 mx-auto flex w-full min-w-0 max-w-none flex-1 flex-col items-start justify-start gap-6 px-[var(--container-pad-x)] pt-[calc(var(--header-h)+clamp(1.25rem,5vh,6.5rem))] pb-4 sm:gap-8 sm:pb-5 md:justify-center md:pb-0 md:pt-[calc(var(--header-h)+clamp(2rem,7vh,6.5rem))] lg:justify-start">
+        <div className="relative z-10 mx-auto flex w-full min-w-0 max-w-none flex-1 flex-col items-start justify-start px-[var(--container-pad-x)] pt-[calc(var(--header-h)+clamp(2.5rem,8vh,6.5rem))]">
           <HeroCopy />
         </div>
         <div className="relative z-20 mt-auto w-full min-w-0 flex-none">

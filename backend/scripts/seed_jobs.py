@@ -20,7 +20,7 @@ LOCATION = "Bahria Town Phase 8, Rawalpindi"
 ROLES = [
     {
         "code": "support",
-        "title": "Customer Support Representative",
+        "title": "Customer Support Agent",
         "summary": (
             "Assist international customers, resolve service inquiries, "
             "and maintain clear support communication."
@@ -33,9 +33,9 @@ Timings: 6 PM - 3 AM (Monday-Friday) | US Business Hours
 Work Arrangement: Onsite
 
 About Comtanix
-Comtanix is a technology-driven company working across software development, AI and automation, cybersecurity, cloud infrastructure, and specialized business services. We are looking for a Customer Support Representative to assist international customers, address service-related inquiries, resolve issues, and maintain clear communication throughout the support process.
+Comtanix is a technology-driven company working across software development, AI and automation, cybersecurity, cloud infrastructure, and specialized business services. We are looking for a Customer Support Agent to assist international customers, address service-related inquiries, resolve issues, and maintain clear communication throughout the support process.
 
-Core Responsibilities
+Core Responsibilities:
 - Respond to customer inquiries through appropriate communication channels, including email, chat, and other support platforms.
 - Understand customer concerns, provide accurate information, and resolve issues within defined service standards.
 - Document customer interactions, maintain support records, and update relevant systems.
@@ -58,7 +58,7 @@ Preferred Skills
 
 Pay: PKR 60,000-75,000 per month
 Work Location: In person""",
-        "tags": ["US shift", "Onsite", "Customer Support"],
+        "tags": ["US Business Hours", "Onsite", "Customer Support"],
         "department": "Customer Support",
         "employment_type": "Onsite | 6 PM - 3 AM (Mon-Fri)",
         "salary": "PKR 60,000-75,000 per month",
@@ -74,13 +74,13 @@ Work Location: In person""",
 
 Pay: PKR 70,000-90,000 per month
 Location: Bahria Town, Phase 8, Rawalpindi
-Timings: 6 PM - 3 AM (Monday-Friday) | US Business Hours Alignment
+Timings: 4 PM - 1 AM (Monday-Friday) | UK Business Hours Alignment
 Work Arrangement: Onsite
 
 About Comtanix
 Comtanix is a technology-driven company delivering software development, AI and automation, cybersecurity, cloud infrastructure, and digital solutions for business needs. We are seeking a Web Developer to develop and maintain responsive websites and web applications, implement functional requirements, and ensure reliable performance across devices and platforms.
 
-Core Responsibilities
+Core Responsibilities:
 - Develop, maintain, and enhance responsive websites and web applications based on business and technical requirements.
 - Build user interfaces and application features using relevant frontend and backend technologies.
 - Write clean, maintainable, and reusable code while following established development standards.
@@ -107,9 +107,9 @@ Preferred Skills
 
 Pay: PKR 70,000-90,000 per month
 Work Location: In person""",
-        "tags": ["US shift", "Onsite", "Engineering"],
+        "tags": ["UK Business Hours", "Onsite", "Engineering"],
         "department": "Engineering",
-        "employment_type": "Onsite | 6 PM - 3 AM (Mon-Fri)",
+        "employment_type": "Onsite | 4 PM - 1 AM (Mon-Fri)",
         "salary": "PKR 70,000-90,000 per month",
     },
     {
@@ -129,7 +129,7 @@ Work Arrangement: Onsite
 About Comtanix
 Comtanix develops and maintains websites, software applications, and technology-driven business systems. We are looking for a Software QA Engineer to validate application functionality, identify defects, and verify that software deliverables meet defined requirements, quality standards, and expected user behavior.
 
-Core Responsibilities
+Core Responsibilities:
 - Review business and technical requirements to develop appropriate test scenarios and test cases.
 - Perform functional, regression, integration, and cross-browser testing of websites and applications.
 - Identify, document, and track software defects with clear reproduction steps and supporting evidence.
@@ -156,7 +156,7 @@ Preferred Skills
 
 Pay: PKR 65,000-85,000 per month
 Work Location: In person""",
-        "tags": ["US shift", "Onsite", "Quality"],
+        "tags": ["US Business Hours", "Onsite", "Quality"],
         "department": "Quality Assurance",
         "employment_type": "Onsite | 6 PM - 3 AM (Mon-Fri)",
         "salary": "PKR 65,000-85,000 per month",
@@ -172,13 +172,13 @@ Work Location: In person""",
 
 Pay: PKR 70,000-90,000 per month
 Location: Bahria Town, Phase 8, Rawalpindi
-Timings: 4 PM - 1 AM (Monday-Friday) | UK Business Hours Alignment
+Timings: 6 PM - 3 AM (Monday-Friday) | US Business Hours Alignment
 Work Arrangement: Onsite
 
 About Comtanix
 Comtanix is a technology-driven company operating across software development, cybersecurity, cloud infrastructure, and specialized business services. We are seeking a detail-oriented Senior Accountant to manage core accounting activities, maintain financial integrity, support reporting and reconciliations, and contribute to effective financial controls and business decision-making.
 
-Core Responsibilities
+Core Responsibilities:
 - Maintain accurate general ledger entries, financial records, and supporting accounting documentation.
 - Manage accounts payable and receivable, including invoice processing, payment tracking, and outstanding balances.
 - Perform bank, vendor, customer, and ledger reconciliations to identify and resolve discrepancies.
@@ -206,9 +206,9 @@ Preferred Skills
 
 Pay: PKR 70,000-90,000 per month
 Work Location: In person""",
-        "tags": ["UK shift", "Onsite", "Finance"],
+        "tags": ["US Business Hours", "Onsite", "Finance"],
         "department": "Finance",
-        "employment_type": "Onsite | 4 PM - 1 AM (Mon-Fri)",
+        "employment_type": "Onsite | 6 PM - 3 AM (Mon-Fri)",
         "salary": "PKR 70,000-90,000 per month",
     },
     {
@@ -222,13 +222,13 @@ Work Location: In person""",
 
 Pay: PKR 150,000-200,000 per month
 Location: Bahria Town, Phase 8, Rawalpindi
-Timings: 6 PM - 3 AM (Monday-Friday) | US Business Hours
+Timings: 4 PM - 1 AM (Monday-Friday) | UK Business Hours
 Work Arrangement: Onsite
 
 About Comtanix
 Comtanix is a technology-driven company with operations spanning software development, AI and automation, cybersecurity, cloud infrastructure, and specialized business services. We are looking for an experienced Business Operations Team Lead to oversee cross-functional workflows, guide operational teams, improve execution standards, and ensure business activities align with organizational priorities and performance objectives.
 
-Core Responsibilities
+Core Responsibilities:
 - Oversee daily business operations, coordinate departmental activities, and ensure timely execution of assigned priorities.
 - Establish operational plans, allocate responsibilities, and monitor progress against defined targets and deadlines.
 - Lead, mentor, and support team members while maintaining accountability, productivity, and consistent work quality.
@@ -257,9 +257,9 @@ Preferred Skills
 
 Pay: PKR 150,000-200,000 per month
 Work Location: In person""",
-        "tags": ["US shift", "Onsite", "Leadership"],
+        "tags": ["UK Business Hours", "Onsite", "Leadership"],
         "department": "Operations",
-        "employment_type": "Onsite | 6 PM - 3 AM (Mon-Fri)",
+        "employment_type": "Onsite | 4 PM - 1 AM (Mon-Fri)",
         "salary": "PKR 150,000-200,000 per month",
     },
 ]
