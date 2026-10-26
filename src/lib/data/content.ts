@@ -107,17 +107,17 @@ export const CAPABILITIES = [
   {
     title: "Software Development",
     body: "Build web, mobile, and enterprise applications for business needs.",
-    image: "/capabilities/software-development-v3b.jpg",
+    image: "/capabilities/software-development-v4.jpg",
   },
   {
     title: "Cybersecurity & Data",
     body: "Secure digital assets and turn data into useful insights.",
-    image: "/capabilities/cybersecurity-v7.jpg",
+    image: "/capabilities/cybersecurity-v9.jpg",
   },
   {
     title: "Cloud & Infrastructure",
     body: "Maintain reliable systems, connected networks, and cloud environments.",
-    image: "/capabilities/cloud-v7.jpg",
+    image: "/capabilities/cloud-v9.jpg",
   },
   {
     title: "E-commerce",
