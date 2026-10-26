@@ -94,14 +94,14 @@ export default function HomePage() {
                 key={w.title}
                 className="group flex min-w-0 flex-col overflow-hidden rounded-[0.9rem] border border-[#0b2c35]/10 bg-white shadow-[0_10px_28px_-20px_rgba(11,44,53,0.25)] transition duration-300 hover:-translate-y-0.5 hover:border-[#49a4ae]/45 hover:shadow-[0_14px_32px_-14px_rgba(73,164,174,0.28)]"
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#e8f0f1]">
                   <Image
                     src={w.image}
                     alt=""
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     quality={90}
-                    className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+                    className="object-cover object-[center_45%] transition duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-1 px-4 py-3.5 sm:px-5 sm:py-4">
