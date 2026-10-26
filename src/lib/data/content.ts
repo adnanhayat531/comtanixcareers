@@ -102,7 +102,7 @@ export const CAPABILITIES = [
   {
     title: "AI & Automation",
     body: "Automate routine tasks and streamline everyday workflows.",
-    image: "/capabilities/ai-automation-v3.jpg",
+    image: "/capabilities/ai-automation-v6.jpg",
   },
   {
     title: "Software Development",
