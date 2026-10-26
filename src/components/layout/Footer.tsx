@@ -29,10 +29,6 @@ const LEGAL_LINKS = [
 /** LinkedIn → Facebook → Instagram — once each, matching reference */
 const SOCIAL_ORDER = ["LinkedIn", "Facebook", "Instagram"] as const;
 
-const FOOTER_TAGLINE = "Technology. People. Progress.";
-const FOOTER_BLURB =
-  "We help businesses build, scale and innovate with technology and talented people.";
-
 const SOCIAL_PATHS: Record<string, string> = {
   Facebook:
     "M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.39H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.23 2.69.23v2.95h-1.52c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.39C19.61 23.03 24 18.06 24 12.07z",
@@ -139,10 +135,13 @@ export function Footer() {
           </svg>
         </div>
 
-        <Container className="relative z-[1] py-7 md:py-8">
-          <div className="grid min-w-0 w-full grid-cols-1 items-start gap-7 sm:gap-8 lg:grid-cols-3 lg:gap-0">
-            {/* Brand */}
-            <div className="min-w-0 lg:border-r lg:pr-8 xl:pr-12" style={{ borderColor: `${CYAN}33` }}>
+        <Container className="relative z-[1] pt-7 pb-5 md:pt-8 md:pb-6">
+          <div className="grid min-w-0 w-full grid-cols-1 items-stretch gap-7 sm:gap-8 lg:grid-cols-3 lg:gap-0">
+            {/* Brand — socials pinned to bottom line */}
+            <div
+              className="flex min-w-0 flex-col lg:border-r lg:pr-8 xl:pr-12"
+              style={{ borderColor: `${CYAN}33` }}
+            >
               <Link
                 href="/"
                 className="inline-flex max-w-full items-center"
@@ -159,18 +158,7 @@ export function Footer() {
                   className="h-8 w-auto max-w-[10.5rem] sm:h-9 sm:max-w-[12rem]"
                 />
               </Link>
-              <p className="mt-3 text-[0.875rem] font-medium tracking-wide text-white">
-                {FOOTER_TAGLINE}
-              </p>
-              <span
-                className="mt-2.5 block h-px w-9"
-                style={{ backgroundColor: CYAN }}
-                aria-hidden
-              />
-              <p className="mt-2.5 max-w-sm text-[0.8125rem] leading-relaxed text-white/75">
-                {FOOTER_BLURB}
-              </p>
-              <div className="mt-4 flex items-center gap-2">
+              <div className="mt-auto flex items-center gap-2 pt-10 lg:pt-12">
                 {socials.map(({ name, url }) => (
                   <a
                     key={name}
