@@ -26,7 +26,6 @@ const LEGAL_LINKS = [
   { href: "/sitemap.xml", label: "Sitemap" },
 ] as const;
 
-/** LinkedIn → Facebook → Instagram — once each, matching reference */
 const SOCIAL_ORDER = ["LinkedIn", "Facebook", "Instagram"] as const;
 
 const SOCIAL_PATHS: Record<string, string> = {
@@ -61,6 +60,21 @@ function FooterSocialIcon({ name }: { name: (typeof SOCIAL_ORDER)[number] }) {
   );
 }
 
+function SectionLabel({ children }: { children: string }) {
+  return (
+    <>
+      <h3 className="text-[0.6875rem] font-extrabold tracking-[0.16em] text-white uppercase">
+        {children}
+      </h3>
+      <span
+        className="mt-2 block h-0.5 w-7 rounded-full"
+        style={{ backgroundColor: CYAN }}
+        aria-hidden
+      />
+    </>
+  );
+}
+
 function ContactRow({
   href,
   label,
@@ -73,18 +87,18 @@ function ContactRow({
   icon: typeof Phone;
 }) {
   return (
-    <a href={href} className="group flex min-w-0 items-center gap-3">
+    <a href={href} className="group flex min-w-0 items-start gap-3">
       <span
-        className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-white transition group-hover:brightness-110"
+        className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full text-white transition group-hover:brightness-110"
         style={{ backgroundColor: CYAN }}
       >
         <Icon className="h-3.5 w-3.5" strokeWidth={2.25} aria-hidden />
       </span>
-      <span className="min-w-0">
-        <span className="block text-[0.8125rem] font-bold tracking-wide text-white">
+      <span className="min-w-0 pt-0.5">
+        <span className="block text-[0.8125rem] font-semibold tracking-wide text-white">
           {label}
         </span>
-        <span className="mt-0.5 block break-words text-[0.8125rem] leading-snug text-white/75 transition group-hover:text-white">
+        <span className="mt-0.5 block break-words text-[0.8125rem] leading-snug text-white/70 transition group-hover:text-white/90">
           {value}
         </span>
       </span>
@@ -109,9 +123,8 @@ export function Footer() {
           background: `linear-gradient(165deg, ${TEAL_MID} 0%, ${TEAL_DEEP} 48%, #002929 100%)`,
         }}
       >
-        {/* Subtle geometric chevron — far right */}
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 hidden w-[min(28%,18rem)] opacity-[0.07] lg:block"
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-[min(28%,18rem)] opacity-[0.06] lg:block"
           aria-hidden
         >
           <svg viewBox="0 0 200 320" className="h-full w-full" preserveAspectRatio="xMaxYMid meet">
@@ -135,13 +148,10 @@ export function Footer() {
           </svg>
         </div>
 
-        <Container className="relative z-[1] pt-7 pb-5 md:pt-8 md:pb-6">
-          <div className="grid min-w-0 w-full grid-cols-1 items-stretch gap-7 sm:gap-8 lg:grid-cols-3 lg:gap-0">
-            {/* Brand — socials pinned to bottom line */}
-            <div
-              className="flex min-w-0 flex-col lg:border-r lg:pr-8 xl:pr-12"
-              style={{ borderColor: `${CYAN}33` }}
-            >
+        <Container className="relative z-[1] py-10 md:py-12">
+          <div className="grid min-w-0 w-full grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 xl:gap-16">
+            {/* Brand + socials */}
+            <div className="min-w-0 sm:col-span-2 lg:col-span-1">
               <Link
                 href="/"
                 className="inline-flex max-w-full items-center"
@@ -158,56 +168,47 @@ export function Footer() {
                   className="h-8 w-auto max-w-[10.5rem] sm:h-9 sm:max-w-[12rem]"
                 />
               </Link>
-              <div className="mt-auto flex items-center gap-2 pt-10 lg:pt-12">
-                {socials.map(({ name, url }) => (
-                  <a
-                    key={name}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={name}
-                    title={name}
-                    className="grid h-8 w-8 place-items-center rounded-full border transition hover:bg-white/10"
-                    style={{ borderColor: `${CYAN}99`, color: CYAN }}
-                  >
-                    <FooterSocialIcon name={name} />
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Company — fill middle column free space */}
-            <div
-              className="min-w-0 lg:border-r lg:px-8 xl:px-12"
-              style={{ borderColor: `${CYAN}33` }}
-            >
-              <div className="min-w-0 w-full">
-                <h3 className="text-[0.6875rem] font-extrabold tracking-[0.16em] text-white uppercase">
-                  Company
-                </h3>
-                <span
-                  className="mt-2 block h-0.5 w-8 rounded-full"
-                  style={{ backgroundColor: CYAN }}
-                  aria-hidden
-                />
-                <ul className="mt-3.5 grid grid-cols-2 gap-x-6 gap-y-2 sm:gap-x-8 sm:gap-y-2.5">
-                  {COMPANY_LINKS.map((l) => (
-                    <li key={l.label} className="min-w-0">
-                      <Link
-                        href={l.href}
-                        className="inline-block max-w-full text-[0.8125rem] leading-snug text-white/85 transition-colors hover:text-white"
-                      >
-                        {l.label}
-                      </Link>
-                    </li>
+              {socials.length > 0 ? (
+                <div className="mt-6 flex items-center gap-2.5" aria-label="Social links">
+                  {socials.map(({ name, url }) => (
+                    <a
+                      key={name}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={name}
+                      title={name}
+                      className="grid h-9 w-9 place-items-center rounded-full border transition hover:bg-white/10"
+                      style={{ borderColor: `${CYAN}88`, color: CYAN }}
+                    >
+                      <FooterSocialIcon name={name} />
+                    </a>
                   ))}
-                </ul>
-              </div>
+                </div>
+              ) : null}
             </div>
 
-            {/* Contact — pinned to the right of the third column */}
-            <div className="flex min-w-0 flex-col justify-center gap-6 lg:items-end lg:pl-8 xl:pl-12">
-              <div className="flex w-full max-w-[18rem] flex-col gap-6 sm:gap-7 lg:ml-auto">
+            {/* Company */}
+            <div className="min-w-0">
+              <SectionLabel>Company</SectionLabel>
+              <ul className="mt-4 grid grid-cols-2 gap-x-8 gap-y-2.5">
+                {COMPANY_LINKS.map((l) => (
+                  <li key={l.label} className="min-w-0">
+                    <Link
+                      href={l.href}
+                      className="text-[0.875rem] leading-snug text-white/80 transition-colors hover:text-white"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div className="min-w-0">
+              <SectionLabel>Get in touch</SectionLabel>
+              <div className="mt-4 flex flex-col gap-5">
                 <ContactRow
                   href={`tel:+${CONFIG.whatsapp}`}
                   label="Talk to HR"
@@ -225,23 +226,26 @@ export function Footer() {
           </div>
         </Container>
 
-        <div className="relative z-[1] border-t" style={{ borderColor: `${CYAN}28`, backgroundColor: TEAL_BAR }}>
-          <Container className="flex flex-col gap-2 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-            <p className="text-[0.75rem] text-white/65">
+        <div
+          className="relative z-[1] border-t"
+          style={{ borderColor: `${CYAN}22`, backgroundColor: TEAL_BAR }}
+        >
+          <Container className="flex flex-col gap-3 py-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))] sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+            <p className="text-[0.75rem] text-white/55">
               © {year} {SITE.name}. All rights reserved.
             </p>
             <nav
-              className="flex flex-wrap items-center text-[0.75rem] text-white/65"
+              className="flex flex-wrap items-center gap-x-1 text-[0.75rem] text-white/55"
               aria-label="Legal"
             >
               {LEGAL_LINKS.map((l, i) => (
                 <span key={l.label} className="inline-flex items-center">
                   {i > 0 ? (
-                    <span className="mx-2 text-white/30" aria-hidden>
+                    <span className="mx-2.5 text-white/25" aria-hidden>
                       |
                     </span>
                   ) : null}
-                  <Link href={l.href} className="transition-colors hover:text-white">
+                  <Link href={l.href} className="transition-colors hover:text-white/85">
                     {l.label}
                   </Link>
                 </span>
