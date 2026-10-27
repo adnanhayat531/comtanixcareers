@@ -22,24 +22,49 @@ const fieldClass = "ui-field";
 
 const labelClass = "type-label mb-1.5 block text-ink";
 
-const CONFIRMATIONS = [
-  {
-    id: "confirm-night",
-    name: "confirmNight",
-    label: "I understand this is a US-shift role.",
-  },
-  {
-    id: "confirm-onsite",
-    name: "confirmOnsite",
-    label: "I understand this is an onsite office job (not remote).",
-  },
-  {
-    id: "confirm-location",
-    name: "confirmLocation",
-    label:
-      "I can commute to Bahria Town Phase 8, Rawalpindi.",
-  },
-] as const;
+type ShiftRegion = "US" | "UK";
+
+function shiftRegionForRole(
+  roleTitle: string,
+  roles: UiRole[],
+): ShiftRegion {
+  const match = roles.find(
+    (r) =>
+      r.title === roleTitle ||
+      r.slug === roleTitle ||
+      r.id === roleTitle,
+  );
+  const haystack = [
+    ...(match?.tags ?? []),
+    match?.detail ?? "",
+    match?.summary ?? "",
+    roleTitle,
+  ]
+    .join(" ")
+    .toLowerCase();
+  if (/\buk\b/.test(haystack) || haystack.includes("uk shift")) return "UK";
+  return "US";
+}
+
+function employmentConfirmations(shift: ShiftRegion) {
+  return [
+    {
+      id: "confirm-night",
+      name: "confirmNight" as const,
+      label: `I understand this is a ${shift} shift role.`,
+    },
+    {
+      id: "confirm-onsite",
+      name: "confirmOnsite" as const,
+      label: "I understand this is an onsite office job (not remote).",
+    },
+    {
+      id: "confirm-location",
+      name: "confirmLocation" as const,
+      label: "I can commute to Bahria Town Phase 8, Rawalpindi.",
+    },
+  ];
+}
 
 export type ApplyFormMode = "apply" | "cv";
 
@@ -90,6 +115,8 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
   const isCv = mode === "cv";
   const idPrefix = isCv ? "cv" : "apply";
   const cvInputId = `${idPrefix}-cv-file`;
+  const shiftRegion = shiftRegionForRole(role, roles);
+  const confirmations = employmentConfirmations(shiftRegion);
   const allChecked =
     checks.confirmNight && checks.confirmOnsite && checks.confirmLocation;
 
@@ -314,8 +341,8 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
     ) {
       setConfirmErr(
         isCv
-          ? "Please confirm US shift, onsite work, and Bahria Town Phase 8 location before submitting your CV."
-          : "Please confirm US shift, onsite work, and Bahria Town Phase 8 location before applying.",
+          ? `Please confirm ${shiftRegion} shift, onsite work, and Bahria Town Phase 8 location before submitting your CV.`
+          : `Please confirm ${shiftRegion} shift, onsite work, and Bahria Town Phase 8 location before applying.`,
       );
       setPending(false);
       return;
@@ -435,15 +462,18 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
             1
           </span>
           <div className="min-w-0">
-            <h3 className="type-label text-ink">Confirm role basics</h3>
+            <h3 className="type-label text-ink">
+              Key Employment Requirements
+            </h3>
             <p className="type-meta text-muted">
-              All three required before upload
+              Acknowledge and confirm your alignment with the position&apos;s
+              employment terms.
             </p>
           </div>
         </div>
 
         <ul className="grid divide-y divide-line/80 rounded-xl border border-line/80 bg-canvas/40 xl:grid-cols-3 xl:divide-x xl:divide-y-0">
-          {CONFIRMATIONS.map((c) => (
+          {confirmations.map((c) => (
             <li key={c.id} className="min-w-0">
               <label
                 htmlFor={`${idPrefix}-${c.id}`}
@@ -491,8 +521,11 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
             2
           </span>
           <div className="min-w-0">
-            <h3 className="type-label text-ink">Upload CV</h3>
-            <p className="type-meta text-muted">PDF or Word · max 5 MB</p>
+            <h3 className="type-label text-ink">Upload Your CV</h3>
+            <p className="type-meta text-muted">
+              Provide an up-to-date CV that reflects your experience,
+              qualifications, and skills.
+            </p>
           </div>
         </div>
 
@@ -561,10 +594,19 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
                 ? "Reading your CV…"
                 : allChecked
                   ? "Choose a file, or drop it here"
-                  : "Unlocks after you confirm above"}
+                  : "Ready to Submit?"}
             </span>
             {!parsing && allChecked ? (
               <span className="type-meta text-muted">Browse your device</span>
+            ) : !parsing && !allChecked ? (
+              <span className="type-meta max-w-sm text-muted">
+                Complete the required confirmations above to continue.
+              </span>
+            ) : null}
+            {!parsing ? (
+              <span className="type-meta text-muted">
+                PDF or DOC/DOCX · Maximum 5 MB
+              </span>
             ) : null}
             <input
               key={
@@ -673,7 +715,15 @@ export function ApplyForm({ mode = "apply" }: { mode?: ApplyFormMode }) {
                 name="role"
                 required
                 value={role}
-                onChange={(e) => setRoleOverride(e.target.value)}
+                onChange={(e) => {
+                  const next = e.target.value;
+                  const nextShift = shiftRegionForRole(next, roles);
+                  if (nextShift !== shiftRegion) {
+                    setChecks((prev) => ({ ...prev, confirmNight: false }));
+                    resetCvFields();
+                  }
+                  setRoleOverride(next);
+                }}
                 className={`${fieldClass} ${role ? "text-ink" : "text-muted/65"}`}
               >
                 <option value="">

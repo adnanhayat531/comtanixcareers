@@ -80,9 +80,10 @@ export default function CareersPage() {
                 Don&apos;t see your specific role?
               </p>
               <p className="mt-1.5 max-w-2xl text-[0.8125rem] leading-relaxed text-white/80 sm:text-sm">
-                We are constantly expanding our team. Send us your resume
-                through an open application and we&apos;ll reach out when a
-                suitable position matches your profile.
+                We&apos;re always looking for talented individuals to join our
+                growing team. Submit an open application with your resume, and
+                we&apos;ll be in touch when an opportunity aligns with your
+                skills and experience.
               </p>
             </div>
             <span className="inline-flex h-11 shrink-0 items-center justify-center gap-2 self-start rounded-[var(--radius-md)] bg-white px-5 text-sm font-semibold text-[#003B3B] shadow-sm transition hover:bg-white/95 sm:self-auto">

@@ -58,7 +58,11 @@ function shiftLabel(tags: string[]) {
 
 function displayTags(tags: string[]) {
   return tags
-    .filter((t) => !/(uk|us|night)\s*shift|(uk|us)\s*business/i.test(t))
+    .filter(
+      (t) =>
+        !/(uk|us|night)\s*shift|(uk|us)\s*business/i.test(t) &&
+        !/^onsite$/i.test(t.trim()),
+    )
     .slice(0, 3);
 }
 
@@ -71,8 +75,10 @@ function roleCapsules(role: UiRole) {
   if (shift && !caps.some((c) => c.toLowerCase() === shift.toLowerCase())) {
     caps.push(shift);
   }
+  const alreadyOnsite = caps.some((c) => /\bonsite\b/i.test(c));
   for (const t of displayTags(role.tags)) {
     if (caps.length >= 4) break;
+    if (alreadyOnsite && /\bonsite\b/i.test(t)) continue;
     if (!caps.some((c) => c.toLowerCase() === t.toLowerCase())) caps.push(t);
   }
   return caps;
@@ -190,10 +196,13 @@ function parseJobDescription(text: string): ParsedJobDescription {
 
     const foot = factLabels.find((f) => line.startsWith(`${f}:`));
     if (foot) {
-      footerFacts.push({
-        label: foot,
-        value: line.slice(foot.length + 1).trim(),
-      });
+      // Pay already shown in job details / capsules — skip footer duplicate
+      if (foot !== "Pay") {
+        footerFacts.push({
+          label: foot,
+          value: line.slice(foot.length + 1).trim(),
+        });
+      }
       i += 1;
       continue;
     }
@@ -342,6 +351,8 @@ function JobCard({
   );
 }
 
+const JD_PREVIEW_ITEMS = 4;
+
 function JobDetail({
   role,
   onBack,
@@ -350,12 +361,22 @@ function JobDetail({
   onBack?: () => void;
 }) {
   const [copied, setCopied] = useState(false);
+  const [jdExpanded, setJdExpanded] = useState(false);
   const location = role.location || DEFAULT_LOCATION;
   const deadline = formatDeadline(role.applicationDeadline);
   const shift = shiftLabel(role.tags);
   const employment = role.employmentType || "Full-time";
   const jd = parseJobDescription(role.detail || role.summary);
   const metaLine = [location, role.salary, employment].filter(Boolean).join(" · ");
+  const jdItemCount = jd.sections.reduce(
+    (n, s) => n + s.items.length + (s.body ? 1 : 0),
+    0,
+  );
+  const jdCanCollapse = jdItemCount > JD_PREVIEW_ITEMS;
+
+  useEffect(() => {
+    setJdExpanded(false);
+  }, [role.slug]);
 
   const share = useCallback(async () => {
     const url = new URL(window.location.href);
@@ -474,40 +495,76 @@ function JobDetail({
         </ul>
 
         <div className="mt-8 space-y-7">
-          {jd.sections.map((section) => (
-            <section key={section.title}>
-              <h3 className="type-eyebrow text-brand">{section.title}</h3>
-              {section.body ? (
-                <p className="type-body mt-2.5 text-muted">{section.body}</p>
-              ) : null}
-              {section.items.length ? (
-                <ul className="mt-3 space-y-2">
-                  {section.items.map((item) => (
-                    <li
-                      key={item}
-                      className="type-body flex gap-2.5 text-muted"
-                    >
-                      <span
-                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
-                        aria-hidden
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-            </section>
-          ))}
+          {(() => {
+            let budget = jdExpanded || !jdCanCollapse ? Infinity : JD_PREVIEW_ITEMS;
+            return jd.sections.map((section) => {
+              if (budget <= 0) return null;
+              const showBody = Boolean(section.body) && budget > 0;
+              if (showBody) budget -= 1;
+              const items =
+                section.items.length && budget > 0
+                  ? section.items.slice(0, budget)
+                  : [];
+              budget -= items.length;
+              if (!showBody && !items.length && !section.body) {
+                // heading-only leftover — skip when collapsed
+                return null;
+              }
+              if (!showBody && !items.length) return null;
+              return (
+                <section key={section.title}>
+                  <h3 className="type-eyebrow text-brand">{section.title}</h3>
+                  {showBody && section.body ? (
+                    <p className="type-body mt-2.5 text-muted">{section.body}</p>
+                  ) : null}
+                  {items.length ? (
+                    <ul className="mt-3 space-y-2">
+                      {items.map((item) => (
+                        <li
+                          key={item}
+                          className="type-body flex gap-2.5 text-muted"
+                        >
+                          <span
+                            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
+                            aria-hidden
+                          />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </section>
+              );
+            });
+          })()}
+          {jdCanCollapse ? (
+            <button
+              type="button"
+              onClick={() => setJdExpanded((v) => !v)}
+              className="inline-flex items-center gap-1.5 type-meta font-semibold text-brand transition-opacity hover:opacity-80"
+              aria-expanded={jdExpanded}
+            >
+              {jdExpanded ? "Show less" : "Read more"}
+              <ChevronRight
+                className={`h-3.5 w-3.5 transition-transform ${
+                  jdExpanded ? "-rotate-90" : "rotate-90"
+                }`}
+                aria-hidden
+              />
+            </button>
+          ) : null}
         </div>
 
-        {jd.footerFacts.length ? (
+        {jd.footerFacts.filter((f) => f.label !== "Pay").length ? (
           <ul className="mt-8 space-y-2 border-t border-line pt-5">
-            {jd.footerFacts.map((f) => (
-              <li key={`${f.label}-${f.value}`} className="type-meta text-ink">
-                <span className="font-semibold">{f.label}: </span>
-                <span className="text-muted">{f.value}</span>
-              </li>
-            ))}
+            {jd.footerFacts
+              .filter((f) => f.label !== "Pay")
+              .map((f) => (
+                <li key={`${f.label}-${f.value}`} className="type-meta text-ink">
+                  <span className="font-semibold">{f.label}: </span>
+                  <span className="text-muted">{f.value}</span>
+                </li>
+              ))}
           </ul>
         ) : null}
       </div>

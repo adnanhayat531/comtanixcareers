@@ -9,7 +9,7 @@ import { CONFIG } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Interested in joining Comtanix or working with us? Our team is available by phone and email to guide you.",
+    "Whether you're interested in joining our team or exploring business opportunities, we'd love to hear from you.",
 };
 
 export default function ContactPage() {
@@ -18,7 +18,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Let's Connect"
-        description="Interested in joining Comtanix or working with us? Our team is available by phone and email to guide you."
+        description="Whether you're interested in joining our team or exploring business opportunities, we'd love to hear from you."
         image="/contact/comtanix_hero_2880x738.png"
         imageAlt="Comtanix office building at night with Comtanix signage visible"
         imageFit="contain"
@@ -26,10 +26,10 @@ export default function ContactPage() {
         className="page-hero-banner contact-hero w-full !aspect-[2880/738] !h-auto !min-h-0 !max-h-none !bg-transparent max-sm:!min-h-0 max-sm:!aspect-[2880/738]"
       >
         <Button href={`mailto:${CONFIG.email}`} variant="white">
-          Email us <ArrowRight className="h-4 w-4" aria-hidden />
+          Email Us <ArrowRight className="h-4 w-4" aria-hidden />
         </Button>
         <Button href={`tel:+${CONFIG.whatsapp}`} variant="outlineLight">
-          Call us <ArrowRight className="h-4 w-4" aria-hidden />
+          Call Us <ArrowRight className="h-4 w-4" aria-hidden />
         </Button>
       </PageHero>
 

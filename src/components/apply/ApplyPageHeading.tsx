@@ -18,17 +18,8 @@ export function ApplyPageHeading() {
         <h1 className="type-h2 mt-2 text-ink">Apply for an open role.</h1>
       )}
       <p className="type-body mt-2.5 text-muted">
-        {role
-          ? "Confirm the job facts, upload your CV, and send your application."
-          : "Choose a listed opening, confirm the job facts, and send your application."}{" "}
-        Looking for later roles?{" "}
-        <a
-          href="/submit-cv"
-          className="font-semibold text-brand underline-offset-2 hover:underline"
-        >
-          Submit your CV
-        </a>{" "}
-        for the talent pool.
+        Take the next step in your application. Complete the form below to be
+        considered for this position.
       </p>
     </div>
   );
