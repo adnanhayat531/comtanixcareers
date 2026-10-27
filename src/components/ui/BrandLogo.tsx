@@ -9,8 +9,8 @@ export const BRAND_MARK_PATH =
 export const BRAND_MARK_COLOR = "#49A4AE";
 
 const LOGO = {
-  dark: { src: "/logo-comtanix.png", width: 350, height: 62 },
-  light: { src: "/logo-comtanix-light.png", width: 350, height: 62 },
+  dark: { src: "/logo-comtanix.png?v=3", width: 370, height: 74 },
+  light: { src: "/logo-comtanix-light.png?v=3", width: 370, height: 74 },
 } as const;
 
 /** Official Comtanix logo asset — full resolution PNG, no downscale re-encode */
@@ -32,7 +32,7 @@ export function BrandLogo({
       priority
       quality={100}
       unoptimized
-      className={`block max-h-full w-auto object-contain object-left ${className}`}
+      className={`block max-h-full w-auto object-contain object-left object-center ${className}`}
     />
   );
 }
