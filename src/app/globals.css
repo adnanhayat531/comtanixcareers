@@ -754,7 +754,6 @@ p {
 .reviews-arc-stage {
   position: relative;
   z-index: 1;
-  /* Stage hugs card content — no tall empty band */
   height: clamp(13.5rem, 34vw, 16rem);
   perspective: 1400px;
   perspective-origin: 50% 45%;
@@ -775,7 +774,6 @@ p {
 }
 
 .reviews-arc-card {
-  /* Content-driven height — no forced empty min-height */
   min-height: 0;
   height: auto;
   border-radius: 1.15rem;

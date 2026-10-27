@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink, Star } from "lucide-react";
 import {
   GOOGLE_MAPS_PLACE_URL,
@@ -10,7 +10,7 @@ import {
   type GoogleReview,
 } from "@/lib/data/google-reviews";
 
-const AUTO_MS = 2800;
+const AUTO_MS = 3800;
 const SIDE_SPAN = 2;
 
 function GoogleMark({ className = "" }: { className?: string }) {
@@ -134,6 +134,8 @@ export function TestimonialsGrid() {
   const reviews = POSITIVE_GOOGLE_REVIEWS;
   const count = reviews.length;
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const wasPaused = useRef(false);
 
   const next = useCallback(() => {
     setActive((i) => (i + 1) % count);
@@ -143,19 +145,29 @@ export function TestimonialsGrid() {
     setActive((i) => (i - 1 + count) % count);
   }, [count]);
 
-  // Always keep rotating — no hover pause
+  // Auto-move; pause on hover — resume immediately when cursor leaves
   useEffect(() => {
-    if (count < 2) return;
+    if (count < 2 || paused) {
+      if (paused) wasPaused.current = true;
+      return;
+    }
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
 
-    const id = window.setInterval(() => {
+    const tick = () => {
       if (document.visibilityState === "hidden") return;
       setActive((i) => (i + 1) % count);
-    }, AUTO_MS);
+    };
 
+    // Cursor just left → move now, then same gap as before
+    if (wasPaused.current) {
+      wasPaused.current = false;
+      tick();
+    }
+
+    const id = window.setInterval(tick, AUTO_MS);
     return () => window.clearInterval(id);
-  }, [count]);
+  }, [count, paused]);
 
   return (
     <div className="relative z-[1] min-w-0 w-full">
@@ -207,28 +219,35 @@ export function TestimonialsGrid() {
             const offset = circularOffset(i, active, count);
             const abs = Math.abs(offset);
             const visible = abs <= SIDE_SPAN;
+            const isFront = offset === 0;
             const x = offset * 32;
             const z = -abs * 80;
             const rot = offset * -28;
             const scale = 1 - abs * 0.07;
-            const opacity = !visible ? 0 : offset === 0 ? 1 : 1 - abs * 0.08;
+            const opacity = !visible ? 0 : isFront ? 1 : 1 - abs * 0.08;
 
             return (
               <div
                 key={review.id}
-                className={`reviews-arc-slot${offset === 0 ? " is-front" : ""}`}
+                className={`reviews-arc-slot${isFront ? " is-front" : ""}`}
                 style={{
                   transform: `translate(-50%, -50%) translateX(${x}%) translateZ(${z}px) rotateY(${rot}deg) scale(${scale})`,
                   opacity,
                   zIndex: 20 - abs,
-                  pointerEvents: offset === 0 ? "auto" : "none",
+                  pointerEvents: isFront ? "auto" : "none",
                   visibility: visible ? "visible" : "hidden",
                 }}
-                aria-hidden={offset !== 0}
+                aria-hidden={!isFront}
+                onMouseEnter={
+                  isFront ? () => setPaused(true) : undefined
+                }
+                onMouseLeave={
+                  isFront ? () => setPaused(false) : undefined
+                }
               >
                 <ReviewCard
                   review={review}
-                  active={offset === 0}
+                  active={isFront}
                   tone={glowTone(offset)}
                 />
               </div>
