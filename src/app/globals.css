@@ -677,23 +677,23 @@ p {
 
 /* Google reviews — LYNC-style neon circular orbit */
 .reviews-arc {
-  --reviews-card-w: min(88vw, 20rem);
+  --reviews-card-w: min(92vw, 22.5rem);
   width: 100%;
   max-width: none;
   border-radius: 0;
   background: transparent;
-  padding: 0.5rem 0 1.25rem;
+  padding: 0.15rem 0 0.5rem;
 }
 
 @media (min-width: 640px) {
   .reviews-arc {
-    --reviews-card-w: 22rem;
+    --reviews-card-w: 24rem;
   }
 }
 
 @media (min-width: 1024px) {
   .reviews-arc {
-    --reviews-card-w: 24rem;
+    --reviews-card-w: 26rem;
   }
 }
 
@@ -704,7 +704,7 @@ p {
 .reviews-arc-orbit {
   pointer-events: none;
   position: absolute;
-  inset: 10% 2% 24%;
+  inset: 4% 6% 14%;
   z-index: 0;
 }
 
@@ -754,9 +754,10 @@ p {
 .reviews-arc-stage {
   position: relative;
   z-index: 1;
-  height: clamp(26rem, 62vw, 32rem);
+  /* Stage hugs card content — no tall empty band */
+  height: clamp(13.5rem, 34vw, 16rem);
   perspective: 1400px;
-  perspective-origin: 50% 48%;
+  perspective-origin: 50% 45%;
   transform-style: preserve-3d;
 }
 
@@ -774,7 +775,9 @@ p {
 }
 
 .reviews-arc-card {
-  min-height: 21rem;
+  /* Content-driven height — no forced empty min-height */
+  min-height: 0;
+  height: auto;
   border-radius: 1.15rem;
   background: #ffffff;
   transition: box-shadow 0.45s ease;
@@ -783,12 +786,6 @@ p {
 .reviews-arc-card.is-active {
   background: #ffffff;
   opacity: 1;
-}
-
-@media (min-width: 640px) {
-  .reviews-arc-card {
-    min-height: 23rem;
-  }
 }
 
 .reviews-arc-card--glow-brand {

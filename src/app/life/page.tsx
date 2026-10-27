@@ -59,11 +59,12 @@ export default function LifePage() {
         </Container>
       </Section>
 
-      <Section className="reviews-fullscreen theme-light site-light-section !px-0">
+      <Section className="reviews-fullscreen theme-light site-light-section !px-0 !py-5 md:!py-7">
         <Container className="relative z-[1]">
           <SectionHeading
             eyebrow="Google Reviews"
             title="What Our Valued Employees Say"
+            className="mb-3 md:mb-4"
           />
         </Container>
         <TestimonialsGrid />

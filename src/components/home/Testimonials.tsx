@@ -60,7 +60,7 @@ function ReviewCard({
 }) {
   return (
     <article
-      className={`reviews-arc-card reviews-arc-card--${tone} relative flex h-full w-full flex-col rounded-2xl px-5 py-5 text-left sm:px-6 sm:py-6 ${
+      className={`reviews-arc-card reviews-arc-card--${tone} relative flex w-full flex-col rounded-2xl px-4 py-3.5 text-left sm:px-5 sm:py-4 ${
         active ? "is-active" : ""
       }`}
     >
@@ -71,7 +71,7 @@ function ReviewCard({
         {Array.from({ length: 5 }).map((_, i) => (
           <Star
             key={i}
-            className={`h-4 w-4 ${
+            className={`h-3.5 w-3.5 ${
               i < review.rating
                 ? "fill-[#F5C542] text-[#F5C542]"
                 : "fill-transparent text-line"
@@ -81,17 +81,17 @@ function ReviewCard({
         ))}
       </div>
 
-      <q className="type-meta mt-4 line-clamp-6 flex-1 leading-relaxed text-ink/90 [quotes:none] sm:line-clamp-7 sm:text-[0.95rem]">
+      <q className="type-meta mt-2 line-clamp-4 leading-snug text-ink/90 [quotes:none] sm:line-clamp-5 sm:text-[0.92rem]">
         {review.quote}
       </q>
 
-      <div className="mt-5 flex items-center gap-3">
+      <div className="mt-3 flex items-center gap-2.5">
         <a
           href={review.authorUrl}
           target="_blank"
           rel="noopener noreferrer"
           tabIndex={active ? 0 : -1}
-          className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-tint ring-2 ring-brand/25"
+          className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full bg-tint ring-2 ring-brand/25"
           aria-label={`${review.author} on Google`}
         >
           {review.photoUrl ? (
@@ -99,12 +99,12 @@ function ReviewCard({
               src={review.photoUrl}
               alt={review.author}
               fill
-              sizes="44px"
+              sizes="36px"
               className="object-cover"
               unoptimized
             />
           ) : (
-            <span className="grid h-full w-full place-items-center text-xs font-semibold text-brand">
+            <span className="grid h-full w-full place-items-center text-[0.65rem] font-semibold text-brand">
               {review.initials}
             </span>
           )}
@@ -115,12 +115,12 @@ function ReviewCard({
             target="_blank"
             rel="noopener noreferrer"
             tabIndex={active ? 0 : -1}
-            className="block truncate text-sm font-semibold text-ink hover:text-brand hover:underline sm:text-[0.95rem]"
+            className="block truncate text-sm font-semibold text-ink hover:text-brand hover:underline"
           >
             {review.author}
           </a>
-          <span className="mt-0.5 flex items-center gap-1 text-xs text-muted">
-            <GoogleMark className="h-3.5 w-3.5" />
+          <span className="mt-0.5 flex items-center gap-1 text-[0.7rem] text-muted">
+            <GoogleMark className="h-3 w-3" />
             Google review
             {review.dateLabel ? ` · ${review.dateLabel}` : null}
           </span>
@@ -159,36 +159,36 @@ export function TestimonialsGrid() {
 
   return (
     <div className="relative z-[1] min-w-0 w-full">
-      <div className="mx-auto mb-6 max-w-[var(--container-max,72rem)] px-[var(--container-pad-x)]">
+      <div className="mx-auto mb-3 max-w-[var(--container-max,72rem)] px-[var(--container-pad-x)] sm:mb-4">
         <a
           href={GOOGLE_MAPS_PLACE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="glass-card group inline-flex items-center gap-4 rounded-xl px-4 py-3 transition hover:border-brand/50"
+          className="glass-card group inline-flex w-fit max-w-full items-center gap-3 rounded-xl px-3.5 py-2.5 transition hover:border-brand/50 sm:gap-4 sm:px-4 sm:py-3"
         >
-          <div>
-            <p className="type-stat text-ink">
+          <div className="shrink-0">
+            <p className="text-2xl font-bold leading-none text-ink sm:text-[1.75rem]">
               {GOOGLE_RATING.score.toFixed(1)}
             </p>
-            <div className="mt-1.5 flex gap-0.5" aria-hidden>
+            <div className="mt-1 flex gap-0.5" aria-hidden>
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
-                  className="h-4 w-4 fill-[#F5C542] text-[#F5C542]"
+                  className="h-3.5 w-3.5 fill-[#F5C542] text-[#F5C542]"
                 />
               ))}
             </div>
-            <p className="mt-1.5 text-sm font-semibold text-brand group-hover:underline">
+            <p className="mt-1 text-xs font-semibold text-brand group-hover:underline sm:text-sm">
               {GOOGLE_RATING.count} reviews
             </p>
           </div>
-          <span className="hidden h-12 w-px bg-line sm:block" aria-hidden />
-          <span className="hidden items-center gap-2 sm:inline-flex">
-            <GoogleMark className="h-6 w-6" />
-            <span className="type-meta max-w-[10rem] text-muted">
+          <span className="hidden h-10 w-px shrink-0 bg-line sm:block" aria-hidden />
+          <span className="flex items-center gap-2">
+            <GoogleMark className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
+            <span className="type-meta whitespace-nowrap text-muted">
               Open all reviews on Google Maps
             </span>
-            <ExternalLink className="h-4 w-4 text-brand" aria-hidden />
+            <ExternalLink className="h-3.5 w-3.5 shrink-0 text-brand sm:h-4 sm:w-4" aria-hidden />
           </span>
         </a>
       </div>
@@ -207,10 +207,10 @@ export function TestimonialsGrid() {
             const offset = circularOffset(i, active, count);
             const abs = Math.abs(offset);
             const visible = abs <= SIDE_SPAN;
-            const x = offset * 38;
-            const z = -abs * 100;
-            const rot = offset * -36;
-            const scale = 1 - abs * 0.1;
+            const x = offset * 32;
+            const z = -abs * 80;
+            const rot = offset * -28;
+            const scale = 1 - abs * 0.07;
             const opacity = !visible ? 0 : offset === 0 ? 1 : 1 - abs * 0.08;
 
             return (
@@ -236,7 +236,7 @@ export function TestimonialsGrid() {
           })}
         </div>
 
-        <div className="relative z-[1] mt-2 flex items-center justify-center gap-3 pb-1 sm:mt-3">
+        <div className="relative z-[1] mt-1 flex items-center justify-center gap-2.5 pb-0.5 sm:mt-1.5">
           <button
             type="button"
             onClick={prev}
@@ -278,7 +278,7 @@ export function TestimonialsGrid() {
           </button>
         </div>
 
-        <p className="type-meta relative z-[1] mt-3 pb-2 text-center text-muted">
+        <p className="type-meta relative z-[1] mt-1.5 pb-1 text-center text-muted">
           What our clients are saying · {GOOGLE_RATING.count} reviews ·{" "}
           <span className="inline-flex items-center gap-1 font-semibold text-ink">
             <Star
