@@ -1,13 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { Star, ExternalLink } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, ExternalLink, Star } from "lucide-react";
 import {
   GOOGLE_MAPS_PLACE_URL,
   GOOGLE_RATING,
   POSITIVE_GOOGLE_REVIEWS,
   type GoogleReview,
 } from "@/lib/data/google-reviews";
+
+const AUTO_MS = 2800;
+const SIDE_SPAN = 2;
 
 function GoogleMark({ className = "" }: { className?: string }) {
   return (
@@ -32,48 +36,36 @@ function GoogleMark({ className = "" }: { className?: string }) {
   );
 }
 
-function ReviewCard({ review }: { review: GoogleReview }) {
+function circularOffset(i: number, active: number, count: number) {
+  let d = i - active;
+  if (d > count / 2) d -= count;
+  if (d < -count / 2) d += count;
+  return d;
+}
+
+function glowTone(offset: number) {
+  if (offset === 0) return "glow-brand";
+  if (offset < 0) return "glow-deep";
+  return "glow-sea";
+}
+
+function ReviewCard({
+  review,
+  active,
+  tone,
+}: {
+  review: GoogleReview;
+  active: boolean;
+  tone: string;
+}) {
   return (
-    <article className="reviews-circle-card glass-card relative flex h-full min-h-[16.5rem] w-[min(78vw,18.5rem)] shrink-0 flex-col items-center rounded-[1.75rem] px-5 py-5 text-center sm:w-[20rem] sm:px-6 sm:py-6">
-      <a
-        href={review.authorUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-tint ring-2 ring-brand/25 shadow-[0_8px_20px_-10px_rgba(13,148,136,0.45)]"
-        aria-label={`${review.author} on Google`}
-      >
-        {review.photoUrl ? (
-          <Image
-            src={review.photoUrl}
-            alt={review.author}
-            fill
-            sizes="56px"
-            className="object-cover"
-            unoptimized
-          />
-        ) : (
-          <span className="grid h-full w-full place-items-center text-sm font-semibold text-brand">
-            {review.initials}
-          </span>
-        )}
-      </a>
-
-      <a
-        href={review.authorUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="type-meta mt-3 block max-w-full truncate font-bold text-ink hover:text-brand hover:underline"
-      >
-        {review.author}
-      </a>
-      <span className="type-eyebrow mt-1 inline-flex items-center gap-1 normal-case tracking-normal text-muted">
-        <GoogleMark className="h-3.5 w-3.5" />
-        Google review
-        {review.dateLabel ? ` · ${review.dateLabel}` : null}
-      </span>
-
+    <article
+      className={`reviews-arc-card reviews-arc-card--${tone} relative flex h-full w-full flex-col rounded-2xl px-5 py-5 text-left sm:px-6 sm:py-6 ${
+        active ? "is-active" : ""
+      }`}
+    >
       <div
-        className="mt-2.5 flex justify-center gap-0.5"
+        className="flex gap-0.5"
         aria-label={`${review.rating} out of 5 stars`}
       >
         {Array.from({ length: 5 }).map((_, i) => (
@@ -81,7 +73,7 @@ function ReviewCard({ review }: { review: GoogleReview }) {
             key={i}
             className={`h-4 w-4 ${
               i < review.rating
-                ? "fill-[#FBBC05] text-[#FBBC05]"
+                ? "fill-[#F5C542] text-[#F5C542]"
                 : "fill-transparent text-line"
             }`}
             aria-hidden
@@ -89,50 +81,90 @@ function ReviewCard({ review }: { review: GoogleReview }) {
         ))}
       </div>
 
-      <q className="type-meta mt-3 line-clamp-4 flex-1 text-ink/90 [quotes:none]">
+      <q className="type-meta mt-4 line-clamp-6 flex-1 leading-relaxed text-ink/90 [quotes:none] sm:line-clamp-7 sm:text-[0.95rem]">
         {review.quote}
       </q>
 
-      <a
-        href={review.authorUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand hover:underline"
-      >
-        Verify on Google
-        <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-      </a>
+      <div className="mt-5 flex items-center gap-3">
+        <a
+          href={review.authorUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          tabIndex={active ? 0 : -1}
+          className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-tint ring-2 ring-brand/25"
+          aria-label={`${review.author} on Google`}
+        >
+          {review.photoUrl ? (
+            <Image
+              src={review.photoUrl}
+              alt={review.author}
+              fill
+              sizes="44px"
+              className="object-cover"
+              unoptimized
+            />
+          ) : (
+            <span className="grid h-full w-full place-items-center text-xs font-semibold text-brand">
+              {review.initials}
+            </span>
+          )}
+        </a>
+        <div className="min-w-0 flex-1">
+          <a
+            href={review.authorUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={active ? 0 : -1}
+            className="block truncate text-sm font-semibold text-ink hover:text-brand hover:underline sm:text-[0.95rem]"
+          >
+            {review.author}
+          </a>
+          <span className="mt-0.5 flex items-center gap-1 text-xs text-muted">
+            <GoogleMark className="h-3.5 w-3.5" />
+            Google review
+            {review.dateLabel ? ` · ${review.dateLabel}` : null}
+          </span>
+        </div>
+      </div>
     </article>
-  );
-}
-
-function ReviewTrack({
-  reviews,
-  keyPrefix,
-}: {
-  reviews: GoogleReview[];
-  keyPrefix: string;
-}) {
-  return (
-    <div className="flex shrink-0 gap-4 pe-4">
-      {reviews.map((review) => (
-        <ReviewCard key={`${keyPrefix}-${review.id}`} review={review} />
-      ))}
-    </div>
   );
 }
 
 export function TestimonialsGrid() {
   const reviews = POSITIVE_GOOGLE_REVIEWS;
+  const count = reviews.length;
+  const [active, setActive] = useState(0);
+
+  const next = useCallback(() => {
+    setActive((i) => (i + 1) % count);
+  }, [count]);
+
+  const prev = useCallback(() => {
+    setActive((i) => (i - 1 + count) % count);
+  }, [count]);
+
+  // Always keep rotating — no hover pause
+  useEffect(() => {
+    if (count < 2) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+
+    const id = window.setInterval(() => {
+      if (document.visibilityState === "hidden") return;
+      setActive((i) => (i + 1) % count);
+    }, AUTO_MS);
+
+    return () => window.clearInterval(id);
+  }, [count]);
 
   return (
-    <div className="min-w-0">
-      <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
+    <div className="relative z-[1] min-w-0 w-full">
+      <div className="mx-auto mb-6 max-w-[var(--container-max,72rem)] px-[var(--container-pad-x)]">
         <a
           href={GOOGLE_MAPS_PLACE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="glass-card group inline-flex items-center gap-4 rounded-md px-4 py-3 transition hover:border-brand/50"
+          className="glass-card group inline-flex items-center gap-4 rounded-xl px-4 py-3 transition hover:border-brand/50"
         >
           <div>
             <p className="type-stat text-ink">
@@ -142,7 +174,7 @@ export function TestimonialsGrid() {
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
-                  className="h-4 w-4 fill-[#FBBC05] text-[#FBBC05]"
+                  className="h-4 w-4 fill-[#F5C542] text-[#F5C542]"
                 />
               ))}
             </div>
@@ -161,14 +193,101 @@ export function TestimonialsGrid() {
         </a>
       </div>
 
-      {/* Sideways marquee with circular card feel */}
-      <div className="reviews-marquee group relative -mx-[var(--container-pad-x)] overflow-hidden px-[var(--container-pad-x)]">
-        <div className="reviews-marquee-fade pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[var(--surface,#fff)] to-transparent sm:w-16" />
-        <div className="reviews-marquee-fade pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[var(--surface,#fff)] to-transparent sm:w-16" />
-        <div className="reviews-marquee-track flex w-max py-2">
-          <ReviewTrack reviews={reviews} keyPrefix="a" />
-          <ReviewTrack reviews={reviews} keyPrefix="b" />
+      <div className="reviews-arc relative w-full">
+        <div className="reviews-arc-stars" aria-hidden />
+
+        <div className="reviews-arc-orbit" aria-hidden>
+          <span className="reviews-arc-orbit-ring reviews-arc-orbit-ring-a" />
+          <span className="reviews-arc-orbit-ring reviews-arc-orbit-ring-b" />
+          <span className="reviews-arc-orbit-ring reviews-arc-orbit-ring-c" />
         </div>
+
+        <div className="reviews-arc-stage">
+          {reviews.map((review, i) => {
+            const offset = circularOffset(i, active, count);
+            const abs = Math.abs(offset);
+            const visible = abs <= SIDE_SPAN;
+            const x = offset * 38;
+            const z = -abs * 100;
+            const rot = offset * -36;
+            const scale = 1 - abs * 0.1;
+            const opacity = !visible ? 0 : offset === 0 ? 1 : 1 - abs * 0.08;
+
+            return (
+              <div
+                key={review.id}
+                className={`reviews-arc-slot${offset === 0 ? " is-front" : ""}`}
+                style={{
+                  transform: `translate(-50%, -50%) translateX(${x}%) translateZ(${z}px) rotateY(${rot}deg) scale(${scale})`,
+                  opacity,
+                  zIndex: 20 - abs,
+                  pointerEvents: offset === 0 ? "auto" : "none",
+                  visibility: visible ? "visible" : "hidden",
+                }}
+                aria-hidden={offset !== 0}
+              >
+                <ReviewCard
+                  review={review}
+                  active={offset === 0}
+                  tone={glowTone(offset)}
+                />
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="relative z-[1] mt-2 flex items-center justify-center gap-3 pb-1 sm:mt-3">
+          <button
+            type="button"
+            onClick={prev}
+            className="grid h-10 w-10 place-items-center rounded-full border border-line bg-white text-ink transition hover:border-brand hover:text-brand"
+            aria-label="Previous review"
+          >
+            <ChevronLeft className="h-5 w-5" aria-hidden />
+          </button>
+
+          <div
+            className="flex items-center gap-1.5"
+            role="tablist"
+            aria-label="Reviews"
+          >
+            {reviews.map((r, i) => (
+              <button
+                key={r.id}
+                type="button"
+                role="tab"
+                aria-selected={i === active}
+                aria-label={`Show review by ${r.author}`}
+                onClick={() => setActive(i)}
+                className={`h-1.5 rounded-full transition-all ${
+                  i === active
+                    ? "w-5 bg-brand"
+                    : "w-1.5 bg-brand/25 hover:bg-brand/45"
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={next}
+            className="grid h-10 w-10 place-items-center rounded-full border border-line bg-white text-ink transition hover:border-brand hover:text-brand"
+            aria-label="Next review"
+          >
+            <ChevronRight className="h-5 w-5" aria-hidden />
+          </button>
+        </div>
+
+        <p className="type-meta relative z-[1] mt-3 pb-2 text-center text-muted">
+          What our clients are saying · {GOOGLE_RATING.count} reviews ·{" "}
+          <span className="inline-flex items-center gap-1 font-semibold text-ink">
+            <Star
+              className="h-3 w-3 fill-[#F5C542] text-[#F5C542]"
+              aria-hidden
+            />
+            {GOOGLE_RATING.score.toFixed(1)} / 5
+          </span>
+        </p>
       </div>
     </div>
   );

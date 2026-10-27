@@ -667,27 +667,157 @@ p {
   animation: cx-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
 }
 
-/* Google reviews — sideways marquee with circular card feel */
-@keyframes reviews-marquee {
-  from {
-    transform: translate3d(0, 0, 0);
+/* Full-bleed reviews band — white canvas, neon cards on top */
+.reviews-fullscreen {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  color: var(--ink);
+}
+
+/* Google reviews — LYNC-style neon circular orbit */
+.reviews-arc {
+  --reviews-card-w: min(88vw, 20rem);
+  width: 100%;
+  max-width: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 0.5rem 0 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .reviews-arc {
+    --reviews-card-w: 22rem;
   }
+}
+
+@media (min-width: 1024px) {
+  .reviews-arc {
+    --reviews-card-w: 24rem;
+  }
+}
+
+.reviews-arc-stars {
+  display: none;
+}
+
+.reviews-arc-orbit {
+  pointer-events: none;
+  position: absolute;
+  inset: 10% 2% 24%;
+  z-index: 0;
+}
+
+.reviews-arc-orbit-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  opacity: 0.7;
+}
+
+.reviews-arc-orbit-ring-a {
+  border-color: rgba(0, 238, 232, 0.45);
+  box-shadow:
+    0 0 18px rgba(0, 238, 232, 0.3),
+    inset 0 0 18px rgba(0, 238, 232, 0.1);
+  transform: rotateX(66deg) scale(1.08);
+  animation: reviews-arc-spin-a 16s linear infinite;
+}
+
+.reviews-arc-orbit-ring-b {
+  border-color: rgba(73, 164, 174, 0.4);
+  box-shadow: 0 0 16px rgba(73, 164, 174, 0.28);
+  transform: rotateX(66deg) scale(0.92);
+  animation: reviews-arc-spin-b 22s linear infinite;
+}
+
+.reviews-arc-orbit-ring-c {
+  border-color: rgba(0, 200, 190, 0.35);
+  box-shadow: 0 0 14px rgba(0, 200, 190, 0.22);
+  transform: rotateX(66deg) scale(0.78);
+  animation: reviews-arc-spin-a 28s linear infinite reverse;
+}
+
+@keyframes reviews-arc-spin-a {
   to {
-    transform: translate3d(-50%, 0, 0);
+    transform: rotateX(66deg) scale(1.08) rotate(360deg);
   }
 }
 
-.reviews-marquee-track {
-  animation: reviews-marquee 80s linear infinite;
-  will-change: transform;
+@keyframes reviews-arc-spin-b {
+  to {
+    transform: rotateX(66deg) scale(0.92) rotate(-360deg);
+  }
 }
 
-.reviews-marquee:hover .reviews-marquee-track {
-  animation-play-state: paused;
+.reviews-arc-stage {
+  position: relative;
+  z-index: 1;
+  height: clamp(26rem, 62vw, 32rem);
+  perspective: 1400px;
+  perspective-origin: 50% 48%;
+  transform-style: preserve-3d;
 }
 
-.reviews-circle-card {
-  border-radius: 1.75rem;
+.reviews-arc-slot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--reviews-card-w);
+  transform-style: preserve-3d;
+  transition:
+    transform 0.9s cubic-bezier(0.33, 1, 0.32, 1),
+    opacity 0.7s ease,
+    visibility 0.7s;
+  will-change: transform, opacity;
+}
+
+.reviews-arc-card {
+  min-height: 21rem;
+  border-radius: 1.15rem;
+  background: #ffffff;
+  transition: box-shadow 0.45s ease;
+}
+
+.reviews-arc-card.is-active {
+  background: #ffffff;
+  opacity: 1;
+}
+
+@media (min-width: 640px) {
+  .reviews-arc-card {
+    min-height: 23rem;
+  }
+}
+
+.reviews-arc-card--glow-brand {
+  box-shadow:
+    0 0 0 1px rgba(0, 238, 232, 0.35),
+    0 14px 36px -10px rgba(0, 40, 44, 0.28),
+    0 6px 16px -6px rgba(0, 40, 44, 0.14);
+}
+
+.reviews-arc-card--glow-deep {
+  box-shadow:
+    0 0 0 1px rgba(73, 164, 174, 0.28),
+    0 14px 36px -10px rgba(0, 40, 44, 0.24),
+    0 6px 16px -6px rgba(0, 40, 44, 0.12);
+}
+
+.reviews-arc-card--glow-sea {
+  box-shadow:
+    0 0 0 1px rgba(0, 200, 190, 0.28),
+    0 14px 36px -10px rgba(0, 40, 44, 0.24),
+    0 6px 16px -6px rgba(0, 40, 44, 0.12);
+}
+
+.reviews-arc-card.is-active.reviews-arc-card--glow-brand {
+  box-shadow:
+    0 0 0 1.5px rgba(0, 238, 232, 0.55),
+    0 0 28px -6px rgba(0, 238, 232, 0.28),
+    0 22px 48px -12px rgba(0, 40, 44, 0.32),
+    0 10px 20px -8px rgba(0, 40, 44, 0.16);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -697,11 +827,38 @@ p {
   .reveal-delay-3,
   .wa-gentle-pulse,
   .scroll-up-enter,
-  .reviews-marquee-track {
+  .reviews-arc-orbit-ring-a,
+  .reviews-arc-orbit-ring-b,
+  .reviews-arc-orbit-ring-c {
     animation: none !important;
-    opacity: 1 !important;
+  }
+
+  .reviews-arc-slot {
+    transition: none;
+  }
+
+  .reviews-arc-stage {
+    height: auto;
+    perspective: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem 0 1rem;
+  }
+
+  .reviews-arc-slot {
+    position: relative;
+    top: auto;
+    left: auto;
     transform: none !important;
-    filter: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  .reviews-arc-orbit {
+    display: none;
   }
 }
 

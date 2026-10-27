@@ -59,14 +59,14 @@ export default function LifePage() {
         </Container>
       </Section>
 
-      <Section className="theme-light site-light-section border-t border-line">
-        <Container>
+      <Section className="reviews-fullscreen theme-light site-light-section !px-0">
+        <Container className="relative z-[1]">
           <SectionHeading
             eyebrow="Google Reviews"
             title="What Our Valued Employees Say"
           />
-          <TestimonialsGrid />
         </Container>
+        <TestimonialsGrid />
       </Section>
     </>
   );
