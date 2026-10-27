@@ -31,14 +31,15 @@ type PageHeroProps = {
 const HERO_BLEND = "#071518";
 const HERO_BLEND_RGB = "7,21,24";
 
-/** Single soft wash behind copy — one layer only (no double transparent). */
+/** Soft blackish wash behind copy — keeps text readable on bright photo areas. */
 function TextWash({ children }: { children: ReactNode }) {
   return (
     <div className="relative w-fit max-w-full">
       <div
-        className="pointer-events-none absolute -inset-y-8 -left-8 -right-4 -z-10 sm:-inset-y-10 sm:-left-12 sm:-right-8"
+        className="pointer-events-none absolute -inset-y-8 -left-8 -right-6 -z-10 sm:-inset-y-10 sm:-left-12 sm:-right-10"
         style={{
-          background: `radial-gradient(120% 100% at 0% 50%, ${HERO_BLEND}cc 0%, ${HERO_BLEND}88 36%, ${HERO_BLEND}33 62%, transparent 82%)`,
+          background:
+            "radial-gradient(125% 110% at 0% 45%, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.52) 38%, rgba(0,0,0,0.22) 64%, transparent 84%)",
         }}
         aria-hidden
       />
@@ -97,7 +98,9 @@ export function PageHero({
     <div className="max-w-2xl min-w-0 px-0.5 py-0.5">
       <p
         className={`type-eyebrow mb-1.5 sm:mb-2 ${
-          onPhoto || !image ? "text-white/90" : "text-brand"
+          onPhoto || !image
+            ? "text-white/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.85)]"
+            : "text-brand"
         }`}
       >
         {eyebrow}
@@ -105,7 +108,7 @@ export function PageHero({
       <h1
         className={`type-h1 text-pretty text-balance ${
           onPhoto || !image
-            ? "text-white [text-shadow:0_2px_18px_rgba(0,0,0,0.75)]"
+            ? "text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.85),0_1px_4px_rgba(0,0,0,0.7)]"
             : "text-ink"
         }`}
       >
@@ -121,7 +124,9 @@ export function PageHero({
       </h1>
       <p
         className={`type-lede mt-2 max-w-xl text-pretty sm:mt-3 line-clamp-3 sm:line-clamp-none ${
-          onPhoto || !image ? "text-white/95" : "text-ink/85"
+          onPhoto || !image
+            ? "text-white/95 [text-shadow:0_1px_14px_rgba(0,0,0,0.8),0_1px_3px_rgba(0,0,0,0.65)]"
+            : "text-ink/85"
         }`}
       >
         {description}

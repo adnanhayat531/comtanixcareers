@@ -8,7 +8,7 @@ export function HeroCopy() {
         Your technology partner
       </p>
 
-      <h1 className="reveal relative z-10 w-full max-w-[18ch] text-[clamp(1.45rem,0.9rem+3.8vw,3.35rem)] leading-[1.12] font-bold tracking-[-0.03em] text-ink [text-shadow:0_2px_32px_rgba(0,0,0,0.55)] sm:max-w-none sm:leading-[1.1]">
+      <h1 className="reveal relative z-10 w-full text-[clamp(1.5rem,1rem+3.2vw,3.35rem)] leading-[1.12] font-bold tracking-[-0.03em] text-balance text-ink [text-shadow:0_2px_32px_rgba(0,0,0,0.55)] sm:leading-[1.1]">
         <span className="block">Build what&apos;s next with</span>
         <span className="block">
           <span className="text-brand">AI, technology,</span>

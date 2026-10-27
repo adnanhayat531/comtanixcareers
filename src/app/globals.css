@@ -718,6 +718,20 @@ p {
   color: var(--ink);
 }
 
+/* Contact hero: match image aspect 2880/738 — edge-to-edge, sharp original */
+.contact-hero.site-petrol-gradient {
+  background: #071518;
+}
+.contact-hero > img:not([aria-hidden]) {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  transform: none !important;
+  filter: none;
+  opacity: 1;
+}
+
 .home-dark-section::before,
 .site-dark-section::before {
   content: "";

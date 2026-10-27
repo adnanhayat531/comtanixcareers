@@ -19,11 +19,11 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Let's Connect"
         description="Interested in joining Comtanix or working with us? Our team is available by phone and email to guide you."
-        image="/contact/hero-v8.jpg"
+        image="/contact/comtanix_hero_2880x738.png"
         imageAlt="Comtanix office building at night with Comtanix signage visible"
-        imageFit="cover"
-        objectPosition="62% 45%"
-        className="page-hero-banner w-full !aspect-[1440/366] !h-auto !min-h-0 !max-h-none max-sm:!min-h-[15rem] max-sm:!aspect-auto max-sm:!h-[min(34vh,15rem)]"
+        imageFit="contain"
+        objectPosition="center center"
+        className="page-hero-banner contact-hero w-full !aspect-[2880/738] !h-auto !min-h-0 !max-h-none !bg-transparent max-sm:!min-h-0 max-sm:!aspect-[2880/738]"
       >
         <Button href={`mailto:${CONFIG.email}`} variant="white">
           Email us <ArrowRight className="h-4 w-4" aria-hidden />
