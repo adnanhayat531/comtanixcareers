@@ -682,7 +682,8 @@ p {
   max-width: none;
   border-radius: 0;
   background: transparent;
-  padding: 0.15rem 0 0.5rem;
+  padding: 0.15rem 0 0.85rem;
+  overflow: visible;
 }
 
 @media (min-width: 640px) {
@@ -701,89 +702,64 @@ p {
   display: none;
 }
 
-/* Earth-style wireframe globe — full SVG circles, axial tilt + Y spin */
+/* Network globe image — same size, clear visible slow rotate */
 .reviews-globe {
   pointer-events: none;
   position: absolute;
   left: 50%;
-  top: 40%;
+  /* Center on cards, lifted clear of bottom nav line */
+  top: 34%;
   z-index: 0;
-  width: min(70vw, 26rem);
-  height: min(70vw, 26rem);
+  width: min(78vw, 30rem);
+  height: min(78vw, 30rem);
   overflow: visible;
   transform: translate(-50%, -50%);
-  perspective: 1200px;
-  transform-style: preserve-3d;
-}
-
-.reviews-globe-glow {
-  position: absolute;
-  inset: 6%;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 38% 32%,
-    rgba(0, 238, 232, 0.16) 0%,
-    rgba(73, 164, 174, 0.1) 38%,
-    transparent 70%
-  );
-  filter: blur(1px);
-  animation: reviews-globe-breathe 6s ease-in-out infinite;
 }
 
 .reviews-globe-ball {
   position: absolute;
   inset: 0;
-  overflow: visible;
-  color: #49a4ae;
-  font-size: min(70vw, 26rem);
-  transform-style: preserve-3d;
-  animation: reviews-globe-earth 32s linear infinite;
+  display: grid;
+  place-items: center;
+  animation: reviews-globe-spin 60s linear infinite;
+  will-change: transform;
 }
 
-.reviews-globe-shell,
-.reviews-globe-ring {
-  position: absolute;
-  inset: 0;
+.reviews-globe-img {
   width: 100%;
   height: 100%;
-  overflow: visible;
-  transform-style: preserve-3d;
-  backface-visibility: visible;
+  object-fit: contain;
+  opacity: 1;
+  user-select: none;
+  border-radius: 0;
+  clip-path: none;
+  /* Soft edge — no hard corner cut */
+  filter: contrast(1.04) saturate(1.06) brightness(1.03);
+  box-shadow: none;
+  -webkit-mask-image: radial-gradient(
+    circle at 50% 50%,
+    #000 0%,
+    #000 78%,
+    rgba(0, 0, 0, 0.65) 88%,
+    rgba(0, 0, 0, 0.2) 95%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle at 50% 50%,
+    #000 0%,
+    #000 78%,
+    rgba(0, 0, 0, 0.65) 88%,
+    rgba(0, 0, 0, 0.2) 95%,
+    transparent 100%
+  );
 }
 
-.reviews-globe-shell {
-  color: #3d8f98;
-  filter: drop-shadow(0 0 12px rgba(0, 238, 232, 0.15));
-}
-
-.reviews-globe-lat {
-  --z: 0;
-  --s: 1;
-  transform: rotateX(90deg) translateZ(calc(var(--z) * 0.5em));
-}
-
-.reviews-globe-lat.is-equator {
-  color: #00c8be;
-}
-
-@keyframes reviews-globe-earth {
+@keyframes reviews-globe-spin {
   from {
-    transform: rotateZ(-18deg) rotateY(0deg);
+    transform: rotate(0deg);
   }
   to {
-    transform: rotateZ(-18deg) rotateY(360deg);
-  }
-}
-
-@keyframes reviews-globe-breathe {
-  0%,
-  100% {
-    opacity: 0.7;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.04);
+    transform: rotate(360deg);
   }
 }
 
@@ -858,8 +834,7 @@ p {
   .reveal-delay-3,
   .wa-gentle-pulse,
   .scroll-up-enter,
-  .reviews-globe-ball,
-  .reviews-globe-glow {
+  .reviews-globe-ball {
     animation: none !important;
   }
 
