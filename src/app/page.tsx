@@ -48,18 +48,14 @@ export default function HomePage() {
                 key={c.title}
                 className="group flex min-h-0 min-w-0 flex-col overflow-hidden rounded-[0.9rem] border border-white/12 bg-[rgba(4,22,28,0.55)] shadow-[0_10px_28px_-18px_rgba(0,0,0,0.5)] transition duration-300 hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_14px_32px_-14px_rgba(0,238,234,0.2)]"
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#041216]">
                   <Image
                     src={c.image}
                     alt=""
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                    quality={90}
-                    className="object-cover object-[center_35%] brightness-[1.04] contrast-[1.05] saturate-[0.92] transition duration-500 group-hover:scale-[1.03]"
-                  />
-                  <div
-                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#041216]/25 to-transparent"
-                    aria-hidden
+                    quality={95}
+                    className="object-cover object-center"
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-1 px-3.5 py-3 sm:px-4 sm:py-3.5">

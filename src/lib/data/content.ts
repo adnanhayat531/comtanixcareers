@@ -102,42 +102,42 @@ export const CAPABILITIES = [
   {
     title: "AI & Automation",
     body: "Automate routine tasks and streamline everyday workflows.",
-    image: "/capabilities/ai-automation-v6.jpg",
+    image: "/capabilities/ai-automation-v14.jpg",
   },
   {
     title: "Software Development",
     body: "Build web, mobile, and enterprise applications for business needs.",
-    image: "/capabilities/software-development-v4.jpg",
+    image: "/capabilities/software-development-v14.jpg",
   },
   {
     title: "Cybersecurity & Data",
     body: "Secure digital assets and turn data into useful insights.",
-    image: "/capabilities/cybersecurity-v18.jpg",
+    image: "/capabilities/cybersecurity-v21.jpg",
   },
   {
     title: "Cloud & Infrastructure",
     body: "Maintain reliable systems, connected networks, and cloud environments.",
-    image: "/capabilities/cloud-v14.jpg",
+    image: "/capabilities/cloud-v17.jpg",
   },
   {
     title: "E-commerce",
     body: "Manage online stores, product catalogs, and digital sales operations.",
-    image: "/capabilities/ecommerce-v4.jpg",
+    image: "/capabilities/ecommerce-v7.jpg",
   },
   {
     title: "Accounting & Finance",
     body: "Manage financial records, reporting, and accounting processes.",
-    image: "/capabilities/finance-v7.jpg",
+    image: "/capabilities/finance-v10.jpg",
   },
   {
     title: "Business Development",
     body: "Assess market opportunities and support business growth strategies.",
-    image: "/capabilities/business-v5.jpg",
+    image: "/capabilities/business-v8.jpg",
   },
   {
     title: "Digital Marketing",
     body: "Strengthen brand visibility through digital campaigns and content.",
-    image: "/capabilities/marketing-v4.jpg",
+    image: "/capabilities/marketing-v7.jpg",
   },
 ] as const;
 
