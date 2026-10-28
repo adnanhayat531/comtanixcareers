@@ -10,7 +10,7 @@ import { CAPABILITIES, WHY_COMTANIX } from "@/lib/data/content";
 export default function HomePage() {
   return (
     <>
-      <section className="relative flex w-full flex-col overflow-hidden min-h-[100svh] supports-[height:100dvh]:min-h-[100dvh] md:h-[100svh] md:min-h-[100svh] md:supports-[height:100dvh]:h-[100dvh] [@media(max-height:620px)]:h-auto [@media(max-height:620px)]:min-h-[100svh] [@media(max-height:620px)]:overflow-x-hidden">
+      <section className="relative flex h-svh min-h-0 w-full flex-col overflow-hidden">
         <HeroNetwork />
         {/* Copy sits upper-left over the wash; stats float at bottom */}
         <div className="relative z-10 mx-auto flex w-full min-w-0 max-w-none flex-1 flex-col items-start justify-start px-[var(--container-pad-x)] pt-[calc(var(--header-h)+clamp(1rem,4vh,6.5rem))] pb-2 sm:pb-3 md:justify-center md:pb-0 md:pt-[calc(var(--header-h)+clamp(2rem,7vh,6.5rem))] lg:justify-start">
