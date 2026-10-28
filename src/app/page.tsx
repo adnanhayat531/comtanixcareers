@@ -13,7 +13,7 @@ export default function HomePage() {
       <section className="relative flex h-svh min-h-0 w-full flex-col overflow-hidden">
         <HeroNetwork />
         {/* Copy sits upper-left over the wash; stats float at bottom */}
-        <div className="relative z-10 mx-auto flex w-full min-w-0 max-w-none flex-1 flex-col items-start justify-start px-[var(--container-pad-x)] pt-[calc(var(--header-h)+clamp(1rem,4vh,6.5rem))] pb-2 sm:pb-3 md:justify-center md:pb-0 md:pt-[calc(var(--header-h)+clamp(2rem,7vh,6.5rem))] lg:justify-start">
+        <div className="relative z-10 mx-auto flex w-full min-w-0 max-w-none flex-1 flex-col items-start justify-start px-[var(--container-pad-x)] pt-[calc(var(--header-h)+clamp(4.25rem,14vh,9rem))] pb-2 sm:pb-3 md:justify-start md:pb-0 md:pt-[calc(var(--header-h)+clamp(5.25rem,16vh,10.5rem))]">
           <HeroCopy />
         </div>
         <div className="relative z-20 mt-auto w-full min-w-0 shrink-0">
@@ -46,9 +46,9 @@ export default function HomePage() {
             {CAPABILITIES.map((c) => (
               <li
                 key={c.title}
-                className="group flex min-h-0 min-w-0 flex-col overflow-hidden rounded-[0.9rem] border border-white/12 bg-[rgba(4,22,28,0.55)] shadow-[0_10px_28px_-18px_rgba(0,0,0,0.5)] transition duration-300 hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_14px_32px_-14px_rgba(0,238,234,0.2)]"
+                className="group flex min-h-0 min-w-0 flex-col overflow-hidden rounded-[0.9rem] border border-black/10 bg-[#c8c8c8] shadow-[0_10px_28px_-18px_rgba(0,0,0,0.35)] transition duration-300 hover:-translate-y-0.5 hover:border-black/18 hover:shadow-[0_14px_32px_-14px_rgba(0,0,0,0.28)]"
               >
-                <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#041216]">
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#b0b0b0]">
                   <Image
                     src={c.image}
                     alt=""
@@ -59,8 +59,8 @@ export default function HomePage() {
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-1 px-3.5 py-3 sm:px-4 sm:py-3.5">
-                  <h3 className="type-h3 text-ink">{c.title}</h3>
-                  <p className="type-meta leading-snug text-white/70">{c.body}</p>
+                  <h3 className="type-h3 text-[#111111]">{c.title}</h3>
+                  <p className="type-meta leading-snug text-[#3a3a3a]">{c.body}</p>
                 </div>
               </li>
             ))}

@@ -1,4 +1,4 @@
-/** Original hero photo — no zoom/crop (object-contain + image aspect) */
+/** Full-bleed hero photo — covers top to bottom of the viewport */
 export function HeroNetwork() {
   return (
     <div
@@ -14,7 +14,7 @@ export function HeroNetwork() {
         decoding="async"
         fetchPriority="high"
         draggable={false}
-        className="absolute inset-0 h-full w-full object-contain object-center"
+        className="absolute inset-0 h-full w-full object-cover object-center"
       />
       {/* Light readability wash only — keep original photo intact */}
       <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(2,14,18,0.72)_0%,rgba(3,20,26,0.42)_22%,rgba(4,28,34,0.14)_48%,transparent_70%)] max-sm:bg-[linear-gradient(165deg,rgba(2,14,18,0.78)_0%,rgba(3,20,26,0.48)_40%,transparent_78%)]" />
