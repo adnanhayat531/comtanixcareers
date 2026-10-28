@@ -171,36 +171,36 @@ export function TestimonialsGrid() {
 
   return (
     <div className="relative z-[1] min-w-0 w-full">
-      <div className="mx-auto mb-3 max-w-[var(--container-max,72rem)] px-[var(--container-pad-x)] sm:mb-4">
+      <div className="mb-3 flex justify-start px-[var(--container-pad-x)] sm:mb-3.5">
         <a
           href={GOOGLE_MAPS_PLACE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="glass-card group inline-flex w-fit max-w-full items-center gap-3 rounded-xl px-3.5 py-2.5 transition hover:border-brand/50 sm:gap-4 sm:px-4 sm:py-3"
+          className="glass-card group inline-flex w-fit max-w-full items-center gap-2 rounded-lg px-2.5 py-1.5 transition hover:border-brand/50 sm:gap-2.5 sm:px-3 sm:py-2"
         >
           <div className="shrink-0">
-            <p className="text-2xl font-bold leading-none text-ink sm:text-[1.75rem]">
+            <p className="text-lg font-bold leading-none text-ink sm:text-xl">
               {GOOGLE_RATING.score.toFixed(1)}
             </p>
-            <div className="mt-1 flex gap-0.5" aria-hidden>
+            <div className="mt-0.5 flex gap-px" aria-hidden>
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
-                  className="h-3.5 w-3.5 fill-[#F5C542] text-[#F5C542]"
+                  className="h-2.5 w-2.5 fill-[#F5C542] text-[#F5C542] sm:h-3 sm:w-3"
                 />
               ))}
             </div>
-            <p className="mt-1 text-xs font-semibold text-brand group-hover:underline sm:text-sm">
+            <p className="mt-0.5 text-[10px] font-semibold text-brand group-hover:underline sm:text-xs">
               {GOOGLE_RATING.count} reviews
             </p>
           </div>
-          <span className="hidden h-10 w-px shrink-0 bg-line sm:block" aria-hidden />
-          <span className="flex items-center gap-2">
-            <GoogleMark className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
-            <span className="type-meta whitespace-nowrap text-muted">
+          <span className="hidden h-8 w-px shrink-0 bg-line sm:block" aria-hidden />
+          <span className="flex items-center gap-1.5">
+            <GoogleMark className="h-4 w-4 shrink-0" />
+            <span className="text-[11px] whitespace-nowrap text-muted sm:text-xs">
               Open all reviews on Google Maps
             </span>
-            <ExternalLink className="h-3.5 w-3.5 shrink-0 text-brand sm:h-4 sm:w-4" aria-hidden />
+            <ExternalLink className="h-3 w-3 shrink-0 text-brand" aria-hidden />
           </span>
         </a>
       </div>
