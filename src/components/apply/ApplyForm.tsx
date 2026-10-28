@@ -51,7 +51,7 @@ function employmentConfirmations(shift: ShiftRegion) {
     {
       id: "confirm-night",
       name: "confirmNight" as const,
-      label: `I understand this is a ${shift} shift role.`,
+      label: `I understand this role follows ${shift} working hours.`,
     },
     {
       id: "confirm-onsite",
