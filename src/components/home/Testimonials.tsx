@@ -60,12 +60,12 @@ function ReviewCard({
 }) {
   return (
     <article
-      className={`reviews-arc-card reviews-arc-card--${tone} relative flex h-full w-full flex-col rounded-2xl px-4 py-3.5 text-left sm:px-5 sm:py-4 ${
+      className={`reviews-arc-card reviews-arc-card--${tone} relative flex w-full flex-col rounded-2xl px-4 py-3.5 text-left sm:px-5 sm:py-4 ${
         active ? "is-active" : ""
       }`}
     >
       <div
-        className="flex shrink-0 gap-0.5"
+        className="flex gap-0.5"
         aria-label={`${review.rating} out of 5 stars`}
       >
         {Array.from({ length: 5 }).map((_, i) => (
@@ -81,11 +81,11 @@ function ReviewCard({
         ))}
       </div>
 
-      <q className="type-meta mt-2 min-h-0 flex-1 line-clamp-4 overflow-hidden leading-snug text-ink/90 [quotes:none] sm:text-[0.92rem]">
+      <q className="type-meta mt-2 line-clamp-4 leading-snug text-ink/90 [quotes:none] sm:line-clamp-5 sm:text-[0.92rem]">
         {review.quote}
       </q>
 
-      <div className="mt-auto flex shrink-0 items-center gap-2.5 pt-3">
+      <div className="mt-3 flex items-center gap-2.5">
         <a
           href={review.authorUrl}
           target="_blank"
