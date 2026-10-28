@@ -27,9 +27,9 @@ export const CONFIG = {
   careersEmail: "careers@comtanix.com",
   partnersEmail: "partners@comtanix.com",
   socials: {
-    Facebook: "https://www.facebook.com/",
-    LinkedIn: "https://www.linkedin.com/",
-    Instagram: "https://www.instagram.com/",
+    Facebook: "https://www.facebook.com/comtanix",
+    LinkedIn: "https://www.linkedin.com/company/comtanix",
+    Instagram: "https://www.instagram.com/comtanix/",
   } as Record<string, string>,
   address:
     "Plaza No. 610, Noor Heights, 2nd Floor, Business District South, Bahria Town Phase 8, Rawalpindi",
