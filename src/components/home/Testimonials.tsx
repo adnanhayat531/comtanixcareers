@@ -296,17 +296,6 @@ export function TestimonialsGrid() {
             <ChevronRight className="h-5 w-5" aria-hidden />
           </button>
         </div>
-
-        <p className="type-meta relative z-[1] mt-1.5 pb-1 text-center text-muted">
-          What our clients are saying · {GOOGLE_RATING.count} reviews ·{" "}
-          <span className="inline-flex items-center gap-1 font-semibold text-ink">
-            <Star
-              className="h-3 w-3 fill-[#F5C542] text-[#F5C542]"
-              aria-hidden
-            />
-            {GOOGLE_RATING.score.toFixed(1)} / 5
-          </span>
-        </p>
       </div>
     </div>
   );
