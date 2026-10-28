@@ -867,6 +867,10 @@ p {
     transition: none;
   }
 
+  .reviews-globe {
+    display: none;
+  }
+
   .reviews-arc-stage {
     height: auto;
     perspective: none;
@@ -887,9 +891,6 @@ p {
     pointer-events: auto !important;
   }
 
-  .reviews-globe {
-    display: none;
-  }
 }
 
 /* Shared petrol-teal gradient for all dark bands (sections, footer, services) */

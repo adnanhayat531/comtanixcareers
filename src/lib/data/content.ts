@@ -35,7 +35,7 @@ export const VALUES = [
   {
     title: "Growth Through Innovation",
     body: "We embrace new perspectives, advance our capabilities, and continually seek better ways to address evolving business and technology needs.",
-    image: "/values/deliver-results-v2.png",
+    image: "/values/growth-innovation-v1.jpg",
   },
 ] as const;
 
