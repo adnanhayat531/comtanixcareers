@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Briefcase, Mail, MapPin, Phone } from "lucide-react";
 import { Container, Section } from "@/components/ui/Section";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { CONFIG } from "@/lib/config";
@@ -18,27 +18,31 @@ const contactRows = [
   },
   {
     icon: Mail,
-    label: "Email Us",
+    label: "General Inquiries",
     content: (
-      <div className="space-y-1">
-        <a
-          href={`mailto:${CONFIG.email}`}
-          className="block font-semibold text-ink transition-colors hover:text-brand"
-        >
-          {CONFIG.email}
-        </a>
-        <a
-          href={`mailto:${CONFIG.careersEmail}`}
-          className="block font-semibold text-ink transition-colors hover:text-brand"
-        >
-          {CONFIG.careersEmail}
-        </a>
-      </div>
+      <a
+        href={`mailto:${CONFIG.email}`}
+        className="font-semibold text-ink transition-colors hover:text-brand"
+      >
+        {CONFIG.email}
+      </a>
+    ),
+  },
+  {
+    icon: Briefcase,
+    label: "Careers",
+    content: (
+      <a
+        href={`mailto:${CONFIG.careersEmail}`}
+        className="font-semibold text-ink transition-colors hover:text-brand"
+      >
+        {CONFIG.careersEmail}
+      </a>
     ),
   },
   {
     icon: MapPin,
-    label: "Locations",
+    label: "Visit Us",
     content: (
       <p className="font-semibold leading-relaxed text-ink">{CONFIG.address}</p>
     ),
@@ -56,9 +60,8 @@ export function GetInTouch() {
               <span className="text-brand">Reach the Right Team</span>
             </h2>
             <p className="type-body mt-2.5 max-w-xl text-muted">
-              Have a question about careers or partnerships? Reach out to the
-              right team, and we&apos;ll be happy to assist you during business
-              hours.
+              Choose the most relevant contact channel for your inquiry, and
+              our team will guide you in the right direction.
             </p>
 
             <ul className="mt-6 space-y-5 sm:mt-8">

@@ -17,7 +17,7 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Let's Connect"
+        title="Connect With Us"
         description="Whether you're interested in joining our team or exploring business opportunities, we'd love to hear from you."
         image="/contact/comtanix_hero_2880x738.png"
         imageAlt="Comtanix office building at night with Comtanix signage visible"
