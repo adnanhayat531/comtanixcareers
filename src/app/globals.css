@@ -754,7 +754,7 @@ p {
 .reviews-arc-stage {
   position: relative;
   z-index: 1;
-  height: clamp(13.5rem, 34vw, 16rem);
+  height: clamp(17rem, 42vw, 19.5rem);
   perspective: 1400px;
   perspective-origin: 50% 45%;
   transform-style: preserve-3d;
@@ -774,11 +774,20 @@ p {
 }
 
 .reviews-arc-card {
-  min-height: 0;
-  height: auto;
+  height: 15.5rem;
+  min-height: 15.5rem;
+  max-height: 15.5rem;
   border-radius: 1.15rem;
   background: #ffffff;
   transition: box-shadow 0.45s ease;
+}
+
+@media (min-width: 640px) {
+  .reviews-arc-card {
+    height: 16.75rem;
+    min-height: 16.75rem;
+    max-height: 16.75rem;
+  }
 }
 
 .reviews-arc-card.is-active {
