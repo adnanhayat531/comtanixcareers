@@ -236,8 +236,8 @@ export function Footer() {
                       rel="noopener noreferrer"
                       aria-label={name}
                       title={name}
-                      className="grid h-8 w-8 place-items-center rounded-full border transition hover:bg-white/10 sm:h-9 sm:w-9"
-                      style={{ borderColor: `${CYAN}99`, color: CYAN }}
+                      className="grid h-8 w-8 place-items-center rounded-full text-white transition hover:brightness-110 sm:h-9 sm:w-9"
+                      style={{ backgroundColor: CYAN }}
                     >
                       <FooterSocialIcon name={name} />
                     </a>

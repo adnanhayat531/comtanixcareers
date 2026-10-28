@@ -23,7 +23,8 @@ export default function ContactPage() {
         imageAlt="Comtanix office building at night with Comtanix signage visible"
         imageFit="contain"
         objectPosition="center center"
-        className="page-hero-banner contact-hero w-full !aspect-[2880/738] !h-auto !min-h-0 !max-h-none !bg-transparent max-sm:!min-h-0 max-sm:!aspect-[2880/738]"
+        leftBlurShade
+        className="page-hero-banner contact-hero contact-hero--ltr-grad w-full !aspect-[2880/738] !h-auto !min-h-0 !max-h-none !bg-transparent max-sm:!min-h-0 max-sm:!aspect-[2880/738]"
       >
         <Button href={`mailto:${CONFIG.email}`} variant="white">
           Email Us <ArrowRight className="h-4 w-4" aria-hidden />

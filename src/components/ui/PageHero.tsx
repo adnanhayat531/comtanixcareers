@@ -21,6 +21,8 @@ type PageHeroProps = {
    * so width looks full without zooming the sharp image.
    */
   fillLetterbox?: boolean;
+  /** Soft blur + shade on left buildings; right side stays sharp (e.g. Comtanix). */
+  leftBlurShade?: boolean;
   /** Prefer light text on photo heroes. Default when image is set. */
   tone?: "dark" | "light";
   children?: ReactNode;
@@ -63,6 +65,7 @@ export function PageHero({
   objectPosition,
   imageBlend = false,
   fillLetterbox = false,
+  leftBlurShade = false,
   tone,
   children,
   className = "",
@@ -201,6 +204,21 @@ export function PageHero({
               fetchPriority="high"
               decoding="async"
             />
+            {leftBlurShade ? (
+              <>
+                {/* Same photo, blurred + masked to left — softens left buildings */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={image}
+                  alt=""
+                  aria-hidden
+                  className="contact-hero-left-blur absolute inset-0 z-[2] h-full w-full"
+                  style={imgStyle}
+                  decoding="async"
+                />
+                <div className="contact-hero-left-shade" aria-hidden />
+              </>
+            ) : null}
           </>
         )
       ) : (

@@ -920,6 +920,102 @@ p {
   opacity: 1;
 }
 
+/*
+ * Contact hero: full top→bottom coverage, soft fade only left→right (~50%).
+ */
+.contact-hero--ltr-grad .contact-hero-left-blur {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  pointer-events: none;
+  filter: blur(18px);
+  transform: scale(1.04);
+  transform-origin: left center;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 22%,
+    rgba(0, 0, 0, 0.7) 36%,
+    rgba(0, 0, 0, 0.28) 46%,
+    transparent 52%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 22%,
+    rgba(0, 0, 0, 0.7) 36%,
+    rgba(0, 0, 0, 0.28) 46%,
+    transparent 52%
+  );
+}
+
+.contact-hero--ltr-grad .contact-hero-left-shade {
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(7, 21, 24, 0.42) 0%,
+    rgba(8, 28, 32, 0.28) 20%,
+    rgba(10, 40, 44, 0.14) 36%,
+    rgba(7, 21, 24, 0.05) 46%,
+    transparent 52%
+  );
+}
+
+/* Text wash: full top→bottom of hero, soft fade only to the right */
+.contact-hero--ltr-grad .relative.w-fit > [aria-hidden] {
+  top: -50vmax !important;
+  bottom: -50vmax !important;
+  left: -3rem !important;
+  right: -5rem !important;
+  height: auto !important;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.48) 28%,
+    rgba(0, 0, 0, 0.2) 55%,
+    transparent 82%
+  ) !important;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+@media (max-width: 639px) {
+  .contact-hero--ltr-grad .contact-hero-left-blur {
+    filter: blur(12px);
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      #000 0%,
+      #000 26%,
+      rgba(0, 0, 0, 0.55) 42%,
+      transparent 56%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      #000 0%,
+      #000 26%,
+      rgba(0, 0, 0, 0.55) 42%,
+      transparent 56%
+    );
+  }
+
+  .contact-hero--ltr-grad .contact-hero-left-shade {
+    background: linear-gradient(
+      90deg,
+      rgba(7, 21, 24, 0.48) 0%,
+      rgba(8, 28, 32, 0.28) 30%,
+      rgba(10, 40, 44, 0.1) 46%,
+      transparent 56%
+    );
+  }
+}
+
 .home-dark-section::before,
 .site-dark-section::before {
   content: "";
