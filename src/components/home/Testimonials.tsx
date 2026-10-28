@@ -1,7 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import { ChevronLeft, ChevronRight, ExternalLink, Star } from "lucide-react";
 import {
   GOOGLE_MAPS_PLACE_URL,
@@ -208,12 +214,75 @@ export function TestimonialsGrid() {
       </div>
 
       <div className="reviews-arc relative w-full">
-        <div className="reviews-arc-stars" aria-hidden />
+        {/* Earth globe: full closed SVG circles in 3D (meridians + latitudes) */}
+        <div className="reviews-globe" aria-hidden>
+          <span className="reviews-globe-glow" />
+          <div className="reviews-globe-ball">
+            <svg className="reviews-globe-shell" viewBox="0 0 200 200">
+              <circle
+                cx="100"
+                cy="100"
+                r="96"
+                fill="rgba(73,164,174,0.04)"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                opacity="0.55"
+              />
+            </svg>
 
-        <div className="reviews-arc-orbit" aria-hidden>
-          <span className="reviews-arc-orbit-ring reviews-arc-orbit-ring-a" />
-          <span className="reviews-arc-orbit-ring reviews-arc-orbit-ring-b" />
-          <span className="reviews-arc-orbit-ring reviews-arc-orbit-ring-c" />
+            {[0, 30, 60, 90, 120, 150].map((deg) => (
+              <svg
+                key={`m-${deg}`}
+                className="reviews-globe-ring"
+                viewBox="0 0 200 200"
+                style={{ transform: `rotateY(${deg}deg)` }}
+              >
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="96"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.25"
+                  strokeOpacity="0.5"
+                />
+              </svg>
+            ))}
+
+            {(
+              [
+                [0, 1],
+                [0.5, 0.866],
+                [-0.5, 0.866],
+                [0.82, 0.574],
+                [-0.82, 0.574],
+              ] as const
+            ).map(([z, s]) => (
+              <svg
+                key={`lat-${z}`}
+                className={`reviews-globe-ring reviews-globe-lat${
+                  z === 0 ? " is-equator" : ""
+                }`}
+                viewBox="0 0 200 200"
+                style={
+                  {
+                    "--z": z,
+                    "--s": s,
+                  } as CSSProperties
+                }
+              >
+                <circle
+                  cx="100"
+                  cy="100"
+                  r={96 * s}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={z === 0 ? 1.4 : 1.15}
+                  strokeOpacity={z === 0 ? 0.6 : 0.42}
+                />
+              </svg>
+            ))}
+          </div>
         </div>
 
         <div className="reviews-arc-stage">

@@ -701,59 +701,95 @@ p {
   display: none;
 }
 
-.reviews-arc-orbit {
+/* Earth-style wireframe globe — full SVG circles, axial tilt + Y spin */
+.reviews-globe {
   pointer-events: none;
   position: absolute;
-  inset: 4% 6% 14%;
+  left: 50%;
+  top: 40%;
   z-index: 0;
+  width: min(70vw, 26rem);
+  height: min(70vw, 26rem);
+  overflow: visible;
+  transform: translate(-50%, -50%);
+  perspective: 1200px;
+  transform-style: preserve-3d;
 }
 
-.reviews-arc-orbit-ring {
+.reviews-globe-glow {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 38% 32%,
+    rgba(0, 238, 232, 0.16) 0%,
+    rgba(73, 164, 174, 0.1) 38%,
+    transparent 70%
+  );
+  filter: blur(1px);
+  animation: reviews-globe-breathe 6s ease-in-out infinite;
+}
+
+.reviews-globe-ball {
   position: absolute;
   inset: 0;
-  border-radius: 50%;
-  border: 1.5px solid transparent;
-  opacity: 0.7;
+  overflow: visible;
+  color: #49a4ae;
+  font-size: min(70vw, 26rem);
+  transform-style: preserve-3d;
+  animation: reviews-globe-earth 32s linear infinite;
 }
 
-.reviews-arc-orbit-ring-a {
-  border-color: rgba(0, 238, 232, 0.45);
-  box-shadow:
-    0 0 18px rgba(0, 238, 232, 0.3),
-    inset 0 0 18px rgba(0, 238, 232, 0.1);
-  transform: rotateX(66deg) scale(1.08);
-  animation: reviews-arc-spin-a 16s linear infinite;
+.reviews-globe-shell,
+.reviews-globe-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
 }
 
-.reviews-arc-orbit-ring-b {
-  border-color: rgba(73, 164, 174, 0.4);
-  box-shadow: 0 0 16px rgba(73, 164, 174, 0.28);
-  transform: rotateX(66deg) scale(0.92);
-  animation: reviews-arc-spin-b 22s linear infinite;
+.reviews-globe-shell {
+  color: #3d8f98;
+  filter: drop-shadow(0 0 12px rgba(0, 238, 232, 0.15));
 }
 
-.reviews-arc-orbit-ring-c {
-  border-color: rgba(0, 200, 190, 0.35);
-  box-shadow: 0 0 14px rgba(0, 200, 190, 0.22);
-  transform: rotateX(66deg) scale(0.78);
-  animation: reviews-arc-spin-a 28s linear infinite reverse;
+.reviews-globe-lat {
+  --z: 0;
+  --s: 1;
+  transform: rotateX(90deg) translateZ(calc(var(--z) * 0.5em));
 }
 
-@keyframes reviews-arc-spin-a {
+.reviews-globe-lat.is-equator {
+  color: #00c8be;
+}
+
+@keyframes reviews-globe-earth {
+  from {
+    transform: rotateZ(-18deg) rotateY(0deg);
+  }
   to {
-    transform: rotateX(66deg) scale(1.08) rotate(360deg);
+    transform: rotateZ(-18deg) rotateY(360deg);
   }
 }
 
-@keyframes reviews-arc-spin-b {
-  to {
-    transform: rotateX(66deg) scale(0.92) rotate(-360deg);
+@keyframes reviews-globe-breathe {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
   }
 }
 
 .reviews-arc-stage {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   height: clamp(13.5rem, 34vw, 16rem);
   perspective: 1400px;
   perspective-origin: 50% 45%;
@@ -822,9 +858,8 @@ p {
   .reveal-delay-3,
   .wa-gentle-pulse,
   .scroll-up-enter,
-  .reviews-arc-orbit-ring-a,
-  .reviews-arc-orbit-ring-b,
-  .reviews-arc-orbit-ring-c {
+  .reviews-globe-ball,
+  .reviews-globe-glow {
     animation: none !important;
   }
 
@@ -852,7 +887,7 @@ p {
     pointer-events: auto !important;
   }
 
-  .reviews-arc-orbit {
+  .reviews-globe {
     display: none;
   }
 }
