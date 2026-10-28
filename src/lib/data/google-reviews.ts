@@ -20,6 +20,14 @@ function initials(name: string) {
   return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
 }
 
+function cleanQuote(quote: string) {
+  return quote
+    .replace(/[⭐★☆]+/g, "")
+    .replace(/\s+/g, " ")
+    .replace(/\s*…\s*$/u, "")
+    .trim();
+}
+
 /** Official Comtanix Google Maps place (reviews tab). */
 export const GOOGLE_MAPS_PLACE_URL =
   "https://www.google.com/maps/place/Comtanix/@33.4977501,73.0704028,17z/data=!4m8!3m7!1s0x38df95f8d0000001:0x3b57baa0437d08ab!8m2!3d33.4977501!4d73.0704028!9m1!1b1!16s%2Fg%2F11fmqy91pv";
@@ -31,7 +39,19 @@ export const GOOGLE_RATING = {
   count: 86,
 } as const;
 
-const RAW = [
+/** Minimum stars for public cards — 1–3★ (bad) are excluded. */
+export const POSITIVE_REVIEW_MIN_RATING = 4;
+
+type RawReview = {
+  author: string;
+  photoUrl: string | null;
+  rating: number;
+  dateLabel: string;
+  quote: string;
+  authorUrl: string;
+};
+
+const RAW: RawReview[] = [
   {
     author: "Rashid Yaqub",
     photoUrl:
@@ -140,24 +160,45 @@ const RAW = [
     authorUrl:
       "https://www.google.com/maps/contrib/114073027021680666277/reviews?hl=en",
   },
-] as const;
+  {
+    author: "Abdullah Jan",
+    photoUrl:
+      "https://lh3.googleusercontent.com/a/ACg8ocKsJPqr1--KZlolc4NsKSZ6Tl7e15L1JSgRIMaZ3pxFEWBE4AMp=w120-h120-p-rp-mo-ba12-br100",
+    rating: 5,
+    dateLabel: "5 months ago",
+    quote:
+      "I find Comtanix has a wonderful and very professional work environment. Everyone is very cooperative and hard working. They offer on time salary and many benefits and I would highly recommend working with them.",
+    authorUrl:
+      "https://www.google.com/maps/contrib/110583358231254918943/reviews?hl=en",
+  },
+];
 
-export const GOOGLE_REVIEWS: GoogleReview[] = RAW.map((r, i) => ({
-  id: `gr-${i + 1}`,
-  author: r.author,
-  initials: initials(r.author),
-  photoUrl: r.photoUrl,
-  rating: r.rating,
-  dateLabel: r.dateLabel,
-  quote: r.quote,
-  authorUrl: r.authorUrl,
-  mapsUrl: GOOGLE_MAPS_PLACE_URL,
-}));
+function toReview(r: RawReview, i: number): GoogleReview {
+  return {
+    id: `gr-${i + 1}`,
+    author: r.author,
+    initials: initials(r.author),
+    photoUrl: r.photoUrl,
+    rating: r.rating,
+    dateLabel: r.dateLabel,
+    quote: cleanQuote(r.quote),
+    authorUrl: r.authorUrl || GOOGLE_MAPS_PLACE_URL,
+    mapsUrl: GOOGLE_MAPS_PLACE_URL,
+  };
+}
 
-/** 4★ and 5★ only — used on the public reviews orbit. */
+export const GOOGLE_REVIEWS: GoogleReview[] = RAW.map(toReview);
+
+/**
+ * Public carousel: every positive review (4★–5★), bad reviews filtered out.
+ * Sorted highest rating first; no slice — full positive set rotates in cards.
+ */
 export const POSITIVE_GOOGLE_REVIEWS: GoogleReview[] = GOOGLE_REVIEWS.filter(
-  (r) => r.rating >= 4,
-);
+  (r) =>
+    r.rating >= POSITIVE_REVIEW_MIN_RATING &&
+    r.quote.length >= 12 &&
+    !/unresponsive hr|management issues|enough said/i.test(r.quote),
+).sort((a, b) => b.rating - a.rating || a.author.localeCompare(b.author));
 
 /** @deprecated use GOOGLE_REVIEWS */
 export const GOOGLE_REVIEWS_FALLBACK = GOOGLE_REVIEWS;

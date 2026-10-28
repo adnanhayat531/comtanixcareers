@@ -132,6 +132,7 @@ function ReviewCard({
 }
 
 export function TestimonialsGrid() {
+  // Full positive set (4★+) — no slice; bad reviews already filtered in data layer
   const reviews = POSITIVE_GOOGLE_REVIEWS;
   const count = reviews.length;
   const [active, setActive] = useState(0);

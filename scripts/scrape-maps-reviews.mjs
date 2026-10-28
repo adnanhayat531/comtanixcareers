@@ -43,19 +43,44 @@ async function main() {
   }
   await page.waitForTimeout(2000);
 
-  // Expand "More" on reviews
-  for (let i = 0; i < 8; i++) {
+  // Prefer highest-rated first so positive reviews load into the feed
+  try {
+    const sortBtn = page
+      .locator('button:has-text("Sort"), button[aria-label*="Sort"]')
+      .first();
+    if (await sortBtn.count()) {
+      await sortBtn.click({ timeout: 2500 });
+      await page.waitForTimeout(800);
+      const highest = page
+        .locator('div[role="menuitemradio"]:has-text("Highest"), div[role="menuitem"]:has-text("Highest")')
+        .first();
+      if (await highest.count()) await highest.click({ timeout: 2000 });
+      await page.waitForTimeout(1500);
+    }
+  } catch {
+    /* keep default sort */
+  }
+
+  // Scroll review feed deeply + expand "More"
+  const feed = page.locator('div[role="main"]').first();
+  for (let i = 0; i < 28; i++) {
     const more = page.locator('button:has-text("More"), button:has-text("See more")');
     const n = await more.count();
-    for (let j = 0; j < Math.min(n, 6); j++) {
+    for (let j = 0; j < Math.min(n, 10); j++) {
       try {
-        await more.nth(j).click({ timeout: 800 });
+        await more.nth(j).click({ timeout: 600 });
       } catch {
         /* */
       }
     }
-    await page.mouse.wheel(0, 1400);
-    await page.waitForTimeout(700);
+    try {
+      await feed.evaluate((el) => {
+        el.scrollTop += 1600;
+      });
+    } catch {
+      await page.mouse.wheel(0, 1600);
+    }
+    await page.waitForTimeout(550);
   }
 
   const data = await page.evaluate(() => {
